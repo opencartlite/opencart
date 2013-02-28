@@ -41,7 +41,7 @@ class ModelSettingStore extends Model {
 	}
 
 	public function getTotalStores() {
-      	$query = $this->db->query("SELECT COUNT(*) AS total FROM {store");}
+      	$query = $this->db->query("SELECT COUNT(*) AS total FROM {store}");
 		
 		return $query->row['total'];
 	}	

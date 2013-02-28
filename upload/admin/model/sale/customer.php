@@ -255,7 +255,7 @@ class ModelSaleCustomer extends Model {
 	}	
 				
 	public function getTotalCustomers($data = array()) {
-      	$sql = "SELECT COUNT(*) AS total FROM {customer";}
+      	$sql = "SELECT COUNT(*) AS total FROM {customer}";
 		
 		$implode = array();
 		

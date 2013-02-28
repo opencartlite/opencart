@@ -71,7 +71,7 @@ class ModelReportAffiliate extends Model {
 	}
 	
 	public function getProducts($data = array()) { 
-		$sql = "SELECT at.product_id, CONCAT(a.firstname, ' ', a.lastname) AS affiliate, a.email, a.status, SUM(at.amount) AS commission, COUNT(o.order_id) AS orders, SUM(o.total) AS total FROM {affiliate_transaction} at LEFT JOIN {affiliate} a ON (at.affiliate_id = a.affiliate_id) LEFT JOIN {order} o ON (at.order_id = o.order_id) LEFT JOIN {product";}
+		$sql = "SELECT at.product_id, CONCAT(a.firstname, ' ', a.lastname) AS affiliate, a.email, a.status, SUM(at.amount) AS commission, COUNT(o.order_id) AS orders, SUM(o.total) AS total FROM {affiliate_transaction} at LEFT JOIN {affiliate} a ON (at.affiliate_id = a.affiliate_id) LEFT JOIN {order} o ON (at.order_id = o.order_id) LEFT JOIN {product}";
 		
 		$implode = array();
 		

@@ -10,7 +10,7 @@ class Currency {
 		$this->request = $registry->get('request');
 		$this->session = $registry->get('session');
 
-		$query = $this->db->query("SELECT * FROM {currency");}
+		$query = $this->db->query("SELECT * FROM {currency}");
 
 		foreach ($query->rows as $result) {
 			$this->currencies[$result['code']] = array(

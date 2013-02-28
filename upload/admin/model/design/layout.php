@@ -39,7 +39,7 @@ class ModelDesignLayout extends Model {
 	}
 		 
 	public function getLayouts($data = array()) {
-		$sql = "SELECT * FROM {layout";}
+		$sql = "SELECT * FROM {layout}";
 		
 		$sort_data = array('name');	
 		
@@ -79,7 +79,7 @@ class ModelDesignLayout extends Model {
 	}
 		
 	public function getTotalLayouts() {
-      	$query = $this->db->query("SELECT COUNT(*) AS total FROM {layout");}
+      	$query = $this->db->query("SELECT COUNT(*) AS total FROM {layout}");
 		
 		return $query->row['total'];
 	}	

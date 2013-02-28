@@ -87,7 +87,7 @@ class ModelSaleCustomerGroup extends Model {
 	}
 		
 	public function getTotalCustomerGroups() {
-		$query = $this->db->query("SELECT COUNT(*) AS total FROM {customer_group");}
+		$query = $this->db->query("SELECT COUNT(*) AS total FROM {customer_group}");
 		
 		return $query->row['total'];
 	}

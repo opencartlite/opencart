@@ -93,7 +93,7 @@ class ModelCatalogDownload extends Model {
 	}
 	
 	public function getTotalDownloads() {
-      	$query = $this->db->query("SELECT COUNT(*) AS total FROM {download");}
+      	$query = $this->db->query("SELECT COUNT(*) AS total FROM {download}");
 		
 		return $query->row['total'];
 	}	

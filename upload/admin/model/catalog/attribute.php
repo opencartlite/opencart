@@ -136,7 +136,7 @@ class ModelCatalogAttribute extends Model {
 	}
 	
 	public function getTotalAttributes() {
-      	$query = $this->db->query("SELECT COUNT(*) AS total FROM {attribute");}
+      	$query = $this->db->query("SELECT COUNT(*) AS total FROM {attribute}");
 		
 		return $query->row['total'];
 	}	
