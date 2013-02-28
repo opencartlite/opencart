@@ -3,7 +3,7 @@ class ControllerSaleOrder extends Controller {
 	private $error = array();
 
   	public function index() {
-		$this->language->load('sale/order');
+		$this->data += $this->language->load('sale/order');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 
@@ -13,7 +13,7 @@ class ControllerSaleOrder extends Controller {
   	}
 	
   	public function insert() {
-		$this->language->load('sale/order');
+		$this->data += $this->language->load('sale/order');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 
@@ -69,7 +69,7 @@ class ControllerSaleOrder extends Controller {
   	}
 	
   	public function update() {
-		$this->language->load('sale/order');
+		$this->data += $this->language->load('sale/order');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 
@@ -125,7 +125,7 @@ class ControllerSaleOrder extends Controller {
   	}
 	
   	public function delete() {
-		$this->language->load('sale/order');
+		$this->data += $this->language->load('sale/order');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 
@@ -1307,7 +1307,7 @@ class ControllerSaleOrder extends Controller {
 		$order_info = $this->model_sale_order->getOrder($order_id);
 
 		if ($order_info) {
-			$this->language->load('sale/order');
+			$this->data += $this->language->load('sale/order');
 
 			$this->document->setTitle($this->language->get('heading_title'));
 
@@ -1875,7 +1875,7 @@ class ControllerSaleOrder extends Controller {
 			
 			$this->response->setOutput($this->render());
 		} else {
-			$this->language->load('error/not_found');
+			$this->data += $this->language->load('error/not_found');
 
 			$this->document->setTitle($this->language->get('heading_title'));
 
@@ -1906,7 +1906,7 @@ class ControllerSaleOrder extends Controller {
 	}
 
 	public function createInvoiceNo() {
-		$this->language->load('sale/order');
+		$this->data += $this->language->load('sale/order');
 
 		$json = array();
 		
@@ -1928,7 +1928,7 @@ class ControllerSaleOrder extends Controller {
   	}
 
 	public function addCredit() {
-		$this->language->load('sale/order');
+		$this->data += $this->language->load('sale/order');
 		
 		$json = array();
     	
@@ -1958,7 +1958,7 @@ class ControllerSaleOrder extends Controller {
   	}
 	
 	public function removeCredit() {
-		$this->language->load('sale/order');
+		$this->data += $this->language->load('sale/order');
 		
 		$json = array();
     	
@@ -1984,7 +1984,7 @@ class ControllerSaleOrder extends Controller {
   	}
 				
 	public function addReward() {
-		$this->language->load('sale/order');
+		$this->data += $this->language->load('sale/order');
 		
 		$json = array();
     	
@@ -2016,7 +2016,7 @@ class ControllerSaleOrder extends Controller {
   	}
 	
 	public function removeReward() {
-		$this->language->load('sale/order');
+		$this->data += $this->language->load('sale/order');
 		
 		$json = array();
     	
@@ -2042,7 +2042,7 @@ class ControllerSaleOrder extends Controller {
   	}
 		
 	public function addCommission() {
-		$this->language->load('sale/order');
+		$this->data += $this->language->load('sale/order');
 		
 		$json = array();
     	
@@ -2074,7 +2074,7 @@ class ControllerSaleOrder extends Controller {
   	}
 	
 	public function removeCommission() {
-		$this->language->load('sale/order');
+		$this->data += $this->language->load('sale/order');
 		
 		$json = array(); 
     	
@@ -2100,7 +2100,7 @@ class ControllerSaleOrder extends Controller {
   	}
 
 	public function history() {
-    	$this->language->load('sale/order');
+    	$this->data += $this->language->load('sale/order');
 		
 		$this->data['error'] = '';
 		$this->data['success'] = '';
@@ -2196,7 +2196,7 @@ class ControllerSaleOrder extends Controller {
 				exit('Error: Headers already sent out!');
 			}
 		} else {
-			$this->language->load('error/not_found');
+			$this->data += $this->language->load('error/not_found');
 
 			$this->document->setTitle($this->language->get('heading_title'));
 
@@ -2227,7 +2227,7 @@ class ControllerSaleOrder extends Controller {
 	}
 
 	public function upload() {
-		$this->language->load('sale/order');
+		$this->data += $this->language->load('sale/order');
 		
 		$json = array();
 		
@@ -2289,7 +2289,7 @@ class ControllerSaleOrder extends Controller {
 	}
 			
   	public function invoice() {
-		$this->language->load('sale/order');
+		$this->data += $this->language->load('sale/order');
 
 		$this->data['title'] = $this->language->get('heading_title');
 

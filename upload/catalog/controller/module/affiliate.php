@@ -1,7 +1,7 @@
 <?php  
 class ControllerModuleAffiliate extends Controller {
 	protected function index() {
-		$this->language->load('module/affiliate');
+		$this->data += $this->language->load('module/affiliate');
 		
     	$this->data['heading_title'] = $this->language->get('heading_title');
     	

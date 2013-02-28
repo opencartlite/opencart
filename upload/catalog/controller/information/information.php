@@ -1,7 +1,7 @@
 <?php 
 class ControllerInformationInformation extends Controller {
 	public function index() {  
-    	$this->language->load('information/information');
+    	$this->data += $this->language->load('information/information');
 		
 		$this->load->model('catalog/information');
 		

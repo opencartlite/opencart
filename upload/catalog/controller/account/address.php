@@ -9,7 +9,7 @@ class ControllerAccountAddress extends Controller {
 	  		$this->redirect($this->url->link('account/login', '', 'SSL')); 
     	}
 	
-    	$this->language->load('account/address');
+    	$this->data += $this->language->load('account/address');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 		
@@ -25,7 +25,7 @@ class ControllerAccountAddress extends Controller {
 	  		$this->redirect($this->url->link('account/login', '', 'SSL')); 
     	} 
 
-    	$this->language->load('account/address');
+    	$this->data += $this->language->load('account/address');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 		
@@ -49,7 +49,7 @@ class ControllerAccountAddress extends Controller {
 	  		$this->redirect($this->url->link('account/login', '', 'SSL')); 
     	} 
 		
-    	$this->language->load('account/address');
+    	$this->data += $this->language->load('account/address');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 		
@@ -89,7 +89,7 @@ class ControllerAccountAddress extends Controller {
 	  		$this->redirect($this->url->link('account/login', '', 'SSL')); 
     	} 
 			
-    	$this->language->load('account/address');
+    	$this->data += $this->language->load('account/address');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 		

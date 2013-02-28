@@ -1,7 +1,7 @@
 <?php 
 class ControllerCheckoutRegister extends Controller {
   	public function index() {
-		$this->language->load('checkout/checkout');
+		$this->data += $this->language->load('checkout/checkout');
 		
 		$this->data['text_checkout_payment_address'] = $this->language->get('text_checkout_payment_address');
 		$this->data['text_your_details'] = $this->language->get('text_your_details');
@@ -95,7 +95,7 @@ class ControllerCheckoutRegister extends Controller {
   	}
 	
 	public function save() {
-		$this->language->load('checkout/checkout');
+		$this->data += $this->language->load('checkout/checkout');
 		
 		$json = array();
 		

@@ -7,7 +7,7 @@ class ControllerAccountReward extends Controller {
 	  		$this->redirect($this->url->link('account/login', '', 'SSL'));
     	}		
 		
-		$this->language->load('account/reward');
+		$this->data += $this->language->load('account/reward');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 

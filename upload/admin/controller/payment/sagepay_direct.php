@@ -3,7 +3,7 @@ class ControllerPaymentSagepayDirect extends Controller {
 	private $error = array(); 
 
 	public function index() {
-		$this->language->load('payment/sagepay_direct');
+		$this->data += $this->language->load('payment/sagepay_direct');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 		

@@ -3,7 +3,7 @@ class ControllerPaymentPayza extends Controller {
 	private $error = array(); 
 
 	public function index() {
-		$this->language->load('payment/payza');
+		$this->data += $this->language->load('payment/payza');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 		

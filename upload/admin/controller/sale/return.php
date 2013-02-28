@@ -3,7 +3,7 @@ class ControllerSaleReturn extends Controller {
 	private $error = array();
    
   	public function index() {
-		$this->language->load('sale/return');
+		$this->data += $this->language->load('sale/return');
 		 
 		$this->document->setTitle($this->language->get('heading_title'));
 		
@@ -13,7 +13,7 @@ class ControllerSaleReturn extends Controller {
   	}
   
   	public function insert() {
-		$this->language->load('sale/return');
+		$this->data += $this->language->load('sale/return');
 
     	$this->document->setTitle($this->language->get('heading_title'));
 		
@@ -77,7 +77,7 @@ class ControllerSaleReturn extends Controller {
   	} 
    
   	public function update() {
-		$this->language->load('sale/return');
+		$this->data += $this->language->load('sale/return');
 
     	$this->document->setTitle($this->language->get('heading_title'));
 		
@@ -141,7 +141,7 @@ class ControllerSaleReturn extends Controller {
   	}   
 
   	public function delete() {
-		$this->language->load('sale/return');
+		$this->data += $this->language->load('sale/return');
 
     	$this->document->setTitle($this->language->get('heading_title'));
 		
@@ -867,7 +867,7 @@ class ControllerSaleReturn extends Controller {
 		$return_info = $this->model_sale_return->getReturn($return_id);
 		
 		if ($return_info) {
-			$this->language->load('sale/return');
+			$this->data += $this->language->load('sale/return');
 		
 			$this->document->setTitle($this->language->get('heading_title'));
 			
@@ -1039,7 +1039,7 @@ class ControllerSaleReturn extends Controller {
 					
 			$this->response->setOutput($this->render());		
 		} else {
-			$this->language->load('error/not_found');
+			$this->data += $this->language->load('error/not_found');
 
 			$this->document->setTitle($this->language->get('heading_title'));
 
@@ -1126,7 +1126,7 @@ class ControllerSaleReturn extends Controller {
   	} 
 	
 	public function action() {
-		$this->language->load('sale/return');
+		$this->data += $this->language->load('sale/return');
 		
 		$json = array();
 		
@@ -1148,7 +1148,7 @@ class ControllerSaleReturn extends Controller {
 	}
 		
 	public function history() {
-    	$this->language->load('sale/return');
+    	$this->data += $this->language->load('sale/return');
 
 		$this->data['error'] = '';
 		$this->data['success'] = '';

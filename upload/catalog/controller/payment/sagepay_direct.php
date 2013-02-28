@@ -1,7 +1,7 @@
 <?php
 class ControllerPaymentSagepayDirect extends Controller {
 	protected function index() {
-		$this->language->load('payment/sagepay_direct');
+		$this->data += $this->language->load('payment/sagepay_direct');
 		
 		$this->data['text_credit_card'] = $this->language->get('text_credit_card');
 		$this->data['text_start_date'] = $this->language->get('text_start_date');

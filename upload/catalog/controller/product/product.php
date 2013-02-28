@@ -3,7 +3,7 @@ class ControllerProductProduct extends Controller {
 	private $error = array(); 
 	
 	public function index() { 
-		$this->language->load('product/product');
+		$this->data += $this->language->load('product/product');
 	
 		$this->data['breadcrumbs'] = array();
 
@@ -553,7 +553,7 @@ class ControllerProductProduct extends Controller {
   	}
 	
 	public function review() {
-    	$this->language->load('product/product');
+    	$this->data += $this->language->load('product/product');
 		
 		$this->load->model('catalog/review');
 
@@ -601,7 +601,7 @@ class ControllerProductProduct extends Controller {
 	}
 	
 	public function write() {
-		$this->language->load('product/product');
+		$this->data += $this->language->load('product/product');
 		
 		$this->load->model('catalog/review');
 		
@@ -669,7 +669,7 @@ class ControllerProductProduct extends Controller {
 	}
 	
 	public function upload() {
-		$this->language->load('product/product');
+		$this->data += $this->language->load('product/product');
 		
 		$json = array();
 		

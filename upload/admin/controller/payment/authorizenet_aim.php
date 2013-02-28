@@ -3,7 +3,7 @@ class ControllerPaymentAuthorizenetAim extends Controller {
 	private $error = array(); 
 
 	public function index() {
-		$this->language->load('payment/authorizenet_aim');
+		$this->data += $this->language->load('payment/authorizenet_aim');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 		

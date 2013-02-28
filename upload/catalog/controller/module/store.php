@@ -12,7 +12,7 @@ class ControllerModuleStore extends Controller {
 		}
 		
 		if ($status) {
-			$this->language->load('module/store');
+			$this->data += $this->language->load('module/store');
 			
 			$this->data['heading_title'] = $this->language->get('heading_title');
 			

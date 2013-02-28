@@ -1,7 +1,7 @@
 <?php
 class ControllerPaymentCheque extends Controller {
 	protected function index() {
-		$this->language->load('payment/cheque');
+		$this->data += $this->language->load('payment/cheque');
 		
 		$this->data['text_instruction'] = $this->language->get('text_instruction');
     	$this->data['text_payable'] = $this->language->get('text_payable');
@@ -25,7 +25,7 @@ class ControllerPaymentCheque extends Controller {
 	}
 	
 	public function confirm() {
-		$this->language->load('payment/cheque');
+		$this->data += $this->language->load('payment/cheque');
 		
 		$this->load->model('checkout/order');
 		

@@ -7,7 +7,7 @@ class ControllerAffiliateRegister extends Controller {
 	  		$this->redirect($this->url->link('affiliate/account', '', 'SSL'));
     	}
 
-    	$this->language->load('affiliate/register');
+    	$this->data += $this->language->load('affiliate/register');
 		
 		$this->document->setTitle($this->language->get('heading_title'));
 		$this->document->addScript('catalog/view/javascript/jquery/colorbox/jquery.colorbox-min.js');

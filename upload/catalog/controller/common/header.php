@@ -32,7 +32,7 @@ class ControllerCommonHeader extends Controller {
 			$this->data['logo'] = '';
 		}		
 		
-		$this->language->load('common/header');
+		$this->data += $this->language->load('common/header');
 		
 		$this->data['text_home'] = $this->language->get('text_home');
 		$this->data['text_wishlist'] = sprintf($this->language->get('text_wishlist'), (isset($this->session->data['wishlist']) ? count($this->session->data['wishlist']) : 0));

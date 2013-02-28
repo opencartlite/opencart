@@ -7,7 +7,7 @@ class ControllerAccountNewsletter extends Controller {
 	  		$this->redirect($this->url->link('account/login', '', 'SSL'));
     	} 
 		
-		$this->language->load('account/newsletter');
+		$this->data += $this->language->load('account/newsletter');
     	
 		$this->document->setTitle($this->language->get('heading_title'));
 				

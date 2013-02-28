@@ -1,7 +1,7 @@
 <?php 
 class ControllerProductManufacturer extends Controller {  
 	public function index() { 
-		$this->language->load('product/manufacturer');
+		$this->data += $this->language->load('product/manufacturer');
 		
 		$this->load->model('catalog/manufacturer');
 		
@@ -70,7 +70,7 @@ class ControllerProductManufacturer extends Controller {
   	}
 	
 	public function info() {
-    	$this->language->load('product/manufacturer');
+    	$this->data += $this->language->load('product/manufacturer');
 		
 		$this->load->model('catalog/manufacturer');
 		

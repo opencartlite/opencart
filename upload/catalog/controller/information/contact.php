@@ -3,7 +3,7 @@ class ControllerInformationContact extends Controller {
 	private $error = array(); 
 	    
   	public function index() {
-		$this->language->load('information/contact');
+		$this->data += $this->language->load('information/contact');
 
     	$this->document->setTitle($this->language->get('heading_title'));  
 	 
@@ -148,7 +148,7 @@ class ControllerInformationContact extends Controller {
   	}
 
   	public function success() {
-		$this->language->load('information/contact');
+		$this->data += $this->language->load('information/contact');
 
 		$this->document->setTitle($this->language->get('heading_title')); 
 

@@ -7,7 +7,7 @@ class ControllerAccountEdit extends Controller {
 			$this->redirect($this->url->link('account/login', '', 'SSL'));
 		}
 
-		$this->language->load('account/edit');
+		$this->data += $this->language->load('account/edit');
 		
 		$this->document->setTitle($this->language->get('heading_title'));
 		
@@ -72,7 +72,7 @@ class ControllerAccountEdit extends Controller {
 	}
 
 	public function save() {
-		$this->language->load('account/edit');
+		$this->data += $this->language->load('account/edit');
 		
 		$json = array();
 		

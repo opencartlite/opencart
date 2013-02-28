@@ -42,7 +42,7 @@ class ControllerPaymentWorldPay extends Controller {
 	}
 	
 	public function callback() {
-		$this->language->load('payment/worldpay');
+		$this->data += $this->language->load('payment/worldpay');
 	
 		$this->data['title'] = sprintf($this->language->get('heading_title'), $this->config->get('config_name'));
 

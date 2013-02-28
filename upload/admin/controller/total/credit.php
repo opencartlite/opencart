@@ -3,7 +3,7 @@ class ControllerTotalCredit extends Controller {
 	private $error = array(); 
 	 
 	public function index() { 
-		$this->language->load('total/credit');
+		$this->data += $this->language->load('total/credit');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 		

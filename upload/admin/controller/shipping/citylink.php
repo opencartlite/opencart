@@ -3,7 +3,7 @@ class ControllerShippingCitylink extends Controller {
 	private $error = array(); 
 	
 	public function index() {   
-		$this->language->load('shipping/citylink');
+		$this->data += $this->language->load('shipping/citylink');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 		

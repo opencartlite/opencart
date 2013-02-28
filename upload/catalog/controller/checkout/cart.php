@@ -3,7 +3,7 @@ class ControllerCheckoutCart extends Controller {
 	private $error = array();
 	
 	public function index() {
-		$this->language->load('checkout/cart');
+		$this->data += $this->language->load('checkout/cart');
 
 		if (!isset($this->session->data['vouchers'])) {
 			$this->session->data['vouchers'] = array();
@@ -502,7 +502,7 @@ class ControllerCheckoutCart extends Controller {
 	}
 								
 	public function add() {
-		$this->language->load('checkout/cart');
+		$this->data += $this->language->load('checkout/cart');
 		
 		$json = array();
 		
@@ -593,7 +593,7 @@ class ControllerCheckoutCart extends Controller {
 	}
 	
 	public function quote() {
-		$this->language->load('checkout/cart');
+		$this->data += $this->language->load('checkout/cart');
 		
 		$json = array();	
 		

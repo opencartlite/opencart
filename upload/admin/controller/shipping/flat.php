@@ -3,7 +3,7 @@ class ControllerShippingFlat extends Controller {
 	private $error = array(); 
 	
 	public function index() {   
-		$this->language->load('shipping/flat');
+		$this->data += $this->language->load('shipping/flat');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 		

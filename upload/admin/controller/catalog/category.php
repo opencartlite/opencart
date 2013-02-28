@@ -3,7 +3,7 @@ class ControllerCatalogCategory extends Controller {
 	private $error = array();
  
 	public function index() {
-		$this->language->load('catalog/category');
+		$this->data += $this->language->load('catalog/category');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 		
@@ -13,7 +13,7 @@ class ControllerCatalogCategory extends Controller {
 	}
 
 	public function insert() {
-		$this->language->load('catalog/category');
+		$this->data += $this->language->load('catalog/category');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 		
@@ -37,7 +37,7 @@ class ControllerCatalogCategory extends Controller {
 	}
 
 	public function update() {
-		$this->language->load('catalog/category');
+		$this->data += $this->language->load('catalog/category');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 		
@@ -61,7 +61,7 @@ class ControllerCatalogCategory extends Controller {
 	}
 
 	public function delete() {
-		$this->language->load('catalog/category');
+		$this->data += $this->language->load('catalog/category');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 		
@@ -87,7 +87,7 @@ class ControllerCatalogCategory extends Controller {
 	}
 	
 	public function repair() {
-		$this->language->load('catalog/category');
+		$this->data += $this->language->load('catalog/category');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 		

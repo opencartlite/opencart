@@ -1,7 +1,7 @@
 <?php
 class ControllerPaymentGoogleCheckout extends Controller {
 	public function index() {
-		$this->language->load('payment/google_checkout');
+		$this->data += $this->language->load('payment/google_checkout');
 		
 		$this->data['button_confirm'] = $this->language->get('button_confirm');
 				
@@ -23,7 +23,7 @@ class ControllerPaymentGoogleCheckout extends Controller {
 	}
 
 	public function send() {
-		$this->language->load('payment/google_checkout');
+		$this->data += $this->language->load('payment/google_checkout');
 		
 		$json = array();
 		

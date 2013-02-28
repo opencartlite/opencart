@@ -7,7 +7,7 @@ class ControllerAffiliateAccount extends Controller {
 	  		$this->redirect($this->url->link('affiliate/login', '', 'SSL'));
     	} 
 	
-		$this->language->load('affiliate/account');
+		$this->data += $this->language->load('affiliate/account');
 
       	$this->data['breadcrumbs'] = array();
 

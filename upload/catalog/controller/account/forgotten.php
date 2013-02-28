@@ -7,14 +7,14 @@ class ControllerAccountForgotten extends Controller {
 			$this->redirect($this->url->link('account/account', '', 'SSL'));
 		}
 
-		$this->language->load('account/forgotten');
+		$this->data += $this->language->load('account/forgotten');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 		
 		$this->load->model('account/customer');
 		
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
-			$this->language->load('mail/forgotten');
+			$this->data += $this->language->load('mail/forgotten');
 			
 			$password = substr(sha1(uniqid(mt_rand(), true)), 0, 10);
 			

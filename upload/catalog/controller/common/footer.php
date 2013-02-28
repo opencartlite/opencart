@@ -1,7 +1,7 @@
 <?php  
 class ControllerCommonFooter extends Controller {
 	protected function index() {
-		$this->language->load('common/footer');
+		$this->data += $this->language->load('common/footer');
 		
 		$this->data['text_information'] = $this->language->get('text_information');
 		$this->data['text_service'] = $this->language->get('text_service');

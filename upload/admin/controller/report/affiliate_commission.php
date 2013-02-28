@@ -1,7 +1,7 @@
 <?php
 class ControllerReportAffiliateCommission extends Controller {
 	public function index() {     
-		$this->language->load('report/affiliate_commission');
+		$this->data += $this->language->load('report/affiliate_commission');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 		

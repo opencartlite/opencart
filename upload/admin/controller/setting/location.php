@@ -3,7 +3,7 @@ class ControllerSettingLocation extends Controller {
 	private $error = array();
 	
 	public function index() {
-		$this->language->load('setting/location');
+		$this->data += $this->language->load('setting/location');
 		
 		$this->document->setTitle($this->language->get('heading_title'));  // Set the title and language
 		
@@ -13,7 +13,7 @@ class ControllerSettingLocation extends Controller {
 	}
 
 	public function insert() {
-		$this->language->load('setting/location');
+		$this->data += $this->language->load('setting/location');
 		
 		$this->document->setTitle($this->language->get('heading_title'));
 		
@@ -45,7 +45,7 @@ class ControllerSettingLocation extends Controller {
 	}
 
 	public function update() {
-		$this->language->load('setting/location');
+		$this->data += $this->language->load('setting/location');
 		
 		$this->document->setTitle($this->language->get('heading_title'));
 		
@@ -77,7 +77,7 @@ class ControllerSettingLocation extends Controller {
 	}
 
 	public function delete() {
-		$this->language->load('setting/location');
+		$this->data += $this->language->load('setting/location');
 		
 		$this->document->setTitle($this->language->get('heading_title'));
 		

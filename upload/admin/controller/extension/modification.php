@@ -3,7 +3,7 @@ class ControllerExtensionModification extends Controller {
 	private $error = array();
    
   	public function index() {
-		$this->language->load('extension/modification');
+		$this->data += $this->language->load('extension/modification');
 	
     	$this->document->setTitle($this->language->get('heading_title'));
 		
@@ -13,7 +13,7 @@ class ControllerExtensionModification extends Controller {
   	}
 		
   	public function insert() {
-		$this->language->load('extension/modification');
+		$this->data += $this->language->load('extension/modification');
 	
     	$this->document->setTitle($this->language->get('heading_title'));
 		
@@ -45,7 +45,7 @@ class ControllerExtensionModification extends Controller {
   	}
 
   	public function update() {
-		$this->language->load('extension/modification');
+		$this->data += $this->language->load('extension/modification');
 	
     	$this->document->setTitle($this->language->get('heading_title'));
 		
@@ -77,7 +77,7 @@ class ControllerExtensionModification extends Controller {
   	}
 
   	public function delete() {
-		$this->language->load('extension/modification');
+		$this->data += $this->language->load('extension/modification');
 	
     	$this->document->setTitle($this->language->get('heading_title'));
 		
@@ -111,7 +111,7 @@ class ControllerExtensionModification extends Controller {
   	}
 	
 	public function install() {
-		$this->language->load('extension/payment');
+		$this->data += $this->language->load('extension/payment');
 		
 		if (!$this->user->hasPermission('modify', 'extension/payment')) {
 			$this->session->data['error'] = $this->language->get('error_permission'); 
@@ -134,7 +134,7 @@ class ControllerExtensionModification extends Controller {
 	}
 	
 	public function uninstall() {
-		$this->language->load('extension/payment');
+		$this->data += $this->language->load('extension/payment');
 		
 		if (!$this->user->hasPermission('modify', 'extension/payment')) {
 			$this->session->data['error'] = $this->language->get('error_permission'); 
@@ -187,7 +187,7 @@ class ControllerExtensionModification extends Controller {
 			$url .= '&page=' . $this->request->get['page'];
 		}
 						
-		$this->language->load('extension/modification');
+		$this->data += $this->language->load('extension/modification');
 		 
 		$this->document->setTitle($this->language->get('heading_title')); 
 
@@ -435,7 +435,7 @@ New XML Modifcation Standard
 </modification>
 */	
 		
-		$this->language->load('extension/manager');
+		$this->data += $this->language->load('extension/manager');
 		
 		$json = array();
 		

@@ -1,7 +1,7 @@
 <?php  
 class ControllerReportCustomerOnline extends Controller {  
   	public function index() {
-		$this->language->load('report/customer_online');
+		$this->data += $this->language->load('report/customer_online');
 		
     	$this->document->setTitle($this->language->get('heading_title'));
 		

@@ -1,7 +1,7 @@
 <?php
 class ControllerReportProductViewed extends Controller {
 	public function index() {     
-		$this->language->load('report/product_viewed');
+		$this->data += $this->language->load('report/product_viewed');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 		
@@ -105,7 +105,7 @@ class ControllerReportProductViewed extends Controller {
 	}
 	
 	public function reset() {
-		$this->language->load('report/product_viewed');
+		$this->data += $this->language->load('report/product_viewed');
 		
 		$this->load->model('report/product');
 		

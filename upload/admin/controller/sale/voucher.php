@@ -3,7 +3,7 @@ class ControllerSaleVoucher extends Controller {
 	private $error = array();
      
   	public function index() {
-		$this->language->load('sale/voucher');
+		$this->data += $this->language->load('sale/voucher');
     	
 		$this->document->setTitle($this->language->get('heading_title'));
 		
@@ -13,7 +13,7 @@ class ControllerSaleVoucher extends Controller {
   	}
   
   	public function insert() {
-    	$this->language->load('sale/voucher');
+    	$this->data += $this->language->load('sale/voucher');
 
     	$this->document->setTitle($this->language->get('heading_title'));
 		
@@ -45,7 +45,7 @@ class ControllerSaleVoucher extends Controller {
   	}
 
   	public function update() {
-    	$this->language->load('sale/voucher');
+    	$this->data += $this->language->load('sale/voucher');
 
     	$this->document->setTitle($this->language->get('heading_title'));
 		
@@ -77,7 +77,7 @@ class ControllerSaleVoucher extends Controller {
   	}
 
   	public function delete() {
-    	$this->language->load('sale/voucher');
+    	$this->data += $this->language->load('sale/voucher');
 
     	$this->document->setTitle($this->language->get('heading_title'));
 		
@@ -544,7 +544,7 @@ class ControllerSaleVoucher extends Controller {
   	}	
 	
 	public function history() {
-    	$this->language->load('sale/voucher');
+    	$this->data += $this->language->load('sale/voucher');
 		
 		$this->load->model('sale/voucher');
 				
@@ -590,7 +590,7 @@ class ControllerSaleVoucher extends Controller {
   	}
 	
 	public function send() {
-    	$this->language->load('sale/voucher');
+    	$this->data += $this->language->load('sale/voucher');
 		
 		$json = array();
     	

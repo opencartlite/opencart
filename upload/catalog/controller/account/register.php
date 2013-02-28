@@ -5,7 +5,7 @@ class ControllerAccountRegister extends Controller {
 	  		$this->redirect($this->url->link('account/account', '', 'SSL'));
     	}
 
-    	$this->language->load('account/register');
+    	$this->data += $this->language->load('account/register');
 		
 		$this->document->setTitle($this->language->get('heading_title'));
 		
@@ -132,7 +132,7 @@ class ControllerAccountRegister extends Controller {
   	}
 
   	public function save() {
-		$this->language->load('account/register');
+		$this->data += $this->language->load('account/register');
 		
 		$json = array();
 		

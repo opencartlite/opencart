@@ -3,7 +3,7 @@ class ControllerShippingUsps extends Controller {
 	private $error = array();
 
 	public function index() {
-		$this->language->load('shipping/usps');
+		$this->data += $this->language->load('shipping/usps');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 

@@ -9,7 +9,7 @@ class ControllerAccountReturn extends Controller {
 	  		$this->redirect($this->url->link('account/login', '', 'SSL'));
     	}
  
-    	$this->language->load('account/return');
+    	$this->data += $this->language->load('account/return');
 
     	$this->document->setTitle($this->language->get('heading_title'));
 								
@@ -103,7 +103,7 @@ class ControllerAccountReturn extends Controller {
 	}
 	
 	public function info() {
-		$this->language->load('account/return');
+		$this->data += $this->language->load('account/return');
 		
 		if (isset($this->request->get['return_id'])) {
 			$return_id = $this->request->get['return_id'];
@@ -284,7 +284,7 @@ class ControllerAccountReturn extends Controller {
 	}
 		
 	public function insert() {
-		$this->language->load('account/return');
+		$this->data += $this->language->load('account/return');
 
 		$this->load->model('account/return');
 
@@ -554,7 +554,7 @@ class ControllerAccountReturn extends Controller {
   	}
 	
   	public function success() {
-		$this->language->load('account/return');
+		$this->data += $this->language->load('account/return');
 
 		$this->document->setTitle($this->language->get('heading_title')); 
       
