@@ -96,7 +96,7 @@ class ControllerPaymentKlarnaAccount extends Controller {
 			}
 			
 			// The title stored in the DB gets truncated which causes order_info.tpl to not be displayed properly
-			$this->db->query("UPDATE `" . DB_PREFIX . "order` SET `payment_method` = '" . $this->db->escape($this->language->get('text_title')) . "' WHERE `order_id` = " . (int) $this->session->data['order_id']);
+			$this->db->query("UPDATE {order} SET `payment_method` = '" . $this->db->escape($this->language->get('text_title')) . "' WHERE `order_id` = " . (int) $this->session->data['order_id']);
 			
 			$klarna_account = $this->config->get('klarna_account');
 			
@@ -380,7 +380,7 @@ class ControllerPaymentKlarnaAccount extends Controller {
 					'country'         => $country,
 				);
 				
-				$product_query = $this->db->query("SELECT `name`, `model`, `price`, `quantity`, `tax` / `price` * 100 AS 'tax_rate' FROM `" . DB_PREFIX . "order_product` WHERE `order_id` = " . (int) $order_info['order_id'] . " UNION ALL SELECT '', `code`, `amount`, '1', 0.00 FROM `" . DB_PREFIX . "order_voucher` WHERE `order_id` = " . (int)$order_info['order_id']);
+				$product_query = $this->db->query("SELECT `name`, `model`, `price`, `quantity`, `tax` / `price` * 100 AS 'tax_rate' FROM {order_product} WHERE `order_id` = " . (int) $order_info['order_id'] . " UNION ALL SELECT '', `code`, `amount`, '1', 0.00 FROM {order_voucher} WHERE `order_id` = " . (int)$order_info['order_id']);
 		
 				foreach ($product_query->rows as $product) {
 					$goods_list[] = array(

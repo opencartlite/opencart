@@ -1,25 +1,25 @@
 <?php
 class ModelSaleCustomerBanIp extends Model {
 	public function addCustomerBanIp($data) {
-		$this->db->query("INSERT INTO `" . DB_PREFIX . "customer_ban_ip` SET `ip` = '" . $this->db->escape($data['ip']) . "'");
+		$this->db->query("INSERT INTO {customer_ban_ip} SET `ip` = '" . $this->db->escape($data['ip']) . "'");
 	}
 	
 	public function editCustomerBanIp($customer_ban_ip_id, $data) {
-		$this->db->query("UPDATE `" . DB_PREFIX . "customer_ban_ip` SET `ip` = '" . $this->db->escape($data['ip']) . "' WHERE customer_ban_ip_id = '" . (int)$customer_ban_ip_id . "'");
+		$this->db->query("UPDATE {customer_ban_ip} SET `ip` = '" . $this->db->escape($data['ip']) . "' WHERE customer_ban_ip_id = '" . (int)$customer_ban_ip_id . "'");
 	}
 	
 	public function deleteCustomerBanIp($customer_ban_ip_id) {
-		$this->db->query("DELETE FROM `" . DB_PREFIX . "customer_ban_ip` WHERE customer_ban_ip_id = '" . (int)$customer_ban_ip_id . "'");
+		$this->db->query("DELETE FROM {customer_ban_ip} WHERE customer_ban_ip_id = '" . (int)$customer_ban_ip_id . "'");
 	}
 	
 	public function getCustomerBanIp($customer_ban_ip_id) {
-		$query = $this->db->query("SELECT * FROM `" . DB_PREFIX . "customer_ban_ip` WHERE customer_ban_ip_id = '" . (int)$customer_ban_ip_id . "'");
+		$query = $this->db->query("SELECT * FROM {customer_ban_ip} WHERE customer_ban_ip_id = '" . (int)$customer_ban_ip_id . "'");
 	
 		return $query->row;
 	}
 	
 	public function getCustomerBanIps($data = array()) {
-		$sql = "SELECT *, (SELECT COUNT(DISTINCT customer_id) FROM `" . DB_PREFIX . "customer_ip` ci WHERE ci.ip = cbi.ip) AS total FROM `" . DB_PREFIX . "customer_ban_ip` cbi";
+		$sql = "SELECT *, (SELECT COUNT(DISTINCT customer_id) FROM {customer_ip} ci WHERE ci.ip = cbi.ip) AS total FROM {customer_ban_ip} cbi";
 				
 		$sql .= " ORDER BY `ip`";	
 			
@@ -47,7 +47,7 @@ class ModelSaleCustomerBanIp extends Model {
 	}
 	
 	public function getTotalCustomerBanIps($data = array()) {
-      	$query = $this->db->query("SELECT COUNT(*) AS total FROM `" . DB_PREFIX . "customer_ban_ip`");
+      	$query = $this->db->query("SELECT COUNT(*) AS total FROM {customer_ban_ip}");
 				 
 		return $query->row['total'];
 	}

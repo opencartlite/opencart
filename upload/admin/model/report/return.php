@@ -1,7 +1,7 @@
 <?php
 class ModelReportReturn extends Model {
 	public function getReturns($data = array()) {
-		$sql = "SELECT MIN(r.date_added) AS date_start, MAX(r.date_added) AS date_end, COUNT(r.return_id) AS `returns` FROM `" . DB_PREFIX . "return` r"; 
+		$sql = "SELECT MIN(r.date_added) AS date_start, MAX(r.date_added) AS date_end, COUNT(r.return_id) AS `returns` FROM {return} r"; 
 
 		if (!empty($data['filter_return_status_id'])) {
 			$sql .= " WHERE r.return_status_id = '" . (int)$data['filter_return_status_id'] . "'";
@@ -65,17 +65,17 @@ class ModelReportReturn extends Model {
 		
 		switch($group) {
 			case 'day';
-				$sql = "SELECT COUNT(DISTINCT YEAR(date_added), MONTH(date_added), DAY(date_added)) AS total FROM `" . DB_PREFIX . "return`";
+				$sql = "SELECT COUNT(DISTINCT YEAR(date_added), MONTH(date_added), DAY(date_added)) AS total FROM {return}";
 				break;
 			default:
 			case 'week':
-				$sql = "SELECT COUNT(DISTINCT YEAR(date_added), WEEK(date_added)) AS total FROM `" . DB_PREFIX . "return`";
+				$sql = "SELECT COUNT(DISTINCT YEAR(date_added), WEEK(date_added)) AS total FROM {return}";
 				break;	
 			case 'month':
-				$sql = "SELECT COUNT(DISTINCT YEAR(date_added), MONTH(date_added)) AS total FROM `" . DB_PREFIX . "return`";
+				$sql = "SELECT COUNT(DISTINCT YEAR(date_added), MONTH(date_added)) AS total FROM {return}";
 				break;
 			case 'year':
-				$sql = "SELECT COUNT(DISTINCT YEAR(date_added)) AS total FROM `" . DB_PREFIX . "return`";
+				$sql = "SELECT COUNT(DISTINCT YEAR(date_added)) AS total FROM {return}";
 				break;									
 		}
 		

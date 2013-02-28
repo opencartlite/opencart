@@ -95,7 +95,7 @@ class ControllerPaymentKlarnaInvoice extends Controller {
 			}
 						
 			// The title stored in the DB gets truncated which causes order_info.tpl to not be displayed properly
-			$this->db->query("UPDATE `" . DB_PREFIX . "order` SET `payment_method` = '" . $this->db->escape($this->language->get('text_title')) . "' WHERE `order_id` = " . (int)$this->session->data['order_id']);
+			$this->db->query("UPDATE {order} SET `payment_method` = '" . $this->db->escape($this->language->get('text_title')) . "' WHERE `order_id` = " . (int)$this->session->data['order_id']);
 			
 			$klarna_invoice = $this->config->get('klarna_invoice');
 			
@@ -123,7 +123,7 @@ class ControllerPaymentKlarnaInvoice extends Controller {
 			$this->data['iso_code_3'] = $order_info['payment_iso_code_3'];
 			
 			// Get the invoice fee
-			$query = $this->db->query("SELECT `value` FROM `" . DB_PREFIX . "order_total` WHERE `order_id` = " . (int) $order_info['order_id'] . " AND `code` = 'klarna_fee'");
+			$query = $this->db->query("SELECT `value` FROM {order_total} WHERE `order_id` = " . (int) $order_info['order_id'] . " AND `code` = 'klarna_fee'");
 			
 			if ($query->num_rows && !$query->row['value']) {
 				$this->data['klarna_fee'] = $query->row['value'];
@@ -257,7 +257,7 @@ class ControllerPaymentKlarnaInvoice extends Controller {
 					'country'         => $country,
 				);
 				
-				$product_query = $this->db->query("SELECT `name`, `model`, `price`, `quantity`, `tax` / `price` * 100 AS 'tax_rate' FROM `" . DB_PREFIX . "order_product` WHERE `order_id` = " . (int) $order_info['order_id'] . " UNION ALL SELECT '', `code`, `amount`, '1', 0.00 FROM `" . DB_PREFIX . "order_voucher` WHERE `order_id` = " . (int) $order_info['order_id'])->rows;	
+				$product_query = $this->db->query("SELECT `name`, `model`, `price`, `quantity`, `tax` / `price` * 100 AS 'tax_rate' FROM {order_product} WHERE `order_id` = " . (int) $order_info['order_id'] . " UNION ALL SELECT '', `code`, `amount`, '1', 0.00 FROM {order_voucher} WHERE `order_id` = " . (int) $order_info['order_id'])->rows;	
 								
 				foreach ($product_query as $product) {
                     $goods_list[] = array(

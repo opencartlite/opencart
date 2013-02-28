@@ -13,7 +13,7 @@ class ControllerCommonSeoUrl extends Controller {
 			if (strlen(end($parts)) == 0) array_pop($parts); // remove any empty arrays from trailing /
 			
 			foreach ($parts as $part) {
-				$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "url_alias WHERE keyword = '" . $this->db->escape($part) . "'");
+				$query = $this->db->query("SELECT * FROM {url_alias} WHERE keyword = '" . $this->db->escape($part) . "'");
 				
 				if ($query->num_rows) {
 					$url = explode('=', $query->row['query']);
@@ -72,7 +72,7 @@ class ControllerCommonSeoUrl extends Controller {
 		foreach ($data as $key => $value) {
 			if (isset($data['route'])) {
 				if (($data['route'] == 'product/product' && $key == 'product_id') || (($data['route'] == 'product/manufacturer/info' || $data['route'] == 'product/product') && $key == 'manufacturer_id') || ($data['route'] == 'information/information' && $key == 'information_id')) {
-					$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "url_alias WHERE `query` = '" . $this->db->escape($key . '=' . (int)$value) . "'");
+					$query = $this->db->query("SELECT * FROM {url_alias} WHERE `query` = '" . $this->db->escape($key . '=' . (int)$value) . "'");
 				
 					if ($query->num_rows) {
 						$url .= '/' . $query->row['keyword'];
@@ -83,7 +83,7 @@ class ControllerCommonSeoUrl extends Controller {
 					$categories = explode('_', $value);
 					
 					foreach ($categories as $category) {
-						$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "url_alias WHERE `query` = 'category_id=" . (int)$category . "'");
+						$query = $this->db->query("SELECT * FROM {url_alias} WHERE `query` = 'category_id=" . (int)$category . "'");
 				
 						if ($query->num_rows) {
 							$url .= '/' . $query->row['keyword'];

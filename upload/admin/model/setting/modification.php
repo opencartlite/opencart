@@ -1,25 +1,25 @@
 <?php
 class ModelSettingModification extends Model {
 	public function addModification($data) {
-		$this->db->query("INSERT INTO " . DB_PREFIX . "modification SET name = '" . $this->db->escape($data['name']) . "', author = '" . $this->db->escape($data['author']) . "', code = '" . $this->db->escape($data['code']) . "', date_added = NOW(), date_modified = NOW()");
+		$this->db->query("INSERT INTO {modification} SET name = '" . $this->db->escape($data['name']) . "', author = '" . $this->db->escape($data['author']) . "', code = '" . $this->db->escape($data['code']) . "', date_added = NOW(), date_modified = NOW()");
 	}
 	
 	public function editModification() {
-		$this->db->query("INSERT INTO " . DB_PREFIX . "modification SET name = '" . $this->db->escape($data['name']) . "', author = '" . $this->db->escape($data['author']) . "', code = '" . $this->db->escape($data['code']) . "', date_added = NOW(), date_modified = NOW()");
+		$this->db->query("INSERT INTO {modification} SET name = '" . $this->db->escape($data['name']) . "', author = '" . $this->db->escape($data['author']) . "', code = '" . $this->db->escape($data['code']) . "', date_added = NOW(), date_modified = NOW()");
 	}
 	
 	public function deleteModification($modification_id) {
-		$this->db->query("DELETE FROM " . DB_PREFIX . "modification WHERE modification_id = '" . (int)$modification_id . "'");
+		$this->db->query("DELETE FROM {modification} WHERE modification_id = '" . (int)$modification_id . "'");
 	}
 	
 	public function getModification($modification_id) {
-		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "modification WHERE modification_id = '" . (int)$modification_id . "'");
+		$query = $this->db->query("SELECT * FROM {modification} WHERE modification_id = '" . (int)$modification_id . "'");
 		
 		return $query->row;
 	}	
 	
 	public function getModifications() {
-		$sql = "SELECT * FROM " . DB_PREFIX . "modification";
+		$sql = "SELECT * FROM {modification";}
 								
 		$sort_data = array(
 			'code',
@@ -59,7 +59,7 @@ class ModelSettingModification extends Model {
 	}	
 	
 	public function getTotalModifications() {
-      	$query = $this->db->query("SELECT COUNT(*) AS total FROM " . DB_PREFIX . "modification");
+      	$query = $this->db->query("SELECT COUNT(*) AS total FROM {modification");}
 		
 		return $query->row['total'];
 	}				

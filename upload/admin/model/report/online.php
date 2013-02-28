@@ -1,7 +1,7 @@
 <?php
 class ModelReportOnline extends Model {
 	public function getCustomersOnline($data = array()) { 
-		$sql = "SELECT co.ip, co.customer_id, co.url, co.referer, co.date_added FROM " . DB_PREFIX . "customer_online co LEFT JOIN " . DB_PREFIX . "customer c ON (co.customer_id = c.customer_id)";
+		$sql = "SELECT co.ip, co.customer_id, co.url, co.referer, co.date_added FROM {customer_online} co LEFT JOIN {customer} c ON (co.customer_id = c.customer_id)";
 
 		$implode = array();
 				
@@ -37,7 +37,7 @@ class ModelReportOnline extends Model {
 	}
 
 	public function getTotalCustomersOnline($data = array()) {
-		$sql = "SELECT COUNT(*) AS total FROM `" . DB_PREFIX . "customer_online` co LEFT JOIN " . DB_PREFIX . "customer c ON (co.customer_id = c.customer_id)";
+		$sql = "SELECT COUNT(*) AS total FROM {customer_online} co LEFT JOIN {customer} c ON (co.customer_id = c.customer_id)";
 		
 		$implode = array();
 		

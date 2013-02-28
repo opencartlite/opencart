@@ -42,9 +42,9 @@ $registry->set('db', $db);
 
 // Store
 if (isset($_SERVER['HTTPS']) && (($_SERVER['HTTPS'] == 'on') || ($_SERVER['HTTPS'] == '1'))) {
-	$store_query = $db->query("SELECT * FROM " . DB_PREFIX . "store WHERE REPLACE(`ssl`, 'www.', '') = '" . $db->escape('https://' . str_replace('www.', '', $_SERVER['HTTP_HOST']) . rtrim(dirname($_SERVER['PHP_SELF']), '/.\\') . '/') . "'");
+	$store_query = $db->query("SELECT * FROM {store} WHERE REPLACE(`ssl`, 'www.', '') = '" . $db->escape('https://' . str_replace('www.', '', $_SERVER['HTTP_HOST']) . rtrim(dirname($_SERVER['PHP_SELF']), '/.\\') . '/') . "'");
 } else {
-	$store_query = $db->query("SELECT * FROM " . DB_PREFIX . "store WHERE REPLACE(`url`, 'www.', '') = '" . $db->escape('http://' . str_replace('www.', '', $_SERVER['HTTP_HOST']) . rtrim(dirname($_SERVER['PHP_SELF']), '/.\\') . '/') . "'");
+	$store_query = $db->query("SELECT * FROM {store} WHERE REPLACE(`url`, 'www.', '') = '" . $db->escape('http://' . str_replace('www.', '', $_SERVER['HTTP_HOST']) . rtrim(dirname($_SERVER['PHP_SELF']), '/.\\') . '/') . "'");
 }
 
 if ($store_query->num_rows) {
@@ -54,7 +54,7 @@ if ($store_query->num_rows) {
 }
 		
 // Settings
-$query = $db->query("SELECT * FROM " . DB_PREFIX . "setting WHERE store_id = '0' OR store_id = '" . (int)$config->get('config_store_id') . "' ORDER BY store_id ASC");
+$query = $db->query("SELECT * FROM {setting} WHERE store_id = '0' OR store_id = '" . (int)$config->get('config_store_id') . "' ORDER BY store_id ASC");
 
 foreach ($query->rows as $setting) {
 	if (!$setting['serialized']) {
@@ -133,7 +133,7 @@ $registry->set('session', $session);
 // Language Detection
 $languages = array();
 
-$query = $db->query("SELECT * FROM `" . DB_PREFIX . "language` WHERE status = '1'"); 
+$query = $db->query("SELECT * FROM {language} WHERE status = '1'"); 
 
 foreach ($query->rows as $result) {
 	$languages[$result['code']] = $result;

@@ -1,25 +1,25 @@
 <?php
 class ModelSettingLocation extends Model {
 	public function addLocation($data) {
-		$this->db->query("INSERT INTO " . DB_PREFIX . "location SET name = '" . $this->db->escape($data['name']) . "', address_1 = '" . $this->db->escape($data['address_1']) . "', address_2 = '" . $this->db->escape($data['address_2']) . "', city = '" . $this->db->escape($data['city']) . "', postcode = '" . $this->db->escape($data['postcode']) . "', country_id = '" . (int)$data['country_id'] . "', zone_id = '" . (int)$data['zone_id'] . "', geocode = '" . $this->db->escape($data['geocode']) . "', image = '" . $this->db->escape(html_entity_decode($data['image'], ENT_QUOTES, 'UTF-8')) . "', open = '" . $this->db->escape($data['open']) . "', comment = '" . $this->db->escape($data['comment']) . "'");
+		$this->db->query("INSERT INTO {location} SET name = '" . $this->db->escape($data['name']) . "', address_1 = '" . $this->db->escape($data['address_1']) . "', address_2 = '" . $this->db->escape($data['address_2']) . "', city = '" . $this->db->escape($data['city']) . "', postcode = '" . $this->db->escape($data['postcode']) . "', country_id = '" . (int)$data['country_id'] . "', zone_id = '" . (int)$data['zone_id'] . "', geocode = '" . $this->db->escape($data['geocode']) . "', image = '" . $this->db->escape(html_entity_decode($data['image'], ENT_QUOTES, 'UTF-8')) . "', open = '" . $this->db->escape($data['open']) . "', comment = '" . $this->db->escape($data['comment']) . "'");
   	}
 	
 	public function editLocation($location_id, $data) {
-		$this->db->query("UPDATE " . DB_PREFIX . "location SET name = '" . $this->db->escape($data['name']) . "', address_1 = '" . $this->db->escape($data['address_1']) . "', address_2 = '" . $this->db->escape($data['address_2']) . "', city = '" . $this->db->escape($data['city']) . "', postcode = '" . $this->db->escape($data['postcode']) . "', country_id = '" . (int)$data['country_id'] . "', zone_id = '" . (int)$data['zone_id'] . "', geocode = '" . $this->db->escape($data['geocode']) . "', image = '" . $this->db->escape(html_entity_decode($data['image'], ENT_QUOTES, 'UTF-8')) . "', open = '" . $this->db->escape($data['open']) . "', comment = '" . $this->db->escape($data['comment']) . "' WHERE location_id = '" . (int)$location_id . "'");
+		$this->db->query("UPDATE {location} SET name = '" . $this->db->escape($data['name']) . "', address_1 = '" . $this->db->escape($data['address_1']) . "', address_2 = '" . $this->db->escape($data['address_2']) . "', city = '" . $this->db->escape($data['city']) . "', postcode = '" . $this->db->escape($data['postcode']) . "', country_id = '" . (int)$data['country_id'] . "', zone_id = '" . (int)$data['zone_id'] . "', geocode = '" . $this->db->escape($data['geocode']) . "', image = '" . $this->db->escape(html_entity_decode($data['image'], ENT_QUOTES, 'UTF-8')) . "', open = '" . $this->db->escape($data['open']) . "', comment = '" . $this->db->escape($data['comment']) . "' WHERE location_id = '" . (int)$location_id . "'");
 	}
 	
 	public function deleteLocation($location_id) {
-		$this->db->query("DELETE FROM " . DB_PREFIX . "location WHERE location_id = " . (int)$location_id);
+		$this->db->query("DELETE FROM {location} WHERE location_id = " . (int)$location_id);
 	}
 	
 	public function getLocation($location_id) {
-		$query = $this->db->query("SELECT DISTINCT * FROM " . DB_PREFIX . "location WHERE location_id = '" . (int)$location_id . "'");
+		$query = $this->db->query("SELECT DISTINCT * FROM {location} WHERE location_id = '" . (int)$location_id . "'");
 	
 		return $query->row;
 	}
 
 	public function getLocations($data = array()) {
-		$sql = "SELECT l.location_id, l.name, l.address_1, c.name AS country, z.name AS zone FROM " . DB_PREFIX . "location l LEFT JOIN " . DB_PREFIX . "country c ON (l.country_id = c.country_id) LEFT JOIN " . DB_PREFIX . "zone z ON (l.zone_id = z.zone_id)";
+		$sql = "SELECT l.location_id, l.name, l.address_1, c.name AS country, z.name AS zone FROM {location} l LEFT JOIN {country} c ON (l.country_id = c.country_id) LEFT JOIN {zone} z ON (l.zone_id = z.zone_id)";
 
 		$sort_data = array(
 			'l.name',
@@ -58,7 +58,7 @@ class ModelSettingLocation extends Model {
 	}
 
 	public function getTotalLocations() {
-      	$query = $this->db->query("SELECT COUNT(*) AS total FROM " . DB_PREFIX . "location");
+      	$query = $this->db->query("SELECT COUNT(*) AS total FROM {location");}
 		
 		return $query->row['total'];
 	}

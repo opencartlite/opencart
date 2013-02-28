@@ -13,6 +13,7 @@ class DB {
 	}
 
 	public function query($sql) {
+		if(DB_PREFIX) $sql = preg_replace('~{([^}]+)}~', '`' . DB_PREFIX . '$1`', $sql);
 		return $this->db->query($sql);
 	}
 
