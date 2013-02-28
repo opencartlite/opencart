@@ -58,7 +58,7 @@ class ModelSaleCoupon extends Model {
 	}
 		
 	public function getCoupons($data = array()) {
-		$sql = "SELECT coupon_id, name, code, discount, date_start, date_end, status FROM {coupon";}
+		$sql = "SELECT coupon_id, name, code, discount, date_start, date_end, status FROM {coupon}";
 		
 		$sort_data = array(
 			'name',
@@ -123,7 +123,7 @@ class ModelSaleCoupon extends Model {
 	}
 		
 	public function getTotalCoupons() {
-      	$query = $this->db->query("SELECT COUNT(*) AS total FROM {coupon");}
+      	$query = $this->db->query("SELECT COUNT(*) AS total FROM {coupon}");
 		
 		return $query->row['total'];
 	}	

@@ -89,7 +89,7 @@ class ModelLocalisationTaxRate extends Model {
 	}
 				
 	public function getTotalTaxRates() {
-      	$query = $this->db->query("SELECT COUNT(*) AS total FROM {tax_rate");}
+      	$query = $this->db->query("SELECT COUNT(*) AS total FROM {tax_rate}");
 		
 		return $query->row['total'];
 	}	

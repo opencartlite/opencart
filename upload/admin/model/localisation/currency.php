@@ -36,7 +36,7 @@ class ModelLocalisationCurrency extends Model {
 		
 	public function getCurrencies($data = array()) {
 		if ($data) {
-			$sql = "SELECT * FROM {currency";}
+			$sql = "SELECT * FROM {currency}";
 
 			$sort_data = array(
 				'title',
@@ -142,7 +142,7 @@ class ModelLocalisationCurrency extends Model {
 	}
 	
 	public function getTotalCurrencies() {
-		$query = $this->db->query("SELECT COUNT(*) AS total FROM {currency");}
+		$query = $this->db->query("SELECT COUNT(*) AS total FROM {currency}");
 		
 		return $query->row['total'];
 	}

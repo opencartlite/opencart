@@ -40,7 +40,7 @@ class ModelUserUserGroup extends Model {
 	}
 	
 	public function getUserGroups($data = array()) {
-		$sql = "SELECT * FROM {user_group";}
+		$sql = "SELECT * FROM {user_group}";
 		
 		$sql .= " ORDER BY name";	
 			
@@ -68,7 +68,7 @@ class ModelUserUserGroup extends Model {
 	}
 	
 	public function getTotalUserGroups() {
-      	$query = $this->db->query("SELECT COUNT(*) AS total FROM {user_group");}
+      	$query = $this->db->query("SELECT COUNT(*) AS total FROM {user_group}");
 		
 		return $query->row['total'];
 	}	

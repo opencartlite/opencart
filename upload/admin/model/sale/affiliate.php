@@ -138,7 +138,7 @@ class ModelSaleAffiliate extends Model {
 	}
 		
 	public function getTotalAffiliates($data = array()) {
-      	$sql = "SELECT COUNT(*) AS total FROM {affiliate";}
+      	$sql = "SELECT COUNT(*) AS total FROM {affiliate}";
 		
 		$implode = array();
 		

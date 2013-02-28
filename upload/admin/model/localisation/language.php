@@ -265,7 +265,7 @@ class ModelLocalisationLanguage extends Model {
 
 	public function getLanguages($data = array()) {
 		if ($data) {
-			$sql = "SELECT * FROM {language";}
+			$sql = "SELECT * FROM {language}";
 	
 			$sort_data = array(
 				'name',
@@ -330,7 +330,7 @@ class ModelLocalisationLanguage extends Model {
 	}
 
 	public function getTotalLanguages() {
-      	$query = $this->db->query("SELECT COUNT(*) AS total FROM {language");}
+      	$query = $this->db->query("SELECT COUNT(*) AS total FROM {language}");
 		
 		return $query->row['total'];
 	}

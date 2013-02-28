@@ -65,7 +65,7 @@ class ModelCatalogReview extends Model {
 	}
 	
 	public function getTotalReviews() {
-		$query = $this->db->query("SELECT COUNT(*) AS total FROM {review");}
+		$query = $this->db->query("SELECT COUNT(*) AS total FROM {review}");
 		
 		return $query->row['total'];
 	}

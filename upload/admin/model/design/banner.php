@@ -50,7 +50,7 @@ class ModelDesignBanner extends Model {
 	}
 		
 	public function getBanners($data = array()) {
-		$sql = "SELECT * FROM {banner";}
+		$sql = "SELECT * FROM {banner}";
 		
 		$sort_data = array(
 			'name',
@@ -111,7 +111,7 @@ class ModelDesignBanner extends Model {
 	}
 		
 	public function getTotalBanners() {
-      	$query = $this->db->query("SELECT COUNT(*) AS total FROM {banner");}
+      	$query = $this->db->query("SELECT COUNT(*) AS total FROM {banner}");
 		
 		return $query->row['total'];
 	}	

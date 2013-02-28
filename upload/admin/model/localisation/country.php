@@ -26,7 +26,7 @@ class ModelLocalisationCountry extends Model {
 		
 	public function getCountries($data = array()) {
 		if ($data) {
-			$sql = "SELECT * FROM {country";}
+			$sql = "SELECT * FROM {country}";
 			
 			$sort_data = array(
 				'name',
@@ -77,7 +77,7 @@ class ModelLocalisationCountry extends Model {
 	}
 	
 	public function getTotalCountries() {
-      	$query = $this->db->query("SELECT COUNT(*) AS total FROM {country");}
+      	$query = $this->db->query("SELECT COUNT(*) AS total FROM {country}");
 		
 		return $query->row['total'];
 	}	

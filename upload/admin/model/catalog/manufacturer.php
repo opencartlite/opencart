@@ -61,7 +61,7 @@ class ModelCatalogManufacturer extends Model {
 	}
 	
 	public function getManufacturers($data = array()) {
-		$sql = "SELECT * FROM {manufacturer";}
+		$sql = "SELECT * FROM {manufacturer}";
 
 		if (!empty($data['filter_name'])) {
 			$sql .= " WHERE name LIKE '" . $this->db->escape($data['filter_name']) . "%'";
@@ -120,7 +120,7 @@ class ModelCatalogManufacturer extends Model {
 	}
 
 	public function getTotalManufacturers() {
-      	$query = $this->db->query("SELECT COUNT(*) AS total FROM {manufacturer");}
+      	$query = $this->db->query("SELECT COUNT(*) AS total FROM {manufacturer}");
 		
 		return $query->row['total'];
 	}	

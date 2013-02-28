@@ -285,7 +285,7 @@ class ModelCatalogCategory extends Model {
 	}
 		
 	public function getTotalCategories() {
-      	$query = $this->db->query("SELECT COUNT(*) AS total FROM {category");}
+      	$query = $this->db->query("SELECT COUNT(*) AS total FROM {category}");
 		
 		return $query->row['total'];
 	}	

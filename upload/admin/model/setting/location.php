@@ -58,7 +58,7 @@ class ModelSettingLocation extends Model {
 	}
 
 	public function getTotalLocations() {
-      	$query = $this->db->query("SELECT COUNT(*) AS total FROM {location");}
+      	$query = $this->db->query("SELECT COUNT(*) AS total FROM {location}");
 		
 		return $query->row['total'];
 	}

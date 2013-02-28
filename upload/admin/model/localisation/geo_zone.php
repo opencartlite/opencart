@@ -43,7 +43,7 @@ class ModelLocalisationGeoZone extends Model {
 
 	public function getGeoZones($data = array()) {
 		if ($data) {
-			$sql = "SELECT * FROM {geo_zone";}
+			$sql = "SELECT * FROM {geo_zone}";
 	
 			$sort_data = array(
 				'name',
@@ -93,7 +93,7 @@ class ModelLocalisationGeoZone extends Model {
 	}
 	
 	public function getTotalGeoZones() {
-      	$query = $this->db->query("SELECT COUNT(*) AS total FROM {geo_zone");}
+      	$query = $this->db->query("SELECT COUNT(*) AS total FROM {geo_zone}");
 		
 		return $query->row['total'];
 	}	

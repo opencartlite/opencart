@@ -43,7 +43,7 @@ class ModelLocalisationTaxClass extends Model {
 
 	public function getTaxClasses($data = array()) {
     	if ($data) {
-			$sql = "SELECT * FROM {tax_class";}
+			$sql = "SELECT * FROM {tax_class}";
 
 			$sql .= " ORDER BY title";	
 			
@@ -72,7 +72,7 @@ class ModelLocalisationTaxClass extends Model {
 			$tax_class_data = $this->cache->get('tax_class');
 
 			if (!$tax_class_data) {
-				$query = $this->db->query("SELECT * FROM {tax_class");}
+				$query = $this->db->query("SELECT * FROM {tax_class}");
 	
 				$tax_class_data = $query->rows;
 			
@@ -84,7 +84,7 @@ class ModelLocalisationTaxClass extends Model {
 	}
 					
 	public function getTotalTaxClasses() {
-      	$query = $this->db->query("SELECT COUNT(*) AS total FROM {tax_class");}
+      	$query = $this->db->query("SELECT COUNT(*) AS total FROM {tax_class}");
 		
 		return $query->row['total'];
 	}	

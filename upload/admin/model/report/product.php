@@ -27,7 +27,7 @@ class ModelReportProduct extends Model {
 	}
 	
 	public function getTotalProductViews() {
-      	$query = $this->db->query("SELECT SUM(viewed) AS total FROM {product");}
+      	$query = $this->db->query("SELECT SUM(viewed) AS total FROM {product}");
 		
 		return $query->row['total'];
 	}

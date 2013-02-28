@@ -173,7 +173,7 @@ class ModelCatalogInformation extends Model {
 	}
 		
 	public function getTotalInformations() {
-      	$query = $this->db->query("SELECT COUNT(*) AS total FROM {information");}
+      	$query = $this->db->query("SELECT COUNT(*) AS total FROM {information}");
 		
 		return $query->row['total'];
 	}	
