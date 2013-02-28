@@ -2,19 +2,6 @@
 class ControllerPaymentPerpetualPayments extends Controller {
 	protected function index() {
     	$this->data += $this->language->load('payment/perpetual_payments');
-		
-		$this->data['text_credit_card'] = $this->language->get('text_credit_card');
-		$this->data['text_start_date'] = $this->language->get('text_start_date');
-		$this->data['text_issue'] = $this->language->get('text_issue');
-		$this->data['text_wait'] = $this->language->get('text_wait');
-		
-		$this->data['entry_cc_number'] = $this->language->get('entry_cc_number');
-		$this->data['entry_cc_start_date'] = $this->language->get('entry_cc_start_date');
-		$this->data['entry_cc_expire_date'] = $this->language->get('entry_cc_expire_date');
-		$this->data['entry_cc_cvv2'] = $this->language->get('entry_cc_cvv2');
-		$this->data['entry_cc_issue'] = $this->language->get('entry_cc_issue');
-		
-		$this->data['button_confirm'] = $this->language->get('button_confirm');
 	
 		$this->data['months'] = array();
 		

@@ -59,12 +59,6 @@ class ControllerCheckoutPaymentMethod extends Controller {
 			$this->session->data['payment_methods'] = $method_data;	
 			
 		}			
-		
-		$this->data['text_payment_method'] = $this->language->get('text_payment_method');
-		$this->data['text_comments'] = $this->language->get('text_comments');
-		$this->data['text_modify'] = $this->language->get('text_modify');
-
-		$this->data['button_continue'] = $this->language->get('button_continue');
    
 		if (empty($this->session->data['payment_methods'])) {
 			$this->data['error_warning'] = sprintf($this->language->get('error_no_payment'), $this->url->link('information/contact'));

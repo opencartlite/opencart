@@ -64,26 +64,7 @@ class ControllerProductSpecial extends Controller {
        		'text' => $this->language->get('heading_title'),
 			'href' => $this->url->link('product/special', $url)
    		);
-		
-    	$this->data['heading_title'] = $this->language->get('heading_title');
-   
-		$this->data['text_empty'] = $this->language->get('text_empty');
-		$this->data['text_quantity'] = $this->language->get('text_quantity');
-		$this->data['text_manufacturer'] = $this->language->get('text_manufacturer');
-		$this->data['text_model'] = $this->language->get('text_model');
-		$this->data['text_price'] = $this->language->get('text_price');
-		$this->data['text_tax'] = $this->language->get('text_tax');
-		$this->data['text_points'] = $this->language->get('text_points');
-		$this->data['text_compare'] = sprintf($this->language->get('text_compare'), (isset($this->session->data['compare']) ? count($this->session->data['compare']) : 0));
-		$this->data['text_display'] = $this->language->get('text_display');
-		$this->data['text_list'] = $this->language->get('text_list');
-		$this->data['text_grid'] = $this->language->get('text_grid');		
-		$this->data['text_sort'] = $this->language->get('text_sort');
-		$this->data['text_limit'] = $this->language->get('text_limit');
-
-		$this->data['button_cart'] = $this->language->get('button_cart');	
-		$this->data['button_wishlist'] = $this->language->get('button_wishlist');
-		$this->data['button_compare'] = $this->language->get('button_compare');
+		$this->data['text_compare'] = sprintf($this->language->get('text_compare'), (isset($this->session->data['compare']) ? count($this->session->data['compare']) : 0));			
 		
 		$this->data['compare'] = $this->url->link('product/compare');
 		

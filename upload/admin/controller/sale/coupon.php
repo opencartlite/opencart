@@ -190,22 +190,7 @@ class ControllerSaleCoupon extends Controller {
 				'selected'   => isset($this->request->post['selected']) && in_array($result['coupon_id'], $this->request->post['selected']),
 				'action'     => $action
 			);
-		}
-									
-		$this->data['heading_title'] = $this->language->get('heading_title');
-
-		$this->data['text_no_results'] = $this->language->get('text_no_results');
-
-		$this->data['column_name'] = $this->language->get('column_name');
-		$this->data['column_code'] = $this->language->get('column_code');
-		$this->data['column_discount'] = $this->language->get('column_discount');
-		$this->data['column_date_start'] = $this->language->get('column_date_start');
-		$this->data['column_date_end'] = $this->language->get('column_date_end');
-		$this->data['column_status'] = $this->language->get('column_status');
-		$this->data['column_action'] = $this->language->get('column_action');		
-		
-		$this->data['button_insert'] = $this->language->get('button_insert');
-		$this->data['button_delete'] = $this->language->get('button_delete');
+		}		
  
  		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
@@ -272,36 +257,6 @@ class ControllerSaleCoupon extends Controller {
   	}
 
   	protected function getForm() {
-    	$this->data['heading_title'] = $this->language->get('heading_title');
-
-    	$this->data['text_enabled'] = $this->language->get('text_enabled');
-    	$this->data['text_disabled'] = $this->language->get('text_disabled');
-    	$this->data['text_yes'] = $this->language->get('text_yes');
-    	$this->data['text_no'] = $this->language->get('text_no');
-    	$this->data['text_percent'] = $this->language->get('text_percent');
-    	$this->data['text_amount'] = $this->language->get('text_amount');
-				
-		$this->data['entry_name'] = $this->language->get('entry_name');
-    	$this->data['entry_description'] = $this->language->get('entry_description');
-    	$this->data['entry_code'] = $this->language->get('entry_code');
-		$this->data['entry_discount'] = $this->language->get('entry_discount');
-		$this->data['entry_logged'] = $this->language->get('entry_logged');
-		$this->data['entry_shipping'] = $this->language->get('entry_shipping');
-		$this->data['entry_type'] = $this->language->get('entry_type');
-		$this->data['entry_total'] = $this->language->get('entry_total');
-		$this->data['entry_category'] = $this->language->get('entry_category');
-		$this->data['entry_product'] = $this->language->get('entry_product');
-    	$this->data['entry_date_start'] = $this->language->get('entry_date_start');
-    	$this->data['entry_date_end'] = $this->language->get('entry_date_end');
-    	$this->data['entry_uses_total'] = $this->language->get('entry_uses_total');
-		$this->data['entry_uses_customer'] = $this->language->get('entry_uses_customer');
-		$this->data['entry_status'] = $this->language->get('entry_status');
-
-    	$this->data['button_save'] = $this->language->get('button_save');
-    	$this->data['button_cancel'] = $this->language->get('button_cancel');
-
-		$this->data['tab_general'] = $this->language->get('tab_general');
-		$this->data['tab_history'] = $this->language->get('tab_history');
 
 		$this->data['token'] = $this->session->data['token'];
 	
@@ -576,13 +531,6 @@ class ControllerSaleCoupon extends Controller {
     	$this->data += $this->language->load('sale/coupon');
 		
 		$this->load->model('sale/coupon');
-				
-		$this->data['text_no_results'] = $this->language->get('text_no_results');
-		
-		$this->data['column_order_id'] = $this->language->get('column_order_id');
-		$this->data['column_customer'] = $this->language->get('column_customer');
-		$this->data['column_amount'] = $this->language->get('column_amount');
-		$this->data['column_date_added'] = $this->language->get('column_date_added');
 
 		if (isset($this->request->get['page'])) {
 			$page = $this->request->get['page'];

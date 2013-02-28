@@ -88,21 +88,6 @@ class ControllerAccountLogin extends Controller {
         	'text' => $this->language->get('text_login'),
 			'href' => $this->url->link('account/login', '', 'SSL')
       	);
-				
-    	$this->data['heading_title'] = $this->language->get('heading_title');
-
-    	$this->data['text_new_customer'] = $this->language->get('text_new_customer');
-    	$this->data['text_register'] = $this->language->get('text_register');
-    	$this->data['text_register_account'] = $this->language->get('text_register_account');
-		$this->data['text_returning_customer'] = $this->language->get('text_returning_customer');
-		$this->data['text_i_am_returning_customer'] = $this->language->get('text_i_am_returning_customer');
-    	$this->data['text_forgotten'] = $this->language->get('text_forgotten');
-
-    	$this->data['entry_email'] = $this->language->get('entry_email');
-    	$this->data['entry_password'] = $this->language->get('entry_password');
-
-    	$this->data['button_continue'] = $this->language->get('button_continue');
-		$this->data['button_login'] = $this->language->get('button_login');
 
 		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];

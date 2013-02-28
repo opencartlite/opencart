@@ -238,20 +238,6 @@ class ControllerExtensionModification extends Controller {
 			);
 		}			
 		
-		$this->data['heading_title'] = $this->language->get('heading_title');
-		
-		$this->data['text_no_results'] = $this->language->get('text_no_results');
-		$this->data['text_confirm'] = $this->language->get('text_confirm');
-
-		$this->data['column_name'] = $this->language->get('column_name');
-		$this->data['column_author'] = $this->language->get('column_author');
-		$this->data['column_date_added'] = $this->language->get('column_date_added');
-		$this->data['column_date_modified'] = $this->language->get('column_date_modified');
-		$this->data['column_action'] = $this->language->get('column_action');
-		
-		$this->data['button_insert'] = $this->language->get('button_insert');
-		$this->data['button_delete'] = $this->language->get('button_delete');
-		
 		if (isset($this->session->data['success'])) {
 			$this->data['success'] = $this->session->data['success'];
 		
@@ -317,12 +303,6 @@ class ControllerExtensionModification extends Controller {
 	}
 	
   	protected function getForm() {
-     	$this->data['heading_title'] = $this->language->get('heading_title');
-
-    	$this->data['entry_name'] = $this->language->get('entry_name');
-
-    	$this->data['button_save'] = $this->language->get('button_save');
-    	$this->data['button_cancel'] = $this->language->get('button_cancel');
     
  		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];

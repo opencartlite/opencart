@@ -2,22 +2,6 @@
 class ControllerCheckoutGuestShipping extends Controller {
   	public function index() {	
 		$this->data += $this->language->load('checkout/checkout');
-		
-		$this->data['text_select'] = $this->language->get('text_select');
-		$this->data['text_none'] = $this->language->get('text_none');
-		$this->data['text_modify'] = $this->language->get('text_modify');
-
-		$this->data['entry_firstname'] = $this->language->get('entry_firstname');
-		$this->data['entry_lastname'] = $this->language->get('entry_lastname');
-		$this->data['entry_company'] = $this->language->get('entry_company');
-		$this->data['entry_address_1'] = $this->language->get('entry_address_1');
-		$this->data['entry_address_2'] = $this->language->get('entry_address_2');
-		$this->data['entry_postcode'] = $this->language->get('entry_postcode');
-		$this->data['entry_city'] = $this->language->get('entry_city');
-		$this->data['entry_country'] = $this->language->get('entry_country');
-		$this->data['entry_zone'] = $this->language->get('entry_zone');
-	
-		$this->data['button_continue'] = $this->language->get('button_continue');
 					
 		if (isset($this->session->data['shipping_address']['firstname'])) {
 			$this->data['firstname'] = $this->session->data['shipping_address']['firstname'];

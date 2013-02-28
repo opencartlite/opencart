@@ -3,8 +3,6 @@ class ControllerPaymentSagepay extends Controller {
 	protected function index() {
 		$this->data += $this->language->load('payment/sagepay');
 		
-		$this->data['button_confirm'] = $this->language->get('button_confirm');
-		
 		if ($this->config->get('sagepay_test') == 'live') {
     		$this->data['action'] = 'https://live.sagepay.com/gateway/service/vspform-register.vsp';
 		} elseif ($this->config->get('sagepay_test') == 'test') {

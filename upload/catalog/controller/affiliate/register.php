@@ -39,47 +39,7 @@ class ControllerAffiliateRegister extends Controller {
         	'text' => $this->language->get('text_register'),
 			'href' => $this->url->link('affiliate/register', '', 'SSL')
       	);
-		
-    	$this->data['heading_title'] = $this->language->get('heading_title');
-
-		$this->data['text_select'] = $this->language->get('text_select');
-		$this->data['text_none'] = $this->language->get('text_none');
 		$this->data['text_account_already'] = sprintf($this->language->get('text_account_already'), $this->url->link('affiliate/login', '', 'SSL'));
-    	$this->data['text_signup'] = $this->language->get('text_signup');
-		$this->data['text_your_details'] = $this->language->get('text_your_details');
-    	$this->data['text_your_address'] = $this->language->get('text_your_address');
-		$this->data['text_payment'] = $this->language->get('text_payment');
-    	$this->data['text_your_password'] = $this->language->get('text_your_password');
-		$this->data['text_cheque'] = $this->language->get('text_cheque');
-		$this->data['text_paypal'] = $this->language->get('text_paypal');
-		$this->data['text_bank'] = $this->language->get('text_bank');
-				
-    	$this->data['entry_firstname'] = $this->language->get('entry_firstname');
-    	$this->data['entry_lastname'] = $this->language->get('entry_lastname');
-    	$this->data['entry_email'] = $this->language->get('entry_email');
-    	$this->data['entry_telephone'] = $this->language->get('entry_telephone');
-    	$this->data['entry_fax'] = $this->language->get('entry_fax');
-    	$this->data['entry_company'] = $this->language->get('entry_company');
-		$this->data['entry_website'] = $this->language->get('entry_website');
-    	$this->data['entry_address_1'] = $this->language->get('entry_address_1');
-    	$this->data['entry_address_2'] = $this->language->get('entry_address_2');
-    	$this->data['entry_postcode'] = $this->language->get('entry_postcode');
-    	$this->data['entry_city'] = $this->language->get('entry_city');
-    	$this->data['entry_country'] = $this->language->get('entry_country');
-    	$this->data['entry_zone'] = $this->language->get('entry_zone');
-		$this->data['entry_tax'] = $this->language->get('entry_tax');
-		$this->data['entry_payment'] = $this->language->get('entry_payment');
-		$this->data['entry_cheque'] = $this->language->get('entry_cheque');
-		$this->data['entry_paypal'] = $this->language->get('entry_paypal');
-		$this->data['entry_bank_name'] = $this->language->get('entry_bank_name');
-		$this->data['entry_bank_branch_number'] = $this->language->get('entry_bank_branch_number');
-		$this->data['entry_bank_swift_code'] = $this->language->get('entry_bank_swift_code');
-		$this->data['entry_bank_account_name'] = $this->language->get('entry_bank_account_name');
-		$this->data['entry_bank_account_number'] = $this->language->get('entry_bank_account_number');
-    	$this->data['entry_password'] = $this->language->get('entry_password');
-    	$this->data['entry_confirm'] = $this->language->get('entry_confirm');
-
-		$this->data['button_continue'] = $this->language->get('button_continue');
     
 		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];

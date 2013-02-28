@@ -425,32 +425,7 @@ class ControllerSaleCustomer extends Controller {
 				'selected'       => isset($this->request->post['selected']) && in_array($result['customer_id'], $this->request->post['selected']),
 				'action'         => $action
 			);
-		}	
-					
-		$this->data['heading_title'] = $this->language->get('heading_title');
-
-		$this->data['text_enabled'] = $this->language->get('text_enabled');
-		$this->data['text_disabled'] = $this->language->get('text_disabled');
-		$this->data['text_yes'] = $this->language->get('text_yes');
-		$this->data['text_no'] = $this->language->get('text_no');	
-		$this->data['text_select'] = $this->language->get('text_select');	
-		$this->data['text_default'] = $this->language->get('text_default');		
-		$this->data['text_no_results'] = $this->language->get('text_no_results');
-
-		$this->data['column_name'] = $this->language->get('column_name');
-		$this->data['column_email'] = $this->language->get('column_email');
-		$this->data['column_customer_group'] = $this->language->get('column_customer_group');
-		$this->data['column_status'] = $this->language->get('column_status');
-		$this->data['column_approved'] = $this->language->get('column_approved');
-		$this->data['column_ip'] = $this->language->get('column_ip');
-		$this->data['column_date_added'] = $this->language->get('column_date_added');
-		$this->data['column_login'] = $this->language->get('column_login');
-		$this->data['column_action'] = $this->language->get('column_action');		
-		
-		$this->data['button_approve'] = $this->language->get('button_approve');
-		$this->data['button_insert'] = $this->language->get('button_insert');
-		$this->data['button_delete'] = $this->language->get('button_delete');
-		$this->data['button_filter'] = $this->language->get('button_filter');
+		}							
 
 		$this->data['token'] = $this->session->data['token'];
 
@@ -592,59 +567,6 @@ class ControllerSaleCustomer extends Controller {
   	}
   
   	protected function getForm() {
-    	$this->data['heading_title'] = $this->language->get('heading_title');
- 
-    	$this->data['text_enabled'] = $this->language->get('text_enabled');
-    	$this->data['text_disabled'] = $this->language->get('text_disabled');
-		$this->data['text_select'] = $this->language->get('text_select');
-		$this->data['text_none'] = $this->language->get('text_none');
-    	$this->data['text_wait'] = $this->language->get('text_wait');
-		$this->data['text_no_results'] = $this->language->get('text_no_results');
-		$this->data['text_add_ban_ip'] = $this->language->get('text_add_ban_ip');
-		$this->data['text_remove_ban_ip'] = $this->language->get('text_remove_ban_ip');
-		
-		$this->data['column_ip'] = $this->language->get('column_ip');
-		$this->data['column_total'] = $this->language->get('column_total');
-		$this->data['column_date_added'] = $this->language->get('column_date_added');
-		$this->data['column_action'] = $this->language->get('column_action');
-		
-    	$this->data['entry_firstname'] = $this->language->get('entry_firstname');
-    	$this->data['entry_lastname'] = $this->language->get('entry_lastname');
-    	$this->data['entry_email'] = $this->language->get('entry_email');
-    	$this->data['entry_telephone'] = $this->language->get('entry_telephone');
-    	$this->data['entry_fax'] = $this->language->get('entry_fax');
-    	$this->data['entry_password'] = $this->language->get('entry_password');
-    	$this->data['entry_confirm'] = $this->language->get('entry_confirm');
-		$this->data['entry_newsletter'] = $this->language->get('entry_newsletter');
-    	$this->data['entry_customer_group'] = $this->language->get('entry_customer_group');
-		$this->data['entry_status'] = $this->language->get('entry_status');
-		$this->data['entry_company'] = $this->language->get('entry_company');
-		$this->data['entry_address_1'] = $this->language->get('entry_address_1');
-		$this->data['entry_address_2'] = $this->language->get('entry_address_2');
-		$this->data['entry_city'] = $this->language->get('entry_city');
-		$this->data['entry_postcode'] = $this->language->get('entry_postcode');
-		$this->data['entry_zone'] = $this->language->get('entry_zone');
-		$this->data['entry_country'] = $this->language->get('entry_country');
-		$this->data['entry_default'] = $this->language->get('entry_default');
-		$this->data['entry_comment'] = $this->language->get('entry_comment');
-		$this->data['entry_description'] = $this->language->get('entry_description');
-		$this->data['entry_amount'] = $this->language->get('entry_amount');
-		$this->data['entry_points'] = $this->language->get('entry_points');
- 
-		$this->data['button_save'] = $this->language->get('button_save');
-    	$this->data['button_cancel'] = $this->language->get('button_cancel');
-    	$this->data['button_add_address'] = $this->language->get('button_add_address');
-		$this->data['button_add_history'] = $this->language->get('button_add_history');
-		$this->data['button_add_transaction'] = $this->language->get('button_add_transaction');
-		$this->data['button_add_reward'] = $this->language->get('button_add_reward');
-    	$this->data['button_remove'] = $this->language->get('button_remove');
-	
-		$this->data['tab_general'] = $this->language->get('tab_general');
-		$this->data['tab_address'] = $this->language->get('tab_address');
-		$this->data['tab_history'] = $this->language->get('tab_history');
-		$this->data['tab_transaction'] = $this->language->get('tab_transaction');
-		$this->data['tab_reward'] = $this->language->get('tab_reward');
-		$this->data['tab_ip'] = $this->language->get('tab_ip');
 
 		$this->data['token'] = $this->session->data['token'];
 
@@ -1067,10 +989,6 @@ class ControllerSaleCustomer extends Controller {
 
 			$this->document->setTitle($this->language->get('heading_title'));
 
-			$this->data['heading_title'] = $this->language->get('heading_title');
-
-			$this->data['text_not_found'] = $this->language->get('text_not_found');
-
 			$this->data['breadcrumbs'] = array();
 
 			$this->data['breadcrumbs'][] = array(
@@ -1111,11 +1029,6 @@ class ControllerSaleCustomer extends Controller {
 		} else {
 			$this->data['error_warning'] = '';
 		}		
-		
-		$this->data['text_no_results'] = $this->language->get('text_no_results');
-		
-		$this->data['column_date_added'] = $this->language->get('column_date_added');
-		$this->data['column_comment'] = $this->language->get('column_comment');
 		
 		if (isset($this->request->get['page'])) {
 			$page = $this->request->get['page'];
@@ -1168,13 +1081,6 @@ class ControllerSaleCustomer extends Controller {
 		} else {
 			$this->data['error_warning'] = '';
 		}		
-		
-		$this->data['text_no_results'] = $this->language->get('text_no_results');
-		$this->data['text_balance'] = $this->language->get('text_balance');
-		
-		$this->data['column_date_added'] = $this->language->get('column_date_added');
-		$this->data['column_description'] = $this->language->get('column_description');
-		$this->data['column_amount'] = $this->language->get('column_amount');
 		
 		if (isset($this->request->get['page'])) {
 			$page = $this->request->get['page'];
@@ -1230,13 +1136,6 @@ class ControllerSaleCustomer extends Controller {
 		} else {
 			$this->data['error_warning'] = '';
 		}	
-				
-		$this->data['text_no_results'] = $this->language->get('text_no_results');
-		$this->data['text_balance'] = $this->language->get('text_balance');
-		
-		$this->data['column_date_added'] = $this->language->get('column_date_added');
-		$this->data['column_description'] = $this->language->get('column_description');
-		$this->data['column_points'] = $this->language->get('column_points');
 
 		if (isset($this->request->get['page'])) {
 			$page = $this->request->get['page'];

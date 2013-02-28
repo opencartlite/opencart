@@ -5,30 +5,7 @@ class ControllerSaleContact extends Controller {
 	public function index() {
 		$this->data += $this->language->load('sale/contact');
  
-		$this->document->setTitle($this->language->get('heading_title'));
-		
-		$this->data['heading_title'] = $this->language->get('heading_title');
-		
-		$this->data['text_default'] = $this->language->get('text_default');
-		$this->data['text_newsletter'] = $this->language->get('text_newsletter');
-		$this->data['text_customer_all'] = $this->language->get('text_customer_all');	
-		$this->data['text_customer'] = $this->language->get('text_customer');	
-		$this->data['text_customer_group'] = $this->language->get('text_customer_group');
-		$this->data['text_affiliate_all'] = $this->language->get('text_affiliate_all');	
-		$this->data['text_affiliate'] = $this->language->get('text_affiliate');	
-		$this->data['text_product'] = $this->language->get('text_product');	
-
-		$this->data['entry_store'] = $this->language->get('entry_store');
-		$this->data['entry_to'] = $this->language->get('entry_to');
-		$this->data['entry_customer_group'] = $this->language->get('entry_customer_group');
-		$this->data['entry_customer'] = $this->language->get('entry_customer');
-		$this->data['entry_affiliate'] = $this->language->get('entry_affiliate');
-		$this->data['entry_product'] = $this->language->get('entry_product');
-		$this->data['entry_subject'] = $this->language->get('entry_subject');
-		$this->data['entry_message'] = $this->language->get('entry_message');
-		
-		$this->data['button_send'] = $this->language->get('button_send');
-		$this->data['button_cancel'] = $this->language->get('button_cancel');
+		$this->document->setTitle($this->language->get('heading_title'));					
 		
 		$this->data['token'] = $this->session->data['token'];
 

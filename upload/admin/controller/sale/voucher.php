@@ -191,25 +191,7 @@ class ControllerSaleVoucher extends Controller {
 				'selected'   => isset($this->request->post['selected']) && in_array($result['voucher_id'], $this->request->post['selected']),
 				'action'     => $action
 			);
-		}
-									
-		$this->data['heading_title'] = $this->language->get('heading_title');
-		
-		$this->data['text_send'] = $this->language->get('text_send');
-		$this->data['text_wait'] = $this->language->get('text_wait');
-		$this->data['text_no_results'] = $this->language->get('text_no_results');
-
-		$this->data['column_code'] = $this->language->get('column_code');
-		$this->data['column_from'] = $this->language->get('column_from');
-		$this->data['column_to'] = $this->language->get('column_to');
-		$this->data['column_theme'] = $this->language->get('column_theme');
-		$this->data['column_amount'] = $this->language->get('column_amount');
-		$this->data['column_status'] = $this->language->get('column_status');
-		$this->data['column_date_added'] = $this->language->get('column_date_added');
-		$this->data['column_action'] = $this->language->get('column_action');		
-		
-		$this->data['button_insert'] = $this->language->get('button_insert');
-		$this->data['button_delete'] = $this->language->get('button_delete');
+		}		
  
  		$this->data['token'] = $this->session->data['token'];
 		
@@ -279,26 +261,6 @@ class ControllerSaleVoucher extends Controller {
   	}
 
   	protected function getForm() {
-    	$this->data['heading_title'] = $this->language->get('heading_title');
-
-    	$this->data['text_enabled'] = $this->language->get('text_enabled');
-    	$this->data['text_disabled'] = $this->language->get('text_disabled');
-		
-    	$this->data['entry_code'] = $this->language->get('entry_code');
-		$this->data['entry_from_name'] = $this->language->get('entry_from_name');
-		$this->data['entry_from_email'] = $this->language->get('entry_from_email');
-		$this->data['entry_to_name'] = $this->language->get('entry_to_name');
-		$this->data['entry_to_email'] = $this->language->get('entry_to_email');
-		$this->data['entry_theme'] = $this->language->get('entry_theme');
-		$this->data['entry_message'] = $this->language->get('entry_message');
-		$this->data['entry_amount'] = $this->language->get('entry_amount');
-		$this->data['entry_status'] = $this->language->get('entry_status');
-
-    	$this->data['button_save'] = $this->language->get('button_save');
-    	$this->data['button_cancel'] = $this->language->get('button_cancel');
-		
-		$this->data['tab_general'] = $this->language->get('tab_general');
-		$this->data['tab_voucher_history'] = $this->language->get('tab_voucher_history');
 		
 		if (isset($this->request->get['voucher_id'])) {
 			$this->data['voucher_id'] = $this->request->get['voucher_id'];
@@ -547,13 +509,6 @@ class ControllerSaleVoucher extends Controller {
     	$this->data += $this->language->load('sale/voucher');
 		
 		$this->load->model('sale/voucher');
-				
-		$this->data['text_no_results'] = $this->language->get('text_no_results');
-		
-		$this->data['column_order_id'] = $this->language->get('column_order_id');
-		$this->data['column_customer'] = $this->language->get('column_customer');
-		$this->data['column_amount'] = $this->language->get('column_amount');
-		$this->data['column_date_added'] = $this->language->get('column_date_added');
 
 		if (isset($this->request->get['page'])) {
 			$page = $this->request->get['page'];

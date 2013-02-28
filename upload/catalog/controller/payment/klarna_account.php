@@ -6,28 +6,7 @@ class ControllerPaymentKlarnaAccount extends Controller {
         $order_info = $this->model_checkout_order->getOrder($this->session->data['order_id']);
 		
 		if ($order_info) {
-			$this->data += $this->language->load('payment/klarna_account');
-		   
-			$this->data['text_information'] = $this->language->get('text_information');
-			$this->data['text_additional'] = $this->language->get('text_additional');
-			$this->data['text_payment_option'] = $this->language->get('text_payment_option');	
-			$this->data['text_wait'] = $this->language->get('text_wait');
-			$this->data['text_day'] = $this->language->get('text_day');	
-			$this->data['text_month'] = $this->language->get('text_month');	
-			$this->data['text_year'] = $this->language->get('text_year');	
-			$this->data['text_male'] = $this->language->get('text_male');	
-			$this->data['text_female'] = $this->language->get('text_female');		
-			
-			$this->data['entry_pno'] = $this->language->get('entry_pno');		
-			$this->data['entry_dob'] = $this->language->get('entry_dob');	
-			$this->data['entry_gender'] = $this->language->get('entry_gender');	
-			$this->data['entry_street'] = $this->language->get('entry_street');	
-			$this->data['entry_house_no'] = $this->language->get('entry_house_no');	
-			$this->data['entry_house_ext'] = $this->language->get('entry_house_ext');	
-			$this->data['entry_phone_no'] = $this->language->get('entry_phone_no');	
-			$this->data['entry_company'] = $this->language->get('entry_company');	
-			
-			$this->data['button_confirm'] = $this->language->get('button_confirm');
+			$this->data += $this->language->load('payment/klarna_account');																
 			
 			$this->data['days'] = array();
 			

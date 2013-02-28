@@ -27,8 +27,6 @@ class ControllerCommonMaintenance extends Controller {
         $this->data += $this->language->load('common/maintenance');
         
         $this->document->setTitle($this->language->get('heading_title'));
-        
-        $this->data['heading_title'] = $this->language->get('heading_title');
                 
         $this->data['breadcrumbs'] = array();
 

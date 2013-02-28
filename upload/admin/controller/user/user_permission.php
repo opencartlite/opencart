@@ -186,16 +186,6 @@ class ControllerUserUserPermission extends Controller {
 				'action'        => $action
 			);
 		}	
-	
-		$this->data['heading_title'] = $this->language->get('heading_title');
-		
-		$this->data['text_no_results'] = $this->language->get('text_no_results');
-
-		$this->data['column_name'] = $this->language->get('column_name');
-		$this->data['column_action'] = $this->language->get('column_action');
-
-		$this->data['button_insert'] = $this->language->get('button_insert');
-		$this->data['button_delete'] = $this->language->get('button_delete');
  
  		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
@@ -257,17 +247,6 @@ class ControllerUserUserPermission extends Controller {
  	}
 
 	protected function getForm() {
-		$this->data['heading_title'] = $this->language->get('heading_title');
-		
-		$this->data['text_select_all'] = $this->language->get('text_select_all');
-		$this->data['text_unselect_all'] = $this->language->get('text_unselect_all');
-				
-		$this->data['entry_name'] = $this->language->get('entry_name');
-		$this->data['entry_access'] = $this->language->get('entry_access');
-		$this->data['entry_modify'] = $this->language->get('entry_modify');
-		
-		$this->data['button_save'] = $this->language->get('button_save');
-		$this->data['button_cancel'] = $this->language->get('button_cancel');
 
  		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];

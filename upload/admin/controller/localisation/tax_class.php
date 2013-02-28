@@ -185,17 +185,7 @@ class ControllerLocalisationTaxClass extends Controller {
 				'selected'     => isset($this->request->post['selected']) && in_array($result['tax_class_id'], $this->request->post['selected']),
 				'action'       => $action				
 			);
-		}
-
-		$this->data['heading_title'] = $this->language->get('heading_title');
-
-		$this->data['text_no_results'] = $this->language->get('text_no_results');
-	
-		$this->data['column_title'] = $this->language->get('column_title');
-		$this->data['column_action'] = $this->language->get('column_action');	
-
-		$this->data['button_insert'] = $this->language->get('button_insert');
-		$this->data['button_delete'] = $this->language->get('button_delete');
+		}	
  
  		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
@@ -256,23 +246,7 @@ class ControllerLocalisationTaxClass extends Controller {
 		$this->response->setOutput($this->render());
 	}
 
-	protected function getForm() {
-		$this->data['heading_title'] = $this->language->get('heading_title');
-		
-		$this->data['text_shipping'] = $this->language->get('text_shipping');	
-		$this->data['text_payment'] = $this->language->get('text_payment');	
-		$this->data['text_store'] = $this->language->get('text_store');	
-						
-		$this->data['entry_title'] = $this->language->get('entry_title');
-		$this->data['entry_description'] = $this->language->get('entry_description');
-		$this->data['entry_rate'] = $this->language->get('entry_rate');
-		$this->data['entry_based'] = $this->language->get('entry_based');
-		$this->data['entry_priority'] = $this->language->get('entry_priority');
-		
-		$this->data['button_save'] = $this->language->get('button_save');
-		$this->data['button_cancel'] = $this->language->get('button_cancel');
-		$this->data['button_add_rule'] = $this->language->get('button_add_rule');
-		$this->data['button_remove'] = $this->language->get('button_remove');
+	protected function getForm() {			
 
  		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];

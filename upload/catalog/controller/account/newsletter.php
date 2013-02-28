@@ -37,16 +37,6 @@ class ControllerAccountNewsletter extends Controller {
         	'text' => $this->language->get('text_newsletter'),
 			'href' => $this->url->link('account/newsletter', '', 'SSL')
       	);
-		
-    	$this->data['heading_title'] = $this->language->get('heading_title');
-
-    	$this->data['text_yes'] = $this->language->get('text_yes');
-		$this->data['text_no'] = $this->language->get('text_no');
-		
-		$this->data['entry_newsletter'] = $this->language->get('entry_newsletter');
-		
-		$this->data['button_continue'] = $this->language->get('button_continue');
-		$this->data['button_back'] = $this->language->get('button_back');
 
     	$this->data['action'] = $this->url->link('account/newsletter', '', 'SSL');
 		

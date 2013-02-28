@@ -380,25 +380,7 @@ class ControllerSaleReturn extends Controller {
 				'selected'      => isset($this->request->post['selected']) && in_array($result['return_id'], $this->request->post['selected']),
 				'action'        => $action
 			);
-		}	
-		
-		$this->data['heading_title'] = $this->language->get('heading_title');
-		
-		$this->data['text_no_results'] = $this->language->get('text_no_results');
-
-		$this->data['column_return_id'] = $this->language->get('column_return_id');
-		$this->data['column_order_id'] = $this->language->get('column_order_id');
-		$this->data['column_customer'] = $this->language->get('column_customer');
-		$this->data['column_product'] = $this->language->get('column_product');
-		$this->data['column_model'] = $this->language->get('column_model');
-		$this->data['column_status'] = $this->language->get('column_status');
-		$this->data['column_date_added'] = $this->language->get('column_date_added');
-		$this->data['column_date_modified'] = $this->language->get('column_date_modified');
-		$this->data['column_action'] = $this->language->get('column_action');		
-		
-		$this->data['button_insert'] = $this->language->get('button_insert');
-		$this->data['button_delete'] = $this->language->get('button_delete');
-		$this->data['button_filter'] = $this->language->get('button_filter');
+		}			
 
 		$this->data['token'] = $this->session->data['token'];
 
@@ -549,34 +531,7 @@ class ControllerSaleReturn extends Controller {
 		$this->response->setOutput($this->render());
   	}
   
-  	protected function getForm() {
-    	$this->data['heading_title'] = $this->language->get('heading_title');
- 		
-		$this->data['text_select'] = $this->language->get('text_select');
-		$this->data['text_opened'] = $this->language->get('text_opened');
-		$this->data['text_unopened'] = $this->language->get('text_unopened');	
-			
-		$this->data['entry_customer'] = $this->language->get('entry_customer');
-		$this->data['entry_order_id'] = $this->language->get('entry_order_id');
-		$this->data['entry_date_ordered'] = $this->language->get('entry_date_ordered');
-		$this->data['entry_firstname'] = $this->language->get('entry_firstname');
-		$this->data['entry_lastname'] = $this->language->get('entry_lastname');
-		$this->data['entry_email'] = $this->language->get('entry_email');
-		$this->data['entry_telephone'] = $this->language->get('entry_telephone');
-		$this->data['entry_return_status'] = $this->language->get('entry_return_status');
-		$this->data['entry_comment'] = $this->language->get('entry_comment');	
-		$this->data['entry_product'] = $this->language->get('entry_product');
-		$this->data['entry_model'] = $this->language->get('entry_model');
-		$this->data['entry_quantity'] = $this->language->get('entry_quantity');
- 		$this->data['entry_reason'] = $this->language->get('entry_reason');
-		$this->data['entry_opened'] = $this->language->get('entry_opened');
-		$this->data['entry_action'] = $this->language->get('entry_action');
-			
-		$this->data['button_save'] = $this->language->get('button_save');
-    	$this->data['button_cancel'] = $this->language->get('button_cancel');
-
-		$this->data['tab_return'] = $this->language->get('tab_return');
-		$this->data['tab_product'] = $this->language->get('tab_product');
+  	protected function getForm() {		
 			
 		$this->data['token'] = $this->session->data['token'];
 
@@ -869,39 +824,7 @@ class ControllerSaleReturn extends Controller {
 		if ($return_info) {
 			$this->data += $this->language->load('sale/return');
 		
-			$this->document->setTitle($this->language->get('heading_title'));
-			
-			$this->data['heading_title'] = $this->language->get('heading_title');
-			
-			$this->data['text_wait'] = $this->language->get('text_wait');	
-			$this->data['text_return_id'] = $this->language->get('text_return_id');
-			$this->data['text_order_id'] = $this->language->get('text_order_id');
-			$this->data['text_date_ordered'] = $this->language->get('text_date_ordered');
-			$this->data['text_customer'] = $this->language->get('text_customer');
-			$this->data['text_email'] = $this->language->get('text_email');
-			$this->data['text_telephone'] = $this->language->get('text_telephone');
-			$this->data['text_return_status'] = $this->language->get('text_return_status');
-			$this->data['text_date_added'] = $this->language->get('text_date_added');	
-			$this->data['text_date_modified'] = $this->language->get('text_date_modified');				
-			$this->data['text_product'] = $this->language->get('text_product');
-			$this->data['text_model'] = $this->language->get('text_model');
-			$this->data['text_quantity'] = $this->language->get('text_quantity');
-			$this->data['text_return_reason'] = $this->language->get('text_return_reason');
-			$this->data['text_opened'] = $this->language->get('text_opened');		
-			$this->data['text_comment'] = $this->language->get('text_comment');			
-			$this->data['text_return_action'] = $this->language->get('text_return_action');
-
-			$this->data['entry_return_status'] = $this->language->get('entry_return_status');
-			$this->data['entry_notify'] = $this->language->get('entry_notify');
-			$this->data['entry_comment'] = $this->language->get('entry_comment');
-			
-			$this->data['button_save'] = $this->language->get('button_save');
-			$this->data['button_cancel'] = $this->language->get('button_cancel');
-			$this->data['button_add_history'] = $this->language->get('button_add_history');				
-			
-			$this->data['tab_return'] = $this->language->get('tab_return');
-			$this->data['tab_product'] = $this->language->get('tab_product');
-			$this->data['tab_history'] = $this->language->get('tab_history');
+			$this->document->setTitle($this->language->get('heading_title'));															
 
 			
 			$url = '';
@@ -1043,10 +966,6 @@ class ControllerSaleReturn extends Controller {
 
 			$this->document->setTitle($this->language->get('heading_title'));
 
-			$this->data['heading_title'] = $this->language->get('heading_title');
-
-			$this->data['text_not_found'] = $this->language->get('text_not_found');
-
 			$this->data['breadcrumbs'] = array();
 
 			$this->data['breadcrumbs'][] = array(
@@ -1166,13 +1085,6 @@ class ControllerSaleReturn extends Controller {
 				$this->data['success'] = $this->language->get('text_success');
 			}
 		}
-				
-		$this->data['text_no_results'] = $this->language->get('text_no_results');
-		
-		$this->data['column_date_added'] = $this->language->get('column_date_added');
-		$this->data['column_status'] = $this->language->get('column_status');
-		$this->data['column_notify'] = $this->language->get('column_notify');
-		$this->data['column_comment'] = $this->language->get('column_comment');
 
 		if (isset($this->request->get['page'])) {
 			$page = $this->request->get['page'];

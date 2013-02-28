@@ -135,15 +135,6 @@ class ControllerAccountAddress extends Controller {
         	'text' => $this->language->get('heading_title'),
 			'href' => $this->url->link('account/address', '', 'SSL')
       	);
-			
-    	$this->data['heading_title'] = $this->language->get('heading_title');
-
-    	$this->data['text_address_book'] = $this->language->get('text_address_book');
-   
-    	$this->data['button_new_address'] = $this->language->get('button_new_address');
-    	$this->data['button_edit'] = $this->language->get('button_edit');
-    	$this->data['button_delete'] = $this->language->get('button_delete');
-		$this->data['button_back'] = $this->language->get('button_back');
 
 		if (isset($this->error['warning'])) {
     		$this->data['error_warning'] = $this->error['warning'];
@@ -254,28 +245,6 @@ class ControllerAccountAddress extends Controller {
 				'href' => $this->url->link('account/address/update', 'address_id=' . $this->request->get['address_id'], 'SSL')
       		);
 		}
-						
-    	$this->data['heading_title'] = $this->language->get('heading_title');
-    	
-		$this->data['text_edit_address'] = $this->language->get('text_edit_address');
-    	$this->data['text_yes'] = $this->language->get('text_yes');
-    	$this->data['text_no'] = $this->language->get('text_no');
-		$this->data['text_select'] = $this->language->get('text_select');
-		$this->data['text_none'] = $this->language->get('text_none');
-		
-    	$this->data['entry_firstname'] = $this->language->get('entry_firstname');
-    	$this->data['entry_lastname'] = $this->language->get('entry_lastname');
-    	$this->data['entry_company'] = $this->language->get('entry_company');
-    	$this->data['entry_address_1'] = $this->language->get('entry_address_1');
-    	$this->data['entry_address_2'] = $this->language->get('entry_address_2');
-    	$this->data['entry_postcode'] = $this->language->get('entry_postcode');
-    	$this->data['entry_city'] = $this->language->get('entry_city');
-    	$this->data['entry_country'] = $this->language->get('entry_country');
-    	$this->data['entry_zone'] = $this->language->get('entry_zone');
-    	$this->data['entry_default'] = $this->language->get('entry_default');
-
-    	$this->data['button_continue'] = $this->language->get('button_continue');
-    	$this->data['button_back'] = $this->language->get('button_back');
 
 		if (isset($this->error['firstname'])) {
     		$this->data['error_firstname'] = $this->error['firstname'];

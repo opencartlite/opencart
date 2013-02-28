@@ -189,21 +189,7 @@ class ControllerCatalogReview extends Controller {
 				'selected'   => isset($this->request->post['selected']) && in_array($result['review_id'], $this->request->post['selected']),
 				'action'     => $action
 			);
-		}	
-	
-		$this->data['heading_title'] = $this->language->get('heading_title');
-
-		$this->data['text_no_results'] = $this->language->get('text_no_results');
-
-		$this->data['column_product'] = $this->language->get('column_product');
-		$this->data['column_author'] = $this->language->get('column_author');
-		$this->data['column_rating'] = $this->language->get('column_rating');
-		$this->data['column_status'] = $this->language->get('column_status');
-		$this->data['column_date_added'] = $this->language->get('column_date_added');
-		$this->data['column_action'] = $this->language->get('column_action');		
-		
-		$this->data['button_insert'] = $this->language->get('button_insert');
-		$this->data['button_delete'] = $this->language->get('button_delete');
+		}			
  
  		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
@@ -269,23 +255,6 @@ class ControllerCatalogReview extends Controller {
 	}
 
 	protected function getForm() {
-		$this->data['heading_title'] = $this->language->get('heading_title');
-
-		$this->data['text_enabled'] = $this->language->get('text_enabled');
-		$this->data['text_disabled'] = $this->language->get('text_disabled');
-		$this->data['text_none'] = $this->language->get('text_none');
-		$this->data['text_select'] = $this->language->get('text_select');
-
-		$this->data['entry_product'] = $this->language->get('entry_product');
-		$this->data['entry_author'] = $this->language->get('entry_author');
-		$this->data['entry_rating'] = $this->language->get('entry_rating');
-		$this->data['entry_status'] = $this->language->get('entry_status');
-		$this->data['entry_text'] = $this->language->get('entry_text');
-		$this->data['entry_good'] = $this->language->get('entry_good');
-		$this->data['entry_bad'] = $this->language->get('entry_bad');
-
-		$this->data['button_save'] = $this->language->get('button_save');
-		$this->data['button_cancel'] = $this->language->get('button_cancel');
 
  		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];

@@ -3,23 +3,6 @@ class ControllerModuleAccount extends Controller {
 	protected function index() {
 		$this->data += $this->language->load('module/account');
 		
-    	$this->data['heading_title'] = $this->language->get('heading_title');
-    	
-		$this->data['text_register'] = $this->language->get('text_register');
-    	$this->data['text_login'] = $this->language->get('text_login');
-		$this->data['text_logout'] = $this->language->get('text_logout');
-		$this->data['text_forgotten'] = $this->language->get('text_forgotten');
-		$this->data['text_account'] = $this->language->get('text_account');
-		$this->data['text_edit'] = $this->language->get('text_edit');
-		$this->data['text_password'] = $this->language->get('text_password');
-		$this->data['text_address'] = $this->language->get('text_address');
-		$this->data['text_wishlist'] = $this->language->get('text_wishlist');
-		$this->data['text_order'] = $this->language->get('text_order');
-		$this->data['text_download'] = $this->language->get('text_download');
-		$this->data['text_return'] = $this->language->get('text_return');
-		$this->data['text_transaction'] = $this->language->get('text_transaction');
-		$this->data['text_newsletter'] = $this->language->get('text_newsletter');
-		
 		$this->data['logged'] = $this->customer->isLogged();
 		$this->data['register'] = $this->url->link('account/register', '', 'SSL');
     	$this->data['login'] = $this->url->link('account/login', '', 'SSL');

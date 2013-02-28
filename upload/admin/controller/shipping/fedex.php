@@ -15,54 +15,7 @@ class ControllerShippingFedex extends Controller {
 			$this->session->data['success'] = $this->language->get('text_success');
 						
 			$this->redirect($this->url->link('extension/shipping', 'token=' . $this->session->data['token'], 'SSL'));
-		}
-				
-		$this->data['heading_title'] = $this->language->get('heading_title');
-
-		$this->data['text_enabled'] = $this->language->get('text_enabled');
-		$this->data['text_disabled'] = $this->language->get('text_disabled');
-		$this->data['text_yes'] = $this->language->get('text_yes');
-		$this->data['text_no'] = $this->language->get('text_no');		
-		$this->data['text_select_all'] = $this->language->get('text_select_all');
-		$this->data['text_unselect_all'] = $this->language->get('text_unselect_all');
-		$this->data['text_all_zones'] = $this->language->get('text_all_zones');
-		$this->data['text_none'] = $this->language->get('text_none');
-		$this->data['text_regular_pickup'] = $this->language->get('text_regular_pickup');
-		$this->data['text_request_courier'] = $this->language->get('text_request_courier');
-		$this->data['text_drop_box'] = $this->language->get('text_drop_box');
-		$this->data['text_business_service_center'] = $this->language->get('text_business_service_center');
-		$this->data['text_station'] = $this->language->get('text_station');
-		
-		$this->data['text_fedex_envelope'] = $this->language->get('text_fedex_envelope');
-		$this->data['text_fedex_pak'] = $this->language->get('text_fedex_pak');
-		$this->data['text_fedex_box'] = $this->language->get('text_fedex_box');
-		$this->data['text_fedex_tube'] = $this->language->get('text_fedex_tube');
-		$this->data['text_fedex_10kg_box'] = $this->language->get('text_fedex_10kg_box');
-		$this->data['text_fedex_25kg_box'] = $this->language->get('text_fedex_25kg_box');
-		$this->data['text_your_packaging'] = $this->language->get('text_your_packaging');
-		$this->data['text_list_rate'] = $this->language->get('text_list_rate');
-		$this->data['text_account_rate'] = $this->language->get('text_account_rate');
-						
-		$this->data['entry_key'] = $this->language->get('entry_key');
-		$this->data['entry_password'] = $this->language->get('entry_password');
-		$this->data['entry_account'] = $this->language->get('entry_account');
-		$this->data['entry_meter'] = $this->language->get('entry_meter');
-		$this->data['entry_postcode'] = $this->language->get('entry_postcode');
-		$this->data['entry_test'] = $this->language->get('entry_test');
-		$this->data['entry_service'] = $this->language->get('entry_service');
-		$this->data['entry_dropoff_type'] = $this->language->get('entry_dropoff_type');
-		$this->data['entry_packaging_type'] = $this->language->get('entry_packaging_type');
-		$this->data['entry_rate_type'] = $this->language->get('entry_rate_type');
-		$this->data['entry_display_time'] = $this->language->get('entry_display_time');
-		$this->data['entry_display_weight'] = $this->language->get('entry_display_weight');		
-		$this->data['entry_weight_class'] = $this->language->get('entry_weight_class');
-		$this->data['entry_tax_class'] = $this->language->get('entry_tax_class');
-		$this->data['entry_geo_zone'] = $this->language->get('entry_geo_zone');
-		$this->data['entry_status'] = $this->language->get('entry_status');
-		$this->data['entry_sort_order'] = $this->language->get('entry_sort_order');
-		
-		$this->data['button_save'] = $this->language->get('button_save');
-		$this->data['button_cancel'] = $this->language->get('button_cancel');
+		}				
 
  		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];

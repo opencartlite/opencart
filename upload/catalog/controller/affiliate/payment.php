@@ -40,26 +40,6 @@ class ControllerAffiliatePayment extends Controller {
 			'href' => $this->url->link('affiliate/payment', '', 'SSL')
       	);
 		
-		$this->data['heading_title'] = $this->language->get('heading_title');
-		
-		$this->data['text_your_payment'] = $this->language->get('text_your_payment');
-		$this->data['text_cheque'] = $this->language->get('text_cheque');
-		$this->data['text_paypal'] = $this->language->get('text_paypal');
-		$this->data['text_bank'] = $this->language->get('text_bank');
-		
-		$this->data['entry_tax'] = $this->language->get('entry_tax');
-		$this->data['entry_payment'] = $this->language->get('entry_payment');
-		$this->data['entry_cheque'] = $this->language->get('entry_cheque');
-		$this->data['entry_paypal'] = $this->language->get('entry_paypal');
-		$this->data['entry_bank_name'] = $this->language->get('entry_bank_name');
-		$this->data['entry_bank_branch_number'] = $this->language->get('entry_bank_branch_number');
-		$this->data['entry_bank_swift_code'] = $this->language->get('entry_bank_swift_code');
-		$this->data['entry_bank_account_name'] = $this->language->get('entry_bank_account_name');
-		$this->data['entry_bank_account_number'] = $this->language->get('entry_bank_account_number');
-
-		$this->data['button_continue'] = $this->language->get('button_continue');
-		$this->data['button_back'] = $this->language->get('button_back');
-		
 		$this->data['action'] = $this->url->link('affiliate/payment', '', 'SSL');
 
 		if ($this->request->server['REQUEST_METHOD'] != 'POST') {

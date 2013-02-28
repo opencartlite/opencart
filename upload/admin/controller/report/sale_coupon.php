@@ -80,21 +80,6 @@ class ControllerReportSaleCoupon extends Controller {
 				'action' => $action
 			);
 		}
-				 
- 		$this->data['heading_title'] = $this->language->get('heading_title');
-		 
-		$this->data['text_no_results'] = $this->language->get('text_no_results');
-		
-		$this->data['column_name'] = $this->language->get('column_name');
-		$this->data['column_code'] = $this->language->get('column_code');
-		$this->data['column_orders'] = $this->language->get('column_orders');
-		$this->data['column_total'] = $this->language->get('column_total');
-		$this->data['column_action'] = $this->language->get('column_action');
-		
-		$this->data['entry_date_start'] = $this->language->get('entry_date_start');
-		$this->data['entry_date_end'] = $this->language->get('entry_date_end');
-		
-		$this->data['button_filter'] = $this->language->get('button_filter');
 		
 		$this->data['token'] = $this->session->data['token'];
 		

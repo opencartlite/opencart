@@ -189,19 +189,6 @@ class ControllerLocalisationCurrency extends Controller {
 				'action'        => $action
 			);
 		}	
-	
-		$this->data['heading_title'] = $this->language->get('heading_title');
-
-		$this->data['text_no_results'] = $this->language->get('text_no_results');
-
-		$this->data['column_title'] = $this->language->get('column_title');
-    	$this->data['column_code'] = $this->language->get('column_code');
-		$this->data['column_value'] = $this->language->get('column_value');
-		$this->data['column_date_modified'] = $this->language->get('column_date_modified');
-		$this->data['column_action'] = $this->language->get('column_action');
-
-		$this->data['button_insert'] = $this->language->get('button_insert');
-		$this->data['button_delete'] = $this->language->get('button_delete');
 
  		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
@@ -266,23 +253,6 @@ class ControllerLocalisationCurrency extends Controller {
 	}
 
 	protected function getForm() {
-		$this->data['heading_title'] = $this->language->get('heading_title');
-    	
-		$this->data['text_enabled'] = $this->language->get('text_enabled');
-    	$this->data['text_disabled'] = $this->language->get('text_disabled');
-		
-		$this->data['entry_title'] = $this->language->get('entry_title');
-		$this->data['entry_code'] = $this->language->get('entry_code');
-		$this->data['entry_value'] = $this->language->get('entry_value');
-		$this->data['entry_symbol_left'] = $this->language->get('entry_symbol_left');
-		$this->data['entry_symbol_right'] = $this->language->get('entry_symbol_right');
-		$this->data['entry_decimal_place'] = $this->language->get('entry_decimal_place');
-		$this->data['entry_status'] = $this->language->get('entry_status');
-
-		$this->data['button_save'] = $this->language->get('button_save');
-		$this->data['button_cancel'] = $this->language->get('button_cancel');
-
-		$this->data['tab_general'] = $this->language->get('tab_general');
 
  		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];

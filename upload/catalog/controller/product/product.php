@@ -224,48 +224,12 @@ class ControllerProductProduct extends Controller {
 			$this->document->addScript('catalog/view/javascript/jquery/colorbox/jquery.colorbox-min.js');
 			$this->document->addStyle('catalog/view/javascript/jquery/colorbox/colorbox.css');
 			
-			$this->data['heading_title'] = $product_info['name'];
-			
-			$this->data['text_select'] = $this->language->get('text_select');
-			$this->data['text_manufacturer'] = $this->language->get('text_manufacturer');
-			$this->data['text_model'] = $this->language->get('text_model');
-			$this->data['text_reward'] = $this->language->get('text_reward');
-			$this->data['text_points'] = $this->language->get('text_points');	
-			$this->data['text_discount'] = $this->language->get('text_discount');
-			$this->data['text_stock'] = $this->language->get('text_stock');
-			$this->data['text_price'] = $this->language->get('text_price');
-			$this->data['text_tax'] = $this->language->get('text_tax');
-			$this->data['text_discount'] = $this->language->get('text_discount');
-			$this->data['text_option'] = $this->language->get('text_option');
-			$this->data['text_qty'] = $this->language->get('text_qty');
+			$this->data['heading_title'] = $product_info['name'];	
 			$this->data['text_minimum'] = sprintf($this->language->get('text_minimum'), $product_info['minimum']);
-			$this->data['text_or'] = $this->language->get('text_or');
-			$this->data['text_write'] = $this->language->get('text_write');
-			$this->data['text_login_write'] = sprintf($this->language->get('text_login_write'), $this->url->link('account/login', '', 'SSL'), $this->url->link('account/register', '', 'SSL'));
-			$this->data['text_note'] = $this->language->get('text_note');
-			$this->data['text_share'] = $this->language->get('text_share');
-			$this->data['text_wait'] = $this->language->get('text_wait');
-			$this->data['text_tags'] = $this->language->get('text_tags');
-			
-			$this->data['entry_name'] = $this->language->get('entry_name');
-			$this->data['entry_review'] = $this->language->get('entry_review');
-			$this->data['entry_rating'] = $this->language->get('entry_rating');
-			$this->data['entry_good'] = $this->language->get('entry_good');
-			$this->data['entry_bad'] = $this->language->get('entry_bad');
-			$this->data['entry_captcha'] = $this->language->get('entry_captcha');
-			
-			$this->data['button_cart'] = $this->language->get('button_cart');
-			$this->data['button_wishlist'] = $this->language->get('button_wishlist');
-			$this->data['button_compare'] = $this->language->get('button_compare');			
-			$this->data['button_upload'] = $this->language->get('button_upload');
-			$this->data['button_continue'] = $this->language->get('button_continue');
+			$this->data['text_login_write'] = sprintf($this->language->get('text_login_write'), $this->url->link('account/login', '', 'SSL'), $this->url->link('account/register', '', 'SSL'));			
 			
 			$this->load->model('catalog/review');
-
-			$this->data['tab_description'] = $this->language->get('tab_description');
-			$this->data['tab_attribute'] = $this->language->get('tab_attribute');
 			$this->data['tab_review'] = sprintf($this->language->get('tab_review'), $product_info['reviews']);
-			$this->data['tab_related'] = $this->language->get('tab_related');
 			
 			$this->data['product_id'] = $this->request->get['product_id'];
 			$this->data['manufacturer'] = $product_info['manufacturer'];
@@ -527,10 +491,6 @@ class ControllerProductProduct extends Controller {
 
       		$this->data['heading_title'] = $this->language->get('text_error');
 
-      		$this->data['text_error'] = $this->language->get('text_error');
-
-      		$this->data['button_continue'] = $this->language->get('button_continue');
-
       		$this->data['continue'] = $this->url->link('common/home');
 
 			if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/error/not_found.tpl')) {
@@ -556,9 +516,6 @@ class ControllerProductProduct extends Controller {
     	$this->data += $this->language->load('product/product');
 		
 		$this->load->model('catalog/review');
-
-		$this->data['text_on'] = $this->language->get('text_on');
-		$this->data['text_no_reviews'] = $this->language->get('text_no_reviews');
 
 		if (isset($this->request->get['page'])) {
 			$page = $this->request->get['page'];

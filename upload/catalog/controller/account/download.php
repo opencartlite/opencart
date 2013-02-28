@@ -33,16 +33,6 @@ class ControllerAccountDownload extends Controller {
 		$download_total = $this->model_account_download->getTotalDownloads();
 		
 		if ($download_total) {
-			$this->data['heading_title'] = $this->language->get('heading_title');
-
-			$this->data['text_order'] = $this->language->get('text_order');
-			$this->data['text_date_added'] = $this->language->get('text_date_added');
-			$this->data['text_name'] = $this->language->get('text_name');
-			$this->data['text_remaining'] = $this->language->get('text_remaining');
-			$this->data['text_size'] = $this->language->get('text_size');
-			
-			$this->data['button_download'] = $this->language->get('button_download');
-			$this->data['button_continue'] = $this->language->get('button_continue');
 
 			if (isset($this->request->get['page'])) {
 				$page = $this->request->get['page'];
@@ -116,11 +106,8 @@ class ControllerAccountDownload extends Controller {
 							
 			$this->response->setOutput($this->render());				
 		} else {
-			$this->data['heading_title'] = $this->language->get('heading_title');
 
 			$this->data['text_error'] = $this->language->get('text_empty');
-
-			$this->data['button_continue'] = $this->language->get('button_continue');
 
 			$this->data['continue'] = $this->url->link('account/account', '', 'SSL');
 

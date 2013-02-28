@@ -13,8 +13,6 @@ class ControllerModuleLanguage extends Controller {
 		
 		$this->data += $this->language->load('module/language');
 		
-		$this->data['text_language'] = $this->language->get('text_language');
-		
 		if (isset($this->request->server['HTTPS']) && (($this->request->server['HTTPS'] == 'on') || ($this->request->server['HTTPS'] == '1'))) {
 			$connection = 'SSL';
 		} else {

@@ -82,23 +82,6 @@ class ControllerReportAffiliateCommission extends Controller {
 				'action'     => $action
 			);
 		}
-					 
- 		$this->data['heading_title'] = $this->language->get('heading_title');
-		 
-		$this->data['text_no_results'] = $this->language->get('text_no_results');
-		
-		$this->data['column_affiliate'] = $this->language->get('column_affiliate');
-		$this->data['column_email'] = $this->language->get('column_email');
-		$this->data['column_status'] = $this->language->get('column_status');
-		$this->data['column_commission'] = $this->language->get('column_commission');
-		$this->data['column_orders'] = $this->language->get('column_orders');
-		$this->data['column_total'] = $this->language->get('column_total');
-		$this->data['column_action'] = $this->language->get('column_action');
-		
-		$this->data['entry_date_start'] = $this->language->get('entry_date_start');
-		$this->data['entry_date_end'] = $this->language->get('entry_date_end');
-
-		$this->data['button_filter'] = $this->language->get('button_filter');
 		
 		$this->data['token'] = $this->session->data['token'];
 		

@@ -15,10 +15,6 @@ class ControllerModuleFilter extends Controller {
 		
 		if ($category_info) {
 			$this->data += $this->language->load('module/filter');
-		
-			$this->data['heading_title'] = $this->language->get('heading_title');
-			
-			$this->data['button_filter'] = $this->language->get('button_filter');
 			
 			$url = '';
 			

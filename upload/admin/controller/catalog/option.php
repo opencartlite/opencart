@@ -186,18 +186,7 @@ class ControllerCatalogOption extends Controller {
 				'selected'   => isset($this->request->post['selected']) && in_array($result['option_id'], $this->request->post['selected']),
 				'action'     => $action
 			);
-		}
-
-		$this->data['heading_title'] = $this->language->get('heading_title');
-		
-		$this->data['text_no_results'] = $this->language->get('text_no_results');
-		
-		$this->data['column_name'] = $this->language->get('column_name');
-		$this->data['column_sort_order'] = $this->language->get('column_sort_order');
-		$this->data['column_action'] = $this->language->get('column_action');	
-
-		$this->data['button_insert'] = $this->language->get('button_insert');
-		$this->data['button_delete'] = $this->language->get('button_delete');
+		}	
  
  		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
@@ -259,35 +248,7 @@ class ControllerCatalogOption extends Controller {
 		$this->response->setOutput($this->render());
 	}
 
-	protected function getForm() {
-		$this->data['heading_title'] = $this->language->get('heading_title');
-		
-		$this->data['text_choose'] = $this->language->get('text_choose');
-		$this->data['text_select'] = $this->language->get('text_select');
-		$this->data['text_radio'] = $this->language->get('text_radio');
-		$this->data['text_checkbox'] = $this->language->get('text_checkbox');
-		$this->data['text_image'] = $this->language->get('text_image');
-		$this->data['text_input'] = $this->language->get('text_input');
-		$this->data['text_text'] = $this->language->get('text_text');
-		$this->data['text_textarea'] = $this->language->get('text_textarea');
-		$this->data['text_file'] = $this->language->get('text_file');
-		$this->data['text_date'] = $this->language->get('text_date');
-		$this->data['text_datetime'] = $this->language->get('text_datetime');
-		$this->data['text_time'] = $this->language->get('text_time');
-		$this->data['text_image_manager'] = $this->language->get('text_image_manager');
-		$this->data['text_browse'] = $this->language->get('text_browse');
-		$this->data['text_clear'] = $this->language->get('text_clear');	
-		
-		$this->data['entry_name'] = $this->language->get('entry_name');
-		$this->data['entry_type'] = $this->language->get('entry_type');
-		$this->data['entry_option_value'] = $this->language->get('entry_option_value');
-		$this->data['entry_image'] = $this->language->get('entry_image');
-		$this->data['entry_sort_order'] = $this->language->get('entry_sort_order');
-
-		$this->data['button_save'] = $this->language->get('button_save');
-		$this->data['button_cancel'] = $this->language->get('button_cancel');
-		$this->data['button_add_option_value'] = $this->language->get('button_add_option_value');
-		$this->data['button_remove'] = $this->language->get('button_remove');
+	protected function getForm() {	
 
  		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];

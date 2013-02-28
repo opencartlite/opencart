@@ -15,55 +15,7 @@ class ControllerShippingRoyalMail extends Controller {
 			$this->session->data['success'] = $this->language->get('text_success');
 						
 			$this->redirect($this->url->link('extension/shipping', 'token=' . $this->session->data['token'], 'SSL'));
-		}
-				
-		$this->data['heading_title'] = $this->language->get('heading_title');
-
-		$this->data['text_enabled'] = $this->language->get('text_enabled');
-		$this->data['text_disabled'] = $this->language->get('text_disabled');
-		$this->data['text_all_zones'] = $this->language->get('text_all_zones');
-		$this->data['text_none'] = $this->language->get('text_none');
-		$this->data['text_yes'] = $this->language->get('text_yes');
-		$this->data['text_no'] = $this->language->get('text_no');
-		$this->data['text_select_all'] = $this->language->get('text_select_all');
-		$this->data['text_unselect_all'] = $this->language->get('text_unselect_all');		
-
-		$this->data['entry_rate'] = $this->language->get('entry_rate');
-		$this->data['entry_insurance'] = $this->language->get('entry_insurance');
-		$this->data['entry_airmail_rate_1'] = $this->language->get('entry_airmail_rate_1');
-		$this->data['entry_airmail_rate_2'] = $this->language->get('entry_airmail_rate_2');
-		$this->data['entry_international_signed_rate_1'] = $this->language->get('entry_international_signed_rate_1');
-		$this->data['entry_international_signed_insurance_1'] = $this->language->get('entry_international_signed_insurance_1');
-		$this->data['entry_international_signed_rate_2'] = $this->language->get('entry_international_signed_rate_2');
-		$this->data['entry_international_signed_insurance_2'] = $this->language->get('entry_international_signed_insurance_2');	
-		$this->data['entry_airsure_rate_1'] = $this->language->get('entry_airsure_rate_1');
-		$this->data['entry_airsure_insurance_1'] = $this->language->get('entry_airsure_insurance_1');
-		$this->data['entry_airsure_rate_2'] = $this->language->get('entry_airsure_rate_2');
-		$this->data['entry_airsure_insurance_2'] = $this->language->get('entry_airsure_insurance_2');	
-		$this->data['entry_display_weight'] = $this->language->get('entry_display_weight');
-		$this->data['entry_display_insurance'] = $this->language->get('entry_display_insurance');
-		$this->data['entry_weight_class'] = $this->language->get('entry_weight_class');
-		$this->data['entry_tax_class'] = $this->language->get('entry_tax_class');
-		$this->data['entry_geo_zone'] = $this->language->get('entry_geo_zone');
-		$this->data['entry_status'] = $this->language->get('entry_status');
-		$this->data['entry_sort_order'] = $this->language->get('entry_sort_order');
-		
-		$this->data['button_save'] = $this->language->get('button_save');
-		$this->data['button_cancel'] = $this->language->get('button_cancel');
-
-		$this->data['tab_general'] = $this->language->get('tab_general');
-		$this->data['tab_1st_class_standard'] = $this->language->get('tab_1st_class_standard');
-		$this->data['tab_1st_class_recorded'] = $this->language->get('tab_1st_class_recorded');
-		$this->data['tab_2nd_class_standard'] = $this->language->get('tab_2nd_class_standard');
-		$this->data['tab_2nd_class_recorded'] = $this->language->get('tab_2nd_class_recorded');
-		$this->data['tab_special_delivery_500'] = $this->language->get('tab_special_delivery_500');
-		$this->data['tab_special_delivery_1000'] = $this->language->get('tab_special_delivery_1000');
-		$this->data['tab_special_delivery_2500'] = $this->language->get('tab_special_delivery_2500');		
-		$this->data['tab_standard_parcels'] = $this->language->get('tab_standard_parcels');
-		$this->data['tab_airmail'] = $this->language->get('tab_airmail');
-		$this->data['tab_international_signed'] = $this->language->get('tab_international_signed');
-		$this->data['tab_airsure'] = $this->language->get('tab_airsure');
-		$this->data['tab_surface'] = $this->language->get('tab_surface');
+		}						
 		
 		if (isset($this->error['warning']))  {
 			$this->data['error_warning'] = $this->error['warning'];

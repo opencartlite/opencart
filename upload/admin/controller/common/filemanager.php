@@ -11,24 +11,7 @@ class ControllerCommonFileManager extends Controller {
 			$this->data['base'] = HTTPS_SERVER;
 		} else {
 			$this->data['base'] = HTTP_SERVER;
-		}
-		
-		$this->data['entry_folder'] = $this->language->get('entry_folder');
-		$this->data['entry_move'] = $this->language->get('entry_move');
-		$this->data['entry_copy'] = $this->language->get('entry_copy');
-		$this->data['entry_rename'] = $this->language->get('entry_rename');
-		
-		$this->data['button_folder'] = $this->language->get('button_folder');
-		$this->data['button_delete'] = $this->language->get('button_delete');
-		$this->data['button_move'] = $this->language->get('button_move');
-		$this->data['button_copy'] = $this->language->get('button_copy');
-		$this->data['button_rename'] = $this->language->get('button_rename');
-		$this->data['button_upload'] = $this->language->get('button_upload');
-		$this->data['button_refresh'] = $this->language->get('button_refresh');
-		$this->data['button_submit'] = $this->language->get('button_submit'); 
-		
-		$this->data['error_select'] = $this->language->get('error_select');
-		$this->data['error_directory'] = $this->language->get('error_directory');
+		} 
 		
 		$this->data['token'] = $this->session->data['token'];
 		

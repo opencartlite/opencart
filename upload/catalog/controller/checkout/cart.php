@@ -105,43 +105,8 @@ class ControllerCheckoutCart extends Controller {
 					$points_total += $product['points'];
 				}
 			}		
-				
-      		$this->data['heading_title'] = $this->language->get('heading_title');
-			
-			$this->data['text_next'] = $this->language->get('text_next');
-			$this->data['text_next_choice'] = $this->language->get('text_next_choice');
-     		$this->data['text_use_coupon'] = $this->language->get('text_use_coupon');
-			$this->data['text_use_voucher'] = $this->language->get('text_use_voucher');
 			$this->data['text_use_reward'] = sprintf($this->language->get('text_use_reward'), $points);
-			$this->data['text_shipping_estimate'] = $this->language->get('text_shipping_estimate');
-			$this->data['text_shipping_detail'] = $this->language->get('text_shipping_detail');
-			$this->data['text_shipping_method'] = $this->language->get('text_shipping_method');
-			$this->data['text_select'] = $this->language->get('text_select');
-			$this->data['text_none'] = $this->language->get('text_none');
-						
-			$this->data['column_image'] = $this->language->get('column_image');
-      		$this->data['column_name'] = $this->language->get('column_name');
-      		$this->data['column_model'] = $this->language->get('column_model');
-      		$this->data['column_quantity'] = $this->language->get('column_quantity');
-			$this->data['column_price'] = $this->language->get('column_price');
-      		$this->data['column_total'] = $this->language->get('column_total');
-			
-			$this->data['entry_coupon'] = $this->language->get('entry_coupon');
-			$this->data['entry_voucher'] = $this->language->get('entry_voucher');
-			$this->data['entry_reward'] = sprintf($this->language->get('entry_reward'), $points_total);
-			$this->data['entry_country'] = $this->language->get('entry_country');
-			$this->data['entry_zone'] = $this->language->get('entry_zone');
-			$this->data['entry_postcode'] = $this->language->get('entry_postcode');
-						
-			$this->data['button_update'] = $this->language->get('button_update');
-			$this->data['button_remove'] = $this->language->get('button_remove');
-			$this->data['button_coupon'] = $this->language->get('button_coupon');
-			$this->data['button_voucher'] = $this->language->get('button_voucher');
-			$this->data['button_reward'] = $this->language->get('button_reward');
-			$this->data['button_quote'] = $this->language->get('button_quote');
-			$this->data['button_shipping'] = $this->language->get('button_shipping');			
-      		$this->data['button_shopping'] = $this->language->get('button_shopping');
-      		$this->data['button_checkout'] = $this->language->get('button_checkout');
+			$this->data['entry_reward'] = sprintf($this->language->get('entry_reward'), $points_total);			
 			
 			if (isset($this->error['warning'])) {
 				$this->data['error_warning'] = $this->error['warning'];
@@ -392,11 +357,8 @@ class ControllerCheckoutCart extends Controller {
 						
 			$this->response->setOutput($this->render());					
     	} else {
-      		$this->data['heading_title'] = $this->language->get('heading_title');
 
       		$this->data['text_error'] = $this->language->get('text_empty');
-
-      		$this->data['button_continue'] = $this->language->get('button_continue');
 			
       		$this->data['continue'] = $this->url->link('common/home');
 

@@ -37,20 +37,6 @@ class ControllerInformationContact extends Controller {
         	'text' => $this->language->get('heading_title'),
 			'href' => $this->url->link('information/contact')
       	);	
-			
-    	$this->data['heading_title'] = $this->language->get('heading_title');
-
-    	$this->data['text_location'] = $this->language->get('text_location');
-		$this->data['text_contact'] = $this->language->get('text_contact');
-		$this->data['text_address'] = $this->language->get('text_address');
-    	$this->data['text_telephone'] = $this->language->get('text_telephone');
-    	$this->data['text_fax'] = $this->language->get('text_fax');
-        $this->data['text_open']= $this->language->get('text_open');
-
-    	$this->data['entry_name'] = $this->language->get('entry_name');
-    	$this->data['entry_email'] = $this->language->get('entry_email');
-    	$this->data['entry_enquiry'] = $this->language->get('entry_enquiry');
-		$this->data['entry_captcha'] = $this->language->get('entry_captcha');
 
 		if (isset($this->error['name'])) {
     		$this->data['error_name'] = $this->error['name'];
@@ -75,8 +61,6 @@ class ControllerInformationContact extends Controller {
 		} else {
 			$this->data['error_captcha'] = '';
 		}	
-
-    	$this->data['button_continue'] = $this->language->get('button_continue');
     
 		$this->data['action'] = $this->url->link('information/contact');
 		
@@ -163,12 +147,6 @@ class ControllerInformationContact extends Controller {
         	'text' => $this->language->get('heading_title'),
 			'href' => $this->url->link('information/contact')
       	);	
-		
-    	$this->data['heading_title'] = $this->language->get('heading_title');
-
-    	$this->data['text_message'] = $this->language->get('text_message');
-
-    	$this->data['button_continue'] = $this->language->get('button_continue');
 
     	$this->data['continue'] = $this->url->link('common/home');
 

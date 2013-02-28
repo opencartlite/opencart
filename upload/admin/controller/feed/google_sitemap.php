@@ -17,19 +17,6 @@ class ControllerFeedGoogleSitemap extends Controller {
 			$this->redirect($this->url->link('extension/feed', 'token=' . $this->session->data['token'], 'SSL'));
 		}
 
-		$this->data['heading_title'] = $this->language->get('heading_title');
-		
-		$this->data['text_enabled'] = $this->language->get('text_enabled');
-		$this->data['text_disabled'] = $this->language->get('text_disabled');
-		
-		$this->data['entry_status'] = $this->language->get('entry_status');
-		$this->data['entry_data_feed'] = $this->language->get('entry_data_feed');
-		
-		$this->data['button_save'] = $this->language->get('button_save');
-		$this->data['button_cancel'] = $this->language->get('button_cancel');
-
-		$this->data['tab_general'] = $this->language->get('tab_general');
-
  		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
 		} else {

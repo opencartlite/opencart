@@ -16,30 +16,6 @@ class ControllerShippingParcelforce48 extends Controller {
 						
 			$this->redirect($this->url->link('extension/shipping', 'token=' . $this->session->data['token'], 'SSL'));
 		}
-				
-		$this->data['heading_title'] = $this->language->get('heading_title');
-
-		$this->data['text_enabled'] = $this->language->get('text_enabled');
-		$this->data['text_disabled'] = $this->language->get('text_disabled');
-		$this->data['text_all_zones'] = $this->language->get('text_all_zones');
-		$this->data['text_none'] = $this->language->get('text_none');
-		$this->data['text_yes'] = $this->language->get('text_yes');
-		$this->data['text_no'] = $this->language->get('text_no');
-		
-		$this->data['entry_rate'] = $this->language->get('entry_rate');
-		$this->data['entry_insurance'] = $this->language->get('entry_insurance');
-		$this->data['entry_display_weight'] = $this->language->get('entry_display_weight');
-		$this->data['entry_display_insurance'] = $this->language->get('entry_display_insurance');
-		$this->data['entry_display_time'] = $this->language->get('entry_display_time');
-		$this->data['entry_tax_class'] = $this->language->get('entry_tax_class');
-		$this->data['entry_geo_zone'] = $this->language->get('entry_geo_zone');
-		$this->data['entry_status'] = $this->language->get('entry_status');
-		$this->data['entry_sort_order'] = $this->language->get('entry_sort_order');
-		
-		$this->data['button_save'] = $this->language->get('button_save');
-		$this->data['button_cancel'] = $this->language->get('button_cancel');
-
-		$this->data['tab_general'] = $this->language->get('tab_general');
 
  		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];

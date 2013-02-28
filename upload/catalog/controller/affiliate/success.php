@@ -22,11 +22,7 @@ class ControllerAffiliateSuccess extends Controller {
 			'href' => $this->url->link('affiliate/success')
       	);
 
-    	$this->data['heading_title'] = $this->language->get('heading_title');
-
 		$this->data['text_message'] = sprintf($this->language->get('text_approval'), $this->config->get('config_name'), $this->url->link('information/contact'));
-		
-    	$this->data['button_continue'] = $this->language->get('button_continue');
 		
 		$this->data['continue'] = $this->url->link('affiliate/account', '', 'SSL');
 

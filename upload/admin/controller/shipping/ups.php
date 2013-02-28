@@ -15,68 +15,7 @@ class ControllerShippingUPS extends Controller {
 			$this->session->data['success'] = $this->language->get('text_success');
 						
 			$this->redirect($this->url->link('extension/shipping', 'token=' . $this->session->data['token'], 'SSL'));
-		}
-		
-		$this->data['heading_title'] = $this->language->get('heading_title');
-		
-		$this->data['text_enabled'] = $this->language->get('text_enabled');
-		$this->data['text_disabled'] = $this->language->get('text_disabled');
-		$this->data['text_yes'] = $this->language->get('text_yes');
-		$this->data['text_no'] = $this->language->get('text_no');		
-		$this->data['text_select_all'] = $this->language->get('text_select_all');
-		$this->data['text_unselect_all'] = $this->language->get('text_unselect_all');		
-		$this->data['text_all_zones'] = $this->language->get('text_all_zones');
-		$this->data['text_none'] = $this->language->get('text_none');
-		$this->data['text_next_day_air'] = $this->language->get('text_next_day_air');
-		$this->data['text_2nd_day_air'] = $this->language->get('text_2nd_day_air');
-		$this->data['text_ground'] = $this->language->get('text_ground');
-		$this->data['text_worldwide_express'] = $this->language->get('text_worldwide_express');
-		$this->data['text_worldwide_express_plus'] = $this->language->get('text_worldwide_express_plus');
-		$this->data['text_worldwide_expedited'] = $this->language->get('text_worldwide_expedited');
-		$this->data['text_express'] = $this->language->get('text_express');
-		$this->data['text_standard'] = $this->language->get('text_standard');
-		$this->data['text_3_day_select'] = $this->language->get('text_3_day_select');
-		$this->data['text_next_day_air_saver'] = $this->language->get('text_next_day_air_saver');
-		$this->data['text_next_day_air_early_am'] = $this->language->get('text_next_day_air_early_am');
-		$this->data['text_expedited'] = $this->language->get('text_expedited');
-		$this->data['text_2nd_day_air_am'] = $this->language->get('text_2nd_day_air_am');
-		$this->data['text_saver'] = $this->language->get('text_saver');
-		$this->data['text_express_early_am'] = $this->language->get('text_express_early_am');
-		$this->data['text_express_plus'] = $this->language->get('text_express_plus');
-		$this->data['text_today_standard'] = $this->language->get('text_today_standard');
-		$this->data['text_today_dedicated_courier'] = $this->language->get('text_today_dedicated_courier');
-		$this->data['text_today_intercity'] = $this->language->get('text_today_intercity');
-		$this->data['text_today_express'] = $this->language->get('text_today_express');
-		$this->data['text_today_express_saver'] = $this->language->get('text_today_express_saver');
-		 
-		$this->data['entry_key'] = $this->language->get('entry_key');
-		$this->data['entry_username'] = $this->language->get('entry_username');
-		$this->data['entry_password'] = $this->language->get('entry_password');
-		$this->data['entry_pickup'] = $this->language->get('entry_pickup');
-		$this->data['entry_packaging'] = $this->language->get('entry_packaging');
-		$this->data['entry_classification'] = $this->language->get('entry_classification');
-		$this->data['entry_origin'] = $this->language->get('entry_origin');
-		$this->data['entry_city'] = $this->language->get('entry_city');
-		$this->data['entry_state'] = $this->language->get('entry_state');
-		$this->data['entry_country'] = $this->language->get('entry_country');
-		$this->data['entry_postcode'] = $this->language->get('entry_postcode');
-		$this->data['entry_test'] = $this->language->get('entry_test');
-		$this->data['entry_quote_type'] = $this->language->get('entry_quote_type');
-		$this->data['entry_service'] = $this->language->get('entry_service');
-		$this->data['entry_insurance'] = $this->language->get('entry_insurance');
-		$this->data['entry_display_weight'] = $this->language->get('entry_display_weight');
-		$this->data['entry_weight_class'] = $this->language->get('entry_weight_class');
-		$this->data['entry_length_code'] = $this->language->get('entry_length_code');
-		$this->data['entry_length_class'] = $this->language->get('entry_length_class');
-		$this->data['entry_dimension'] = $this->language->get('entry_dimension');
-		$this->data['entry_tax_class'] = $this->language->get('entry_tax_class');
-		$this->data['entry_geo_zone'] = $this->language->get('entry_geo_zone');
-		$this->data['entry_status'] = $this->language->get('entry_status');
-		$this->data['entry_sort_order'] = $this->language->get('entry_sort_order');
-		$this->data['entry_debug'] = $this->language->get('entry_debug');
-		
-		$this->data['button_save'] = $this->language->get('button_save');
-		$this->data['button_cancel'] = $this->language->get('button_cancel');
+		}				
 		
 
 		if (isset($this->error['warning'])) {

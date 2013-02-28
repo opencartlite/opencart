@@ -92,24 +92,7 @@ class ControllerReportSaleReturn extends Controller {
 				'date_end'   => date($this->language->get('date_format_short'), strtotime($result['date_end'])),
 				'returns'    => $result['returns']
 			);
-		}
-				 
- 		$this->data['heading_title'] = $this->language->get('heading_title');
-		 
-		$this->data['text_no_results'] = $this->language->get('text_no_results');
-		$this->data['text_all_status'] = $this->language->get('text_all_status');
-		
-		$this->data['column_date_start'] = $this->language->get('column_date_start');
-		$this->data['column_date_end'] = $this->language->get('column_date_end');
-    	$this->data['column_returns'] = $this->language->get('column_returns');
-		$this->data['column_total'] = $this->language->get('column_total');
-		
-		$this->data['entry_date_start'] = $this->language->get('entry_date_start');
-		$this->data['entry_date_end'] = $this->language->get('entry_date_end');
-		$this->data['entry_group'] = $this->language->get('entry_group');	
-		$this->data['entry_status'] = $this->language->get('entry_status');
-				
-		$this->data['button_filter'] = $this->language->get('button_filter');
+		}	
 		
 		$this->data['token'] = $this->session->data['token'];
 		

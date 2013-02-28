@@ -187,19 +187,7 @@ class ControllerLocalisationLengthClass extends Controller {
 				'selected'        => isset($this->request->post['selected']) && in_array($result['length_class_id'], $this->request->post['selected']),
 				'action'          => $action
 			);
-		}
-
-		$this->data['heading_title'] = $this->language->get('heading_title');
-		
-		$this->data['text_no_results'] = $this->language->get('text_no_results');
-		
-		$this->data['column_title'] = $this->language->get('column_title');
-		$this->data['column_unit'] = $this->language->get('column_unit');
-		$this->data['column_value'] = $this->language->get('column_value');
-		$this->data['column_action'] = $this->language->get('column_action');	
-
-		$this->data['button_insert'] = $this->language->get('button_insert');
-		$this->data['button_delete'] = $this->language->get('button_delete');
+		}	
  
  		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
@@ -263,14 +251,6 @@ class ControllerLocalisationLengthClass extends Controller {
 	}
 
 	protected function getForm() {
-		$this->data['heading_title'] = $this->language->get('heading_title');
-
-		$this->data['entry_title'] = $this->language->get('entry_title');
-		$this->data['entry_unit'] = $this->language->get('entry_unit');
-		$this->data['entry_value'] = $this->language->get('entry_value');
-
-		$this->data['button_save'] = $this->language->get('button_save');
-		$this->data['button_cancel'] = $this->language->get('button_cancel');
 
  		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];

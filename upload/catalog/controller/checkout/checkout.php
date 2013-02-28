@@ -45,17 +45,7 @@ class ControllerCheckoutCheckout extends Controller {
       	$this->data['breadcrumbs'][] = array(
         	'text' => $this->language->get('heading_title'),
 			'href' => $this->url->link('checkout/checkout', '', 'SSL')
-      	);
-					
-	    $this->data['heading_title'] = $this->language->get('heading_title');
-		
-		$this->data['text_checkout_option'] = $this->language->get('text_checkout_option');
-		$this->data['text_checkout_account'] = $this->language->get('text_checkout_account');
-		$this->data['text_checkout_payment_address'] = $this->language->get('text_checkout_payment_address');
-		$this->data['text_checkout_shipping_address'] = $this->language->get('text_checkout_shipping_address');
-		$this->data['text_checkout_shipping_method'] = $this->language->get('text_checkout_shipping_method');
-		$this->data['text_checkout_payment_method'] = $this->language->get('text_checkout_payment_method');		
-		$this->data['text_checkout_confirm'] = $this->language->get('text_checkout_confirm');
+      	);		
 		
 		$this->data['logged'] = $this->customer->isLogged();
 		$this->data['shipping_required'] = $this->cart->hasShipping();	

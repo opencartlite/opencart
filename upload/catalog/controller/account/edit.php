@@ -29,19 +29,6 @@ class ControllerAccountEdit extends Controller {
         	'text' => $this->language->get('text_edit'),
 			'href' => $this->url->link('account/edit', '', 'SSL')
       	);
-		
-		$this->data['heading_title'] = $this->language->get('heading_title');
-
-		$this->data['text_your_details'] = $this->language->get('text_your_details');
-
-		$this->data['entry_firstname'] = $this->language->get('entry_firstname');
-		$this->data['entry_lastname'] = $this->language->get('entry_lastname');
-		$this->data['entry_email'] = $this->language->get('entry_email');
-		$this->data['entry_telephone'] = $this->language->get('entry_telephone');
-		$this->data['entry_fax'] = $this->language->get('entry_fax');
-
-		$this->data['button_continue'] = $this->language->get('button_continue');
-		$this->data['button_back'] = $this->language->get('button_back');
 
 		$customer_info = $this->model_account_customer->getCustomer($this->customer->getId());
 

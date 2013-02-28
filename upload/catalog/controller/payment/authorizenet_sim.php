@@ -1,7 +1,6 @@
 <?php
 class ControllerPaymentAuthorizeNetSim extends Controller {
 	protected function index() {
-    	$this->data['button_confirm'] = $this->language->get('button_confirm');
 		
 		$this->data['action'] = $this->config->get('authorizenet_sim_url');
 		

@@ -1,11 +1,7 @@
 <?php
 class ControllerPaymentPPStandard extends Controller {
 	protected function index() {
-		$this->data += $this->language->load('payment/pp_standard');
-		
-		$this->data['text_testmode'] = $this->language->get('text_testmode');		
-    	
-		$this->data['button_confirm'] = $this->language->get('button_confirm');
+		$this->data += $this->language->load('payment/pp_standard');		
 
 		$this->data['testmode'] = $this->config->get('pp_standard_test');
 		

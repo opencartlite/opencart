@@ -62,16 +62,6 @@ class ControllerCommonForgotten extends Controller {
         	'text' => $this->language->get('text_forgotten'),
 			'href' => $this->url->link('common/forgotten', '', 'SSL')
       	);
-		
-		$this->data['heading_title'] = $this->language->get('heading_title');
-
-		$this->data['text_your_email'] = $this->language->get('text_your_email');
-		$this->data['text_email'] = $this->language->get('text_email');
-
-		$this->data['entry_email'] = $this->language->get('entry_email');
-
-		$this->data['button_reset'] = $this->language->get('button_reset');
-		$this->data['button_cancel'] = $this->language->get('button_cancel');
 
 		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];

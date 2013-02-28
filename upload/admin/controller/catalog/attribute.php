@@ -187,19 +187,7 @@ class ControllerCatalogAttribute extends Controller {
 				'selected'        => isset($this->request->post['selected']) && in_array($result['attribute_id'], $this->request->post['selected']),
 				'action'          => $action
 			);
-		}	
-	
-		$this->data['heading_title'] = $this->language->get('heading_title');
-
-		$this->data['text_no_results'] = $this->language->get('text_no_results');
-
-		$this->data['column_name'] = $this->language->get('column_name');
-		$this->data['column_attribute_group'] = $this->language->get('column_attribute_group');
-		$this->data['column_sort_order'] = $this->language->get('column_sort_order');
-		$this->data['column_action'] = $this->language->get('column_action');		
-		
-		$this->data['button_insert'] = $this->language->get('button_insert');
-		$this->data['button_delete'] = $this->language->get('button_delete');
+		}			
  
  		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
@@ -263,14 +251,6 @@ class ControllerCatalogAttribute extends Controller {
   	}
   
   	protected function getForm() {
-     	$this->data['heading_title'] = $this->language->get('heading_title');
-
-    	$this->data['entry_name'] = $this->language->get('entry_name');
-		$this->data['entry_attribute_group'] = $this->language->get('entry_attribute_group');
-		$this->data['entry_sort_order'] = $this->language->get('entry_sort_order');
-
-    	$this->data['button_save'] = $this->language->get('button_save');
-    	$this->data['button_cancel'] = $this->language->get('button_cancel');
     
  		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];

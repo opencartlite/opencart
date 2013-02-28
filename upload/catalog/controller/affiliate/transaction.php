@@ -29,17 +29,7 @@ class ControllerAffiliateTransaction extends Controller {
       	);
 		
 		$this->load->model('affiliate/transaction');
-
-    	$this->data['heading_title'] = $this->language->get('heading_title');
-		
-		$this->data['column_date_added'] = $this->language->get('column_date_added');
-		$this->data['column_description'] = $this->language->get('column_description');
 		$this->data['column_amount'] = sprintf($this->language->get('column_amount'), $this->config->get('config_currency'));
-		
-		$this->data['text_balance'] = $this->language->get('text_balance');
-		$this->data['text_empty'] = $this->language->get('text_empty');
-		
-		$this->data['button_continue'] = $this->language->get('button_continue');
 				
 		if (isset($this->request->get['page'])) {
 			$page = $this->request->get['page'];

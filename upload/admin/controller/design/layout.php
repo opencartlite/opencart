@@ -185,17 +185,7 @@ class ControllerDesignLayout extends Controller {
 				'selected'  => isset($this->request->post['selected']) && in_array($result['layout_id'], $this->request->post['selected']),				
 				'action'    => $action
 			);
-		}
-
-		$this->data['heading_title'] = $this->language->get('heading_title');
-		
-		$this->data['text_no_results'] = $this->language->get('text_no_results');
-		
-		$this->data['column_name'] = $this->language->get('column_name');
-		$this->data['column_action'] = $this->language->get('column_action');	
-
-		$this->data['button_insert'] = $this->language->get('button_insert');
-		$this->data['button_delete'] = $this->language->get('button_delete');
+		}	
  
  		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
@@ -257,18 +247,6 @@ class ControllerDesignLayout extends Controller {
 	}
 
 	protected function getForm() {
-		$this->data['heading_title'] = $this->language->get('heading_title');
-		
-		$this->data['text_default'] = $this->language->get('text_default');
-				
-		$this->data['entry_name'] = $this->language->get('entry_name');
-		$this->data['entry_store'] = $this->language->get('entry_store');
-		$this->data['entry_route'] = $this->language->get('entry_route');
-		
-		$this->data['button_save'] = $this->language->get('button_save');
-		$this->data['button_cancel'] = $this->language->get('button_cancel');
-		$this->data['button_add_route'] = $this->language->get('button_add_route');
-		$this->data['button_remove'] = $this->language->get('button_remove');
 
  		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];

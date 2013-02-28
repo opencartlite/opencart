@@ -6,10 +6,6 @@ class ControllerToolErrorLog extends Controller {
 		$this->data += $this->language->load('tool/error_log');
 
 		$this->document->setTitle($this->language->get('heading_title'));
-		
-		$this->data['heading_title'] = $this->language->get('heading_title');
-		 
-		$this->data['button_clear'] = $this->language->get('button_clear');
 
 		if (isset($this->session->data['success'])) {
 			$this->data['success'] = $this->session->data['success'];

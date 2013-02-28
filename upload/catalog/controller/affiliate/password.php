@@ -39,16 +39,6 @@ class ControllerAffiliatePassword extends Controller {
         	'text' => $this->language->get('heading_title'),
 			'href' => $this->url->link('affiliate/password', '', 'SSL')
       	);
-			
-    	$this->data['heading_title'] = $this->language->get('heading_title');
-
-    	$this->data['text_password'] = $this->language->get('text_password');
-
-    	$this->data['entry_password'] = $this->language->get('entry_password');
-    	$this->data['entry_confirm'] = $this->language->get('entry_confirm');
-
-    	$this->data['button_continue'] = $this->language->get('button_continue');
-    	$this->data['button_back'] = $this->language->get('button_back');
     	
 		if (isset($this->error['password'])) { 
 			$this->data['error_password'] = $this->error['password'];

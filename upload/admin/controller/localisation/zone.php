@@ -187,19 +187,7 @@ class ControllerLocalisationZone extends Controller {
 				'selected' => isset($this->request->post['selected']) && in_array($result['zone_id'], $this->request->post['selected']),
 				'action'   => $action			
 			);
-		}
-	
-		$this->data['heading_title'] = $this->language->get('heading_title');
-
-		$this->data['text_no_results'] = $this->language->get('text_no_results');
-
-		$this->data['column_country'] = $this->language->get('column_country');
-		$this->data['column_name'] = $this->language->get('column_name');
-		$this->data['column_code'] = $this->language->get('column_code');
-		$this->data['column_action'] = $this->language->get('column_action');	
-
-		$this->data['button_insert'] = $this->language->get('button_insert');
-		$this->data['button_delete'] = $this->language->get('button_delete');
+		}	
  
  		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
@@ -263,18 +251,6 @@ class ControllerLocalisationZone extends Controller {
 	}
 
 	protected function getForm() {
-		$this->data['heading_title'] = $this->language->get('heading_title');
-
-		$this->data['entry_status'] = $this->language->get('entry_status');
-		$this->data['entry_name'] = $this->language->get('entry_name');
-		$this->data['entry_code'] = $this->language->get('entry_code');
-		$this->data['entry_country'] = $this->language->get('entry_country');
-
-		$this->data['text_enabled'] = $this->language->get('text_enabled');
-		$this->data['text_disabled'] = $this->language->get('text_disabled');
-		
-		$this->data['button_save'] = $this->language->get('button_save');
-		$this->data['button_cancel'] = $this->language->get('button_cancel');
 
  		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];

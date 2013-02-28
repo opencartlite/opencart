@@ -95,26 +95,7 @@ class ControllerReportSaleOrder extends Controller {
 				'tax'        => $this->currency->format($result['tax'], $this->config->get('config_currency')),
 				'total'      => $this->currency->format($result['total'], $this->config->get('config_currency'))
 			);
-		}
-
-		$this->data['heading_title'] = $this->language->get('heading_title');
-		
-		$this->data['text_no_results'] = $this->language->get('text_no_results');
-		$this->data['text_all_status'] = $this->language->get('text_all_status');
-		
-		$this->data['column_date_start'] = $this->language->get('column_date_start');
-		$this->data['column_date_end'] = $this->language->get('column_date_end');
-    	$this->data['column_orders'] = $this->language->get('column_orders');
-		$this->data['column_products'] = $this->language->get('column_products');
-		$this->data['column_tax'] = $this->language->get('column_tax');
-		$this->data['column_total'] = $this->language->get('column_total');
-		
-		$this->data['entry_date_start'] = $this->language->get('entry_date_start');
-		$this->data['entry_date_end'] = $this->language->get('entry_date_end');
-		$this->data['entry_group'] = $this->language->get('entry_group');	
-		$this->data['entry_status'] = $this->language->get('entry_status');
-
-		$this->data['button_filter'] = $this->language->get('button_filter');
+		}	
 		
 		$this->data['token'] = $this->session->data['token'];
 		

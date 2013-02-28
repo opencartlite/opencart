@@ -69,16 +69,6 @@ class ControllerExtensionTotal extends Controller {
        		'text' => $this->language->get('heading_title'),
 			'href' => $this->url->link('extension/total', 'token=' . $this->session->data['token'], 'SSL')
    		);
-		
-		$this->data['heading_title'] = $this->language->get('heading_title');
-			
-		$this->data['text_no_results'] = $this->language->get('text_no_results');
-		$this->data['text_confirm'] = $this->language->get('text_confirm');
-
-		$this->data['column_name'] = $this->language->get('column_name');
-		$this->data['column_status'] = $this->language->get('column_status');
-		$this->data['column_sort_order'] = $this->language->get('column_sort_order');
-		$this->data['column_action'] = $this->language->get('column_action');
 
  		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];

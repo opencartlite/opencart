@@ -2,8 +2,6 @@
 class ControllerPaymentGoogleCheckout extends Controller {
 	public function index() {
 		$this->data += $this->language->load('payment/google_checkout');
-		
-		$this->data['button_confirm'] = $this->language->get('button_confirm');
 				
 		if (!$this->config->get('google_checkout_test')) {
 			$this->data['action'] = 'https://checkout.google.com/api/checkout/v2/checkout/Merchant/' . $this->config->get('google_checkout_merchant_id');	

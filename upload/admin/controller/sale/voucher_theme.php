@@ -185,17 +185,7 @@ class ControllerSaleVoucherTheme extends Controller {
 				'selected'         => isset($this->request->post['selected']) && in_array($result['voucher_theme_id'], $this->request->post['selected']),
 				'action'           => $action
 			);
-		}	
-	
-		$this->data['heading_title'] = $this->language->get('heading_title');
-
-		$this->data['text_no_results'] = $this->language->get('text_no_results');
-
-		$this->data['column_name'] = $this->language->get('column_name');
-		$this->data['column_action'] = $this->language->get('column_action');		
-		
-		$this->data['button_insert'] = $this->language->get('button_insert');
-		$this->data['button_delete'] = $this->language->get('button_delete');
+		}			
  
  		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
@@ -256,18 +246,7 @@ class ControllerSaleVoucherTheme extends Controller {
 		$this->response->setOutput($this->render());
   	}
   
-  	protected function getForm() {
-     	$this->data['heading_title'] = $this->language->get('heading_title');
-		
-		$this->data['text_image_manager'] = $this->language->get('text_image_manager');
- 		$this->data['text_browse'] = $this->language->get('text_browse');
-		$this->data['text_clear'] = $this->language->get('text_clear');			
-   	
-		$this->data['entry_name'] = $this->language->get('entry_name');
-		$this->data['entry_image'] = $this->language->get('entry_image');
-
-    	$this->data['button_save'] = $this->language->get('button_save');
-    	$this->data['button_cancel'] = $this->language->get('button_cancel');
+  	protected function getForm() {			
     
  		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];

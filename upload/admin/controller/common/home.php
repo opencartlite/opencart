@@ -5,39 +5,8 @@ class ControllerCommonHome extends Controller {
 	 
 		$this->document->setTitle($this->language->get('heading_title'));
 		
-    	$this->data['heading_title'] = $this->language->get('heading_title');
-		
-		$this->data['text_overview'] = $this->language->get('text_overview');
-		$this->data['text_statistics'] = $this->language->get('text_statistics');
-		$this->data['text_latest_10_orders'] = $this->language->get('text_latest_10_orders');
-		$this->data['text_total_sale'] = $this->language->get('text_total_sale');
-		$this->data['text_total_sale_year'] = $this->language->get('text_total_sale_year');
-		$this->data['text_total_order'] = $this->language->get('text_total_order');
-		$this->data['text_total_customer'] = $this->language->get('text_total_customer');
-		$this->data['text_total_customer_approval'] = $this->language->get('text_total_customer_approval');
-		$this->data['text_total_review_approval'] = $this->language->get('text_total_review_approval');
-		$this->data['text_total_affiliate'] = $this->language->get('text_total_affiliate');
-		$this->data['text_total_affiliate_approval'] = $this->language->get('text_total_affiliate_approval');
-		$this->data['text_day'] = $this->language->get('text_day');
-		$this->data['text_week'] = $this->language->get('text_week');
-		$this->data['text_month'] = $this->language->get('text_month');
-		$this->data['text_year'] = $this->language->get('text_year');
-		$this->data['text_no_results'] = $this->language->get('text_no_results');
-
-		$this->data['column_order'] = $this->language->get('column_order');
-		$this->data['column_customer'] = $this->language->get('column_customer');
-		$this->data['column_status'] = $this->language->get('column_status');
-		$this->data['column_date_added'] = $this->language->get('column_date_added');
-		$this->data['column_total'] = $this->language->get('column_total');
-		$this->data['column_firstname'] = $this->language->get('column_firstname');
-		$this->data['column_lastname'] = $this->language->get('column_lastname');
-		$this->data['column_action'] = $this->language->get('column_action');
-		
-		$this->data['entry_range'] = $this->language->get('entry_range');
-		
 		// Check install directory exists
  		if (is_dir(dirname(DIR_APPLICATION) . '/install')) {
-			$this->data['error_install'] = $this->language->get('error_install');
 		} else {
 			$this->data['error_install'] = '';
 		}

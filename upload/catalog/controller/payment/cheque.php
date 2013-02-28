@@ -3,13 +3,6 @@ class ControllerPaymentCheque extends Controller {
 	protected function index() {
 		$this->data += $this->language->load('payment/cheque');
 		
-		$this->data['text_instruction'] = $this->language->get('text_instruction');
-    	$this->data['text_payable'] = $this->language->get('text_payable');
-		$this->data['text_address'] = $this->language->get('text_address');
-		$this->data['text_payment'] = $this->language->get('text_payment');
-		
-		$this->data['button_confirm'] = $this->language->get('button_confirm');
-		
 		$this->data['payable'] = $this->config->get('cheque_payable');
 		$this->data['address'] = nl2br($this->config->get('config_address'));
 

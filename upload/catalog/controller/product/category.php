@@ -96,27 +96,8 @@ class ControllerProductCategory extends Controller {
 			$this->document->addScript('catalog/view/javascript/jquery/jquery.cookie.js');
 			$this->document->addScript('catalog/view/javascript/jquery/jquery.total-storage.min.js');
 			
-			$this->data['heading_title'] = $category_info['name'];
-			
-			$this->data['text_refine'] = $this->language->get('text_refine');
-			$this->data['text_empty'] = $this->language->get('text_empty');			
-			$this->data['text_quantity'] = $this->language->get('text_quantity');
-			$this->data['text_manufacturer'] = $this->language->get('text_manufacturer');
-			$this->data['text_model'] = $this->language->get('text_model');
-			$this->data['text_price'] = $this->language->get('text_price');
-			$this->data['text_tax'] = $this->language->get('text_tax');
-			$this->data['text_points'] = $this->language->get('text_points');
+			$this->data['heading_title'] = $category_info['name'];			
 			$this->data['text_compare'] = sprintf($this->language->get('text_compare'), (isset($this->session->data['compare']) ? count($this->session->data['compare']) : 0));
-			$this->data['text_display'] = $this->language->get('text_display');
-			$this->data['text_list'] = $this->language->get('text_list');
-			$this->data['text_grid'] = $this->language->get('text_grid');
-			$this->data['text_sort'] = $this->language->get('text_sort');
-			$this->data['text_limit'] = $this->language->get('text_limit');
-					
-			$this->data['button_cart'] = $this->language->get('button_cart');
-			$this->data['button_wishlist'] = $this->language->get('button_wishlist');
-			$this->data['button_compare'] = $this->language->get('button_compare');
-			$this->data['button_continue'] = $this->language->get('button_continue');
 			
 			// Set the last category breadcrumb		
 			$url = '';
@@ -426,10 +407,6 @@ class ControllerProductCategory extends Controller {
 			$this->document->setTitle($this->language->get('text_error'));
 
       		$this->data['heading_title'] = $this->language->get('text_error');
-
-      		$this->data['text_error'] = $this->language->get('text_error');
-
-      		$this->data['button_continue'] = $this->language->get('button_continue');
 
       		$this->data['continue'] = $this->url->link('common/home');
 

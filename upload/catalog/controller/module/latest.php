@@ -2,10 +2,6 @@
 class ControllerModuleLatest extends Controller {
 	protected function index($setting) {
 		$this->data += $this->language->load('module/latest');
-		
-      	$this->data['heading_title'] = $this->language->get('heading_title');
-		
-		$this->data['button_cart'] = $this->language->get('button_cart');
 				
 		$this->load->model('catalog/product');
 		

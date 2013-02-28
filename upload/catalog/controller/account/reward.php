@@ -29,17 +29,6 @@ class ControllerAccountReward extends Controller {
       	);
 		
 		$this->load->model('account/reward');
-
-    	$this->data['heading_title'] = $this->language->get('heading_title');
-		
-		$this->data['column_date_added'] = $this->language->get('column_date_added');
-		$this->data['column_description'] = $this->language->get('column_description');
-		$this->data['column_points'] = $this->language->get('column_points');
-		
-		$this->data['text_total'] = $this->language->get('text_total');
-		$this->data['text_empty'] = $this->language->get('text_empty');
-		
-		$this->data['button_continue'] = $this->language->get('button_continue');
 				
 		if (isset($this->request->get['page'])) {
 			$page = $this->request->get['page'];

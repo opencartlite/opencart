@@ -58,17 +58,6 @@ class ControllerReportProductViewed extends Controller {
 				'percent' => $percent . '%'			
 			);
 		}
- 		
-		$this->data['heading_title'] = $this->language->get('heading_title');
-		 
-		$this->data['text_no_results'] = $this->language->get('text_no_results');
-		
-		$this->data['column_name'] = $this->language->get('column_name');
-		$this->data['column_model'] = $this->language->get('column_model');
-		$this->data['column_viewed'] = $this->language->get('column_viewed');
-		$this->data['column_percent'] = $this->language->get('column_percent');
-		
-		$this->data['button_reset'] = $this->language->get('button_reset');
 
 		$url = '';		
 				
