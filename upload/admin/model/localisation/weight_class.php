@@ -111,7 +111,7 @@ class ModelLocalisationWeightClass extends Model {
 	}
 			
 	public function getTotalWeightClasses() {
-      	$query = $this->db->query("SELECT COUNT(*) AS total FROM {weight_class}");
+		$query = $this->db->query("SELECT COUNT(*) AS total FROM {weight_class}");
 		
 		return $query->row['total'];
 	}

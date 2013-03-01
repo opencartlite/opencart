@@ -17,7 +17,7 @@ class ControllerModuleSlideshow extends Controller {
 			$this->redirect($this->url->link('extension/module', 'token=' . $this->session->data['token'], 'SSL'));
 		}
 		
- 		if (isset($this->error['warning'])) {
+		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
 		} else {
 			$this->data['error_warning'] = '';
@@ -29,22 +29,22 @@ class ControllerModuleSlideshow extends Controller {
 			$this->data['error_dimension'] = array();
 		}
 		
-  		$this->data['breadcrumbs'] = array();
+		$this->data['breadcrumbs'] = array();
 
-   		$this->data['breadcrumbs'][] = array(
-       		'text' => $this->language->get('text_home'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_home'),
 			'href' => $this->url->link('common/home', 'token=' . $this->session->data['token'], 'SSL')
-   		);
+		);
 
-   		$this->data['breadcrumbs'][] = array(
-       		'text' => $this->language->get('text_module'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_module'),
 			'href' => $this->url->link('extension/module', 'token=' . $this->session->data['token'], 'SSL')
-   		);
+		);
 		
-   		$this->data['breadcrumbs'][] = array(
-       		'text' => $this->language->get('heading_title'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('heading_title'),
 			'href' => $this->url->link('module/slideshow', 'token=' . $this->session->data['token'], 'SSL')
-   		);
+		);
 		
 		$this->data['action'] = $this->url->link('module/slideshow', 'token=' . $this->session->data['token'], 'SSL');
 		

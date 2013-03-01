@@ -5,28 +5,28 @@ class ControllerAffiliateTransaction extends Controller {
 			$this->session->data['redirect'] = $this->url->link('affiliate/transaction', '', 'SSL');
 			
 	  		$this->redirect($this->url->link('affiliate/login', '', 'SSL'));
-    	}
+		}
 		
 		$this->data += $this->language->load('affiliate/transaction');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 
-      	$this->data['breadcrumbs'] = array();
+		$this->data['breadcrumbs'] = array();
 
-      	$this->data['breadcrumbs'][] = array(
-        	'text' => $this->language->get('text_home'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_home'),
 			'href' => $this->url->link('common/home')
-      	);
+		);
 
-      	$this->data['breadcrumbs'][] = array(
-        	'text' => $this->language->get('text_account'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_account'),
 			'href' => $this->url->link('affiliate/account', '', 'SSL')
-      	);
+		);
 		
-      	$this->data['breadcrumbs'][] = array(
-        	'text' => $this->language->get('text_transaction'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_transaction'),
 			'href' => $this->url->link('affiliate/transaction', '', 'SSL')
-      	);
+		);
 		
 		$this->load->model('affiliate/transaction');
 		$this->data['column_amount'] = sprintf($this->language->get('column_amount'), $this->config->get('config_currency'));
@@ -49,8 +49,8 @@ class ControllerAffiliateTransaction extends Controller {
 		$transaction_total = $this->model_affiliate_transaction->getTotalTransactions($data);
 	
 		$results = $this->model_affiliate_transaction->getTransactions($data);
- 		
-    	foreach ($results as $result) {
+		
+		foreach ($results as $result) {
 			$this->data['transactions'][] = array(
 				'amount'      => $this->currency->format($result['amount'], $this->config->get('config_currency')),
 				'description' => $result['description'],

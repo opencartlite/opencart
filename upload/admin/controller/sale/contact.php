@@ -4,24 +4,24 @@ class ControllerSaleContact extends Controller {
 	 
 	public function index() {
 		$this->data += $this->language->load('sale/contact');
- 
+
 		$this->document->setTitle($this->language->get('heading_title'));
 		
 		$this->data['token'] = $this->session->data['token'];
 
-  		$this->data['breadcrumbs'] = array();
+		$this->data['breadcrumbs'] = array();
 
-   		$this->data['breadcrumbs'][] = array(
-       		'text' => $this->language->get('text_home'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_home'),
 			'href' => $this->url->link('common/home', 'token=' . $this->session->data['token'], 'SSL')
-   		);
+		);
 
-   		$this->data['breadcrumbs'][] = array(
-       		'text' => $this->language->get('heading_title'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('heading_title'),
 			'href' => $this->url->link('sale/contact', 'token=' . $this->session->data['token'], 'SSL')
-   		);
+		);
 				
-    	$this->data['cancel'] = $this->url->link('sale/contact', 'token=' . $this->session->data['token'], 'SSL');
+		$this->data['cancel'] = $this->url->link('sale/contact', 'token=' . $this->session->data['token'], 'SSL');
 		
 		$this->load->model('setting/store');
 		

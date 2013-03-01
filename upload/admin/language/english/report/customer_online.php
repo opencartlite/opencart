@@ -4,7 +4,7 @@ $_['heading_title']     = 'Customers Online Report';
 
 // Text
 $_['text_guest']        = 'Guest';
- 
+
 // Column
 $_['column_ip']         = 'IP';
 $_['column_customer']   = 'Customer';

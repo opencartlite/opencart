@@ -6,8 +6,8 @@ class ControllerPaymentPPStandard extends Controller {
 		$this->data['testmode'] = $this->config->get('pp_standard_test');
 		
 		if (!$this->config->get('pp_standard_test')) {
-    		$this->data['action'] = 'https://www.paypal.com/cgi-bin/webscr';
-  		} else {
+			$this->data['action'] = 'https://www.paypal.com/cgi-bin/webscr';
+		} else {
 			$this->data['action'] = 'https://www.sandbox.paypal.com/cgi-bin/webscr';
 		}
 

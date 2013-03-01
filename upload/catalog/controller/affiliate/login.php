@@ -4,12 +4,12 @@ class ControllerAffiliateLogin extends Controller {
 	
 	public function index() {
 		if ($this->affiliate->isLogged()) {
-      		$this->redirect($this->url->link('affiliate/account', '', 'SSL'));
-    	}
+			$this->redirect($this->url->link('affiliate/account', '', 'SSL'));
+		}
 	
-    	$this->data += $this->language->load('affiliate/login');
+		$this->data += $this->language->load('affiliate/login');
 
-    	$this->document->setTitle($this->language->get('heading_title'));
+		$this->document->setTitle($this->language->get('heading_title'));
 		
 		$this->load->model('affiliate/affiliate');
 						
@@ -22,22 +22,22 @@ class ControllerAffiliateLogin extends Controller {
 			}
 		}
 		
-      	$this->data['breadcrumbs'] = array();
+		$this->data['breadcrumbs'] = array();
 
-      	$this->data['breadcrumbs'][] = array(
-        	'text' => $this->language->get('text_home'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_home'),
 			'href' => $this->url->link('common/home')
-      	);
- 
-      	$this->data['breadcrumbs'][] = array(
-        	'text' => $this->language->get('text_account'),
+		);
+
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_account'),
 			'href' => $this->url->link('affiliate/account', '', 'SSL')
-      	);
+		);
 		
-      	$this->data['breadcrumbs'][] = array(
-        	'text' => $this->language->get('text_login'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_login'),
 			'href' => $this->url->link('affiliate/login', '', 'SSL')
-      	);
+		);
 		
 		$this->data['text_description'] = sprintf($this->language->get('text_description'), $this->config->get('config_name'), $this->config->get('config_name'), $this->config->get('config_commission') . '%');
 
@@ -50,20 +50,20 @@ class ControllerAffiliateLogin extends Controller {
 		$this->data['action'] = $this->url->link('affiliate/login', '', 'SSL');
 		$this->data['register'] = $this->url->link('affiliate/register', '', 'SSL');
 		$this->data['forgotten'] = $this->url->link('affiliate/forgotten', '', 'SSL');
-    	
+		
 		if (isset($this->request->post['redirect'])) {
 			$this->data['redirect'] = $this->request->post['redirect'];
 		} elseif (isset($this->session->data['redirect'])) {
-      		$this->data['redirect'] = $this->session->data['redirect'];
+			$this->data['redirect'] = $this->session->data['redirect'];
 	  		
 			unset($this->session->data['redirect']);
-    	} else {
+		} else {
 			$this->data['redirect'] = '';
 		}
 
 		if (isset($this->session->data['success'])) {
-    		$this->data['success'] = $this->session->data['success'];
-    
+			$this->data['success'] = $this->session->data['success'];
+	
 			unset($this->session->data['success']);
 		} else {
 			$this->data['success'] = '';
@@ -97,24 +97,24 @@ class ControllerAffiliateLogin extends Controller {
 		);
 						
 		$this->response->setOutput($this->render());
-  	}
-  
-  	protected function validate() {
-    	if (!$this->affiliate->login($this->request->post['email'], $this->request->post['password'])) {
-      		$this->error['warning'] = $this->language->get('error_login');
-    	}
+	}
+
+	protected function validate() {
+		if (!$this->affiliate->login($this->request->post['email'], $this->request->post['password'])) {
+			$this->error['warning'] = $this->language->get('error_login');
+		}
 
 		$affiliate_info = $this->model_affiliate_affiliate->getAffiliateByEmail($this->request->post['email']);
 		
-    	if ($affiliate_info && !$affiliate_info['approved']) {
-      		$this->error['warning'] = $this->language->get('error_approved');
-    	}
+		if ($affiliate_info && !$affiliate_info['approved']) {
+			$this->error['warning'] = $this->language->get('error_approved');
+		}
 			
-    	if (!$this->error) {
-      		return true;
-    	} else {
-      		return false;
-    	}
-  	}
+		if (!$this->error) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 }
 ?>

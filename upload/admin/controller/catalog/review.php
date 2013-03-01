@@ -1,7 +1,7 @@
 <?php
 class ControllerCatalogReview extends Controller {
 	private $error = array();
- 
+
 	public function index() {
 		$this->data += $this->language->load('catalog/review');
 
@@ -143,17 +143,17 @@ class ControllerCatalogReview extends Controller {
 			$url .= '&page=' . $this->request->get['page'];
 		}
 
-  		$this->data['breadcrumbs'] = array();
+		$this->data['breadcrumbs'] = array();
 
-   		$this->data['breadcrumbs'][] = array(
-       		'text' => $this->language->get('text_home'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_home'),
 			'href' => $this->url->link('common/home', 'token=' . $this->session->data['token'], 'SSL')
-   		);
+		);
 
-   		$this->data['breadcrumbs'][] = array(
-       		'text' => $this->language->get('heading_title'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('heading_title'),
 			'href' => $this->url->link('catalog/review', 'token=' . $this->session->data['token'] . $url, 'SSL')
-   		);
+		);
 							
 		$this->data['insert'] = $this->url->link('catalog/review/insert', 'token=' . $this->session->data['token'] . $url, 'SSL');
 		$this->data['delete'] = $this->url->link('catalog/review/delete', 'token=' . $this->session->data['token'] . $url, 'SSL');
@@ -170,8 +170,8 @@ class ControllerCatalogReview extends Controller {
 		$review_total = $this->model_catalog_review->getTotalReviews();
 	
 		$results = $this->model_catalog_review->getReviews($data);
- 
-    	foreach ($results as $result) {
+
+		foreach ($results as $result) {
 			$action = array();
 						
 			$action[] = array(
@@ -190,8 +190,8 @@ class ControllerCatalogReview extends Controller {
 				'action'     => $action
 			);
 		}
- 
- 		if (isset($this->error['warning'])) {
+
+		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
 		} else {
 			$this->data['error_warning'] = '';
@@ -256,31 +256,31 @@ class ControllerCatalogReview extends Controller {
 
 	protected function getForm() {
 
- 		if (isset($this->error['warning'])) {
+		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
 		} else {
 			$this->data['error_warning'] = '';
 		}
- 		
+		
 		if (isset($this->error['product'])) {
 			$this->data['error_product'] = $this->error['product'];
 		} else {
 			$this->data['error_product'] = '';
 		}
 		
- 		if (isset($this->error['author'])) {
+		if (isset($this->error['author'])) {
 			$this->data['error_author'] = $this->error['author'];
 		} else {
 			$this->data['error_author'] = '';
 		}
 		
- 		if (isset($this->error['text'])) {
+		if (isset($this->error['text'])) {
 			$this->data['error_text'] = $this->error['text'];
 		} else {
 			$this->data['error_text'] = '';
 		}
 		
- 		if (isset($this->error['rating'])) {
+		if (isset($this->error['rating'])) {
 			$this->data['error_rating'] = $this->error['rating'];
 		} else {
 			$this->data['error_rating'] = '';
@@ -300,17 +300,17 @@ class ControllerCatalogReview extends Controller {
 			$url .= '&page=' . $this->request->get['page'];
 		}
 				
-   		$this->data['breadcrumbs'] = array();
+		$this->data['breadcrumbs'] = array();
 
-   		$this->data['breadcrumbs'][] = array(
-       		'text' => $this->language->get('text_home'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_home'),
 			'href' => $this->url->link('common/home', 'token=' . $this->session->data['token'], 'SSL')
-   		);
+		);
 
-   		$this->data['breadcrumbs'][] = array(
-       		'text' => $this->language->get('heading_title'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('heading_title'),
 			'href' => $this->url->link('catalog/review', 'token=' . $this->session->data['token'] . $url, 'SSL')
-   		);
+		);
 										
 		if (!isset($this->request->get['review_id'])) {
 			$this->data['action'] = $this->url->link('catalog/review/insert', 'token=' . $this->session->data['token'] . $url, 'SSL');

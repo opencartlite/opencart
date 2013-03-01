@@ -111,7 +111,7 @@ class ModelLocalisationLengthClass extends Model {
 	}
 			
 	public function getTotalLengthClasses() {
-      	$query = $this->db->query("SELECT COUNT(*) AS total FROM {length_class}");
+		$query = $this->db->query("SELECT COUNT(*) AS total FROM {length_class}");
 		
 		return $query->row['total'];
 	}

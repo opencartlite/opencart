@@ -1,26 +1,26 @@
 <?php
 class ControllerLocalisationOrderStatus extends Controller {
 	private $error = array();
-   
-  	public function index() {
+
+	public function index() {
 		$this->data += $this->language->load('localisation/order_status');
 	
-    	$this->document->setTitle($this->language->get('heading_title'));
+		$this->document->setTitle($this->language->get('heading_title'));
 		
 		$this->load->model('localisation/order_status');
 		
-    	$this->getList();
-  	}
-              
-  	public function insert() {
+		$this->getList();
+	}
+			
+	public function insert() {
 		$this->data += $this->language->load('localisation/order_status');
 	
-    	$this->document->setTitle($this->language->get('heading_title'));
+		$this->document->setTitle($this->language->get('heading_title'));
 		
 		$this->load->model('localisation/order_status');
 			
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
-      		$this->model_localisation_order_status->addOrderStatus($this->request->post);
+			$this->model_localisation_order_status->addOrderStatus($this->request->post);
 		  	
 			$this->session->data['success'] = $this->language->get('text_success');
 
@@ -38,20 +38,20 @@ class ControllerLocalisationOrderStatus extends Controller {
 				$url .= '&page=' . $this->request->get['page'];
 			}
 						
-      		$this->redirect($this->url->link('localisation/order_status', 'token=' . $this->session->data['token'] . $url, 'SSL'));
+			$this->redirect($this->url->link('localisation/order_status', 'token=' . $this->session->data['token'] . $url, 'SSL'));
 		}
 	
-    	$this->getForm();
-  	}
+		$this->getForm();
+	}
 
-  	public function update() {
+	public function update() {
 		$this->data += $this->language->load('localisation/order_status');
 	
-    	$this->document->setTitle($this->language->get('heading_title'));
+		$this->document->setTitle($this->language->get('heading_title'));
 		
 		$this->load->model('localisation/order_status');
 		
-    	if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
+		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
 	  		$this->model_localisation_order_status->editOrderStatus($this->request->get['order_status_id'], $this->request->post);
 			
 			$this->session->data['success'] = $this->language->get('text_success');
@@ -71,23 +71,23 @@ class ControllerLocalisationOrderStatus extends Controller {
 			}
 			
 			$this->redirect($this->url->link('localisation/order_status', 'token=' . $this->session->data['token'] . $url, 'SSL'));
-    	}
+		}
 	
-    	$this->getForm();
-  	}
+		$this->getForm();
+	}
 
-  	public function delete() {
+	public function delete() {
 		$this->data += $this->language->load('localisation/order_status');
 	
-    	$this->document->setTitle($this->language->get('heading_title'));
+		$this->document->setTitle($this->language->get('heading_title'));
 		
 		$this->load->model('localisation/order_status');
 		
-    	if (isset($this->request->post['selected']) && $this->validateDelete()) {
+		if (isset($this->request->post['selected']) && $this->validateDelete()) {
 			foreach ($this->request->post['selected'] as $order_status_id) {
 				$this->model_localisation_order_status->deleteOrderStatus($order_status_id);
 			}
-			      		
+				  		
 			$this->session->data['success'] = $this->language->get('text_success');
 
 			$url = '';
@@ -105,12 +105,12 @@ class ControllerLocalisationOrderStatus extends Controller {
 			}
 			
 			$this->redirect($this->url->link('localisation/order_status', 'token=' . $this->session->data['token'] . $url, 'SSL'));
-   		}
+		}
 	
-    	$this->getList();
-  	}
-    
-  	protected function getList() {
+		$this->getList();
+	}
+	
+	protected function getList() {
 		if (isset($this->request->get['sort'])) {
 			$sort = $this->request->get['sort'];
 		} else {
@@ -143,17 +143,17 @@ class ControllerLocalisationOrderStatus extends Controller {
 			$url .= '&page=' . $this->request->get['page'];
 		}
 
-  		$this->data['breadcrumbs'] = array();
+		$this->data['breadcrumbs'] = array();
 
-   		$this->data['breadcrumbs'][] = array(
-       		'text' => $this->language->get('text_home'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_home'),
 			'href' => $this->url->link('common/home', 'token=' . $this->session->data['token'], 'SSL')
-   		);
+		);
 
-   		$this->data['breadcrumbs'][] = array(
-       		'text' => $this->language->get('heading_title'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('heading_title'),
 			'href' => $this->url->link('localisation/order_status', 'token=' . $this->session->data['token'] . $url, 'SSL')
-   		);
+		);
 							
 		$this->data['insert'] = $this->url->link('localisation/order_status/insert', 'token=' . $this->session->data['token'] . $url, 'SSL');
 		$this->data['delete'] = $this->url->link('localisation/order_status/delete', 'token=' . $this->session->data['token'] . $url, 'SSL');
@@ -170,8 +170,8 @@ class ControllerLocalisationOrderStatus extends Controller {
 		$order_status_total = $this->model_localisation_order_status->getTotalOrderStatuses();
 	
 		$results = $this->model_localisation_order_status->getOrderStatuses($data);
- 
-    	foreach ($results as $result) {
+
+		foreach ($results as $result) {
 			$action = array();
 			
 			$action[] = array(
@@ -186,8 +186,8 @@ class ControllerLocalisationOrderStatus extends Controller {
 				'action'          => $action
 			);
 		}
- 
- 		if (isset($this->error['warning'])) {
+
+		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
 		} else {
 			$this->data['error_warning'] = '';
@@ -244,17 +244,17 @@ class ControllerLocalisationOrderStatus extends Controller {
 		);
 				
 		$this->response->setOutput($this->render());
-  	}
-  
-  	protected function getForm() {
-    
- 		if (isset($this->error['warning'])) {
+	}
+
+	protected function getForm() {
+	
+		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
 		} else {
 			$this->data['error_warning'] = '';
 		}
 
- 		if (isset($this->error['name'])) {
+		if (isset($this->error['name'])) {
 			$this->data['error_name'] = $this->error['name'];
 		} else {
 			$this->data['error_name'] = array();
@@ -274,17 +274,17 @@ class ControllerLocalisationOrderStatus extends Controller {
 			$url .= '&page=' . $this->request->get['page'];
 		}
 
-  		$this->data['breadcrumbs'] = array();
+		$this->data['breadcrumbs'] = array();
 
-   		$this->data['breadcrumbs'][] = array(
-      	 	'text' => $this->language->get('text_home'),
+		$this->data['breadcrumbs'][] = array(
+		 	'text' => $this->language->get('text_home'),
 			'href' => $this->url->link('common/home', 'token=' . $this->session->data['token'], 'SSL')
-   		);
+		);
 
-   		$this->data['breadcrumbs'][] = array(
-       		'text' => $this->language->get('heading_title'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('heading_title'),
 			'href' => $this->url->link('localisation/order_status', 'token=' . $this->session->data['token'] . $url, 'SSL')
-   		);
+		);
 		
 		if (!isset($this->request->get['order_status_id'])) {
 			$this->data['action'] = $this->url->link('localisation/order_status/insert', 'token=' . $this->session->data['token'] . $url, 'SSL');
@@ -313,40 +313,40 @@ class ControllerLocalisationOrderStatus extends Controller {
 		);
 				
 		$this->response->setOutput($this->render());
-  	}
-  	
-	protected function validateForm() {
-    	if (!$this->user->hasPermission('modify', 'localisation/order_status')) {
-      		$this->error['warning'] = $this->language->get('error_permission');
-    	}
+	}
 	
-    	foreach ($this->request->post['order_status'] as $language_id => $value) {
-      		if ((utf8_strlen($value['name']) < 3) || (utf8_strlen($value['name']) > 32)) {
-        		$this->error['name'][$language_id] = $this->language->get('error_name');
-      		}
-    	}
+	protected function validateForm() {
+		if (!$this->user->hasPermission('modify', 'localisation/order_status')) {
+			$this->error['warning'] = $this->language->get('error_permission');
+		}
+	
+		foreach ($this->request->post['order_status'] as $language_id => $value) {
+			if ((utf8_strlen($value['name']) < 3) || (utf8_strlen($value['name']) > 32)) {
+				$this->error['name'][$language_id] = $this->language->get('error_name');
+			}
+		}
 		
 		if (!$this->error) {
 	  		return true;
 		} else {
 	  		return false;
 		}
-  	}
+	}
 
-  	protected function validateDelete() {
+	protected function validateDelete() {
 		if (!$this->user->hasPermission('modify', 'localisation/order_status')) {
-      		$this->error['warning'] = $this->language->get('error_permission');
-    	}
+			$this->error['warning'] = $this->language->get('error_permission');
+		}
 		
 		$this->load->model('setting/store');
 		$this->load->model('sale/order');
 		
 		foreach ($this->request->post['selected'] as $order_status_id) {
-    		if ($this->config->get('config_order_status_id') == $order_status_id) {
+			if ($this->config->get('config_order_status_id') == $order_status_id) {
 	  			$this->error['warning'] = $this->language->get('error_default');
 			}
 			
-    		if ($this->config->get('config_download_status_id') == $order_status_id) {
+			if ($this->config->get('config_download_status_id') == $order_status_id) {
 	  			$this->error['warning'] = $this->language->get('error_download');
 			}
 			
@@ -368,6 +368,6 @@ class ControllerLocalisationOrderStatus extends Controller {
 		} else {
 	  		return false;
 		}
-  	}
+	}
 }
 ?>

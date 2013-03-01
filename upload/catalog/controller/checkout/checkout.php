@@ -4,7 +4,7 @@ class ControllerCheckoutCheckout extends Controller {
 		// Validate cart has products and has stock.
 		if ((!$this->cart->hasProducts() && empty($this->session->data['vouchers'])) || (!$this->cart->hasStock() && !$this->config->get('config_stock_checkout'))) {
 	  		$this->redirect($this->url->link('checkout/cart'));
-    	}
+		}
 		
 		// Validate minimum quantity requirments.
 		$products = $this->cart->getProducts();
@@ -32,20 +32,20 @@ class ControllerCheckoutCheckout extends Controller {
 					
 		$this->data['breadcrumbs'] = array();
 
-      	$this->data['breadcrumbs'][] = array(
-        	'text' => $this->language->get('text_home'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_home'),
 			'href' => $this->url->link('common/home')
-      	);
+		);
 
-      	$this->data['breadcrumbs'][] = array(
-        	'text' => $this->language->get('text_cart'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_cart'),
 			'href' => $this->url->link('checkout/cart')
-      	);
+		);
 		
-      	$this->data['breadcrumbs'][] = array(
-        	'text' => $this->language->get('heading_title'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('heading_title'),
 			'href' => $this->url->link('checkout/checkout', '', 'SSL')
-      	);
+		);
 		
 		$this->data['logged'] = $this->customer->isLogged();
 		$this->data['shipping_required'] = $this->cart->hasShipping();
@@ -66,14 +66,14 @@ class ControllerCheckoutCheckout extends Controller {
 		);
 				
 		$this->response->setOutput($this->render());
-  	}
+	}
 	
 	public function country() {
 		$json = array();
 		
 		$this->load->model('localisation/country');
 
-    	$country_info = $this->model_localisation_country->getCountry($this->request->get['country_id']);
+		$country_info = $this->model_localisation_country->getCountry($this->request->get['country_id']);
 		
 		if ($country_info) {
 			$this->load->model('localisation/zone');

@@ -17,30 +17,30 @@ class ControllerShippingFedex extends Controller {
 			$this->redirect($this->url->link('extension/shipping', 'token=' . $this->session->data['token'], 'SSL'));
 		}
 
- 		if (isset($this->error['warning'])) {
+		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
 		} else {
 			$this->data['error_warning'] = '';
 		}
 		
- 		if (isset($this->error['key'])) {
+		if (isset($this->error['key'])) {
 			$this->data['error_key'] = $this->error['key'];
 		} else {
 			$this->data['error_key'] = '';
 		}
 		
- 		if (isset($this->error['password'])) {
+		if (isset($this->error['password'])) {
 			$this->data['error_password'] = $this->error['password'];
 		} else {
 			$this->data['error_password'] = '';
 		}
 				
- 		if (isset($this->error['account'])) {
+		if (isset($this->error['account'])) {
 			$this->data['error_account'] = $this->error['account'];
 		} else {
 			$this->data['error_account'] = '';
 		}
- 		
+		
 		if (isset($this->error['meter'])) {
 			$this->data['error_meter'] = $this->error['meter'];
 		} else {
@@ -53,22 +53,22 @@ class ControllerShippingFedex extends Controller {
 			$this->data['error_postcode'] = '';
 		}
 				
-  		$this->data['breadcrumbs'] = array();
+		$this->data['breadcrumbs'] = array();
 
-   		$this->data['breadcrumbs'][] = array(
-       		'text' => $this->language->get('text_home'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_home'),
 			'href' => $this->url->link('common/home', 'token=' . $this->session->data['token'], 'SSL')
-   		);
+		);
 
-   		$this->data['breadcrumbs'][] = array(
-       		'text' => $this->language->get('text_shipping'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_shipping'),
 			'href' => $this->url->link('extension/shipping', 'token=' . $this->session->data['token'], 'SSL')
-   		);
+		);
 		
-   		$this->data['breadcrumbs'][] = array(
-       		'text' => $this->language->get('heading_title'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('heading_title'),
 			'href' => $this->url->link('shipping/fedex', 'token=' . $this->session->data['token'], 'SSL')
-   		);
+		);
 		
 		$this->data['action'] = $this->url->link('shipping/fedex', 'token=' . $this->session->data['token'], 'SSL');
 		
@@ -309,7 +309,7 @@ class ControllerShippingFedex extends Controller {
 			'common/footer'
 		);
 				
- 		$this->response->setOutput($this->render());
+		$this->response->setOutput($this->render());
 	}
 	
 	protected function validate() {

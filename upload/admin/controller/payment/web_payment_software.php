@@ -17,19 +17,19 @@ class ControllerPaymentWebPaymentSoftware extends Controller {
 			$this->redirect($this->url->link('extension/payment', 'token=' . $this->session->data['token'], 'SSL'));
 		}
 
- 		if (isset($this->error['warning'])) {
+		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
 		} else {
 			$this->data['error_warning'] = '';
 		}
 
- 		if (isset($this->error['login'])) {
+		if (isset($this->error['login'])) {
 			$this->data['error_login'] = $this->error['login'];
 		} else {
 			$this->data['error_login'] = '';
 		}
 
- 		if (isset($this->error['key'])) {
+		if (isset($this->error['key'])) {
 			$this->data['error_key'] = $this->error['key'];
 		} else {
 			$this->data['error_key'] = '';
@@ -37,20 +37,20 @@ class ControllerPaymentWebPaymentSoftware extends Controller {
 		
 		$this->data['breadcrumbs'] = array();
 
-   		$this->data['breadcrumbs'][] = array(
-       		'text' => $this->language->get('text_home'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_home'),
 			'href' => $this->url->link('common/home', 'token=' . $this->session->data['token'], 'SSL')
-   		);
+		);
 
-   		$this->data['breadcrumbs'][] = array(
-       		'text' => $this->language->get('text_payment'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_payment'),
 			'href' => $this->url->link('extension/payment', 'token=' . $this->session->data['token'], 'SSL')
-   		);
+		);
 
-   		$this->data['breadcrumbs'][] = array(
-       		'text' => $this->language->get('heading_title'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('heading_title'),
 			'href' => $this->url->link('payment/web_payment_software', 'token=' . $this->session->data['token'], 'SSL')
-   		);
+		);
 				
 		$this->data['action'] = HTTPS_SERVER . 'index.php?route=payment/web_payment_software&token=' . $this->session->data['token'];
 		

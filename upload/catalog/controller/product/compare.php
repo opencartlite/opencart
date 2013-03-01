@@ -142,7 +142,7 @@ class ControllerProductCompare extends Controller {
 		);
 		
 		$this->response->setOutput($this->render());
-  	}
+	}
 	
 	public function add() {
 		$this->data += $this->language->load('product/compare');

@@ -1,13 +1,13 @@
 <?php
 class ControllerPaymentKlarnaAccount extends Controller {
-    private $error = array();
+	private $error = array();
 	private $pclasses = array();
 
-    public function index() {
+	public function index() {
 		$this->data += $this->language->load('payment/klarna_account');
 		
 		$this->document->setTitle($this->language->get('heading_title'));
-        
+		
 		$this->load->model('setting/setting');
 
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
@@ -27,34 +27,34 @@ class ControllerPaymentKlarnaAccount extends Controller {
 			);
 			
 			$this->model_setting_setting->editSetting('klarna_account', array_merge($this->request->post, $data));
-            
+			
 			$this->session->data['success'] = $this->language->get('text_success');
 
 			$this->redirect($this->url->link('extension/payment', 'token=' . $this->session->data['token'], 'SSL'));
-        }
-				        
-        if (isset($this->error['warning'])) {
-            $this->data['error_warning'] = $this->error['warning'];
-        } else {
-            $this->data['error_warning'] = '';
-        }
-        
-        $this->data['breadcrumbs'] = array();
+		}
+					    
+		if (isset($this->error['warning'])) {
+			$this->data['error_warning'] = $this->error['warning'];
+		} else {
+			$this->data['error_warning'] = '';
+		}
+		
+		$this->data['breadcrumbs'] = array();
 
-        $this->data['breadcrumbs'][] = array(
-            'text' => $this->language->get('text_home'),
-            'href' => $this->url->link('common/home', 'token=' . $this->session->data['token'], 'SSL')
-        );
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_home'),
+			'href' => $this->url->link('common/home', 'token=' . $this->session->data['token'], 'SSL')
+		);
 
-        $this->data['breadcrumbs'][] = array(
-            'text' => $this->language->get('text_payment'),
-            'href' => $this->url->link('extension/payment', 'token=' . $this->session->data['token'], 'SSL')
-        );
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_payment'),
+			'href' => $this->url->link('extension/payment', 'token=' . $this->session->data['token'], 'SSL')
+		);
 
-        $this->data['breadcrumbs'][] = array(
-            'text' => $this->language->get('heading_title'),
-            'href' => $this->url->link('payment/klarna_account', 'token=' . $this->session->data['token'], 'SSL')
-        );
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('heading_title'),
+			'href' => $this->url->link('payment/klarna_account', 'token=' . $this->session->data['token'], 'SSL')
+		);
 		
 		if (isset($this->session->data['success'])) {
 			$this->data['success'] = $this->session->data['success'];
@@ -64,9 +64,9 @@ class ControllerPaymentKlarnaAccount extends Controller {
 			$this->data['success'] = '';
 		}
 		
-        $this->data['action'] = $this->url->link('payment/klarna_account', 'token=' . $this->session->data['token'], 'SSL');
-       
-	    $this->data['cancel'] = $this->url->link('extension/payment', 'token=' . $this->session->data['token'], 'SSL');
+		$this->data['action'] = $this->url->link('payment/klarna_account', 'token=' . $this->session->data['token'], 'SSL');
+	
+		$this->data['cancel'] = $this->url->link('extension/payment', 'token=' . $this->session->data['token'], 'SSL');
 		
 		$this->data['countries'] = array();
 		
@@ -113,68 +113,68 @@ class ControllerPaymentKlarnaAccount extends Controller {
 		$this->load->model('localisation/order_status');
 			
 		$this->data['order_statuses'] = $this->model_localisation_order_status->getOrderStatuses();
-					        
+						    
 		$file = DIR_LOGS . 'klarna_account.log';
 		
-        if (file_exists($file)) {
-            $this->data['log'] = file_get_contents($file, FILE_USE_INCLUDE_PATH, null);
-        } else {
-            $this->data['log'] = '';
-        }
-        
-        $this->data['clear'] = $this->url->link('payment/klarna_account/clear', 'token=' . $this->session->data['token'], 'SSL');
-
-        $this->template = 'payment/klarna_account.tpl';
-        $this->children = array(
-            'common/header',
-            'common/footer',
-        );
-
-        $this->response->setOutput($this->render());
-    }
-
-    private function validate() {
-        if (!$this->user->hasPermission('modify', 'payment/klarna_account')) {
-            $this->error['warning'] = $this->language->get('error_permission');
-        }
+		if (file_exists($file)) {
+			$this->data['log'] = file_get_contents($file, FILE_USE_INCLUDE_PATH, null);
+		} else {
+			$this->data['log'] = '';
+		}
 		
-        $log = new Log('klarna_account.log');
-        
+		$this->data['clear'] = $this->url->link('payment/klarna_account/clear', 'token=' . $this->session->data['token'], 'SSL');
+
+		$this->template = 'payment/klarna_account.tpl';
+		$this->children = array(
+			'common/header',
+			'common/footer',
+		);
+
+		$this->response->setOutput($this->render());
+	}
+
+	private function validate() {
+		if (!$this->user->hasPermission('modify', 'payment/klarna_account')) {
+			$this->error['warning'] = $this->language->get('error_permission');
+		}
+		
+		$log = new Log('klarna_account.log');
+		
 		$country = array(
-            'NOR' => array(
-                'currency' => 1,
-                'country'  => 164,
-                'language' => 97,
-            ),
-            'SWE' => array(
-                'currency' => 0,
-                'country'  => 209,
-                'language' => 138,
-            ),
-            'FIN' => array(
-                'currency' => 2,
-                'country'  => 73,
-                'language' => 101,
-            ),
-            'DNK' => array(
-                'currency' => 3,
-                'country'  => 59,
-                'language' => 27,
-            ),
-            'DEU' => array(
-                'currency' => 2,
-                'country'  => 81,
-                'language' => 28,
-            ),
-            'NLD' => array(
-                'currency' => 2,
-                'country'  => 154,
-                'language' => 101,
-            ),
-        );
-        
-        foreach ($this->request->post['klarna_account'] as $key => $klarna_account) {
-            if ($klarna_account['status']) {
+			'NOR' => array(
+				'currency' => 1,
+				'country'  => 164,
+				'language' => 97,
+			),
+			'SWE' => array(
+				'currency' => 0,
+				'country'  => 209,
+				'language' => 138,
+			),
+			'FIN' => array(
+				'currency' => 2,
+				'country'  => 73,
+				'language' => 101,
+			),
+			'DNK' => array(
+				'currency' => 3,
+				'country'  => 59,
+				'language' => 27,
+			),
+			'DEU' => array(
+				'currency' => 2,
+				'country'  => 81,
+				'language' => 28,
+			),
+			'NLD' => array(
+				'currency' => 2,
+				'country'  => 154,
+				'language' => 101,
+			),
+		);
+		
+		foreach ($this->request->post['klarna_account'] as $key => $klarna_account) {
+			if ($klarna_account['status']) {
 				$digest = base64_encode(pack("H*", hash('sha256', $klarna_account['merchant']  . ':' . $country[$key]['currency'] . ':' . $klarna_account['secret'])));
 				
 				$xml  = '<methodCall>';
@@ -222,8 +222,8 @@ class ControllerPaymentKlarnaAccount extends Controller {
 					if ($nodes->length == 0) {
 						$this->error['warning'] = $this->language->get('error_log');
 						
-                    	$error_code = $xpath->query('//methodResponse/fault/value/struct/member/value/int')->item(0)->nodeValue;
-                    	$error_message = $xpath->query('//methodResponse/fault/value/struct/member/value/string')->item(0)->nodeValue;
+						$error_code = $xpath->query('//methodResponse/fault/value/struct/member/value/int')->item(0)->nodeValue;
+						$error_message = $xpath->query('//methodResponse/fault/value/struct/member/value/string')->item(0)->nodeValue;
 											
 						$log->write(sprintf($this->language->get('error_pclass'), $key, $error_code, $error_message));
 						
@@ -267,58 +267,58 @@ class ControllerPaymentKlarnaAccount extends Controller {
 			}
 		}
 
-        if (!$this->error) {
-            return true;
-        } else {
-            return false;
-        }
-    }
+		if (!$this->error) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 	
-    private function parseResponse($node, $document) {
-        $child = $node;
+	private function parseResponse($node, $document) {
+		$child = $node;
 
-        switch ($child->nodeName) {
-            case 'string':
-                $value = $child->nodeValue;
-                break;
-            case 'boolean':
-                $value = (string)$child->nodeValue;
+		switch ($child->nodeName) {
+			case 'string':
+				$value = $child->nodeValue;
+				break;
+			case 'boolean':
+				$value = (string)$child->nodeValue;
 
-                if ($value == '0') {
-                    $value = false;
-                } elseif ($value == '1') {
-                    $value = true;
-                } else {
-                    $value = null;
-                }
+				if ($value == '0') {
+					$value = false;
+				} elseif ($value == '1') {
+					$value = true;
+				} else {
+					$value = null;
+				}
 
-                break;
-            case 'integer':
-            case 'int':
-            case 'i4':
-            case 'i8':
-                $value = (int)$child->nodeValue;
-                break;
-            case 'array':
-                $value = array();
-                
-                $xpath = new DOMXPath($document);
-                $entries = $xpath->query('.//array/data/value', $child);
-                
-                for ($i = 0; $i < $entries->length; $i++) {
-                    $value[] = $this->parseResponse($entries->item($i)->firstChild, $document);
-                }
+				break;
+			case 'integer':
+			case 'int':
+			case 'i4':
+			case 'i8':
+				$value = (int)$child->nodeValue;
+				break;
+			case 'array':
+				$value = array();
+				
+				$xpath = new DOMXPath($document);
+				$entries = $xpath->query('.//array/data/value', $child);
+				
+				for ($i = 0; $i < $entries->length; $i++) {
+					$value[] = $this->parseResponse($entries->item($i)->firstChild, $document);
+				}
 
-                break;
-            default:
-                $value = null;
-        }
+				break;
+			default:
+				$value = null;
+		}
 		
 		return $value;
 	}
-    
-    public function clear() {
-        $this->data += $this->language->load('payment/klarna_account');
+	
+	public function clear() {
+		$this->data += $this->language->load('payment/klarna_account');
 
 		$file = DIR_LOGS . 'klarna_account.log';
 		
@@ -327,8 +327,8 @@ class ControllerPaymentKlarnaAccount extends Controller {
 		fclose($handle);
 		
 		$this->session->data['success'] = $this->language->get('text_success');
-        
-        $this->redirect($this->url->link('payment/klarna_account', 'token=' . $this->session->data['token'], 'SSL'));
-    }
+		
+		$this->redirect($this->url->link('payment/klarna_account', 'token=' . $this->session->data['token'], 'SSL'));
+	}
 }
 ?>

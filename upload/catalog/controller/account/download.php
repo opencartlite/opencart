@@ -6,27 +6,27 @@ class ControllerAccountDownload extends Controller {
 
 			$this->redirect($this->url->link('account/login', '', 'SSL'));
 		}
-         		
+				
 		$this->data += $this->language->load('account/download');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 
-      	$this->data['breadcrumbs'] = array();
+		$this->data['breadcrumbs'] = array();
 
-      	$this->data['breadcrumbs'][] = array(
-        	'text' => $this->language->get('text_home'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_home'),
 			'href' => $this->url->link('common/home')
-      	);
+		);
 
-      	$this->data['breadcrumbs'][] = array(
-        	'text' => $this->language->get('text_account'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_account'),
 			'href' => $this->url->link('account/account', '', 'SSL')
-      	);
+		);
 		
-      	$this->data['breadcrumbs'][] = array(
-        	'text' => $this->language->get('text_downloads'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_downloads'),
 			'href' => $this->url->link('account/download', '', 'SSL')
-      	);
+		);
 				
 		$this->load->model('account/download');
 

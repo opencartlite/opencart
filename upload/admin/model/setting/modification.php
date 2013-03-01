@@ -59,7 +59,7 @@ class ModelSettingModification extends Model {
 	}
 	
 	public function getTotalModifications() {
-      	$query = $this->db->query("SELECT COUNT(*) AS total FROM {modification}");
+		$query = $this->db->query("SELECT COUNT(*) AS total FROM {modification}");
 		
 		return $query->row['total'];
 	}

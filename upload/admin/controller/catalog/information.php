@@ -75,7 +75,7 @@ class ControllerCatalogInformation extends Controller {
 
 		$this->getForm();
 	}
- 
+
 	public function delete() {
 		$this->data += $this->language->load('catalog/information');
 
@@ -143,17 +143,17 @@ class ControllerCatalogInformation extends Controller {
 			$url .= '&page=' . $this->request->get['page'];
 		}
 
-  		$this->data['breadcrumbs'] = array();
+		$this->data['breadcrumbs'] = array();
 
-   		$this->data['breadcrumbs'][] = array(
-       		'text' => $this->language->get('text_home'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_home'),
 			'href' => $this->url->link('common/home', 'token=' . $this->session->data['token'], 'SSL')
-   		);
+		);
 
-   		$this->data['breadcrumbs'][] = array(
-       		'text' => $this->language->get('heading_title'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('heading_title'),
 			'href' => $this->url->link('catalog/information', 'token=' . $this->session->data['token'] . $url, 'SSL')
-   		);
+		);
 							
 		$this->data['insert'] = $this->url->link('catalog/information/insert', 'token=' . $this->session->data['token'] . $url, 'SSL');
 		$this->data['delete'] = $this->url->link('catalog/information/delete', 'token=' . $this->session->data['token'] . $url, 'SSL');
@@ -170,8 +170,8 @@ class ControllerCatalogInformation extends Controller {
 		$information_total = $this->model_catalog_information->getTotalInformations();
 	
 		$results = $this->model_catalog_information->getInformations($data);
- 
-    	foreach ($results as $result) {
+
+		foreach ($results as $result) {
 			$action = array();
 						
 			$action[] = array(
@@ -187,8 +187,8 @@ class ControllerCatalogInformation extends Controller {
 				'action'         => $action
 			);
 		}
- 
- 		if (isset($this->error['warning'])) {
+
+		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
 		} else {
 			$this->data['error_warning'] = '';
@@ -250,13 +250,13 @@ class ControllerCatalogInformation extends Controller {
 
 	protected function getForm() {
 
- 		if (isset($this->error['warning'])) {
+		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
 		} else {
 			$this->data['error_warning'] = '';
 		}
 
- 		if (isset($this->error['title'])) {
+		if (isset($this->error['title'])) {
 			$this->data['error_title'] = $this->error['title'];
 		} else {
 			$this->data['error_title'] = array();
@@ -282,17 +282,17 @@ class ControllerCatalogInformation extends Controller {
 			$url .= '&page=' . $this->request->get['page'];
 		}
 		
-  		$this->data['breadcrumbs'] = array();
+		$this->data['breadcrumbs'] = array();
 
-   		$this->data['breadcrumbs'][] = array(
-       		'text' => $this->language->get('text_home'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_home'),
 			'href' => $this->url->link('common/home', 'token=' . $this->session->data['token'], 'SSL')
-   		);
+		);
 
-   		$this->data['breadcrumbs'][] = array(
-       		'text' => $this->language->get('heading_title'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('heading_title'),
 			'href' => $this->url->link('catalog/information', 'token=' . $this->session->data['token'] . $url, 'SSL')
-   		);
+		);
 							
 		if (!isset($this->request->get['information_id'])) {
 			$this->data['action'] = $this->url->link('catalog/information/insert', 'token=' . $this->session->data['token'] . $url, 'SSL');

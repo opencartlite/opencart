@@ -192,7 +192,7 @@ class ModelSaleCustomField extends Model {
 	}
 
 	public function getTotalCustomFields() {
-      	$query = $this->db->query("SELECT COUNT(*) AS total FROM {custom_field}");
+		$query = $this->db->query("SELECT COUNT(*) AS total FROM {custom_field}");
 		
 		return $query->row['total'];
 	}

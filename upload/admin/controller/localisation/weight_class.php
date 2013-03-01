@@ -1,7 +1,7 @@
 <?php
 class ControllerLocalisationWeightClass extends Controller {
 	private $error = array();
- 
+
 	public function index() {
 		$this->data += $this->language->load('localisation/weight_class');
 
@@ -80,7 +80,7 @@ class ControllerLocalisationWeightClass extends Controller {
 		$this->data += $this->language->load('localisation/weight_class');
 
 		$this->document->setTitle($this->language->get('heading_title'));
- 		
+		
 		$this->load->model('localisation/weight_class');
 		
 		if (isset($this->request->post['selected']) && $this->validateDelete()) {
@@ -143,17 +143,17 @@ class ControllerLocalisationWeightClass extends Controller {
 			$url .= '&page=' . $this->request->get['page'];
 		}
 
-  		$this->data['breadcrumbs'] = array();
+		$this->data['breadcrumbs'] = array();
 
-   		$this->data['breadcrumbs'][] = array(
-       		'text' => $this->language->get('text_home'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_home'),
 			'href' => $this->url->link('common/home', 'token=' . $this->session->data['token'], 'SSL')
-   		);
+		);
 
-   		$this->data['breadcrumbs'][] = array(
-       		'text' => $this->language->get('heading_title'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('heading_title'),
 			'href' => $this->url->link('localisation/weight_class', 'token=' . $this->session->data['token'] . $url, 'SSL')
-   		);
+		);
 		
 		$this->data['insert'] = $this->url->link('localisation/weight_class/insert', 'token=' . $this->session->data['token'] . $url, 'SSL');
 		$this->data['delete'] = $this->url->link('localisation/weight_class/delete', 'token=' . $this->session->data['token'] . $url, 'SSL');
@@ -188,8 +188,8 @@ class ControllerLocalisationWeightClass extends Controller {
 				'action'          => $action
 			);
 		}
- 
- 		if (isset($this->error['warning'])) {
+
+		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
 		} else {
 			$this->data['error_warning'] = '';
@@ -252,19 +252,19 @@ class ControllerLocalisationWeightClass extends Controller {
 
 	protected function getForm() {
 
- 		if (isset($this->error['warning'])) {
+		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
 		} else {
 			$this->data['error_warning'] = '';
 		}
 		
- 		if (isset($this->error['title'])) {
+		if (isset($this->error['title'])) {
 			$this->data['error_title'] = $this->error['title'];
 		} else {
 			$this->data['error_title'] = array();
 		}
 		
- 		if (isset($this->error['unit'])) {
+		if (isset($this->error['unit'])) {
 			$this->data['error_unit'] = $this->error['unit'];
 		} else {
 			$this->data['error_unit'] = array();
@@ -284,17 +284,17 @@ class ControllerLocalisationWeightClass extends Controller {
 			$url .= '&page=' . $this->request->get['page'];
 		}
 
-  		$this->data['breadcrumbs'] = array();
+		$this->data['breadcrumbs'] = array();
 
-   		$this->data['breadcrumbs'][] = array(
-       		'text' => $this->language->get('text_home'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_home'),
 			'href' => $this->url->link('common/home', 'token=' . $this->session->data['token'], 'SSL')
-   		);
+		);
 
-   		$this->data['breadcrumbs'][] = array(
-       		'text' => $this->language->get('heading_title'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('heading_title'),
 			'href' => $this->url->link('localisation/weight_class', 'token=' . $this->session->data['token'] . $url, 'SSL')
-   		);
+		);
 		
 		if (!isset($this->request->get['weight_class_id'])) {
 			$this->data['action'] = $this->url->link('localisation/weight_class/insert', 'token=' . $this->session->data['token'] . $url, 'SSL');
@@ -305,8 +305,8 @@ class ControllerLocalisationWeightClass extends Controller {
 		$this->data['cancel'] = $this->url->link('localisation/weight_class', 'token=' . $this->session->data['token'] . $url, 'SSL');
 
 		if (isset($this->request->get['weight_class_id']) && ($this->request->server['REQUEST_METHOD'] != 'POST')) {
-      		$weight_class_info = $this->model_localisation_weight_class->getWeightClass($this->request->get['weight_class_id']);
-    	}
+			$weight_class_info = $this->model_localisation_weight_class->getWeightClass($this->request->get['weight_class_id']);
+		}
 		
 		$this->load->model('localisation/language');
 		

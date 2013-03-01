@@ -1,26 +1,26 @@
 <?php
 class ControllerSaleCustomerBanIp extends Controller {
 	private $error = array();
-  
-  	public function index() {
+
+	public function index() {
 		$this->data += $this->language->load('sale/customer_ban_ip');
 		 
 		$this->document->setTitle($this->language->get('heading_title'));
 		
 		$this->load->model('sale/customer_ban_ip');
 		
-    	$this->getList();
-  	}
-  
-  	public function insert() {
+		$this->getList();
+	}
+
+	public function insert() {
 		$this->data += $this->language->load('sale/customer_ban_ip');
 
-    	$this->document->setTitle($this->language->get('heading_title'));
+		$this->document->setTitle($this->language->get('heading_title'));
 		
 		$this->load->model('sale/customer_ban_ip');
 			
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
-      	  	$this->model_sale_customer_ban_ip->addCustomerBanIp($this->request->post);
+		  	$this->model_sale_customer_ban_ip->addCustomerBanIp($this->request->post);
 			
 			$this->session->data['success'] = $this->language->get('text_success');
 		  
@@ -40,18 +40,18 @@ class ControllerSaleCustomerBanIp extends Controller {
 			
 			$this->redirect($this->url->link('sale/customer_ban_ip', 'token=' . $this->session->data['token'] . $url, 'SSL'));
 		}
-    	
-    	$this->getForm();
-  	}
-   
-  	public function update() {
+		
+		$this->getForm();
+	}
+
+	public function update() {
 		$this->data += $this->language->load('sale/customer_ban_ip');
 
-    	$this->document->setTitle($this->language->get('heading_title'));
+		$this->document->setTitle($this->language->get('heading_title'));
 		
 		$this->load->model('sale/customer_ban_ip');
 		
-    	if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
+		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
 			$this->model_sale_customer_ban_ip->editCustomerBanIp($this->request->get['customer_ban_ip_id'], $this->request->post);
 	  		
 			$this->session->data['success'] = $this->language->get('text_success');
@@ -72,18 +72,18 @@ class ControllerSaleCustomerBanIp extends Controller {
 			
 			$this->redirect($this->url->link('sale/customer_ban_ip', 'token=' . $this->session->data['token'] . $url, 'SSL'));
 		}
-    
-    	$this->getForm();
-  	}
+	
+		$this->getForm();
+	}
 
-  	public function delete() {
+	public function delete() {
 		$this->data += $this->language->load('sale/customer_ban_ip');
 
-    	$this->document->setTitle($this->language->get('heading_title'));
+		$this->document->setTitle($this->language->get('heading_title'));
 		
 		$this->load->model('sale/customer_ban_ip');
 			
-    	if (isset($this->request->post['selected']) && $this->validateDelete()) {
+		if (isset($this->request->post['selected']) && $this->validateDelete()) {
 			foreach ($this->request->post['selected'] as $customer_ban_ip_id) {
 				$this->model_sale_customer_ban_ip->deleteCustomerBanIp($customer_ban_ip_id);
 			}
@@ -105,12 +105,12 @@ class ControllerSaleCustomerBanIp extends Controller {
 			}
 			
 			$this->redirect($this->url->link('sale/customer_ban_ip', 'token=' . $this->session->data['token'] . $url, 'SSL'));
-    	}
-    
-    	$this->getList();
-  	}
-    
-  	protected function getList() {
+		}
+	
+		$this->getList();
+	}
+	
+	protected function getList() {
 		if (isset($this->request->get['sort'])) {
 			$sort = $this->request->get['sort'];
 		} else {
@@ -143,17 +143,17 @@ class ControllerSaleCustomerBanIp extends Controller {
 			$url .= '&page=' . $this->request->get['page'];
 		}
 
-  		$this->data['breadcrumbs'] = array();
+		$this->data['breadcrumbs'] = array();
 
-   		$this->data['breadcrumbs'][] = array(
-       		'text' => $this->language->get('text_home'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_home'),
 			'href' => $this->url->link('common/home', 'token=' . $this->session->data['token'], 'SSL')
-   		);
+		);
 
-   		$this->data['breadcrumbs'][] = array(
-       		'text' => $this->language->get('heading_title'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('heading_title'),
 			'href' => $this->url->link('sale/customer_ban_ip', 'token=' . $this->session->data['token'] . $url, 'SSL')
-   		);
+		);
 		
 		$this->data['insert'] = $this->url->link('sale/customer_ban_ip/insert', 'token=' . $this->session->data['token'] . $url, 'SSL');
 		$this->data['delete'] = $this->url->link('sale/customer_ban_ip/delete', 'token=' . $this->session->data['token'] . $url, 'SSL');
@@ -170,8 +170,8 @@ class ControllerSaleCustomerBanIp extends Controller {
 		$customer_ban_ip_total = $this->model_sale_customer_ban_ip->getTotalCustomerBanIps($data);
 	
 		$results = $this->model_sale_customer_ban_ip->getCustomerBanIps($data);
- 
-    	foreach ($results as $result) {
+
+		foreach ($results as $result) {
 			$action = array();
 		
 			$action[] = array(
@@ -246,17 +246,17 @@ class ControllerSaleCustomerBanIp extends Controller {
 		);
 				
 		$this->response->setOutput($this->render());
-  	}
-  
-  	protected function getForm() {
+	}
 
- 		if (isset($this->error['warning'])) {
+	protected function getForm() {
+
+		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
 		} else {
 			$this->data['error_warning'] = '';
 		}
 		
- 		if (isset($this->error['ip'])) {
+		if (isset($this->error['ip'])) {
 			$this->data['error_ip'] = $this->error['ip'];
 		} else {
 			$this->data['error_ip'] = '';
@@ -276,17 +276,17 @@ class ControllerSaleCustomerBanIp extends Controller {
 			$url .= '&page=' . $this->request->get['page'];
 		}
 		
-  		$this->data['breadcrumbs'] = array();
+		$this->data['breadcrumbs'] = array();
 
-   		$this->data['breadcrumbs'][] = array(
-       		'text' => $this->language->get('text_home'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_home'),
 			'href' => $this->url->link('common/home', 'token=' . $this->session->data['token'], 'SSL')
-   		);
+		);
 
-   		$this->data['breadcrumbs'][] = array(
-       		'text' => $this->language->get('heading_title'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('heading_title'),
 			'href' => $this->url->link('sale/customer_ban_ip', 'token=' . $this->session->data['token'] . $url, 'SSL')
-   		);
+		);
 
 		if (!isset($this->request->get['customer_ban_ip_id'])) {
 			$this->data['action'] = $this->url->link('sale/customer_ban_ip/insert', 'token=' . $this->session->data['token'] . $url, 'SSL');
@@ -294,19 +294,19 @@ class ControllerSaleCustomerBanIp extends Controller {
 			$this->data['action'] = $this->url->link('sale/customer_ban_ip/update', 'token=' . $this->session->data['token'] . '&customer_ban_ip_id=' . $this->request->get['customer_ban_ip_id'] . $url, 'SSL');
 		}
 		  
-    	$this->data['cancel'] = $this->url->link('sale/customer_ban_ip', 'token=' . $this->session->data['token'] . $url, 'SSL');
+		$this->data['cancel'] = $this->url->link('sale/customer_ban_ip', 'token=' . $this->session->data['token'] . $url, 'SSL');
 
-    	if (isset($this->request->get['customer_ban_ip_id']) && ($this->request->server['REQUEST_METHOD'] != 'POST')) {
-      		$customer_ban_ip_info = $this->model_sale_customer_ban_ip->getCustomerBanIp($this->request->get['customer_ban_ip_id']);
-    	}
+		if (isset($this->request->get['customer_ban_ip_id']) && ($this->request->server['REQUEST_METHOD'] != 'POST')) {
+			$customer_ban_ip_info = $this->model_sale_customer_ban_ip->getCustomerBanIp($this->request->get['customer_ban_ip_id']);
+		}
 			
-    	if (isset($this->request->post['ip'])) {
-      		$this->data['ip'] = $this->request->post['ip'];
+		if (isset($this->request->post['ip'])) {
+			$this->data['ip'] = $this->request->post['ip'];
 		} elseif (!empty($customer_ban_ip_info)) {
 			$this->data['ip'] = $customer_ban_ip_info['ip'];
 		} else {
-      		$this->data['ip'] = '';
-    	}
+			$this->data['ip'] = '';
+		}
 		
 		$this->template = 'sale/customer_ban_ip_form.tpl';
 		$this->children = array(
@@ -317,32 +317,32 @@ class ControllerSaleCustomerBanIp extends Controller {
 		$this->response->setOutput($this->render());
 	}
 			 
-  	protected function validateForm() {
-    	if (!$this->user->hasPermission('modify', 'sale/customer_ban_ip')) {
-      		$this->error['warning'] = $this->language->get('error_permission');
-    	}
+	protected function validateForm() {
+		if (!$this->user->hasPermission('modify', 'sale/customer_ban_ip')) {
+			$this->error['warning'] = $this->language->get('error_permission');
+		}
 
-    	if ((utf8_strlen($this->request->post['ip']) < 1) || (utf8_strlen($this->request->post['ip']) > 40)) {
-      		$this->error['ip'] = $this->language->get('error_ip');
-    	}
+		if ((utf8_strlen($this->request->post['ip']) < 1) || (utf8_strlen($this->request->post['ip']) > 40)) {
+			$this->error['ip'] = $this->language->get('error_ip');
+		}
 		
 		if (!$this->error) {
 	  		return true;
 		} else {
 	  		return false;
 		}
-  	}
+	}
 
-  	protected function validateDelete() {
-    	if (!$this->user->hasPermission('modify', 'sale/customer_ban_ip')) {
-      		$this->error['warning'] = $this->language->get('error_permission');
-    	}
+	protected function validateDelete() {
+		if (!$this->user->hasPermission('modify', 'sale/customer_ban_ip')) {
+			$this->error['warning'] = $this->language->get('error_permission');
+		}
 	  	 
 		if (!$this->error) {
 	  		return true;
 		} else {
 	  		return false;
 		}
-  	}
+	}
 }
 ?>

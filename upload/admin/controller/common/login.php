@@ -1,9 +1,9 @@
 <?php
 class ControllerCommonLogin extends Controller {
 	private $error = array();
-	          
+		      
 	public function index() {
-    	$this->data += $this->language->load('common/login');
+		$this->data += $this->language->load('common/login');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 
@@ -32,14 +32,14 @@ class ControllerCommonLogin extends Controller {
 		}
 		
 		if (isset($this->session->data['success'])) {
-    		$this->data['success'] = $this->session->data['success'];
-    
+			$this->data['success'] = $this->session->data['success'];
+	
 			unset($this->session->data['success']);
 		} else {
 			$this->data['success'] = '';
 		}
 				
-    	$this->data['action'] = $this->url->link('common/login', '', 'SSL');
+		$this->data['action'] = $this->url->link('common/login', '', 'SSL');
 
 		if (isset($this->request->post['username'])) {
 			$this->data['username'] = $this->request->post['username'];
@@ -86,7 +86,7 @@ class ControllerCommonLogin extends Controller {
 		);
 				
 		$this->response->setOutput($this->render());
-  	}
+	}
 		
 	protected function validate() {
 		if (isset($this->request->post['username']) && isset($this->request->post['password']) && !$this->user->login($this->request->post['username'], $this->request->post['password'])) {

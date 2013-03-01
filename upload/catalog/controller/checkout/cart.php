@@ -23,7 +23,7 @@ class ControllerCheckoutCart extends Controller {
 			
 			$this->redirect($this->url->link('checkout/cart'));
 		}
-       	
+		
 		// Remove
 		if (isset($this->request->get['remove'])) {
 			$this->cart->remove($this->request->get['remove']);
@@ -83,19 +83,19 @@ class ControllerCheckoutCart extends Controller {
 		$this->document->addScript('catalog/view/javascript/jquery/colorbox/jquery.colorbox-min.js');
 		$this->document->addStyle('catalog/view/javascript/jquery/colorbox/colorbox.css');
 			
-      	$this->data['breadcrumbs'] = array();
+		$this->data['breadcrumbs'] = array();
 
-      	$this->data['breadcrumbs'][] = array(
-        	'href' => $this->url->link('common/home'),
-        	'text' => $this->language->get('text_home')
-      	);
+		$this->data['breadcrumbs'][] = array(
+			'href' => $this->url->link('common/home'),
+			'text' => $this->language->get('text_home')
+		);
 
-      	$this->data['breadcrumbs'][] = array(
-        	'href' => $this->url->link('checkout/cart'),
-        	'text' => $this->language->get('heading_title')
-      	);
+		$this->data['breadcrumbs'][] = array(
+			'href' => $this->url->link('checkout/cart'),
+			'text' => $this->language->get('heading_title')
+		);
 			
-    	if ($this->cart->hasProducts() || !empty($this->session->data['vouchers'])) {
+		if ($this->cart->hasProducts() || !empty($this->session->data['vouchers'])) {
 			$points = $this->customer->getRewardPoints();
 			
 			$points_total = 0;
@@ -111,7 +111,7 @@ class ControllerCheckoutCart extends Controller {
 			if (isset($this->error['warning'])) {
 				$this->data['error_warning'] = $this->error['warning'];
 			} elseif (!$this->cart->hasStock() && (!$this->config->get('config_stock_checkout') || $this->config->get('config_stock_warning'))) {
-      			$this->data['error_warning'] = $this->language->get('error_stock');
+				$this->data['error_warning'] = $this->language->get('error_stock');
 			} else {
 				$this->data['error_warning'] = '';
 			}
@@ -140,11 +140,11 @@ class ControllerCheckoutCart extends Controller {
 						 
 			$this->load->model('tool/image');
 			
-      		$this->data['products'] = array();
+			$this->data['products'] = array();
 			
 			$products = $this->cart->getProducts();
 
-      		foreach ($products as $product) {
+			foreach ($products as $product) {
 				$product_total = 0;
 					
 				foreach ($products as $product_2) {
@@ -165,7 +165,7 @@ class ControllerCheckoutCart extends Controller {
 
 				$option_data = array();
 
-        		foreach ($product['option'] as $option) {
+				foreach ($product['option'] as $option) {
 					if ($option['type'] != 'file') {
 						$value = $option['value'];
 					} else {
@@ -178,7 +178,7 @@ class ControllerCheckoutCart extends Controller {
 						'name'  => $option['name'],
 						'value' => (utf8_strlen($value) > 20 ? utf8_substr($value, 0, 20) . '..' : $value)
 					);
-        		}
+				}
 				
 				// Display prices
 				if (($this->config->get('config_customer_price') && $this->customer->isLogged()) || !$this->config->get('config_customer_price')) {
@@ -194,21 +194,21 @@ class ControllerCheckoutCart extends Controller {
 					$total = false;
 				}
 				
-        		$this->data['products'][] = array(
-          			'key'      => $product['key'],
-          			'thumb'    => $image,
+				$this->data['products'][] = array(
+					'key'      => $product['key'],
+					'thumb'    => $image,
 					'name'     => $product['name'],
-          			'model'    => $product['model'],
-          			'option'   => $option_data,
-          			'quantity' => $product['quantity'],
-          			'stock'    => $product['stock'] ? true : !(!$this->config->get('config_stock_checkout') || $this->config->get('config_stock_warning')),
+					'model'    => $product['model'],
+					'option'   => $option_data,
+					'quantity' => $product['quantity'],
+					'stock'    => $product['stock'] ? true : !(!$this->config->get('config_stock_checkout') || $this->config->get('config_stock_warning')),
 					'reward'   => ($product['reward'] ? sprintf($this->language->get('text_points'), $product['reward']) : ''),
 					'price'    => $price,
 					'total'    => $total,
 					'href'     => $this->url->link('product/product', 'product_id=' . $product['product_id']),
 					'remove'   => $this->url->link('checkout/cart', 'remove=' . $product['key'])
 				);
-      		}
+			}
 			
 			// Gift Voucher
 			$this->data['vouchers'] = array();
@@ -356,11 +356,11 @@ class ControllerCheckoutCart extends Controller {
 			);
 						
 			$this->response->setOutput($this->render());
-    	} else {
+		} else {
 
-      		$this->data['text_error'] = $this->language->get('text_empty');
+			$this->data['text_error'] = $this->language->get('text_empty');
 			
-      		$this->data['continue'] = $this->url->link('common/home');
+			$this->data['continue'] = $this->url->link('common/home');
 
 			unset($this->session->data['success']);
 
@@ -380,8 +380,8 @@ class ControllerCheckoutCart extends Controller {
 			);
 					
 			$this->response->setOutput($this->render());
-    	}
-  	}
+		}
+	}
 	
 	protected function validateCoupon() {
 		$this->load->model('checkout/coupon');
@@ -676,7 +676,7 @@ class ControllerCheckoutCart extends Controller {
 		
 		$this->load->model('localisation/country');
 
-    	$country_info = $this->model_localisation_country->getCountry($this->request->get['country_id']);
+		$country_info = $this->model_localisation_country->getCountry($this->request->get['country_id']);
 		
 		if ($country_info) {
 			$this->load->model('localisation/zone');

@@ -71,7 +71,7 @@ $_['entry_category']         = 'Categories:<br /><span class="help">(Autocomplet
 $_['entry_filter']           = 'Filters:<br /><span class="help">(Autocomplete)</span>';
 $_['entry_download']         = 'Downloads:<br /><span class="help">(Autocomplete)</span>';
 $_['entry_related']          = 'Related Products:<br /><span class="help">(Autocomplete)</span>';
-$_['entry_tag']          	 = 'Product Tags:<br /><span class="help">comma separated</span>';
+$_['entry_tag']      		 = 'Product Tags:<br /><span class="help">comma separated</span>';
 $_['entry_reward']           = 'Reward Points:';
 $_['entry_layout']           = 'Layout Override:';
 

@@ -1,9 +1,9 @@
 <?php
 class ControllerReportCustomerOnline extends Controller {
-  	public function index() {
+	public function index() {
 		$this->data += $this->language->load('report/customer_online');
 		
-    	$this->document->setTitle($this->language->get('heading_title'));
+		$this->document->setTitle($this->language->get('heading_title'));
 		
 		if (isset($this->request->get['filter_ip'])) {
 			$filter_ip = $this->request->get['filter_ip'];
@@ -37,20 +37,20 @@ class ControllerReportCustomerOnline extends Controller {
 			$url .= '&page=' . $this->request->get['page'];
 		}
 						
-  		$this->data['breadcrumbs'] = array();
+		$this->data['breadcrumbs'] = array();
 
-   		$this->data['breadcrumbs'][] = array(
-       		'href' => $this->url->link('common/home', 'token=' . $this->session->data['token'], 'SSL'),
-       		'text' => $this->language->get('text_home')
-   		);
+		$this->data['breadcrumbs'][] = array(
+			'href' => $this->url->link('common/home', 'token=' . $this->session->data['token'], 'SSL'),
+			'text' => $this->language->get('text_home')
+		);
 
-   		$this->data['breadcrumbs'][] = array(
-       		'href' => $this->url->link('report/customer_online', 'token=' . $this->session->data['token'] . $url, 'SSL'),
-       		'text' => $this->language->get('heading_title')
-   		);
+		$this->data['breadcrumbs'][] = array(
+			'href' => $this->url->link('report/customer_online', 'token=' . $this->session->data['token'] . $url, 'SSL'),
+			'text' => $this->language->get('heading_title')
+		);
 		
 		$this->load->model('report/online');
-    	$this->load->model('sale/customer');
+		$this->load->model('sale/customer');
 		
 		$this->data['customers'] = array();
 
@@ -64,7 +64,7 @@ class ControllerReportCustomerOnline extends Controller {
 		$customer_total = $this->model_report_online->getTotalCustomersOnline($data);
 		
 		$results = $this->model_report_online->getCustomersOnline($data);
-    	
+		
 		foreach ($results as $result) {
 			$action = array();
 			
@@ -83,7 +83,7 @@ class ControllerReportCustomerOnline extends Controller {
 				$customer = $this->language->get('text_guest');
 			}
 								
-      		$this->data['customers'][] = array(
+			$this->data['customers'][] = array(
 				'ip'         => $result['ip'],
 				'customer'   => $customer,
 				'url'        => $result['url'],
@@ -123,6 +123,6 @@ class ControllerReportCustomerOnline extends Controller {
 		);
 		
 		$this->response->setOutput($this->render());
-  	}
+	}
 }
 ?>

@@ -5,10 +5,10 @@ class ControllerAccountNewsletter extends Controller {
 	  		$this->session->data['redirect'] = $this->url->link('account/newsletter', '', 'SSL');
 	  
 	  		$this->redirect($this->url->link('account/login', '', 'SSL'));
-    	}
+		}
 		
 		$this->data += $this->language->load('account/newsletter');
-    	
+		
 		$this->document->setTitle($this->language->get('heading_title'));
 				
 		if ($this->request->server['REQUEST_METHOD'] == 'POST') {
@@ -21,24 +21,24 @@ class ControllerAccountNewsletter extends Controller {
 			$this->redirect($this->url->link('account/account', '', 'SSL'));
 		}
 
-      	$this->data['breadcrumbs'] = array();
+		$this->data['breadcrumbs'] = array();
 
-      	$this->data['breadcrumbs'][] = array(
-        	'text' => $this->language->get('text_home'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_home'),
 			'href' => $this->url->link('common/home')
-      	);
+		);
 
-      	$this->data['breadcrumbs'][] = array(
-        	'text' => $this->language->get('text_account'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_account'),
 			'href' => $this->url->link('account/account', '', 'SSL')
-      	);
+		);
 		
-      	$this->data['breadcrumbs'][] = array(
-        	'text' => $this->language->get('text_newsletter'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_newsletter'),
 			'href' => $this->url->link('account/newsletter', '', 'SSL')
-      	);
+		);
 
-    	$this->data['action'] = $this->url->link('account/newsletter', '', 'SSL');
+		$this->data['action'] = $this->url->link('account/newsletter', '', 'SSL');
 		
 		$this->data['newsletter'] = $this->customer->getNewsletter();
 		
@@ -60,6 +60,6 @@ class ControllerAccountNewsletter extends Controller {
 		);
 						
 		$this->response->setOutput($this->render());
-  	}
+	}
 }
 ?>

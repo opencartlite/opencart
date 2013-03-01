@@ -21,13 +21,13 @@ class ModelReportProduct extends Model {
 	}
 	
 	public function getTotalProductsViewed() {
-      	$query = $this->db->query("SELECT COUNT(*) AS total FROM {product} WHERE viewed > 0");
+		$query = $this->db->query("SELECT COUNT(*) AS total FROM {product} WHERE viewed > 0");
 		
 		return $query->row['total'];
 	}
 	
 	public function getTotalProductViews() {
-      	$query = $this->db->query("SELECT SUM(viewed) AS total FROM {product}");
+		$query = $this->db->query("SELECT SUM(viewed) AS total FROM {product}");
 		
 		return $query->row['total'];
 	}
@@ -73,7 +73,7 @@ class ModelReportProduct extends Model {
 	}
 	
 	public function getTotalPurchased($data) {
-      	$sql = "SELECT COUNT(DISTINCT op.model) AS total FROM {order_product} op LEFT JOIN {order} o ON (op.order_id = o.order_id)";
+		$sql = "SELECT COUNT(DISTINCT op.model) AS total FROM {order_product} op LEFT JOIN {order} o ON (op.order_id = o.order_id)";
 
 		if (!empty($data['filter_order_status_id'])) {
 			$sql .= " WHERE o.order_status_id = '" . (int)$data['filter_order_status_id'] . "'";

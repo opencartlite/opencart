@@ -77,7 +77,7 @@ class ModelLocalisationZone extends Model {
 	}
 	
 	public function getTotalZones() {
-      	$query = $this->db->query("SELECT COUNT(*) AS total FROM {zone}");
+		$query = $this->db->query("SELECT COUNT(*) AS total FROM {zone}");
 		
 		return $query->row['total'];
 	}

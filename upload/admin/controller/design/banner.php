@@ -1,7 +1,7 @@
 <?php
 class ControllerDesignBanner extends Controller {
 	private $error = array();
- 
+
 	public function index() {
 		$this->data += $this->language->load('design/banner');
 
@@ -75,10 +75,10 @@ class ControllerDesignBanner extends Controller {
 
 		$this->getForm();
 	}
- 
+
 	public function delete() {
 		$this->data += $this->language->load('design/banner');
- 
+
 		$this->document->setTitle($this->language->get('heading_title'));
 		
 		$this->load->model('design/banner');
@@ -143,17 +143,17 @@ class ControllerDesignBanner extends Controller {
 			$url .= '&page=' . $this->request->get['page'];
 		}
 
-  		$this->data['breadcrumbs'] = array();
+		$this->data['breadcrumbs'] = array();
 
-   		$this->data['breadcrumbs'][] = array(
-       		'text' => $this->language->get('text_home'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_home'),
 			'href' => $this->url->link('common/home', 'token=' . $this->session->data['token'], 'SSL')
-   		);
+		);
 
-   		$this->data['breadcrumbs'][] = array(
-       		'text' => $this->language->get('heading_title'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('heading_title'),
 			'href' => $this->url->link('design/banner', 'token=' . $this->session->data['token'] . $url, 'SSL')
-   		);
+		);
 		
 		$this->data['insert'] = $this->url->link('design/banner/insert', 'token=' . $this->session->data['token'] . $url, 'SSL');
 		$this->data['delete'] = $this->url->link('design/banner/delete', 'token=' . $this->session->data['token'] . $url, 'SSL');
@@ -187,8 +187,8 @@ class ControllerDesignBanner extends Controller {
 				'action'    => $action
 			);
 		}
- 
- 		if (isset($this->error['warning'])) {
+
+		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
 		} else {
 			$this->data['error_warning'] = '';
@@ -250,19 +250,19 @@ class ControllerDesignBanner extends Controller {
 
 	protected function getForm() {
 
- 		if (isset($this->error['warning'])) {
+		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
 		} else {
 			$this->data['error_warning'] = '';
 		}
 
- 		if (isset($this->error['name'])) {
+		if (isset($this->error['name'])) {
 			$this->data['error_name'] = $this->error['name'];
 		} else {
 			$this->data['error_name'] = '';
 		}
 
- 		if (isset($this->error['banner_image'])) {
+		if (isset($this->error['banner_image'])) {
 			$this->data['error_banner_image'] = $this->error['banner_image'];
 		} else {
 			$this->data['error_banner_image'] = array();
@@ -282,17 +282,17 @@ class ControllerDesignBanner extends Controller {
 			$url .= '&page=' . $this->request->get['page'];
 		}
 
-  		$this->data['breadcrumbs'] = array();
+		$this->data['breadcrumbs'] = array();
 
-   		$this->data['breadcrumbs'][] = array(
-       		'text' => $this->language->get('text_home'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_home'),
 			'href' => $this->url->link('common/home', 'token=' . $this->session->data['token'], 'SSL')
-   		);
+		);
 
-   		$this->data['breadcrumbs'][] = array(
-       		'text' => $this->language->get('heading_title'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('heading_title'),
 			'href' => $this->url->link('design/banner', 'token=' . $this->session->data['token'] . $url, 'SSL')
-   		);
+		);
 							
 		if (!isset($this->request->get['banner_id'])) {
 			$this->data['action'] = $this->url->link('design/banner/insert', 'token=' . $this->session->data['token'] . $url, 'SSL');

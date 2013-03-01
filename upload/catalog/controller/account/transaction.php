@@ -5,28 +5,28 @@ class ControllerAccountTransaction extends Controller {
 			$this->session->data['redirect'] = $this->url->link('account/transaction', '', 'SSL');
 			
 	  		$this->redirect($this->url->link('account/login', '', 'SSL'));
-    	}
+		}
 		
 		$this->data += $this->language->load('account/transaction');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 
-      	$this->data['breadcrumbs'] = array();
+		$this->data['breadcrumbs'] = array();
 
-      	$this->data['breadcrumbs'][] = array(
-        	'text' => $this->language->get('text_home'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_home'),
 			'href' => $this->url->link('common/home')
-      	);
+		);
 
-      	$this->data['breadcrumbs'][] = array(
-        	'text' => $this->language->get('text_account'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_account'),
 			'href' => $this->url->link('account/account', '', 'SSL')
-      	);
+		);
 		
-      	$this->data['breadcrumbs'][] = array(
-        	'text' => $this->language->get('text_transaction'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_transaction'),
 			'href' => $this->url->link('account/transaction', '', 'SSL')
-      	);
+		);
 		
 		$this->load->model('account/transaction');
 		$this->data['column_amount'] = sprintf($this->language->get('column_amount'), $this->config->get('config_currency'));
@@ -49,8 +49,8 @@ class ControllerAccountTransaction extends Controller {
 		$transaction_total = $this->model_account_transaction->getTotalTransactions($data);
 	
 		$results = $this->model_account_transaction->getTransactions($data);
- 		
-    	foreach ($results as $result) {
+		
+		foreach ($results as $result) {
 			$this->data['transactions'][] = array(
 				'amount'      => $this->currency->format($result['amount'], $this->config->get('config_currency')),
 				'description' => $result['description'],

@@ -167,7 +167,7 @@ class ControllerSettingLocation extends Controller {
 			'start' => ($page - 1) * $this->config->get('config_admin_limit'),
 			'limit' => $this->config->get('config_admin_limit')
 		);
-		     
+			 
 		$location_total = $this->model_setting_location->getTotalLocations();
 		
 		$results = $this->model_setting_location->getLocations($data); //  retrieve db information for locations from function in Model
@@ -191,7 +191,7 @@ class ControllerSettingLocation extends Controller {
 			);
 		}
 		
- 		if (isset($this->error['warning'])) {
+		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
 		} else {
 			$this->data['error_warning'] = '';
@@ -255,7 +255,7 @@ class ControllerSettingLocation extends Controller {
 	
 	protected function getForm() {
 		
- 		if (isset($this->error['warning'])) {
+		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
 		} else {
 			$this->data['error_warning'] = '';
@@ -302,7 +302,7 @@ class ControllerSettingLocation extends Controller {
 		} else {
 			$this->data['error_geocode'] = '';
 		}
-		                
+			            
 		$url = '';
 		
 		if (isset($this->request->get['sort'])) {
@@ -384,24 +384,24 @@ class ControllerSettingLocation extends Controller {
 		}
 		
 		if (isset($this->request->post['country_id'])) {
-      		$this->data['country_id'] = $this->request->post['country_id'];
-    	} elseif (!empty($location_info)) {
+			$this->data['country_id'] = $this->request->post['country_id'];
+		} elseif (!empty($location_info)) {
 			$this->data['country_id'] = $location_info['country_id'];
 		} else {
-      		$this->data['country_id'] = '';
-    	}
+			$this->data['country_id'] = '';
+		}
 		
 		$this->load->model('localisation/country');
 		
 		$this->data['countries'] = $this->model_localisation_country->getCountries();
 				
 		if (isset($this->request->post['zone_id'])) {
-      		$this->data['zone_id'] = $this->request->post['zone_id'];
-    	} elseif (!empty($location_info)) {
+			$this->data['zone_id'] = $this->request->post['zone_id'];
+		} elseif (!empty($location_info)) {
 			$this->data['zone_id'] = $location_info['zone_id'];
 		} else {
-      		$this->data['zone_id'] = '';
-    	}
+			$this->data['zone_id'] = '';
+		}
 				
 		if (isset($this->request->post['geocode'])) {
 			$this->data['geocode'] = $this->request->post['geocode'];
@@ -469,7 +469,7 @@ class ControllerSettingLocation extends Controller {
 			$this->error['address_1'] = $this->language->get('error_address_1');
 		}
 		
-    	if ((utf8_strlen($this->request->post['city']) < 2) || (utf8_strlen($this->request->post['city']) > 128)) {
+		if ((utf8_strlen($this->request->post['city']) < 2) || (utf8_strlen($this->request->post['city']) > 128)) {
 			$this->error['city'] = $this->language->get('city');
 		}
 		
@@ -481,13 +481,13 @@ class ControllerSettingLocation extends Controller {
 			$this->error['postcode'] = $this->language->get('error_postcode');
 		}
 		
-    	if ($this->request->post['country_id'] == '') {
-      		$this->error['country'] = $this->language->get('error_country');
-    	}
+		if ($this->request->post['country_id'] == '') {
+			$this->error['country'] = $this->language->get('error_country');
+		}
 		
-    	if (!isset($this->request->post['zone_id']) || $this->request->post['zone_id'] == '') {
-      		$this->error['zone'] = $this->language->get('error_zone');
-    	}
+		if (!isset($this->request->post['zone_id']) || $this->request->post['zone_id'] == '') {
+			$this->error['zone'] = $this->language->get('error_zone');
+		}
 				
 		if (!$this->request->post['geocode']) {
 			$this->error['geocode'] = $this->language->get('error_geocode');
@@ -500,24 +500,24 @@ class ControllerSettingLocation extends Controller {
 		}
 	}
 	
-  	protected function validateDelete() {
-    	if (!$this->user->hasPermission('modify', 'setting/location')) {
-      		$this->error['warning'] = $this->language->get('error_permission');
-    	}
+	protected function validateDelete() {
+		if (!$this->user->hasPermission('modify', 'setting/location')) {
+			$this->error['warning'] = $this->language->get('error_permission');
+		}
 	  	 
 		if (!$this->error) {
 	  		return true;
 		} else {
 	  		return false;
 		}
-  	}
+	}
 	
 	public function country() {
 		$json = array();
 		
 		$this->load->model('localisation/country');
 
-    	$country_info = $this->model_localisation_country->getCountry($this->request->get['country_id']);
+		$country_info = $this->model_localisation_country->getCountry($this->request->get['country_id']);
 		
 		if ($country_info) {
 			$this->load->model('localisation/zone');

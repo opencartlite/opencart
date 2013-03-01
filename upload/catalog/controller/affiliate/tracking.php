@@ -5,32 +5,32 @@ class ControllerAffiliateTracking extends Controller {
 	  		$this->session->data['redirect'] = $this->url->link('affiliate/tracking', '', 'SSL');
 	  
 	  		$this->redirect($this->url->link('affiliate/login', '', 'SSL'));
-    	}
+		}
 	
 		$this->data += $this->language->load('affiliate/tracking');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 
-      	$this->data['breadcrumbs'] = array();
+		$this->data['breadcrumbs'] = array();
 
-      	$this->data['breadcrumbs'][] = array(
-        	'text' => $this->language->get('text_home'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_home'),
 			'href' => $this->url->link('common/home')
-      	);
+		);
 
-      	$this->data['breadcrumbs'][] = array(
-        	'text' => $this->language->get('text_account'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_account'),
 			'href' => $this->url->link('affiliate/account', '', 'SSL')
-      	);
+		);
 
-      	$this->data['breadcrumbs'][] = array(
-        	'text' => $this->language->get('heading_title'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('heading_title'),
 			'href' => $this->url->link('affiliate/tracking', '', 'SSL')
-      	);
+		);
 		
 		$this->data['text_description'] = sprintf($this->language->get('text_description'), $this->config->get('config_name'));
 
-    	$this->data['code'] = $this->affiliate->getCode();
+		$this->data['code'] = $this->affiliate->getCode();
 		
 		$this->data['continue'] = $this->url->link('affiliate/account', '', 'SSL');
 
@@ -50,7 +50,7 @@ class ControllerAffiliateTracking extends Controller {
 		);
 				
 		$this->response->setOutput($this->render());
-  	}
+	}
 	
 	public function autocomplete() {
 		$json = array();

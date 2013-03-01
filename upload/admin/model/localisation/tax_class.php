@@ -42,7 +42,7 @@ class ModelLocalisationTaxClass extends Model {
 	}
 
 	public function getTaxClasses($data = array()) {
-    	if ($data) {
+		if ($data) {
 			$sql = "SELECT * FROM {tax_class}";
 
 			$sql .= " ORDER BY title";
@@ -84,19 +84,19 @@ class ModelLocalisationTaxClass extends Model {
 	}
 					
 	public function getTotalTaxClasses() {
-      	$query = $this->db->query("SELECT COUNT(*) AS total FROM {tax_class}");
+		$query = $this->db->query("SELECT COUNT(*) AS total FROM {tax_class}");
 		
 		return $query->row['total'];
 	}
 	
 	public function getTaxRules($tax_class_id) {
-      	$query = $this->db->query("SELECT * FROM {tax_rule} WHERE tax_class_id = '" . (int)$tax_class_id . "'");
+		$query = $this->db->query("SELECT * FROM {tax_rule} WHERE tax_class_id = '" . (int)$tax_class_id . "'");
 		
 		return $query->rows;
 	}
 	
 	public function getTotalTaxRulesByTaxRateId($tax_rate_id) {
-      	$query = $this->db->query("SELECT COUNT(DISTINCT tax_class_id) AS total FROM {tax_rule} WHERE tax_rate_id = '" . (int)$tax_rate_id . "'");
+		$query = $this->db->query("SELECT COUNT(DISTINCT tax_class_id) AS total FROM {tax_rule} WHERE tax_rate_id = '" . (int)$tax_rate_id . "'");
 		
 		return $query->row['total'];
 	}

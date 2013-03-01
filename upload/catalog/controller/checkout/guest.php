@@ -1,7 +1,7 @@
 <?php
 class ControllerCheckoutGuest extends Controller {
-  	public function index() {
-    	$this->data += $this->language->load('checkout/checkout');
+	public function index() {
+		$this->data += $this->language->load('checkout/checkout');
 		
 		if (isset($this->session->data['guest']['firstname'])) {
 			$this->data['firstname'] = $this->session->data['guest']['firstname'];
@@ -54,7 +54,7 @@ class ControllerCheckoutGuest extends Controller {
 		}
 		
 		if (isset($this->session->data['guest']['customer_group_id'])) {
-    		$this->data['customer_group_id'] = $this->session->data['guest']['customer_group_id'];
+			$this->data['customer_group_id'] = $this->session->data['guest']['customer_group_id'];
 		} else {
 			$this->data['customer_group_id'] = $this->config->get('config_customer_group_id');
 		}
@@ -120,10 +120,10 @@ class ControllerCheckoutGuest extends Controller {
 		}
 		
 		$this->response->setOutput($this->render());
-  	}
+	}
 	
 	public function save() {
-    	$this->data += $this->language->load('checkout/checkout');
+		$this->data += $this->language->load('checkout/checkout');
 
 		$json = array();
 		
@@ -161,7 +161,7 @@ class ControllerCheckoutGuest extends Controller {
 			
 			// Customer Group
 			$this->load->model('account/customer_group');
- 	
+	
 			if (isset($this->request->post['customer_group_id']) && is_array($this->config->get('config_customer_group_display')) && in_array($this->request->post['customer_group_id'], $this->config->get('config_customer_group_display'))) {
 				$customer_group_id = $this->request->post['customer_group_id'];
 			} else {
@@ -295,28 +295,28 @@ class ControllerCheckoutGuest extends Controller {
 		$this->response->setOutput(json_encode($json));
 	}
 	
-  	public function zone() {
+	public function zone() {
 		$output = '<option value="">' . $this->language->get('text_select') . '</option>';
 		
 		$this->load->model('localisation/zone');
 
-    	$results = $this->model_localisation_zone->getZonesByCountryId($this->request->get['country_id']);
-        
-      	foreach ($results as $result) {
-        	$output .= '<option value="' . $result['zone_id'] . '"';
+		$results = $this->model_localisation_zone->getZonesByCountryId($this->request->get['country_id']);
+		
+		foreach ($results as $result) {
+			$output .= '<option value="' . $result['zone_id'] . '"';
 	
-	    	if (isset($this->request->get['zone_id']) && ($this->request->get['zone_id'] == $result['zone_id'])) {
-	      		$output .= ' selected="selected"';
-	    	}
+			if (isset($this->request->get['zone_id']) && ($this->request->get['zone_id'] == $result['zone_id'])) {
+		  		$output .= ' selected="selected"';
+			}
 	
-	    	$output .= '>' . $result['name'] . '</option>';
-    	}
+			$output .= '>' . $result['name'] . '</option>';
+		}
 		
 		if (!$results) {
 		  	$output .= '<option value="0">' . $this->language->get('text_none') . '</option>';
 		}
 	
 		$this->response->setOutput($output);
-  	}
+	}
 }
 ?>

@@ -13,22 +13,22 @@ class ControllerAccountEdit extends Controller {
 		
 		$this->load->model('account/customer');
 		
-      	$this->data['breadcrumbs'] = array();
+		$this->data['breadcrumbs'] = array();
 
-      	$this->data['breadcrumbs'][] = array(
-        	'text' => $this->language->get('text_home'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_home'),
 			'href' => $this->url->link('common/home')
-      	);
+		);
 
-      	$this->data['breadcrumbs'][] = array(
-        	'text' => $this->language->get('text_account'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_account'),
 			'href' => $this->url->link('account/account', '', 'SSL')
-      	);
+		);
 
-      	$this->data['breadcrumbs'][] = array(
-        	'text' => $this->language->get('text_edit'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_edit'),
 			'href' => $this->url->link('account/edit', '', 'SSL')
-      	);
+		);
 
 		$customer_info = $this->model_account_customer->getCustomer($this->customer->getId());
 

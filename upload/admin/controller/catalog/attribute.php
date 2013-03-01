@@ -1,26 +1,26 @@
 <?php
 class ControllerCatalogAttribute extends Controller {
-	  private $error = array();
+	private $error = array();
 	 
-	  public function index() {
-		  $this->data += $this->language->load('catalog/attribute');
+	public function index() {
+		$this->data += $this->language->load('catalog/attribute');
 	  
-		  $this->document->setTitle($this->language->get('heading_title'));
+		$this->document->setTitle($this->language->get('heading_title'));
 		  
-		  $this->load->model('catalog/attribute');
+		$this->load->model('catalog/attribute');
 		  
-		  $this->getList();
-	  }
-              
-  	public function insert() {
+		$this->getList();
+	}
+			
+	public function insert() {
 		$this->data += $this->language->load('catalog/attribute');
 	
-    	$this->document->setTitle($this->language->get('heading_title'));
+		$this->document->setTitle($this->language->get('heading_title'));
 		
 		$this->load->model('catalog/attribute');
 			
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
-      		$this->model_catalog_attribute->addAttribute($this->request->post);
+			$this->model_catalog_attribute->addAttribute($this->request->post);
 		  	
 			$this->session->data['success'] = $this->language->get('text_success');
 
@@ -38,20 +38,20 @@ class ControllerCatalogAttribute extends Controller {
 				$url .= '&page=' . $this->request->get['page'];
 			}
 						
-      		$this->redirect($this->url->link('catalog/attribute', 'token=' . $this->session->data['token'] . $url, 'SSL'));
+			$this->redirect($this->url->link('catalog/attribute', 'token=' . $this->session->data['token'] . $url, 'SSL'));
 		}
 	
-    	$this->getForm();
-  	}
+		$this->getForm();
+	}
 
-  	public function update() {
+	public function update() {
 		$this->data += $this->language->load('catalog/attribute');
 	
-    	$this->document->setTitle($this->language->get('heading_title'));
+		$this->document->setTitle($this->language->get('heading_title'));
 		
 		$this->load->model('catalog/attribute');
 		
-    	if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
+		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
 	  		$this->model_catalog_attribute->editAttribute($this->request->get['attribute_id'], $this->request->post);
 			
 			$this->session->data['success'] = $this->language->get('text_success');
@@ -71,23 +71,23 @@ class ControllerCatalogAttribute extends Controller {
 			}
 			
 			$this->redirect($this->url->link('catalog/attribute', 'token=' . $this->session->data['token'] . $url, 'SSL'));
-    	}
+		}
 	
-    	$this->getForm();
-  	}
+		$this->getForm();
+	}
 
-  	public function delete() {
+	public function delete() {
 		$this->data += $this->language->load('catalog/attribute');
 	
-    	$this->document->setTitle($this->language->get('heading_title'));
+		$this->document->setTitle($this->language->get('heading_title'));
 		
 		$this->load->model('catalog/attribute');
 		
-    	if (isset($this->request->post['selected']) && $this->validateDelete()) {
+		if (isset($this->request->post['selected']) && $this->validateDelete()) {
 			foreach ($this->request->post['selected'] as $attribute_id) {
 				$this->model_catalog_attribute->deleteAttribute($attribute_id);
 			}
-			      		
+				  		
 			$this->session->data['success'] = $this->language->get('text_success');
 
 			$url = '';
@@ -105,12 +105,12 @@ class ControllerCatalogAttribute extends Controller {
 			}
 			
 			$this->redirect($this->url->link('catalog/attribute', 'token=' . $this->session->data['token'] . $url, 'SSL'));
-   		}
+		}
 	
-    	$this->getList();
-  	}
-    
-  	protected function getList() {
+		$this->getList();
+	}
+	
+	protected function getList() {
 		if (isset($this->request->get['sort'])) {
 			$sort = $this->request->get['sort'];
 		} else {
@@ -143,17 +143,17 @@ class ControllerCatalogAttribute extends Controller {
 			$url .= '&page=' . $this->request->get['page'];
 		}
 
-  		$this->data['breadcrumbs'] = array();
+		$this->data['breadcrumbs'] = array();
 
-   		$this->data['breadcrumbs'][] = array(
-       		'text' => $this->language->get('text_home'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_home'),
 			'href' => $this->url->link('common/home', 'token=' . $this->session->data['token'], 'SSL')
-   		);
+		);
 
-   		$this->data['breadcrumbs'][] = array(
-       		'text' => $this->language->get('heading_title'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('heading_title'),
 			'href' => $this->url->link('catalog/attribute', 'token=' . $this->session->data['token'] . $url, 'SSL')
-   		);
+		);
 							
 		$this->data['insert'] = $this->url->link('catalog/attribute/insert', 'token=' . $this->session->data['token'] . $url, 'SSL');
 		$this->data['delete'] = $this->url->link('catalog/attribute/delete', 'token=' . $this->session->data['token'] . $url, 'SSL');
@@ -170,8 +170,8 @@ class ControllerCatalogAttribute extends Controller {
 		$attribute_total = $this->model_catalog_attribute->getTotalAttributes();
 	
 		$results = $this->model_catalog_attribute->getAttributes($data);
- 
-    	foreach ($results as $result) {
+
+		foreach ($results as $result) {
 			$action = array();
 			
 			$action[] = array(
@@ -188,8 +188,8 @@ class ControllerCatalogAttribute extends Controller {
 				'action'          => $action
 			);
 		}
- 
- 		if (isset($this->error['warning'])) {
+
+		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
 		} else {
 			$this->data['error_warning'] = '';
@@ -248,17 +248,17 @@ class ControllerCatalogAttribute extends Controller {
 		);
 				
 		$this->response->setOutput($this->render());
-  	}
-  
-  	protected function getForm() {
-    
- 		if (isset($this->error['warning'])) {
+	}
+
+	protected function getForm() {
+	
+		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
 		} else {
 			$this->data['error_warning'] = '';
 		}
 
- 		if (isset($this->error['name'])) {
+		if (isset($this->error['name'])) {
 			$this->data['error_name'] = $this->error['name'];
 		} else {
 			$this->data['error_name'] = array();
@@ -278,17 +278,17 @@ class ControllerCatalogAttribute extends Controller {
 			$url .= '&page=' . $this->request->get['page'];
 		}
 
-  		$this->data['breadcrumbs'] = array();
+		$this->data['breadcrumbs'] = array();
 
-   		$this->data['breadcrumbs'][] = array(
-       		'text' => $this->language->get('text_home'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_home'),
 			'href' => $this->url->link('common/home', 'token=' . $this->session->data['token'], 'SSL'),
-   		);
+		);
 
-   		$this->data['breadcrumbs'][] = array(
-       		'text' => $this->language->get('heading_title'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('heading_title'),
 			'href' => $this->url->link('catalog/attribute', 'token=' . $this->session->data['token'] . $url, 'SSL'),
-   		);
+		);
 		
 		if (!isset($this->request->get['attribute_id'])) {
 			$this->data['action'] = $this->url->link('catalog/attribute/insert', 'token=' . $this->session->data['token'] . $url, 'SSL');
@@ -341,30 +341,30 @@ class ControllerCatalogAttribute extends Controller {
 		);
 				
 		$this->response->setOutput($this->render());
-  	}
-  	
-	protected function validateForm() {
-    	if (!$this->user->hasPermission('modify', 'catalog/attribute')) {
-      		$this->error['warning'] = $this->language->get('error_permission');
-    	}
+	}
 	
-    	foreach ($this->request->post['attribute_description'] as $language_id => $value) {
-      		if ((utf8_strlen($value['name']) < 3) || (utf8_strlen($value['name']) > 64)) {
-        		$this->error['name'][$language_id] = $this->language->get('error_name');
-      		}
-    	}
+	protected function validateForm() {
+		if (!$this->user->hasPermission('modify', 'catalog/attribute')) {
+			$this->error['warning'] = $this->language->get('error_permission');
+		}
+	
+		foreach ($this->request->post['attribute_description'] as $language_id => $value) {
+			if ((utf8_strlen($value['name']) < 3) || (utf8_strlen($value['name']) > 64)) {
+				$this->error['name'][$language_id] = $this->language->get('error_name');
+			}
+		}
 		
 		if (!$this->error) {
 	  		return true;
 		} else {
 	  		return false;
 		}
-  	}
+	}
 
-  	protected function validateDelete() {
+	protected function validateDelete() {
 		if (!$this->user->hasPermission('modify', 'catalog/attribute')) {
-      		$this->error['warning'] = $this->language->get('error_permission');
-    	}
+			$this->error['warning'] = $this->language->get('error_permission');
+		}
 		
 		$this->load->model('catalog/product');
 		
@@ -381,7 +381,7 @@ class ControllerCatalogAttribute extends Controller {
 		} else {
 	  		return false;
 		}
-  	}
+	}
 	
 	public function autocomplete() {
 		$json = array();

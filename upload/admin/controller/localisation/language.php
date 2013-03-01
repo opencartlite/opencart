@@ -1,7 +1,7 @@
 <?php
 class ControllerLocalisationLanguage extends Controller {
 	private $error = array();
-  
+
 	public function index() {
 		$this->data += $this->language->load('localisation/language');
 		
@@ -143,17 +143,17 @@ class ControllerLocalisationLanguage extends Controller {
 			$url .= '&page=' . $this->request->get['page'];
 		}
 		
-  		$this->data['breadcrumbs'] = array();
+		$this->data['breadcrumbs'] = array();
 
-   		$this->data['breadcrumbs'][] = array(
-       		'text' => $this->language->get('text_home'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_home'),
 			'href' => $this->url->link('common/home', 'token=' . $this->session->data['token'], 'SSL')
-   		);
+		);
 
-   		$this->data['breadcrumbs'][] = array(
-       		'text' => $this->language->get('heading_title'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('heading_title'),
 			'href' => $this->url->link('localisation/language', 'token=' . $this->session->data['token'] . $url, 'SSL')
-   		);
+		);
 	
 		$this->data['insert'] = $this->url->link('localisation/language/insert', 'token=' . $this->session->data['token'] . $url, 'SSL');
 		$this->data['delete'] = $this->url->link('localisation/language/delete', 'token=' . $this->session->data['token'] . $url, 'SSL');
@@ -189,7 +189,7 @@ class ControllerLocalisationLanguage extends Controller {
 			);
 		}
 
- 		if (isset($this->error['warning'])) {
+		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
 		} else {
 			$this->data['error_warning'] = '';
@@ -252,43 +252,43 @@ class ControllerLocalisationLanguage extends Controller {
 
 	protected function getForm() {
 
- 		if (isset($this->error['warning'])) {
+		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
 		} else {
 			$this->data['error_warning'] = '';
 		}
 
- 		if (isset($this->error['name'])) {
+		if (isset($this->error['name'])) {
 			$this->data['error_name'] = $this->error['name'];
 		} else {
 			$this->data['error_name'] = '';
 		}
 
- 		if (isset($this->error['code'])) {
+		if (isset($this->error['code'])) {
 			$this->data['error_code'] = $this->error['code'];
 		} else {
 			$this->data['error_code'] = '';
 		}
 		
- 		if (isset($this->error['locale'])) {
+		if (isset($this->error['locale'])) {
 			$this->data['error_locale'] = $this->error['locale'];
 		} else {
 			$this->data['error_locale'] = '';
 		}
 		
- 		if (isset($this->error['image'])) {
+		if (isset($this->error['image'])) {
 			$this->data['error_image'] = $this->error['image'];
 		} else {
 			$this->data['error_image'] = '';
 		}
 		
- 		if (isset($this->error['directory'])) {
+		if (isset($this->error['directory'])) {
 			$this->data['error_directory'] = $this->error['directory'];
 		} else {
 			$this->data['error_directory'] = '';
 		}
 		
- 		if (isset($this->error['filename'])) {
+		if (isset($this->error['filename'])) {
 			$this->data['error_filename'] = $this->error['filename'];
 		} else {
 			$this->data['error_filename'] = '';
@@ -308,17 +308,17 @@ class ControllerLocalisationLanguage extends Controller {
 			$url .= '&page=' . $this->request->get['page'];
 		}
 
-  		$this->data['breadcrumbs'] = array();
+		$this->data['breadcrumbs'] = array();
 
-   		$this->data['breadcrumbs'][] = array(
-       		'text' => $this->language->get('text_home'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_home'),
 			'href' => $this->url->link('common/home', 'token=' . $this->session->data['token'], 'SSL')
-   		);
+		);
 
-   		$this->data['breadcrumbs'][] = array(
-       		'text' => $this->language->get('heading_title'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('heading_title'),
 			'href' => $this->url->link('localisation/language', 'token=' . $this->session->data['token'] . $url, 'SSL')
-   		);
+		);
 		
 		if (!isset($this->request->get['language_id'])) {
 			$this->data['action'] = $this->url->link('localisation/language/insert', 'token=' . $this->session->data['token'] . $url, 'SSL');
@@ -388,13 +388,13 @@ class ControllerLocalisationLanguage extends Controller {
 			$this->data['sort_order'] = '';
 		}
 
-    	if (isset($this->request->post['status'])) {
-      		$this->data['status'] = $this->request->post['status'];
-    	} elseif (!empty($language_info)) {
+		if (isset($this->request->post['status'])) {
+			$this->data['status'] = $this->request->post['status'];
+		} elseif (!empty($language_info)) {
 			$this->data['status'] = $language_info['status'];
 		} else {
-      		$this->data['status'] = 1;
-    	}
+			$this->data['status'] = 1;
+		}
 
 		$this->template = 'localisation/language_form.tpl';
 		$this->children = array(

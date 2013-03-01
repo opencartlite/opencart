@@ -1,26 +1,26 @@
 <?php
 class ControllerExtensionModification extends Controller {
 	private $error = array();
-   
-  	public function index() {
+
+	public function index() {
 		$this->data += $this->language->load('extension/modification');
 	
-    	$this->document->setTitle($this->language->get('heading_title'));
+		$this->document->setTitle($this->language->get('heading_title'));
 		
 		$this->load->model('setting/modification');
 		
-    	$this->getList();
-  	}
+		$this->getList();
+	}
 		
-  	public function insert() {
+	public function insert() {
 		$this->data += $this->language->load('extension/modification');
 	
-    	$this->document->setTitle($this->language->get('heading_title'));
+		$this->document->setTitle($this->language->get('heading_title'));
 		
 		$this->load->model('setting/modification');
 			
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
-      		$this->model_setting_modification->addModification($this->request->post);
+			$this->model_setting_modification->addModification($this->request->post);
 		  	
 			$this->session->data['success'] = $this->language->get('text_success');
 
@@ -38,20 +38,20 @@ class ControllerExtensionModification extends Controller {
 				$url .= '&page=' . $this->request->get['page'];
 			}
 						
-      		$this->redirect($this->url->link('extension/modification', 'token=' . $this->session->data['token'] . $url, 'SSL'));
+			$this->redirect($this->url->link('extension/modification', 'token=' . $this->session->data['token'] . $url, 'SSL'));
 		}
 	
-    	$this->getForm();
-  	}
+		$this->getForm();
+	}
 
-  	public function update() {
+	public function update() {
 		$this->data += $this->language->load('extension/modification');
 	
-    	$this->document->setTitle($this->language->get('heading_title'));
+		$this->document->setTitle($this->language->get('heading_title'));
 		
 		$this->load->model('setting/modification');
 		
-    	if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
+		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
 	  		$this->model_setting_modification->editModification($this->request->get['modification_id'], $this->request->post);
 			
 			$this->session->data['success'] = $this->language->get('text_success');
@@ -71,23 +71,23 @@ class ControllerExtensionModification extends Controller {
 			}
 			
 			$this->redirect($this->url->link('extension/modification', 'token=' . $this->session->data['token'] . $url, 'SSL'));
-    	}
+		}
 	
-    	$this->getForm();
-  	}
+		$this->getForm();
+	}
 
-  	public function delete() {
+	public function delete() {
 		$this->data += $this->language->load('extension/modification');
 	
-    	$this->document->setTitle($this->language->get('heading_title'));
+		$this->document->setTitle($this->language->get('heading_title'));
 		
 		$this->load->model('setting/modification');
 		
-    	if (isset($this->request->post['selected']) && $this->validateDelete()) {
+		if (isset($this->request->post['selected']) && $this->validateDelete()) {
 			foreach ($this->request->post['selected'] as $modification_id) {
 				$this->model_setting_modification->deleteModification($modification_id);
 			}
-			      		
+				  		
 			$this->session->data['success'] = $this->language->get('text_success');
 
 			$url = '';
@@ -105,10 +105,10 @@ class ControllerExtensionModification extends Controller {
 			}
 			
 			$this->redirect($this->url->link('extension/modification', 'token=' . $this->session->data['token'] . $url, 'SSL'));
-   		}
+		}
 	
-    	$this->getList();
-  	}
+		$this->getList();
+	}
 	
 	public function install() {
 		$this->data += $this->language->load('extension/payment');
@@ -191,17 +191,17 @@ class ControllerExtensionModification extends Controller {
 		 
 		$this->document->setTitle($this->language->get('heading_title'));
 
-  		$this->data['breadcrumbs'] = array();
+		$this->data['breadcrumbs'] = array();
 
-   		$this->data['breadcrumbs'][] = array(
-       		'text' => $this->language->get('text_home'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_home'),
 			'href' => $this->url->link('common/home', 'token=' . $this->session->data['token'], 'SSL')
-   		);
+		);
 
-   		$this->data['breadcrumbs'][] = array(
-       		'text' => $this->language->get('heading_title'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('heading_title'),
 			'href' => $this->url->link('extension/modification', 'token=' . $this->session->data['token'] . $url, 'SSL')
-   		);
+		);
 				
 		$this->data['insert'] = $this->url->link('extension/modification/insert', 'token=' . $this->session->data['token'] . $url, 'SSL');
 		$this->data['delete'] = $this->url->link('extension/modification/delete', 'token=' . $this->session->data['token'] . $url, 'SSL');
@@ -218,8 +218,8 @@ class ControllerExtensionModification extends Controller {
 		$modification_total = $this->model_setting_modification->getTotalModifications();
 	
 		$results = $this->model_setting_modification->getModifications($data);
- 
-    	foreach ($results as $result) {
+
+		foreach ($results as $result) {
 			$action = array();
 			
 			$action[] = array(
@@ -302,15 +302,15 @@ class ControllerExtensionModification extends Controller {
 		$this->response->setOutput($this->render());
 	}
 	
-  	protected function getForm() {
-    
- 		if (isset($this->error['warning'])) {
+	protected function getForm() {
+	
+		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
 		} else {
 			$this->data['error_warning'] = '';
 		}
 
- 		if (isset($this->error['name'])) {
+		if (isset($this->error['name'])) {
 			$this->data['error_name'] = $this->error['name'];
 		} else {
 			$this->data['error_name'] = array();
@@ -330,17 +330,17 @@ class ControllerExtensionModification extends Controller {
 			$url .= '&page=' . $this->request->get['page'];
 		}
 
-  		$this->data['breadcrumbs'] = array();
+		$this->data['breadcrumbs'] = array();
 
-   		$this->data['breadcrumbs'][] = array(
-       		'text' => $this->language->get('text_home'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_home'),
 			'href' => $this->url->link('common/home', 'token=' . $this->session->data['token'], 'SSL')
-   		);
+		);
 
-   		$this->data['breadcrumbs'][] = array(
-       		'text' => $this->language->get('heading_title'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('heading_title'),
 			'href' => $this->url->link('catalog/attribute', 'token=' . $this->session->data['token'] . $url, 'SSL')
-   		);
+		);
 		
 		if (!isset($this->request->get['modification_id'])) {
 			$this->data['action'] = $this->url->link('extension/modification/insert', 'token=' . $this->session->data['token'] . $url, 'SSL');
@@ -363,31 +363,31 @@ class ControllerExtensionModification extends Controller {
 		);
 				
 		$this->response->setOutput($this->render());
-  	}
+	}
 	
 	protected function validateForm() {
-    	if (!$this->user->hasPermission('modify', 'extension/modification')) {
-      		$this->error['warning'] = $this->language->get('error_permission');
-    	}
-		
-		if (!$this->error) {
-	  		return true;
-		} else {
-	  		return false;
-		}
-  	}
-
-  	protected function validateDelete() {
 		if (!$this->user->hasPermission('modify', 'extension/modification')) {
-      		$this->error['warning'] = $this->language->get('error_permission');
-    	}
+			$this->error['warning'] = $this->language->get('error_permission');
+		}
 		
 		if (!$this->error) {
 	  		return true;
 		} else {
 	  		return false;
 		}
-  	}
+	}
+
+	protected function validateDelete() {
+		if (!$this->user->hasPermission('modify', 'extension/modification')) {
+			$this->error['warning'] = $this->language->get('error_permission');
+		}
+		
+		if (!$this->error) {
+	  		return true;
+		} else {
+	  		return false;
+		}
+	}
 			
 	public function upload() {
 /*
@@ -420,13 +420,13 @@ New XML Modifcation Standard
 		$json = array();
 		
 		if (!$this->user->hasPermission('modify', 'extension/manager')) {
-      		$json['error'] = $this->language->get('error_permission') . "\n";
-    	}
+			$json['error'] = $this->language->get('error_permission') . "\n";
+		}
 		
 		if (!empty($this->request->files['file']['name'])) {
 			if (strrchr($this->request->files['file']['name'], '.') != '.zip') {
 				$json['error'] = $this->language->get('error_filetype');
-       		}
+			}
 					
 			if ($this->request->files['file']['error'] != UPLOAD_ERR_OK) {
 				$json['error'] = $this->language->get('error_upload_' . $this->request->files['file']['error']);

@@ -167,7 +167,7 @@ class ModelCatalogOption extends Model {
 	}
 
 	public function getTotalOptions() {
-      	$query = $this->db->query("SELECT COUNT(*) AS total FROM {option}");
+		$query = $this->db->query("SELECT COUNT(*) AS total FROM {option}");
 		
 		return $query->row['total'];
 	}

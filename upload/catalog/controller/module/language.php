@@ -1,7 +1,7 @@
 <?php
 class ControllerModuleLanguage extends Controller {
 	protected function index() {
-    	if (isset($this->request->post['language_code'])) {
+		if (isset($this->request->post['language_code'])) {
 			$this->session->data['language'] = $this->request->post['language_code'];
 		
 			if (isset($this->request->post['redirect'])) {
@@ -9,7 +9,7 @@ class ControllerModuleLanguage extends Controller {
 			} else {
 				$this->redirect($this->url->link('common/home'));
 			}
-    	}
+		}
 		
 		$this->data += $this->language->load('module/language');
 		

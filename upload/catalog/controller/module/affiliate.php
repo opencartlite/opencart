@@ -5,7 +5,7 @@ class ControllerModuleAffiliate extends Controller {
 		
 		$this->data['logged'] = $this->affiliate->isLogged();
 		$this->data['register'] = $this->url->link('affiliate/register', '', 'SSL');
-    	$this->data['login'] = $this->url->link('affiliate/login', '', 'SSL');
+		$this->data['login'] = $this->url->link('affiliate/login', '', 'SSL');
 		$this->data['logout'] = $this->url->link('affiliate/logout', '', 'SSL');
 		$this->data['forgotten'] = $this->url->link('affiliate/forgotten', '', 'SSL');
 		$this->data['account'] = $this->url->link('affiliate/account', '', 'SSL');

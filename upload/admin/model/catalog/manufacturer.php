@@ -1,7 +1,7 @@
 <?php
 class ModelCatalogManufacturer extends Model {
 	public function addManufacturer($data) {
-      	$this->db->query("INSERT INTO {manufacturer} SET name = '" . $this->db->escape($data['name']) . "', sort_order = '" . (int)$data['sort_order'] . "'");
+		$this->db->query("INSERT INTO {manufacturer} SET name = '" . $this->db->escape($data['name']) . "', sort_order = '" . (int)$data['sort_order'] . "'");
 		
 		$manufacturer_id = $this->db->getLastId();
 
@@ -23,7 +23,7 @@ class ModelCatalogManufacturer extends Model {
 	}
 	
 	public function editManufacturer($manufacturer_id, $data) {
-      	$this->db->query("UPDATE {manufacturer} SET name = '" . $this->db->escape($data['name']) . "', sort_order = '" . (int)$data['sort_order'] . "' WHERE manufacturer_id = '" . (int)$manufacturer_id . "'");
+		$this->db->query("UPDATE {manufacturer} SET name = '" . $this->db->escape($data['name']) . "', sort_order = '" . (int)$data['sort_order'] . "' WHERE manufacturer_id = '" . (int)$manufacturer_id . "'");
 
 		if (isset($data['image'])) {
 			$this->db->query("UPDATE {manufacturer} SET image = '" . $this->db->escape(html_entity_decode($data['image'], ENT_QUOTES, 'UTF-8')) . "' WHERE manufacturer_id = '" . (int)$manufacturer_id . "'");
@@ -114,13 +114,13 @@ class ModelCatalogManufacturer extends Model {
 	}
 	
 	public function getTotalManufacturersByImageId($image_id) {
-      	$query = $this->db->query("SELECT COUNT(*) AS total FROM {manufacturer} WHERE image_id = '" . (int)$image_id . "'");
+		$query = $this->db->query("SELECT COUNT(*) AS total FROM {manufacturer} WHERE image_id = '" . (int)$image_id . "'");
 
 		return $query->row['total'];
 	}
 
 	public function getTotalManufacturers() {
-      	$query = $this->db->query("SELECT COUNT(*) AS total FROM {manufacturer}");
+		$query = $this->db->query("SELECT COUNT(*) AS total FROM {manufacturer}");
 		
 		return $query->row['total'];
 	}

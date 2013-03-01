@@ -1,21 +1,21 @@
 <?php
 class ControllerInformationSitemap extends Controller {
 	public function index() {
-    	$this->data += $this->language->load('information/sitemap');
- 
+		$this->data += $this->language->load('information/sitemap');
+
 		$this->document->setTitle($this->language->get('heading_title'));
 
-      	$this->data['breadcrumbs'] = array();
+		$this->data['breadcrumbs'] = array();
 
-      	$this->data['breadcrumbs'][] = array(
-        	'text' => $this->language->get('text_home'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_home'),
 			'href' => $this->url->link('common/home')
-      	);
+		);
 
-      	$this->data['breadcrumbs'][] = array(
-        	'text' => $this->language->get('heading_title'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('heading_title'),
 			'href' => $this->url->link('information/sitemap')
-      	);
+		);
 			
 		$this->load->model('catalog/category');
 		$this->load->model('catalog/product');
@@ -57,26 +57,26 @@ class ControllerInformationSitemap extends Controller {
 		
 		$this->data['special'] = $this->url->link('product/special');
 		$this->data['account'] = $this->url->link('account/account', '', 'SSL');
-    	$this->data['edit'] = $this->url->link('account/edit', '', 'SSL');
-    	$this->data['password'] = $this->url->link('account/password', '', 'SSL');
-    	$this->data['address'] = $this->url->link('account/address', '', 'SSL');
-    	$this->data['history'] = $this->url->link('account/order', '', 'SSL');
-    	$this->data['download'] = $this->url->link('account/download', '', 'SSL');
-    	$this->data['cart'] = $this->url->link('checkout/cart');
-    	$this->data['checkout'] = $this->url->link('checkout/checkout', '', 'SSL');
-    	$this->data['search'] = $this->url->link('product/search');
-    	$this->data['contact'] = $this->url->link('information/contact');
+		$this->data['edit'] = $this->url->link('account/edit', '', 'SSL');
+		$this->data['password'] = $this->url->link('account/password', '', 'SSL');
+		$this->data['address'] = $this->url->link('account/address', '', 'SSL');
+		$this->data['history'] = $this->url->link('account/order', '', 'SSL');
+		$this->data['download'] = $this->url->link('account/download', '', 'SSL');
+		$this->data['cart'] = $this->url->link('checkout/cart');
+		$this->data['checkout'] = $this->url->link('checkout/checkout', '', 'SSL');
+		$this->data['search'] = $this->url->link('product/search');
+		$this->data['contact'] = $this->url->link('information/contact');
 		
 		$this->load->model('catalog/information');
 		
 		$this->data['informations'] = array();
-    	
+		
 		foreach ($this->model_catalog_information->getInformations() as $result) {
-      		$this->data['informations'][] = array(
-        		'title' => $result['title'],
-        		'href'  => $this->url->link('information/information', 'information_id=' . $result['information_id'])
-      		);
-    	}
+			$this->data['informations'][] = array(
+				'title' => $result['title'],
+				'href'  => $this->url->link('information/information', 'information_id=' . $result['information_id'])
+			);
+		}
 
 		if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/information/sitemap.tpl')) {
 			$this->template = $this->config->get('config_template') . '/template/information/sitemap.tpl';
@@ -93,7 +93,7 @@ class ControllerInformationSitemap extends Controller {
 			'common/header'
 		);
 				
- 		$this->response->setOutput($this->render());
+		$this->response->setOutput($this->render());
 	}
 }
 ?>

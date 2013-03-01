@@ -1,26 +1,26 @@
 <?php
 class ControllerAffiliateSuccess extends Controller {
 	public function index() {
-    	$this->data += $this->language->load('affiliate/success');
-  
-    	$this->document->setTitle($this->language->get('heading_title'));
+		$this->data += $this->language->load('affiliate/success');
+
+		$this->document->setTitle($this->language->get('heading_title'));
 
 		$this->data['breadcrumbs'] = array();
 
-      	$this->data['breadcrumbs'][] = array(
-        	'text' => $this->language->get('text_home'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_home'),
 			'href' => $this->url->link('common/home')
-      	);
+		);
 
-      	$this->data['breadcrumbs'][] = array(
-        	'text' => $this->language->get('text_account'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_account'),
 			'href' => $this->url->link('affiliate/account', '', 'SSL')
-      	);
+		);
 
-      	$this->data['breadcrumbs'][] = array(
-        	'text' => $this->language->get('text_success'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_success'),
 			'href' => $this->url->link('affiliate/success')
-      	);
+		);
 
 		$this->data['text_message'] = sprintf($this->language->get('text_approval'), $this->config->get('config_name'), $this->url->link('information/contact'));
 		
@@ -42,6 +42,6 @@ class ControllerAffiliateSuccess extends Controller {
 		);
 				
 		$this->response->setOutput($this->render());
-  	}
+	}
 }
 ?>

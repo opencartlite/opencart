@@ -1,7 +1,7 @@
 <?php
 class ModelSaleReturn extends Model {
 	public function addReturn($data) {
-      	$this->db->query("INSERT INTO {return} SET order_id = '" . (int)$data['order_id'] . "', product_id = '" . (int)$data['product_id'] . "', customer_id = '" . (int)$data['customer_id'] . "', firstname = '" . $this->db->escape($data['firstname']) . "', lastname = '" . $this->db->escape($data['lastname']) . "', email = '" . $this->db->escape($data['email']) . "', telephone = '" . $this->db->escape($data['telephone']) . "', product = '" . $this->db->escape($data['product']) . "', model = '" . $this->db->escape($data['model']) . "', quantity = '" . (int)$data['quantity'] . "', opened = '" . (int)$data['opened'] . "', return_reason_id = '" . (int)$data['return_reason_id'] . "', return_action_id = '" . (int)$data['return_action_id'] . "', return_status_id = '" . (int)$data['return_status_id'] . "', comment = '" . $this->db->escape($data['comment']) . "', date_ordered = '" . $this->db->escape($data['date_ordered']) . "', date_added = NOW(), date_modified = NOW()");
+		$this->db->query("INSERT INTO {return} SET order_id = '" . (int)$data['order_id'] . "', product_id = '" . (int)$data['product_id'] . "', customer_id = '" . (int)$data['customer_id'] . "', firstname = '" . $this->db->escape($data['firstname']) . "', lastname = '" . $this->db->escape($data['lastname']) . "', email = '" . $this->db->escape($data['email']) . "', telephone = '" . $this->db->escape($data['telephone']) . "', product = '" . $this->db->escape($data['product']) . "', model = '" . $this->db->escape($data['model']) . "', quantity = '" . (int)$data['quantity'] . "', opened = '" . (int)$data['opened'] . "', return_reason_id = '" . (int)$data['return_reason_id'] . "', return_action_id = '" . (int)$data['return_action_id'] . "', return_status_id = '" . (int)$data['return_status_id'] . "', comment = '" . $this->db->escape($data['comment']) . "', date_ordered = '" . $this->db->escape($data['date_ordered']) . "', date_added = NOW(), date_modified = NOW()");
 	}
 	
 	public function editReturn($return_id, $data) {
@@ -105,7 +105,7 @@ class ModelSaleReturn extends Model {
 	}
 						
 	public function getTotalReturns($data = array()) {
-      	$sql = "SELECT COUNT(*) AS total FROM {return}r";
+		$sql = "SELECT COUNT(*) AS total FROM {return}r";
 		
 		$implode = array();
 		
@@ -151,19 +151,19 @@ class ModelSaleReturn extends Model {
 	}
 		
 	public function getTotalReturnsByReturnStatusId($return_status_id) {
-      	$query = $this->db->query("SELECT COUNT(*) AS total FROM {return} WHERE return_status_id = '" . (int)$return_status_id . "'");
+		$query = $this->db->query("SELECT COUNT(*) AS total FROM {return} WHERE return_status_id = '" . (int)$return_status_id . "'");
 				
 		return $query->row['total'];
 	}
 			
 	public function getTotalReturnsByReturnReasonId($return_reason_id) {
-      	$query = $this->db->query("SELECT COUNT(*) AS total FROM {return} WHERE return_reason_id = '" . (int)$return_reason_id . "'");
+		$query = $this->db->query("SELECT COUNT(*) AS total FROM {return} WHERE return_reason_id = '" . (int)$return_reason_id . "'");
 				
 		return $query->row['total'];
 	}
 	
 	public function getTotalReturnsByReturnActionId($return_action_id) {
-      	$query = $this->db->query("SELECT COUNT(*) AS total FROM {return} WHERE return_action_id = '" . (int)$return_action_id . "'");
+		$query = $this->db->query("SELECT COUNT(*) AS total FROM {return} WHERE return_action_id = '" . (int)$return_action_id . "'");
 				
 		return $query->row['total'];
 	}
@@ -173,8 +173,8 @@ class ModelSaleReturn extends Model {
 
 		$this->db->query("INSERT INTO {return_history} SET return_id = '" . (int)$return_id . "', return_status_id = '" . (int)$data['return_status_id'] . "', notify = '" . (isset($data['notify']) ? (int)$data['notify'] : 0) . "', comment = '" . $this->db->escape(strip_tags($data['comment'])) . "', date_added = NOW()");
 
-      	if ($data['notify']) {
-        	$return_query = $this->db->query("SELECT *, rs.name AS status FROM {return} r LEFT JOIN {return_status} rs ON (r.return_status_id = rs.return_status_id) WHERE r.return_id = '" . (int)$return_id . "' AND rs.language_id = '" . (int)$this->config->get('config_language_id') . "'");
+		if ($data['notify']) {
+			$return_query = $this->db->query("SELECT *, rs.name AS status FROM {return} r LEFT JOIN {return_status} rs ON (r.return_status_id = rs.return_status_id) WHERE r.return_id = '" . (int)$return_id . "' AND rs.language_id = '" . (int)$this->config->get('config_language_id') . "'");
 		
 			if ($return_query->num_rows) {
 				$this->language->load('mail/return');
@@ -203,10 +203,10 @@ class ModelSaleReturn extends Model {
 				$mail->timeout = $this->config->get('config_smtp_timeout');
 				$mail->setTo($return_query->row['email']);
 				$mail->setFrom($this->config->get('config_email'));
-	    		$mail->setSender($this->config->get('config_name'));
-	    		$mail->setSubject(html_entity_decode($subject, ENT_QUOTES, 'UTF-8'));
-	    		$mail->setText(html_entity_decode($message, ENT_QUOTES, 'UTF-8'));
-	    		$mail->send();
+				$mail->setSender($this->config->get('config_name'));
+				$mail->setSubject(html_entity_decode($subject, ENT_QUOTES, 'UTF-8'));
+				$mail->setText(html_entity_decode($message, ENT_QUOTES, 'UTF-8'));
+				$mail->send();
 			}
 		}
 	}

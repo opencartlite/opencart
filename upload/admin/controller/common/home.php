@@ -1,12 +1,12 @@
 <?php
 class ControllerCommonHome extends Controller {
 	public function index() {
-    	$this->data += $this->language->load('common/home');
+		$this->data += $this->language->load('common/home');
 	 
 		$this->document->setTitle($this->language->get('heading_title'));
 		
 		// Check install directory exists
- 		if (is_dir(dirname(DIR_APPLICATION) . '/install')) {
+		if (is_dir(dirname(DIR_APPLICATION) . '/install')) {
 		} else {
 			$this->data['error_install'] = '';
 		}
@@ -98,10 +98,10 @@ class ControllerCommonHome extends Controller {
 										
 		$this->data['breadcrumbs'] = array();
 
-   		$this->data['breadcrumbs'][] = array(
-       		'text' => $this->language->get('text_home'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_home'),
 			'href' => $this->url->link('common/home', 'token=' . $this->session->data['token'], 'SSL')
-   		);
+		);
 
 		$this->data['token'] = $this->session->data['token'];
 		
@@ -136,8 +136,8 @@ class ControllerCommonHome extends Controller {
 		);
 		
 		$results = $this->model_sale_order->getOrders($data);
-    	
-    	foreach ($results as $result) {
+		
+		foreach ($results as $result) {
 			$action = array();
 			 
 			$action[] = array(
@@ -168,7 +168,7 @@ class ControllerCommonHome extends Controller {
 		);
 				
 		$this->response->setOutput($this->render());
-  	}
+	}
 	
 	public function chart() {
 		$this->data += $this->language->load('common/home');

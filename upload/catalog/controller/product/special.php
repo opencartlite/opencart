@@ -1,7 +1,7 @@
 <?php
 class ControllerProductSpecial extends Controller {
 	public function index() {
-    	$this->data += $this->language->load('product/special');
+		$this->data += $this->language->load('product/special');
 		
 		$this->load->model('catalog/product');
 		
@@ -19,7 +19,7 @@ class ControllerProductSpecial extends Controller {
 			$order = 'ASC';
 		}
 			 
-  		if (isset($this->request->get['page'])) {
+		if (isset($this->request->get['page'])) {
 			$page = $this->request->get['page'];
 		} else {
 			$page = 1;
@@ -30,17 +30,17 @@ class ControllerProductSpecial extends Controller {
 		} else {
 			$limit = $this->config->get('config_catalog_limit');
 		}
-				    	
+						
 		$this->document->setTitle($this->language->get('heading_title'));
 		$this->document->addScript('catalog/view/javascript/jquery/jquery.cookie.js');
 		$this->document->addScript('catalog/view/javascript/jquery/jquery.total-storage.min.js');
 
 		$this->data['breadcrumbs'] = array();
 
-   		$this->data['breadcrumbs'][] = array(
-       		'text' => $this->language->get('text_home'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_home'),
 			'href' => $this->url->link('common/home')
-   		);
+		);
 
 		$url = '';
 		
@@ -60,10 +60,10 @@ class ControllerProductSpecial extends Controller {
 			$url .= '&limit=' . $this->request->get['limit'];
 		}
 					
-   		$this->data['breadcrumbs'][] = array(
-       		'text' => $this->language->get('heading_title'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('heading_title'),
 			'href' => $this->url->link('product/special', $url)
-   		);
+		);
 		$this->data['text_compare'] = sprintf($this->language->get('text_compare'), (isset($this->session->data['compare']) ? count($this->session->data['compare']) : 0));
 		
 		$this->data['compare'] = $this->url->link('product/compare');
@@ -257,6 +257,6 @@ class ControllerProductSpecial extends Controller {
 		);
 	
 		$this->response->setOutput($this->render());
-  	}
+	}
 }
 ?>

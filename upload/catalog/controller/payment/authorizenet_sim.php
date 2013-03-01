@@ -20,7 +20,7 @@ class ControllerPaymentAuthorizeNetSim extends Controller {
 		 *	Maximum length 20, the Payment Page ID from the Administration Console. Case-sensitive.
 		 */
 		$data['x_login'] = $this->config->get('authorizenet_sim_merchant');
-  
+
 		/**
 		 *
 		 * Chosen by merchant 	Can be a random number. Used in "x_fp_hash"
@@ -210,17 +210,17 @@ class ControllerPaymentAuthorizeNetSim extends Controller {
 		
 		$this->document->breadcrumbs = array();
 
-      	$this->document->breadcrumbs[] = array(
-        	'href'      => $this->url->http('common/home'),
-        	'text' => $this->language->get('text_home')
-      	);
+		$this->document->breadcrumbs[] = array(
+			'href'      => $this->url->http('common/home'),
+			'text' => $this->language->get('text_home')
+		);
 
 		
-      	$this->document->breadcrumbs[] = array(
-        	'href'      => $this->url->http('checkout/cart'),
-        	'text' => $this->language->get('text_basket')
-      	);
-      	
+		$this->document->breadcrumbs[] = array(
+			'href'      => $this->url->http('checkout/cart'),
+			'text' => $this->language->get('text_basket')
+		);
+		
 		if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/payment/authorizenet_sim_callback.tpl')) {
 			$this->template = $this->config->get('config_template') . '/template/payment/authorizenet_sim_callback.tpl';
 		} else {

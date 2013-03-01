@@ -1,6 +1,6 @@
 <?php
 class ControllerCheckoutRegister extends Controller {
-  	public function index() {
+	public function index() {
 		$this->data += $this->language->load('checkout/checkout');
 		$this->data['entry_newsletter'] = sprintf($this->language->get('entry_newsletter'), $this->config->get('config_name'));
 
@@ -26,17 +26,17 @@ class ControllerCheckoutRegister extends Controller {
 			$this->data['postcode'] = '';
 		}
 		
-    	if (isset($this->session->data['shipping_addess']['country_id'])) {
+		if (isset($this->session->data['shipping_addess']['country_id'])) {
 			$this->data['country_id'] = $this->session->data['shipping_addess']['country_id'];
 		} else {
-      		$this->data['country_id'] = $this->config->get('config_country_id');
-    	}
+			$this->data['country_id'] = $this->config->get('config_country_id');
+		}
 		
-    	if (isset($this->session->data['shipping_addess']['zone_id'])) {
+		if (isset($this->session->data['shipping_addess']['zone_id'])) {
 			$this->data['zone_id'] = $this->session->data['shipping_addess']['zone_id'];
 		} else {
-      		$this->data['zone_id'] = '';
-    	}
+			$this->data['zone_id'] = '';
+		}
 				
 		$this->load->model('localisation/country');
 		
@@ -65,7 +65,7 @@ class ControllerCheckoutRegister extends Controller {
 		}
 		
 		$this->response->setOutput($this->render());
-  	}
+	}
 	
 	public function save() {
 		$this->data += $this->language->load('checkout/checkout');
@@ -126,7 +126,7 @@ class ControllerCheckoutRegister extends Controller {
 			
 			// Customer Group
 			$this->load->model('account/customer_group');
- 	
+	
 			if (isset($this->request->post['customer_group_id']) && is_array($this->config->get('config_customer_group_display')) && in_array($this->request->post['customer_group_id'], $this->config->get('config_customer_group_display'))) {
 				$customer_group_id = $this->request->post['customer_group_id'];
 			} else {

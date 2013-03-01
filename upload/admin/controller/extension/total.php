@@ -2,15 +2,15 @@
 class ControllerExtensionTotal extends Controller {
 	private $error = array();
 	
-  	public function index() {
+	public function index() {
 		$this->data += $this->language->load('extension/total');
 	
-    	$this->document->setTitle($this->language->get('heading_title'));
+		$this->document->setTitle($this->language->get('heading_title'));
 		
 		$this->load->model('setting/extension');
 		
-    	$this->getList();
-  	}
+		$this->getList();
+	}
 	
 	public function install() {
 		$this->data += $this->language->load('extension/total');
@@ -58,19 +58,19 @@ class ControllerExtensionTotal extends Controller {
 	}
 		
 	public function getList() {
-   		$this->data['breadcrumbs'] = array();
+		$this->data['breadcrumbs'] = array();
 
-   		$this->data['breadcrumbs'][] = array(
-       		'text' => $this->language->get('text_home'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_home'),
 			'href' => $this->url->link('common/home', 'token=' . $this->session->data['token'], 'SSL')
-   		);
+		);
 
-   		$this->data['breadcrumbs'][] = array(
-       		'text' => $this->language->get('heading_title'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('heading_title'),
 			'href' => $this->url->link('extension/total', 'token=' . $this->session->data['token'], 'SSL')
-   		);
+		);
 
- 		if (isset($this->error['warning'])) {
+		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
 		} else {
 			$this->data['error_warning'] = '';
@@ -144,15 +144,15 @@ class ControllerExtensionTotal extends Controller {
 	}
 	
 	protected function validate() {
-    	if (!$this->user->hasPermission('modify', 'extension/total')) {
-      		$this->error['warning'] = $this->language->get('error_permission');
-    	}
+		if (!$this->user->hasPermission('modify', 'extension/total')) {
+			$this->error['warning'] = $this->language->get('error_permission');
+		}
 		
 		if (!$this->error) {
 	  		return true;
 		} else {
 	  		return false;
 		}
-  	}
+	}
 }
 ?>

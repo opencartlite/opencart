@@ -105,11 +105,11 @@ class ControllerStep2 extends Controller {
 			$this->error['warning'] = 'Warning: Download directory needs to be writable for OpenCart to work!';
 		}
 		
-    	if (!$this->error) {
-      		return true;
-    	} else {
-      		return false;
-    	}
+		if (!$this->error) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 }
 ?>

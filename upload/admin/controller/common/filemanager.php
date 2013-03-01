@@ -157,8 +157,8 @@ class ControllerCommonFileManager extends Controller {
 		}
 		
 		if (!$this->user->hasPermission('modify', 'common/filemanager')) {
-      		$json['error'] = $this->language->get('error_permission');
-    	}
+			$json['error'] = $this->language->get('error_permission');
+		}
 		
 		if (!isset($json['error'])) {
 			mkdir($directory . '/' . str_replace('../', '', $this->request->post['name']), 0777);
@@ -189,8 +189,8 @@ class ControllerCommonFileManager extends Controller {
 		}
 		
 		if (!$this->user->hasPermission('modify', 'common/filemanager')) {
-      		$json['error'] = $this->language->get('error_permission');
-    	}
+			$json['error'] = $this->language->get('error_permission');
+		}
 		
 		if (!isset($json['error'])) {
 			if (is_file($path)) {
@@ -259,8 +259,8 @@ class ControllerCommonFileManager extends Controller {
 		}
 		
 		if (!$this->user->hasPermission('modify', 'common/filemanager')) {
-      		$json['error'] = $this->language->get('error_permission');
-    	}
+			$json['error'] = $this->language->get('error_permission');
+		}
 		
 		if (!isset($json['error'])) {
 			rename($from, $to . '/' . basename($from));
@@ -303,8 +303,8 @@ class ControllerCommonFileManager extends Controller {
 		}
 		
 		if (!$this->user->hasPermission('modify', 'common/filemanager')) {
-      		$json['error'] = $this->language->get('error_permission');
-    	}
+			$json['error'] = $this->language->get('error_permission');
+		}
 		
 		if (!isset($json['error'])) {
 			if (is_file($old_name)) {
@@ -385,8 +385,8 @@ class ControllerCommonFileManager extends Controller {
 		}
 		
 		if (!$this->user->hasPermission('modify', 'common/filemanager')) {
-      		$json['error'] = $this->language->get('error_permission');
-    	}
+			$json['error'] = $this->language->get('error_permission');
+		}
 		
 		if (!isset($json['error'])) {
 			rename($old_name, $new_name);
@@ -456,8 +456,8 @@ class ControllerCommonFileManager extends Controller {
 		}
 		
 		if (!$this->user->hasPermission('modify', 'common/filemanager')) {
-      		$json['error'] = $this->language->get('error_permission');
-    	}
+			$json['error'] = $this->language->get('error_permission');
+		}
 		
 		if (!isset($json['error'])) {
 			if (@move_uploaded_file($this->request->files['image']['tmp_name'], $directory . '/' . $filename)) {

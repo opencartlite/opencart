@@ -23,22 +23,22 @@ class ControllerAffiliatePayment extends Controller {
 			$this->redirect($this->url->link('affiliate/account', '', 'SSL'));
 		}
 
-      	$this->data['breadcrumbs'] = array();
+		$this->data['breadcrumbs'] = array();
 
-      	$this->data['breadcrumbs'][] = array(
-        	'text' => $this->language->get('text_home'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_home'),
 			'href' => $this->url->link('common/home')
-      	);
+		);
 
-      	$this->data['breadcrumbs'][] = array(
-        	'text' => $this->language->get('text_account'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_account'),
 			'href' => $this->url->link('affiliate/account', '', 'SSL')
-      	);
+		);
 
-      	$this->data['breadcrumbs'][] = array(
-        	'text' => $this->language->get('text_payment'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_payment'),
 			'href' => $this->url->link('affiliate/payment', '', 'SSL')
-      	);
+		);
 		
 		$this->data['action'] = $this->url->link('affiliate/payment', '', 'SSL');
 
@@ -47,7 +47,7 @@ class ControllerAffiliatePayment extends Controller {
 		}
 
 		if (isset($this->request->post['tax'])) {
-    		$this->data['tax'] = $this->request->post['tax'];
+			$this->data['tax'] = $this->request->post['tax'];
 		} elseif (!empty($affiliate_info)) {
 			$this->data['tax'] = $affiliate_info['tax'];
 		} else {
@@ -55,7 +55,7 @@ class ControllerAffiliatePayment extends Controller {
 		}
 		
 		if (isset($this->request->post['payment'])) {
-    		$this->data['payment'] = $this->request->post['payment'];
+			$this->data['payment'] = $this->request->post['payment'];
 		} elseif (!empty($affiliate_info)) {
 			$this->data['payment'] = $affiliate_info['payment'];
 		} else {
@@ -63,7 +63,7 @@ class ControllerAffiliatePayment extends Controller {
 		}
 
 		if (isset($this->request->post['cheque'])) {
-    		$this->data['cheque'] = $this->request->post['cheque'];
+			$this->data['cheque'] = $this->request->post['cheque'];
 		} elseif (!empty($affiliate_info)) {
 			$this->data['cheque'] = $affiliate_info['cheque'];
 		} else {
@@ -71,7 +71,7 @@ class ControllerAffiliatePayment extends Controller {
 		}
 
 		if (isset($this->request->post['paypal'])) {
-    		$this->data['paypal'] = $this->request->post['paypal'];
+			$this->data['paypal'] = $this->request->post['paypal'];
 		} elseif (!empty($affiliate_info)) {
 			$this->data['paypal'] = $affiliate_info['paypal'];
 		} else {
@@ -79,7 +79,7 @@ class ControllerAffiliatePayment extends Controller {
 		}
 
 		if (isset($this->request->post['bank_name'])) {
-    		$this->data['bank_name'] = $this->request->post['bank_name'];
+			$this->data['bank_name'] = $this->request->post['bank_name'];
 		} elseif (!empty($affiliate_info)) {
 			$this->data['bank_name'] = $affiliate_info['bank_name'];
 		} else {
@@ -87,7 +87,7 @@ class ControllerAffiliatePayment extends Controller {
 		}
 
 		if (isset($this->request->post['bank_branch_number'])) {
-    		$this->data['bank_branch_number'] = $this->request->post['bank_branch_number'];
+			$this->data['bank_branch_number'] = $this->request->post['bank_branch_number'];
 		} elseif (!empty($affiliate_info)) {
 			$this->data['bank_branch_number'] = $affiliate_info['bank_branch_number'];
 		} else {
@@ -95,7 +95,7 @@ class ControllerAffiliatePayment extends Controller {
 		}
 
 		if (isset($this->request->post['bank_swift_code'])) {
-    		$this->data['bank_swift_code'] = $this->request->post['bank_swift_code'];
+			$this->data['bank_swift_code'] = $this->request->post['bank_swift_code'];
 		} elseif (!empty($affiliate_info)) {
 			$this->data['bank_swift_code'] = $affiliate_info['bank_swift_code'];
 		} else {
@@ -103,7 +103,7 @@ class ControllerAffiliatePayment extends Controller {
 		}
 
 		if (isset($this->request->post['bank_account_name'])) {
-    		$this->data['bank_account_name'] = $this->request->post['bank_account_name'];
+			$this->data['bank_account_name'] = $this->request->post['bank_account_name'];
 		} elseif (!empty($affiliate_info)) {
 			$this->data['bank_account_name'] = $affiliate_info['bank_account_name'];
 		} else {
@@ -111,7 +111,7 @@ class ControllerAffiliatePayment extends Controller {
 		}
 		
 		if (isset($this->request->post['bank_account_number'])) {
-    		$this->data['bank_account_number'] = $this->request->post['bank_account_number'];
+			$this->data['bank_account_number'] = $this->request->post['bank_account_number'];
 		} elseif (!empty($affiliate_info)) {
 			$this->data['bank_account_number'] = $affiliate_info['bank_account_number'];
 		} else {

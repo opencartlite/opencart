@@ -47,7 +47,7 @@ class ModelSaleCustomerBanIp extends Model {
 	}
 	
 	public function getTotalCustomerBanIps($data = array()) {
-      	$query = $this->db->query("SELECT COUNT(*) AS total FROM {customer_ban_ip}");
+		$query = $this->db->query("SELECT COUNT(*) AS total FROM {customer_ban_ip}");
 				 
 		return $query->row['total'];
 	}

@@ -76,7 +76,7 @@ $_['entry_tax_class']              = 'Tax Class:';
 $_['entry_geo_zone']               = 'Geo Zone:';
 $_['entry_status']                 = 'Status:';
 $_['entry_sort_order']             = 'Sort Order:';
-$_['entry_debug']      			   = 'Debug Mode:<br /><span class="help">Saves send/recv data to the system log</span>';
+$_['entry_debug']  				   = 'Debug Mode:<br /><span class="help">Saves send/recv data to the system log</span>';
 
 // Error
 $_['error_permission']             = 'Warning: You do not have permission to modify UPS (US) shipping!';

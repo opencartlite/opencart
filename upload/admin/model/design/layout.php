@@ -79,7 +79,7 @@ class ModelDesignLayout extends Model {
 	}
 		
 	public function getTotalLayouts() {
-      	$query = $this->db->query("SELECT COUNT(*) AS total FROM {layout}");
+		$query = $this->db->query("SELECT COUNT(*) AS total FROM {layout}");
 		
 		return $query->row['total'];
 	}

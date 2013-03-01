@@ -1,7 +1,7 @@
 <?php
 class ControllerCatalogFilter extends Controller {
 	private $error = array();
- 
+
 	public function index() {
 		$this->data += $this->language->load('catalog/filter');
 
@@ -80,7 +80,7 @@ class ControllerCatalogFilter extends Controller {
 		$this->data += $this->language->load('catalog/filter');
 
 		$this->document->setTitle($this->language->get('heading_title'));
- 		
+		
 		$this->load->model('catalog/filter');
 		
 		if (isset($this->request->post['selected']) && $this->validateDelete()) {
@@ -143,17 +143,17 @@ class ControllerCatalogFilter extends Controller {
 			$url .= '&page=' . $this->request->get['page'];
 		}
 
-  		$this->data['breadcrumbs'] = array();
+		$this->data['breadcrumbs'] = array();
 
-   		$this->data['breadcrumbs'][] = array(
-       		'text' => $this->language->get('text_home'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_home'),
 			'href' => $this->url->link('common/home', 'token=' . $this->session->data['token'], 'SSL')
-   		);
+		);
 
-   		$this->data['breadcrumbs'][] = array(
-       		'text' => $this->language->get('heading_title'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('heading_title'),
 			'href' => $this->url->link('catalog/filter', 'token=' . $this->session->data['token'] . $url, 'SSL')
-   		);
+		);
 		
 		$this->data['insert'] = $this->url->link('catalog/filter/insert', 'token=' . $this->session->data['token'] . $url, 'SSL');
 		$this->data['delete'] = $this->url->link('catalog/filter/delete', 'token=' . $this->session->data['token'] . $url, 'SSL');
@@ -187,8 +187,8 @@ class ControllerCatalogFilter extends Controller {
 				'action'          => $action
 			);
 		}
- 
- 		if (isset($this->error['warning'])) {
+
+		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
 		} else {
 			$this->data['error_warning'] = '';
@@ -250,19 +250,19 @@ class ControllerCatalogFilter extends Controller {
 
 	protected function getForm() {
 
- 		if (isset($this->error['warning'])) {
+		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
 		} else {
 			$this->data['error_warning'] = '';
 		}
 		
- 		if (isset($this->error['group'])) {
+		if (isset($this->error['group'])) {
 			$this->data['error_group'] = $this->error['group'];
 		} else {
 			$this->data['error_group'] = array();
 		}
 				
- 		if (isset($this->error['filter'])) {
+		if (isset($this->error['filter'])) {
 			$this->data['error_filter'] = $this->error['filter'];
 		} else {
 			$this->data['error_filter'] = array();
@@ -282,17 +282,17 @@ class ControllerCatalogFilter extends Controller {
 			$url .= '&page=' . $this->request->get['page'];
 		}
 
-  		$this->data['breadcrumbs'] = array();
+		$this->data['breadcrumbs'] = array();
 
-   		$this->data['breadcrumbs'][] = array(
-       		'text' => $this->language->get('text_home'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_home'),
 			'href' => $this->url->link('common/home', 'token=' . $this->session->data['token'], 'SSL')
-   		);
+		);
 
-   		$this->data['breadcrumbs'][] = array(
-       		'text' => $this->language->get('heading_title'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('heading_title'),
 			'href' => $this->url->link('catalog/filter', 'token=' . $this->session->data['token'] . $url, 'SSL')
-   		);
+		);
 		
 		if (!isset($this->request->get['filter_group_id'])) {
 			$this->data['action'] = $this->url->link('catalog/filter/insert', 'token=' . $this->session->data['token'] . $url, 'SSL');
@@ -303,8 +303,8 @@ class ControllerCatalogFilter extends Controller {
 		$this->data['cancel'] = $this->url->link('catalog/filter', 'token=' . $this->session->data['token'] . $url, 'SSL');
 
 		if (isset($this->request->get['filter_group_id']) && ($this->request->server['REQUEST_METHOD'] != 'POST')) {
-      		$filter_group_info = $this->model_catalog_filter->getFilterGroup($this->request->get['filter_group_id']);
-    	}
+			$filter_group_info = $this->model_catalog_filter->getFilterGroup($this->request->get['filter_group_id']);
+		}
 		
 		$this->data['token'] = $this->session->data['token'];
 		

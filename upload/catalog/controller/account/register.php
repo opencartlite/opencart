@@ -1,33 +1,33 @@
 <?php
 class ControllerAccountRegister extends Controller {
-  	public function index() {
+	public function index() {
 		if ($this->customer->isLogged()) {
 	  		$this->redirect($this->url->link('account/account', '', 'SSL'));
-    	}
+		}
 
-    	$this->data += $this->language->load('account/register');
+		$this->data += $this->language->load('account/register');
 		
 		$this->document->setTitle($this->language->get('heading_title'));
 		
 		$this->document->addScript('catalog/view/javascript/jquery/colorbox/jquery.colorbox-min.js');
 		$this->document->addStyle('catalog/view/javascript/jquery/colorbox/colorbox.css');
 		
-      	$this->data['breadcrumbs'] = array();
+		$this->data['breadcrumbs'] = array();
 
-      	$this->data['breadcrumbs'][] = array(
-        	'text' => $this->language->get('text_home'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_home'),
 			'href' => $this->url->link('common/home')
-      	);
+		);
 
-      	$this->data['breadcrumbs'][] = array(
-        	'text' => $this->language->get('text_account'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_account'),
 			'href' => $this->url->link('account/account', '', 'SSL')
-      	);
+		);
 		
-      	$this->data['breadcrumbs'][] = array(
-        	'text' => $this->language->get('text_register'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_register'),
 			'href' => $this->url->link('account/register', '', 'SSL')
-      	);
+		);
 		
 		$this->data['text_account_already'] = sprintf($this->language->get('text_account_already'), $this->url->link('account/login', '', 'SSL'));
 
@@ -56,18 +56,18 @@ class ControllerAccountRegister extends Controller {
 		if (isset($this->session->data['shipping_address']['country_id'])) {
 			$this->data['country_id'] = $this->session->data['shipping_address']['country_id'];
 		} else {
-      		$this->data['country_id'] = $this->config->get('config_country_id');
-    	}
+			$this->data['country_id'] = $this->config->get('config_country_id');
+		}
 
-    	if (isset($this->session->data['shipping_address']['zone_id'])) {
+		if (isset($this->session->data['shipping_address']['zone_id'])) {
 			$this->data['zone_id'] = $this->session->data['shipping_address']['zone_id'];
 		} else {
-      		$this->data['zone_id'] = '';
-    	}
+			$this->data['zone_id'] = '';
+		}
 		
 		$this->load->model('localisation/country');
 		
-    	$this->data['countries'] = $this->model_localisation_country->getCountries();
+		$this->data['countries'] = $this->model_localisation_country->getCountries();
 
 		if ($this->config->get('config_account_id')) {
 			$this->load->model('catalog/information');
@@ -99,9 +99,9 @@ class ControllerAccountRegister extends Controller {
 		);
 				
 		$this->response->setOutput($this->render());
-  	}
+	}
 
-  	public function save() {
+	public function save() {
 		$this->data += $this->language->load('account/register');
 		
 		$json = array();
@@ -207,10 +207,10 @@ class ControllerAccountRegister extends Controller {
 			}
 							  	  
 	  		$json['redirect'] = $this->url->link('account/success');
-    	}
+		}
 		
 		$this->response->setOutput(json_encode($json));
-  	}
+	}
 	
 	public function custom_field() {
 		$json = array();
@@ -251,7 +251,7 @@ class ControllerAccountRegister extends Controller {
 		
 		$this->load->model('localisation/country');
 
-    	$country_info = $this->model_localisation_country->getCountry($this->request->get['country_id']);
+		$country_info = $this->model_localisation_country->getCountry($this->request->get['country_id']);
 		
 		if ($country_info) {
 			$this->load->model('localisation/zone');

@@ -37,7 +37,7 @@ class ModelLocalisationReturnReason extends Model {
 	}
 		
 	public function getReturnReasons($data = array()) {
-      	if ($data) {
+		if ($data) {
 			$sql = "SELECT * FROM {return_reason} WHERE language_id = '" . (int)$this->config->get('config_language_id') . "'";
 			
 			$sql .= " ORDER BY name";
@@ -91,7 +91,7 @@ class ModelLocalisationReturnReason extends Model {
 	}
 	
 	public function getTotalReturnReasons() {
-      	$query = $this->db->query("SELECT COUNT(*) AS total FROM {return_reason} WHERE language_id = '" . (int)$this->config->get('config_language_id') . "'");
+		$query = $this->db->query("SELECT COUNT(*) AS total FROM {return_reason} WHERE language_id = '" . (int)$this->config->get('config_language_id') . "'");
 		
 		return $query->row['total'];
 	}

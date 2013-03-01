@@ -6,11 +6,11 @@ class ControllerErrorNotFound extends Controller {
 		$this->document->setTitle($this->language->get('heading_title'));
 		
 		$this->data['breadcrumbs'] = array();
- 
-      	$this->data['breadcrumbs'][] = array(
-        	'text' => $this->language->get('text_home'),
+
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_home'),
 			'href' => $this->url->link('common/home')
-      	);
+		);
 		
 		if (isset($this->request->get['route'])) {
 			$data = $this->request->get;
@@ -33,10 +33,10 @@ class ControllerErrorNotFound extends Controller {
 				$connection = 'NONSSL';
 			}
 											
-       		$this->data['breadcrumbs'][] = array(
+			$this->data['breadcrumbs'][] = array(
 				'text' => $this->language->get('heading_title'),
 				'href' => $this->url->link($route, $url, $connection)
-      		);
+			);
 		}
 		
 		$this->response->addHeader($this->request->server['SERVER_PROTOCOL'] . '/1.1 404 Not Found');
@@ -59,6 +59,6 @@ class ControllerErrorNotFound extends Controller {
 		);
 		
 		$this->response->setOutput($this->render());
-  	}
+	}
 }
 ?>

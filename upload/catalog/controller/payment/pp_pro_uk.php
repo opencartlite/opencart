@@ -122,15 +122,15 @@ class ControllerPaymentPPProUK extends Controller {
 		curl_setopt($curl, CURLOPT_HTTPHEADER, array('X-VPS-REQUEST-ID: ' . md5($this->session->data['order_id'] . mt_rand())));
 
 		$response = curl_exec($curl);
-  		
+		
 		curl_close($curl);
 		
 		if (!$response) {
 			$this->log->write('DoDirectPayment failed: ' . curl_error($curl) . '(' . curl_errno($curl) . ')');
 		}
 		 
- 		$response_info = array();
- 
+		$response_info = array();
+
 		parse_str($response, $response_info);
 
 		$json = array();

@@ -1,7 +1,7 @@
 <?php
 class ControllerCommonMaintenance extends Controller {
-    public function index() {
-        if ($this->config->get('config_maintenance')) {
+	public function index() {
+		if ($this->config->get('config_maintenance')) {
 			$route = '';
 			
 			if (isset($this->request->get['route'])) {
@@ -20,28 +20,28 @@ class ControllerCommonMaintenance extends Controller {
 			if (($route != 'payment') && !$this->user->isLogged()) {
 				return $this->forward('common/maintenance/info');
 			}
-        }
-    }
+		}
+	}
 		
 	public function info() {
-        $this->data += $this->language->load('common/maintenance');
-        
-        $this->document->setTitle($this->language->get('heading_title'));
-                
-        $this->data['breadcrumbs'] = array();
+		$this->data += $this->language->load('common/maintenance');
+		
+		$this->document->setTitle($this->language->get('heading_title'));
+				
+		$this->data['breadcrumbs'] = array();
 
-        $this->data['breadcrumbs'][] = array(
-            'text' => $this->language->get('text_maintenance'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_maintenance'),
 			'href' => $this->url->link('common/maintenance')
-        );
-        
-        $this->data['message'] = $this->language->get('text_message');
-      
+		);
+		
+		$this->data['message'] = $this->language->get('text_message');
+	
 		if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/common/maintenance.tpl')) {
-            $this->template = $this->config->get('config_template') . '/template/common/maintenance.tpl';
-        } else {
-            $this->template = 'default/template/common/maintenance.tpl';
-        }
+			$this->template = $this->config->get('config_template') . '/template/common/maintenance.tpl';
+		} else {
+			$this->template = 'default/template/common/maintenance.tpl';
+		}
 		
 		$this->children = array(
 			'common/footer',
@@ -49,6 +49,6 @@ class ControllerCommonMaintenance extends Controller {
 		);
 		
 		$this->response->setOutput($this->render());
-    }
+	}
 }
 ?>

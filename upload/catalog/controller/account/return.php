@@ -3,27 +3,27 @@ class ControllerAccountReturn extends Controller {
 	private $error = array();
 	
 	public function index() {
-    	if (!$this->customer->isLogged()) {
-      		$this->session->data['redirect'] = $this->url->link('account/return', '', 'SSL');
+		if (!$this->customer->isLogged()) {
+			$this->session->data['redirect'] = $this->url->link('account/return', '', 'SSL');
 
 	  		$this->redirect($this->url->link('account/login', '', 'SSL'));
-    	}
- 
-    	$this->data += $this->language->load('account/return');
+		}
 
-    	$this->document->setTitle($this->language->get('heading_title'));
+		$this->data += $this->language->load('account/return');
+
+		$this->document->setTitle($this->language->get('heading_title'));
 								
-      	$this->data['breadcrumbs'] = array();
+		$this->data['breadcrumbs'] = array();
 
-      	$this->data['breadcrumbs'][] = array(
-        	'text' => $this->language->get('text_home'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_home'),
 			'href' => $this->url->link('common/home')
-      	);
+		);
 
-      	$this->data['breadcrumbs'][] = array(
-        	'text' => $this->language->get('text_account'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_account'),
 			'href' => $this->url->link('account/account', '', 'SSL')
-      	);
+		);
 		
 		$url = '';
 		
@@ -31,10 +31,10 @@ class ControllerAccountReturn extends Controller {
 			$url .= '&page=' . $this->request->get['page'];
 		}
 				
-      	$this->data['breadcrumbs'][] = array(
-        	'text' => $this->language->get('heading_title'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('heading_title'),
 			'href' => $this->url->link('account/return', $url, 'SSL')
-      	);
+		);
 		
 		$this->load->model('account/return');
 		
@@ -98,12 +98,12 @@ class ControllerAccountReturn extends Controller {
 		} else {
 			$return_id = 0;
 		}
-    	
+		
 		if (!$this->customer->isLogged()) {
 			$this->session->data['redirect'] = $this->url->link('account/return/info', 'return_id=' . $return_id, 'SSL');
 			
 			$this->redirect($this->url->link('account/login', '', 'SSL'));
-    	}
+		}
 		
 		$this->load->model('account/return');
 						
@@ -162,13 +162,13 @@ class ControllerAccountReturn extends Controller {
 			
 			$results = $this->model_account_return->getReturnHistories($this->request->get['return_id']);
 			
-      		foreach ($results as $result) {
-        		$this->data['histories'][] = array(
-          			'date_added' => date($this->language->get('date_format_short'), strtotime($result['date_added'])),
-          			'status'     => $result['status'],
-          			'comment'    => nl2br($result['comment'])
-        		);
-      		}
+			foreach ($results as $result) {
+				$this->data['histories'][] = array(
+					'date_added' => date($this->language->get('date_format_short'), strtotime($result['date_added'])),
+					'status'     => $result['status'],
+					'comment'    => nl2br($result['comment'])
+				);
+			}
 			
 			$this->data['continue'] = $this->url->link('account/return', $url, 'SSL');
 
@@ -247,34 +247,34 @@ class ControllerAccountReturn extends Controller {
 
 		$this->load->model('account/return');
 
-    	if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
+		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
 			$this->model_account_return->addReturn($this->request->post);
 	  		
 			$this->redirect($this->url->link('account/return/success', '', 'SSL'));
-    	}
+		}
 							
 		$this->document->setTitle($this->language->get('heading_title'));
 		
 		$this->document->addScript('catalog/view/javascript/jquery/colorbox/jquery.colorbox-min.js');
 		$this->document->addStyle('catalog/view/javascript/jquery/colorbox/colorbox.css');
 		
-      	$this->data['breadcrumbs'] = array();
+		$this->data['breadcrumbs'] = array();
 
-      	$this->data['breadcrumbs'][] = array(
-        	'text' => $this->language->get('text_home'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_home'),
 			'href' => $this->url->link('common/home')
-      	);
+		);
 		
-      	$this->data['breadcrumbs'][] = array(
-        	'text' => $this->language->get('text_account'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_account'),
 			'href' => $this->url->link('account/account', '', 'SSL')
-      	);
+		);
 		
-      	$this->data['breadcrumbs'][] = array(
-        	'text' => $this->language->get('heading_title'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('heading_title'),
 			'href' => $this->url->link('account/return/insert', '', 'SSL')
-      	);
-		    
+		);
+			
 		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
 		} else {
@@ -329,7 +329,7 @@ class ControllerAccountReturn extends Controller {
 			$this->data['error_reason'] = '';
 		}
 		
- 		if (isset($this->error['captcha'])) {
+		if (isset($this->error['captcha'])) {
 			$this->data['error_captcha'] = $this->error['captcha'];
 		} else {
 			$this->data['error_captcha'] = '';
@@ -349,24 +349,24 @@ class ControllerAccountReturn extends Controller {
 			$product_info = $this->model_catalog_product->getProduct($this->request->get['product_id']);
 		}
 		
-    	if (isset($this->request->post['order_id'])) {
-      		$this->data['order_id'] = $this->request->post['order_id'];
+		if (isset($this->request->post['order_id'])) {
+			$this->data['order_id'] = $this->request->post['order_id'];
 		} elseif (!empty($order_info)) {
 			$this->data['order_id'] = $order_info['order_id'];
 		} else {
-      		$this->data['order_id'] = '';
-    	}
+			$this->data['order_id'] = '';
+		}
 				
-    	if (isset($this->request->post['date_ordered'])) {
-      		$this->data['date_ordered'] = $this->request->post['date_ordered'];
+		if (isset($this->request->post['date_ordered'])) {
+			$this->data['date_ordered'] = $this->request->post['date_ordered'];
 		} elseif (!empty($order_info)) {
 			$this->data['date_ordered'] = date('Y-m-d', strtotime($order_info['date_added']));
 		} else {
-      		$this->data['date_ordered'] = '';
-    	}
+			$this->data['date_ordered'] = '';
+		}
 				
 		if (isset($this->request->post['firstname'])) {
-    		$this->data['firstname'] = $this->request->post['firstname'];
+			$this->data['firstname'] = $this->request->post['firstname'];
 		} elseif (!empty($order_info)) {
 			$this->data['firstname'] = $order_info['firstname'];
 		} else {
@@ -374,7 +374,7 @@ class ControllerAccountReturn extends Controller {
 		}
 
 		if (isset($this->request->post['lastname'])) {
-    		$this->data['lastname'] = $this->request->post['lastname'];
+			$this->data['lastname'] = $this->request->post['lastname'];
 		} elseif (!empty($order_info)) {
 			$this->data['lastname'] = $order_info['lastname'];
 		} else {
@@ -382,7 +382,7 @@ class ControllerAccountReturn extends Controller {
 		}
 		
 		if (isset($this->request->post['email'])) {
-    		$this->data['email'] = $this->request->post['email'];
+			$this->data['email'] = $this->request->post['email'];
 		} elseif (!empty($order_info)) {
 			$this->data['email'] = $order_info['email'];
 		} else {
@@ -390,7 +390,7 @@ class ControllerAccountReturn extends Controller {
 		}
 		
 		if (isset($this->request->post['telephone'])) {
-    		$this->data['telephone'] = $this->request->post['telephone'];
+			$this->data['telephone'] = $this->request->post['telephone'];
 		} elseif (!empty($order_info)) {
 			$this->data['telephone'] = $order_info['telephone'];
 		} else {
@@ -398,7 +398,7 @@ class ControllerAccountReturn extends Controller {
 		}
 		
 		if (isset($this->request->post['product'])) {
-    		$this->data['product'] = $this->request->post['product'];
+			$this->data['product'] = $this->request->post['product'];
 		} elseif (!empty($product_info)) {
 			$this->data['product'] = $product_info['name'];
 		} else {
@@ -406,7 +406,7 @@ class ControllerAccountReturn extends Controller {
 		}
 		
 		if (isset($this->request->post['model'])) {
-    		$this->data['model'] = $this->request->post['model'];
+			$this->data['model'] = $this->request->post['model'];
 		} elseif (!empty($product_info)) {
 			$this->data['model'] = $product_info['model'];
 		} else {
@@ -414,29 +414,29 @@ class ControllerAccountReturn extends Controller {
 		}
 			
 		if (isset($this->request->post['quantity'])) {
-    		$this->data['quantity'] = $this->request->post['quantity'];
+			$this->data['quantity'] = $this->request->post['quantity'];
 		} else {
 			$this->data['quantity'] = 1;
 		}
 				
 		if (isset($this->request->post['opened'])) {
-    		$this->data['opened'] = $this->request->post['opened'];
+			$this->data['opened'] = $this->request->post['opened'];
 		} else {
 			$this->data['opened'] = false;
 		}
 		
 		if (isset($this->request->post['return_reason_id'])) {
-    		$this->data['return_reason_id'] = $this->request->post['return_reason_id'];
+			$this->data['return_reason_id'] = $this->request->post['return_reason_id'];
 		} else {
 			$this->data['return_reason_id'] = '';
 		}
 														
 		$this->load->model('localisation/return_reason');
 		
-    	$this->data['return_reasons'] = $this->model_localisation_return_reason->getReturnReasons();
+		$this->data['return_reasons'] = $this->model_localisation_return_reason->getReturnReasons();
 		
 		if (isset($this->request->post['comment'])) {
-    		$this->data['comment'] = $this->request->post['comment'];
+			$this->data['comment'] = $this->request->post['comment'];
 		} else {
 			$this->data['comment'] = '';
 		}
@@ -462,7 +462,7 @@ class ControllerAccountReturn extends Controller {
 		}
 		
 		if (isset($this->request->post['agree'])) {
-      		$this->data['agree'] = $this->request->post['agree'];
+			$this->data['agree'] = $this->request->post['agree'];
 		} else {
 			$this->data['agree'] = false;
 		}
@@ -485,26 +485,26 @@ class ControllerAccountReturn extends Controller {
 		);
 				
 		$this->response->setOutput($this->render());
-  	}
+	}
 	
-  	public function success() {
+	public function success() {
 		$this->data += $this->language->load('account/return');
 
 		$this->document->setTitle($this->language->get('heading_title'));
-      
+	
 	  	$this->data['breadcrumbs'] = array();
 
-      	$this->data['breadcrumbs'][] = array(
-        	'text' => $this->language->get('text_home'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_home'),
 			'href' => $this->url->link('common/home')
-      	);
+		);
 
-      	$this->data['breadcrumbs'][] = array(
-        	'text' => $this->language->get('heading_title'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('heading_title'),
 			'href' => $this->url->link('account/return', '', 'SSL')
-      	);
+		);
 	
-    	$this->data['continue'] = $this->url->link('common/home');
+		$this->data['continue'] = $this->url->link('common/home');
 
 		if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/common/success.tpl')) {
 			$this->template = $this->config->get('config_template') . '/template/common/success.tpl';
@@ -521,29 +521,29 @@ class ControllerAccountReturn extends Controller {
 			'common/header'
 		);
 				
- 		$this->response->setOutput($this->render());
+		$this->response->setOutput($this->render());
 	}
 		
-  	protected function validate() {
-    	if (!$this->request->post['order_id']) {
-      		$this->error['order_id'] = $this->language->get('error_order_id');
-    	}
+	protected function validate() {
+		if (!$this->request->post['order_id']) {
+			$this->error['order_id'] = $this->language->get('error_order_id');
+		}
 		
 		if ((utf8_strlen($this->request->post['firstname']) < 1) || (utf8_strlen($this->request->post['firstname']) > 32)) {
-      		$this->error['firstname'] = $this->language->get('error_firstname');
-    	}
+			$this->error['firstname'] = $this->language->get('error_firstname');
+		}
 
-    	if ((utf8_strlen($this->request->post['lastname']) < 1) || (utf8_strlen($this->request->post['lastname']) > 32)) {
-      		$this->error['lastname'] = $this->language->get('error_lastname');
-    	}
+		if ((utf8_strlen($this->request->post['lastname']) < 1) || (utf8_strlen($this->request->post['lastname']) > 32)) {
+			$this->error['lastname'] = $this->language->get('error_lastname');
+		}
 
-    	if ((utf8_strlen($this->request->post['email']) > 96) || !preg_match('/^[^\@]+@.*\.[a-z]{2,6}$/i', $this->request->post['email'])) {
-      		$this->error['email'] = $this->language->get('error_email');
-    	}
+		if ((utf8_strlen($this->request->post['email']) > 96) || !preg_match('/^[^\@]+@.*\.[a-z]{2,6}$/i', $this->request->post['email'])) {
+			$this->error['email'] = $this->language->get('error_email');
+		}
 		
-    	if ((utf8_strlen($this->request->post['telephone']) < 3) || (utf8_strlen($this->request->post['telephone']) > 32)) {
-      		$this->error['telephone'] = $this->language->get('error_telephone');
-    	}
+		if ((utf8_strlen($this->request->post['telephone']) < 3) || (utf8_strlen($this->request->post['telephone']) > 32)) {
+			$this->error['telephone'] = $this->language->get('error_telephone');
+		}
 		
 		if ((utf8_strlen($this->request->post['product']) < 1) || (utf8_strlen($this->request->post['product']) > 255)) {
 			$this->error['product'] = $this->language->get('error_product');
@@ -557,9 +557,9 @@ class ControllerAccountReturn extends Controller {
 			$this->error['reason'] = $this->language->get('error_reason');
 		}
 				
-    	if (empty($this->session->data['captcha']) || ($this->session->data['captcha'] != $this->request->post['captcha'])) {
-      		$this->error['captcha'] = $this->language->get('error_captcha');
-    	}
+		if (empty($this->session->data['captcha']) || ($this->session->data['captcha'] != $this->request->post['captcha'])) {
+			$this->error['captcha'] = $this->language->get('error_captcha');
+		}
 		
 		if ($this->config->get('config_return_id')) {
 			$this->load->model('catalog/information');
@@ -567,16 +567,16 @@ class ControllerAccountReturn extends Controller {
 			$information_info = $this->model_catalog_information->getInformation($this->config->get('config_return_id'));
 			
 			if ($information_info && !isset($this->request->post['agree'])) {
-      			$this->error['warning'] = sprintf($this->language->get('error_agree'), $information_info['title']);
+				$this->error['warning'] = sprintf($this->language->get('error_agree'), $information_info['title']);
 			}
 		}
 
 		if (!$this->error) {
-      		return true;
-    	} else {
-      		return false;
-    	}
-  	}
+			return true;
+		} else {
+			return false;
+		}
+	}
 	
 	public function captcha() {
 		$this->session->data['captcha'] = substr(sha1(mt_rand()), 17, 6);

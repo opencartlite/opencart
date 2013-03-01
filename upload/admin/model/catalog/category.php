@@ -285,13 +285,13 @@ class ModelCatalogCategory extends Model {
 	}
 		
 	public function getTotalCategories() {
-      	$query = $this->db->query("SELECT COUNT(*) AS total FROM {category}");
+		$query = $this->db->query("SELECT COUNT(*) AS total FROM {category}");
 		
 		return $query->row['total'];
 	}
 		
 	public function getTotalCategoriesByImageId($image_id) {
-      	$query = $this->db->query("SELECT COUNT(*) AS total FROM {category} WHERE image_id = '" . (int)$image_id . "'");
+		$query = $this->db->query("SELECT COUNT(*) AS total FROM {category} WHERE image_id = '" . (int)$image_id . "'");
 		
 		return $query->row['total'];
 	}

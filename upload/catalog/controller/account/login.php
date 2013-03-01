@@ -43,12 +43,12 @@ class ControllerAccountLogin extends Controller {
 		}
 		
 		if ($this->customer->isLogged()) {
-      		$this->redirect($this->url->link('account/account', '', 'SSL'));
-    	}
+			$this->redirect($this->url->link('account/account', '', 'SSL'));
+		}
 	
-    	$this->data += $this->language->load('account/login');
+		$this->data += $this->language->load('account/login');
 
-    	$this->document->setTitle($this->language->get('heading_title'));
+		$this->document->setTitle($this->language->get('heading_title'));
 								
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
 			unset($this->session->data['guest']);
@@ -70,24 +70,24 @@ class ControllerAccountLogin extends Controller {
 			} else {
 				$this->redirect($this->url->link('account/account', '', 'SSL'));
 			}
-    	}
+		}
 		
-      	$this->data['breadcrumbs'] = array();
+		$this->data['breadcrumbs'] = array();
 
-      	$this->data['breadcrumbs'][] = array(
-        	'text' => $this->language->get('text_home'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_home'),
 			'href' => $this->url->link('common/home')
-      	);
-  
-      	$this->data['breadcrumbs'][] = array(
-        	'text' => $this->language->get('text_account'),
+		);
+
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_account'),
 			'href' => $this->url->link('account/account', '', 'SSL')
-      	);
+		);
 		
-      	$this->data['breadcrumbs'][] = array(
-        	'text' => $this->language->get('text_login'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_login'),
 			'href' => $this->url->link('account/login', '', 'SSL')
-      	);
+		);
 
 		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
@@ -99,20 +99,20 @@ class ControllerAccountLogin extends Controller {
 		$this->data['register'] = $this->url->link('account/register', '', 'SSL');
 		$this->data['forgotten'] = $this->url->link('account/forgotten', '', 'SSL');
 
-    	// Added strpos check to pass McAfee PCI compliance test (http://forum.opencart.com/viewtopic.php?f=10&t=12043&p=151494#p151295)
+		// Added strpos check to pass McAfee PCI compliance test (http://forum.opencart.com/viewtopic.php?f=10&t=12043&p=151494#p151295)
 		if (isset($this->request->post['redirect']) && (strpos($this->request->post['redirect'], $this->config->get('config_url')) !== false || strpos($this->request->post['redirect'], $this->config->get('config_ssl')) !== false)) {
 			$this->data['redirect'] = $this->request->post['redirect'];
 		} elseif (isset($this->session->data['redirect'])) {
-      		$this->data['redirect'] = $this->session->data['redirect'];
+			$this->data['redirect'] = $this->session->data['redirect'];
 	  		
 			unset($this->session->data['redirect']);
-    	} else {
+		} else {
 			$this->data['redirect'] = '';
 		}
 
 		if (isset($this->session->data['success'])) {
-    		$this->data['success'] = $this->session->data['success'];
-    
+			$this->data['success'] = $this->session->data['success'];
+	
 			unset($this->session->data['success']);
 		} else {
 			$this->data['success'] = '';
@@ -146,24 +146,24 @@ class ControllerAccountLogin extends Controller {
 		);
 						
 		$this->response->setOutput($this->render());
-  	}
-  
-  	protected function validate() {
-    	if (!$this->customer->login($this->request->post['email'], $this->request->post['password'])) {
-      		$this->error['warning'] = $this->language->get('error_login');
-    	}
+	}
+
+	protected function validate() {
+		if (!$this->customer->login($this->request->post['email'], $this->request->post['password'])) {
+			$this->error['warning'] = $this->language->get('error_login');
+		}
 	
 		$customer_info = $this->model_account_customer->getCustomerByEmail($this->request->post['email']);
 		
-    	if ($customer_info && !$customer_info['approved']) {
-      		$this->error['warning'] = $this->language->get('error_approved');
-    	}
+		if ($customer_info && !$customer_info['approved']) {
+			$this->error['warning'] = $this->language->get('error_approved');
+		}
 		
-    	if (!$this->error) {
-      		return true;
-    	} else {
-      		return false;
-    	}
-  	}
+		if (!$this->error) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 }
 ?>

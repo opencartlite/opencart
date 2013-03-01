@@ -1,26 +1,26 @@
 <?php
 class ControllerSaleReturn extends Controller {
 	private $error = array();
-   
-  	public function index() {
+
+	public function index() {
 		$this->data += $this->language->load('sale/return');
 		 
 		$this->document->setTitle($this->language->get('heading_title'));
 		
 		$this->load->model('sale/return');
 		
-    	$this->getList();
-  	}
-  
-  	public function insert() {
+		$this->getList();
+	}
+
+	public function insert() {
 		$this->data += $this->language->load('sale/return');
 
-    	$this->document->setTitle($this->language->get('heading_title'));
+		$this->document->setTitle($this->language->get('heading_title'));
 		
 		$this->load->model('sale/return');
 			
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
-      	  	$this->model_sale_return->addReturn($this->request->post);
+		  	$this->model_sale_return->addReturn($this->request->post);
 			
 			$this->session->data['success'] = $this->language->get('text_success');
 		  
@@ -72,18 +72,18 @@ class ControllerSaleReturn extends Controller {
 			
 			$this->redirect($this->url->link('sale/return', 'token=' . $this->session->data['token'] . $url, 'SSL'));
 		}
-    	
-    	$this->getForm();
-  	}
-   
-  	public function update() {
+		
+		$this->getForm();
+	}
+
+	public function update() {
 		$this->data += $this->language->load('sale/return');
 
-    	$this->document->setTitle($this->language->get('heading_title'));
+		$this->document->setTitle($this->language->get('heading_title'));
 		
 		$this->load->model('sale/return');
 		
-    	if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
+		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
 			$this->model_sale_return->editReturn($this->request->get['return_id'], $this->request->post);
 	  		
 			$this->session->data['success'] = $this->language->get('text_success');
@@ -136,18 +136,18 @@ class ControllerSaleReturn extends Controller {
 			
 			$this->redirect($this->url->link('sale/return', 'token=' . $this->session->data['token'] . $url, 'SSL'));
 		}
-    
-    	$this->getForm();
-  	}
+	
+		$this->getForm();
+	}
 
-  	public function delete() {
+	public function delete() {
 		$this->data += $this->language->load('sale/return');
 
-    	$this->document->setTitle($this->language->get('heading_title'));
+		$this->document->setTitle($this->language->get('heading_title'));
 		
 		$this->load->model('sale/return');
 			
-    	if (isset($this->request->post['selected']) && $this->validateDelete()) {
+		if (isset($this->request->post['selected']) && $this->validateDelete()) {
 			foreach ($this->request->post['selected'] as $return_id) {
 				$this->model_sale_return->deleteReturn($return_id);
 			}
@@ -201,12 +201,12 @@ class ControllerSaleReturn extends Controller {
 			}
 			
 			$this->redirect($this->url->link('sale/return', 'token=' . $this->session->data['token'] . $url, 'SSL'));
-    	}
-    
-    	$this->getList();
-  	}
-    
-  	protected function getList() {
+		}
+	
+		$this->getList();
+	}
+	
+	protected function getList() {
 		if (isset($this->request->get['filter_return_id'])) {
 			$filter_return_id = $this->request->get['filter_return_id'];
 		} else {
@@ -319,17 +319,17 @@ class ControllerSaleReturn extends Controller {
 			$url .= '&page=' . $this->request->get['page'];
 		}
 
-  		$this->data['breadcrumbs'] = array();
+		$this->data['breadcrumbs'] = array();
 
-   		$this->data['breadcrumbs'][] = array(
-       		'text' => $this->language->get('text_home'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_home'),
 			'href' => $this->url->link('common/home', 'token=' . $this->session->data['token'], 'SSL')
-   		);
+		);
 
-   		$this->data['breadcrumbs'][] = array(
-       		'text' => $this->language->get('heading_title'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('heading_title'),
 			'href' => $this->url->link('sale/return', 'token=' . $this->session->data['token'] . $url, 'SSL')
-   		);
+		);
 		
 		$this->data['insert'] = $this->url->link('sale/return/insert', 'token=' . $this->session->data['token'] . $url, 'SSL');
 		$this->data['delete'] = $this->url->link('sale/return/delete', 'token=' . $this->session->data['token'] . $url, 'SSL');
@@ -354,8 +354,8 @@ class ControllerSaleReturn extends Controller {
 		$return_total = $this->model_sale_return->getTotalReturns($data);
 	
 		$results = $this->model_sale_return->getReturns($data);
- 
-    	foreach ($results as $result) {
+
+		foreach ($results as $result) {
 			$action = array();
 			
 			$action[] = array(
@@ -517,7 +517,7 @@ class ControllerSaleReturn extends Controller {
 
 		$this->load->model('localisation/return_status');
 		
-    	$this->data['return_statuses'] = $this->model_localisation_return_status->getReturnStatuses();
+		$this->data['return_statuses'] = $this->model_localisation_return_status->getReturnStatuses();
 		
 		$this->data['sort'] = $sort;
 		$this->data['order'] = $order;
@@ -529,43 +529,43 @@ class ControllerSaleReturn extends Controller {
 		);
 				
 		$this->response->setOutput($this->render());
-  	}
-  
-  	protected function getForm() {
+	}
+
+	protected function getForm() {
 			
 		$this->data['token'] = $this->session->data['token'];
 
- 		if (isset($this->error['warning'])) {
+		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
 		} else {
 			$this->data['error_warning'] = '';
 		}
 			
- 		if (isset($this->error['order_id'])) {
+		if (isset($this->error['order_id'])) {
 			$this->data['error_order_id'] = $this->error['order_id'];
 		} else {
 			$this->data['error_order_id'] = '';
 		}
 
- 		if (isset($this->error['firstname'])) {
+		if (isset($this->error['firstname'])) {
 			$this->data['error_firstname'] = $this->error['firstname'];
 		} else {
 			$this->data['error_firstname'] = '';
 		}
 
- 		if (isset($this->error['lastname'])) {
+		if (isset($this->error['lastname'])) {
 			$this->data['error_lastname'] = $this->error['lastname'];
 		} else {
 			$this->data['error_lastname'] = '';
 		}
 		
- 		if (isset($this->error['email'])) {
+		if (isset($this->error['email'])) {
 			$this->data['error_email'] = $this->error['email'];
 		} else {
 			$this->data['error_email'] = '';
 		}
 		
- 		if (isset($this->error['telephone'])) {
+		if (isset($this->error['telephone'])) {
 			$this->data['error_telephone'] = $this->error['telephone'];
 		} else {
 			$this->data['error_telephone'] = '';
@@ -629,17 +629,17 @@ class ControllerSaleReturn extends Controller {
 			$url .= '&page=' . $this->request->get['page'];
 		}
 
-  		$this->data['breadcrumbs'] = array();
+		$this->data['breadcrumbs'] = array();
 
-   		$this->data['breadcrumbs'][] = array(
-       		'text' => $this->language->get('text_home'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_home'),
 			'href' => $this->url->link('common/home', 'token=' . $this->session->data['token'], 'SSL')
-   		);
+		);
 
-   		$this->data['breadcrumbs'][] = array(
-       		'text' => $this->language->get('heading_title'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('heading_title'),
 			'href' => $this->url->link('sale/return', 'token=' . $this->session->data['token'] . $url, 'SSL')
-   		);
+		);
 
 		if (!isset($this->request->get['return_id'])) {
 			$this->data['action'] = $this->url->link('sale/return/insert', 'token=' . $this->session->data['token'] . $url, 'SSL');
@@ -647,27 +647,27 @@ class ControllerSaleReturn extends Controller {
 			$this->data['action'] = $this->url->link('sale/return/update', 'token=' . $this->session->data['token'] . '&return_id=' . $this->request->get['return_id'] . $url, 'SSL');
 		}
 		  
-    	$this->data['cancel'] = $this->url->link('sale/return', 'token=' . $this->session->data['token'] . $url, 'SSL');
+		$this->data['cancel'] = $this->url->link('sale/return', 'token=' . $this->session->data['token'] . $url, 'SSL');
 
-    	if (isset($this->request->get['return_id']) && ($this->request->server['REQUEST_METHOD'] != 'POST')) {
-      		$return_info = $this->model_sale_return->getReturn($this->request->get['return_id']);
-    	}
+		if (isset($this->request->get['return_id']) && ($this->request->server['REQUEST_METHOD'] != 'POST')) {
+			$return_info = $this->model_sale_return->getReturn($this->request->get['return_id']);
+		}
 				
-    	if (isset($this->request->post['order_id'])) {
-      		$this->data['order_id'] = $this->request->post['order_id'];
+		if (isset($this->request->post['order_id'])) {
+			$this->data['order_id'] = $this->request->post['order_id'];
 		} elseif (!empty($return_info)) {
 			$this->data['order_id'] = $return_info['order_id'];
 		} else {
-      		$this->data['order_id'] = '';
-    	}
+			$this->data['order_id'] = '';
+		}
 		
-    	if (isset($this->request->post['date_ordered'])) {
-      		$this->data['date_ordered'] = $this->request->post['date_ordered'];
+		if (isset($this->request->post['date_ordered'])) {
+			$this->data['date_ordered'] = $this->request->post['date_ordered'];
 		} elseif (!empty($return_info)) {
 			$this->data['date_ordered'] = $return_info['date_ordered'];
 		} else {
-      		$this->data['date_ordered'] = '';
-    	}
+			$this->data['date_ordered'] = '';
+		}
 
 		if (isset($this->request->post['customer'])) {
 			$this->data['customer'] = $this->request->post['customer'];
@@ -685,37 +685,37 @@ class ControllerSaleReturn extends Controller {
 			$this->data['customer_id'] = '';
 		}
 			
-    	if (isset($this->request->post['firstname'])) {
-      		$this->data['firstname'] = $this->request->post['firstname'];
+		if (isset($this->request->post['firstname'])) {
+			$this->data['firstname'] = $this->request->post['firstname'];
 		} elseif (!empty($return_info)) {
 			$this->data['firstname'] = $return_info['firstname'];
 		} else {
-      		$this->data['firstname'] = '';
-    	}
+			$this->data['firstname'] = '';
+		}
 		
-    	if (isset($this->request->post['lastname'])) {
-      		$this->data['lastname'] = $this->request->post['lastname'];
+		if (isset($this->request->post['lastname'])) {
+			$this->data['lastname'] = $this->request->post['lastname'];
 		} elseif (!empty($return_info)) {
 			$this->data['lastname'] = $return_info['lastname'];
 		} else {
-      		$this->data['lastname'] = '';
-    	}
+			$this->data['lastname'] = '';
+		}
 		
-    	if (isset($this->request->post['email'])) {
-      		$this->data['email'] = $this->request->post['email'];
+		if (isset($this->request->post['email'])) {
+			$this->data['email'] = $this->request->post['email'];
 		} elseif (!empty($return_info)) {
 			$this->data['email'] = $return_info['email'];
 		} else {
-      		$this->data['email'] = '';
-    	}
+			$this->data['email'] = '';
+		}
 		
-    	if (isset($this->request->post['telephone'])) {
-      		$this->data['telephone'] = $this->request->post['telephone'];
+		if (isset($this->request->post['telephone'])) {
+			$this->data['telephone'] = $this->request->post['telephone'];
 		} elseif (!empty($return_info)) {
 			$this->data['telephone'] = $return_info['telephone'];
 		} else {
-      		$this->data['telephone'] = '';
-    	}
+			$this->data['telephone'] = '';
+		}
 		
 		if (isset($this->request->post['product'])) {
 			$this->data['product'] = $this->request->post['product'];
@@ -812,7 +812,7 @@ class ControllerSaleReturn extends Controller {
 	
 	public function info() {
 		$this->load->model('sale/return');
-    	
+		
 		if (isset($this->request->get['return_id'])) {
 			$return_id = $this->request->get['return_id'];
 		} else {
@@ -988,26 +988,26 @@ class ControllerSaleReturn extends Controller {
 		}
 	}
 		
-  	protected function validateForm() {
-    	if (!$this->user->hasPermission('modify', 'sale/return')) {
-      		$this->error['warning'] = $this->language->get('error_permission');
-    	}
+	protected function validateForm() {
+		if (!$this->user->hasPermission('modify', 'sale/return')) {
+			$this->error['warning'] = $this->language->get('error_permission');
+		}
 
-    	if ((utf8_strlen($this->request->post['firstname']) < 1) || (utf8_strlen($this->request->post['firstname']) > 32)) {
-      		$this->error['firstname'] = $this->language->get('error_firstname');
-    	}
+		if ((utf8_strlen($this->request->post['firstname']) < 1) || (utf8_strlen($this->request->post['firstname']) > 32)) {
+			$this->error['firstname'] = $this->language->get('error_firstname');
+		}
 
-    	if ((utf8_strlen($this->request->post['lastname']) < 1) || (utf8_strlen($this->request->post['lastname']) > 32)) {
-      		$this->error['lastname'] = $this->language->get('error_lastname');
-    	}
+		if ((utf8_strlen($this->request->post['lastname']) < 1) || (utf8_strlen($this->request->post['lastname']) > 32)) {
+			$this->error['lastname'] = $this->language->get('error_lastname');
+		}
 
-    	if ((utf8_strlen($this->request->post['email']) > 96) || !preg_match('/^[^\@]+@.*\.[a-z]{2,6}$/i', $this->request->post['email'])) {
-      		$this->error['email'] = $this->language->get('error_email');
-    	}
+		if ((utf8_strlen($this->request->post['email']) > 96) || !preg_match('/^[^\@]+@.*\.[a-z]{2,6}$/i', $this->request->post['email'])) {
+			$this->error['email'] = $this->language->get('error_email');
+		}
 		
-    	if ((utf8_strlen($this->request->post['telephone']) < 3) || (utf8_strlen($this->request->post['telephone']) > 32)) {
-      		$this->error['telephone'] = $this->language->get('error_telephone');
-    	}
+		if ((utf8_strlen($this->request->post['telephone']) < 3) || (utf8_strlen($this->request->post['telephone']) > 32)) {
+			$this->error['telephone'] = $this->language->get('error_telephone');
+		}
 		
 		if ((utf8_strlen($this->request->post['product']) < 1) || (utf8_strlen($this->request->post['product']) > 255)) {
 			$this->error['product'] = $this->language->get('error_product');
@@ -1030,19 +1030,19 @@ class ControllerSaleReturn extends Controller {
 		} else {
 	  		return false;
 		}
-  	}
+	}
 
-  	protected function validateDelete() {
-    	if (!$this->user->hasPermission('modify', 'sale/return')) {
-      		$this->error['warning'] = $this->language->get('error_permission');
-    	}
+	protected function validateDelete() {
+		if (!$this->user->hasPermission('modify', 'sale/return')) {
+			$this->error['warning'] = $this->language->get('error_permission');
+		}
 	  	 
 		if (!$this->error) {
 	  		return true;
 		} else {
 	  		return false;
 		}
-  	}
+	}
 	
 	public function action() {
 		$this->data += $this->language->load('sale/return');
@@ -1067,7 +1067,7 @@ class ControllerSaleReturn extends Controller {
 	}
 		
 	public function history() {
-    	$this->data += $this->language->load('sale/return');
+		$this->data += $this->language->load('sale/return');
 
 		$this->data['error'] = '';
 		$this->data['success'] = '';
@@ -1095,15 +1095,15 @@ class ControllerSaleReturn extends Controller {
 		$this->data['histories'] = array();
 			
 		$results = $this->model_sale_return->getReturnHistories($this->request->get['return_id'], ($page - 1) * 10, 10);
-      		
+			
 		foreach ($results as $result) {
-        	$this->data['histories'][] = array(
+			$this->data['histories'][] = array(
 				'notify'     => $result['notify'] ? $this->language->get('text_yes') : $this->language->get('text_no'),
 				'status'     => $result['status'],
 				'comment'    => nl2br($result['comment']),
-        		'date_added' => date($this->language->get('date_format_short'), strtotime($result['date_added']))
-        	);
-      	}
+				'date_added' => date($this->language->get('date_format_short'), strtotime($result['date_added']))
+			);
+		}
 		
 		$history_total = $this->model_sale_return->getTotalReturnHistories($this->request->get['return_id']);
 			
@@ -1119,6 +1119,6 @@ class ControllerSaleReturn extends Controller {
 		$this->template = 'sale/return_history.tpl';
 		
 		$this->response->setOutput($this->render());
-  	}
+	}
 }
 ?>

@@ -3,11 +3,11 @@ class ControllerModuleCart extends Controller {
 	public function index() {
 		$this->data += $this->language->load('module/cart');
 		
-      	if (isset($this->request->get['remove'])) {
-          	$this->cart->remove($this->request->get['remove']);
+		if (isset($this->request->get['remove'])) {
+			$this->cart->remove($this->request->get['remove']);
 			
 			unset($this->session->data['vouchers'][$this->request->get['remove']]);
-      	}
+		}
 			
 		// Totals
 		$this->load->model('setting/extension');

@@ -68,7 +68,7 @@ class ModelUserUserGroup extends Model {
 	}
 	
 	public function getTotalUserGroups() {
-      	$query = $this->db->query("SELECT COUNT(*) AS total FROM {user_group}");
+		$query = $this->db->query("SELECT COUNT(*) AS total FROM {user_group}");
 		
 		return $query->row['total'];
 	}

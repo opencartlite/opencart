@@ -1,6 +1,6 @@
 <?php
 class ControllerCheckoutPaymentMethod extends Controller {
-  	public function index() {
+	public function index() {
 		$this->data += $this->language->load('checkout/checkout');
 		
 		if (isset($this->session->data['payment_address'])) {
@@ -59,7 +59,7 @@ class ControllerCheckoutPaymentMethod extends Controller {
 			$this->session->data['payment_methods'] = $method_data;
 			
 		}
-   
+
 		if (empty($this->session->data['payment_methods'])) {
 			$this->data['error_warning'] = sprintf($this->language->get('error_no_payment'), $this->url->link('information/contact'));
 		} else {
@@ -111,7 +111,7 @@ class ControllerCheckoutPaymentMethod extends Controller {
 		}
 		
 		$this->response->setOutput($this->render());
-  	}
+	}
 	
 	public function save() {
 		$this->data += $this->language->load('checkout/checkout');

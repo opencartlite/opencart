@@ -1,13 +1,13 @@
 <?php
 class ModelSaleCustomer extends Model {
 	public function addCustomer($data) {
-      	$this->db->query("INSERT INTO {customer} SET firstname = '" . $this->db->escape($data['firstname']) . "', lastname = '" . $this->db->escape($data['lastname']) . "', email = '" . $this->db->escape($data['email']) . "', telephone = '" . $this->db->escape($data['telephone']) . "', fax = '" . $this->db->escape($data['fax']) . "', newsletter = '" . (int)$data['newsletter'] . "', customer_group_id = '" . (int)$data['customer_group_id'] . "', salt = '" . $this->db->escape($salt = substr(md5(uniqid(rand(), true)), 0, 9)) . "', password = '" . $this->db->escape(sha1($salt . sha1($salt . sha1($data['password'])))) . "', status = '" . (int)$data['status'] . "', date_added = NOW()");
-      	
-      	$customer_id = $this->db->getLastId();
-      	
-      	if (isset($data['address'])) {
-      		foreach ($data['address'] as $address) {
-      			$this->db->query("INSERT INTO {address} SET customer_id = '" . (int)$customer_id . "', firstname = '" . $this->db->escape($address['firstname']) . "', lastname = '" . $this->db->escape($address['lastname']) . "', company = '" . $this->db->escape($address['company']) . "', address_1 = '" . $this->db->escape($address['address_1']) . "', address_2 = '" . $this->db->escape($address['address_2']) . "', city = '" . $this->db->escape($address['city']) . "', postcode = '" . $this->db->escape($address['postcode']) . "', country_id = '" . (int)$address['country_id'] . "', zone_id = '" . (int)$address['zone_id'] . "'");
+		$this->db->query("INSERT INTO {customer} SET firstname = '" . $this->db->escape($data['firstname']) . "', lastname = '" . $this->db->escape($data['lastname']) . "', email = '" . $this->db->escape($data['email']) . "', telephone = '" . $this->db->escape($data['telephone']) . "', fax = '" . $this->db->escape($data['fax']) . "', newsletter = '" . (int)$data['newsletter'] . "', customer_group_id = '" . (int)$data['customer_group_id'] . "', salt = '" . $this->db->escape($salt = substr(md5(uniqid(rand(), true)), 0, 9)) . "', password = '" . $this->db->escape(sha1($salt . sha1($salt . sha1($data['password'])))) . "', status = '" . (int)$data['status'] . "', date_added = NOW()");
+		
+		$customer_id = $this->db->getLastId();
+		
+		if (isset($data['address'])) {
+			foreach ($data['address'] as $address) {
+				$this->db->query("INSERT INTO {address} SET customer_id = '" . (int)$customer_id . "', firstname = '" . $this->db->escape($address['firstname']) . "', lastname = '" . $this->db->escape($address['lastname']) . "', company = '" . $this->db->escape($address['company']) . "', address_1 = '" . $this->db->escape($address['address_1']) . "', address_2 = '" . $this->db->escape($address['address_2']) . "', city = '" . $this->db->escape($address['city']) . "', postcode = '" . $this->db->escape($address['postcode']) . "', country_id = '" . (int)$address['country_id'] . "', zone_id = '" . (int)$address['zone_id'] . "'");
 				
 				if (isset($address['default'])) {
 					$address_id = $this->db->getLastId();
@@ -21,14 +21,14 @@ class ModelSaleCustomer extends Model {
 	public function editCustomer($customer_id, $data) {
 		$this->db->query("UPDATE {customer} SET firstname = '" . $this->db->escape($data['firstname']) . "', lastname = '" . $this->db->escape($data['lastname']) . "', email = '" . $this->db->escape($data['email']) . "', telephone = '" . $this->db->escape($data['telephone']) . "', fax = '" . $this->db->escape($data['fax']) . "', newsletter = '" . (int)$data['newsletter'] . "', customer_group_id = '" . (int)$data['customer_group_id'] . "', status = '" . (int)$data['status'] . "' WHERE customer_id = '" . (int)$customer_id . "'");
 	
-      	if ($data['password']) {
-        	$this->db->query("UPDATE {customer} SET salt = '" . $this->db->escape($salt = substr(md5(uniqid(rand(), true)), 0, 9)) . "', password = '" . $this->db->escape(sha1($salt . sha1($salt . sha1($data['password'])))) . "' WHERE customer_id = '" . (int)$customer_id . "'");
-      	}
-      	
-      	$this->db->query("DELETE FROM {address} WHERE customer_id = '" . (int)$customer_id . "'");
-      	
-      	if (isset($data['address'])) {
-      		foreach ($data['address'] as $address) {
+		if ($data['password']) {
+			$this->db->query("UPDATE {customer} SET salt = '" . $this->db->escape($salt = substr(md5(uniqid(rand(), true)), 0, 9)) . "', password = '" . $this->db->escape(sha1($salt . sha1($salt . sha1($data['password'])))) . "' WHERE customer_id = '" . (int)$customer_id . "'");
+		}
+		
+		$this->db->query("DELETE FROM {address} WHERE customer_id = '" . (int)$customer_id . "'");
+		
+		if (isset($data['address'])) {
+			foreach ($data['address'] as $address) {
 				$this->db->query("INSERT INTO {address} SET address_id = '" . (int)$address['address_id'] . "', customer_id = '" . (int)$customer_id . "', firstname = '" . $this->db->escape($address['firstname']) . "', lastname = '" . $this->db->escape($address['lastname']) . "', company = '" . $this->db->escape($address['company']) . "', address_1 = '" . $this->db->escape($address['address_1']) . "', address_2 = '" . $this->db->escape($address['address_2']) . "', city = '" . $this->db->escape($address['city']) . "', postcode = '" . $this->db->escape($address['postcode']) . "', country_id = '" . (int)$address['country_id'] . "', zone_id = '" . (int)$address['zone_id'] . "'");
 					
 				if (isset($address['default'])) {
@@ -255,7 +255,7 @@ class ModelSaleCustomer extends Model {
 	}
 				
 	public function getTotalCustomers($data = array()) {
-      	$sql = "SELECT COUNT(*) AS total FROM {customer}";
+		$sql = "SELECT COUNT(*) AS total FROM {customer}";
 		
 		$implode = array();
 		
@@ -301,13 +301,13 @@ class ModelSaleCustomer extends Model {
 	}
 		
 	public function getTotalCustomersAwaitingApproval() {
-      	$query = $this->db->query("SELECT COUNT(*) AS total FROM {customer} WHERE status = '0' OR approved = '0'");
+		$query = $this->db->query("SELECT COUNT(*) AS total FROM {customer} WHERE status = '0' OR approved = '0'");
 
 		return $query->row['total'];
 	}
 	
 	public function getTotalAddressesByCustomerId($customer_id) {
-      	$query = $this->db->query("SELECT COUNT(*) AS total FROM {address} WHERE customer_id = '" . (int)$customer_id . "'");
+		$query = $this->db->query("SELECT COUNT(*) AS total FROM {address} WHERE customer_id = '" . (int)$customer_id . "'");
 		
 		return $query->row['total'];
 	}
@@ -331,7 +331,7 @@ class ModelSaleCustomer extends Model {
 	}
 
 	public function addHistory($customer_id, $comment) {
-      	$this->db->query("INSERT INTO {customer_history} SET customer_id = '" . (int)$customer_id . "', comment = '" . $this->db->escape(strip_tags($comment)) . "', date_added = NOW()");
+		$this->db->query("INSERT INTO {customer_history} SET customer_id = '" . (int)$customer_id . "', comment = '" . $this->db->escape(strip_tags($comment)) . "', date_added = NOW()");
 	}
 	
 	public function getHistories($customer_id, $start = 0, $limit = 10) {
@@ -523,7 +523,7 @@ class ModelSaleCustomer extends Model {
 	}
 			
 	public function getTotalBanIpsByIp($ip) {
-      	$query = $this->db->query("SELECT COUNT(*) AS total FROM {customer_ban_ip} WHERE `ip` = '" . $this->db->escape($ip) . "'");
+		$query = $this->db->query("SELECT COUNT(*) AS total FROM {customer_ban_ip} WHERE `ip` = '" . $this->db->escape($ip) . "'");
 				 
 		return $query->row['total'];
 	}

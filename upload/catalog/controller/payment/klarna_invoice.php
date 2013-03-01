@@ -1,9 +1,9 @@
 <?php
 class ControllerPaymentKlarnaInvoice extends Controller {
-    protected function index() {
- 		$this->load->model('checkout/order');
+	protected function index() {
+		$this->load->model('checkout/order');
 
-        $order_info = $this->model_checkout_order->getOrder($this->session->data['order_id']);
+		$order_info = $this->model_checkout_order->getOrder($this->session->data['order_id']);
 
 		if ($order_info) {
 			$this->data += $this->language->load('payment/klarna_invoice');
@@ -51,41 +51,41 @@ class ControllerPaymentKlarnaInvoice extends Controller {
 			
 			array_multisort($sort_order, SORT_ASC, $results);
 						
-            $klarna_tax = array();
-            
+			$klarna_tax = array();
+			
 			foreach ($results as $result) {
 				if ($this->config->get($result['code'] . '_status')) {
 					$this->load->model('total/' . $result['code']);
-		                    
-                    $taxes = array();
-                    
+			                
+					$taxes = array();
+					
 					$this->{'model_total_' . $result['code']}->getTotal($total_data, $total, $taxes);
-                    
-                    $amount = 0;
-                    
-                    foreach ($taxes as $tax_id => $value) {
-                        $amount += $value;
-                    }
-                    
-                    $klarna_tax[$result['code']] = $amount;
+					
+					$amount = 0;
+					
+					foreach ($taxes as $tax_id => $value) {
+						$amount += $value;
+					}
+					
+					$klarna_tax[$result['code']] = $amount;
 				}
 			}
 						
 			foreach ($total_data as $key => $value) {
 				$sort_order[$key] = $value['sort_order'];
-                
-                if (isset($klarna_tax[$value['code']])) {
-                    if ($klarna_tax[$value['code']]) {
-                        $total_data[$key]['tax_rate'] = abs($klarna_tax[$value['code']] / $value['value'] * 100);
-                    } else {
-                        $total_data[$key]['tax_rate'] = 0;
-                    }
-                } else {
-                    $total_data[$key]['tax_rate'] = '0';
-                }
+				
+				if (isset($klarna_tax[$value['code']])) {
+					if ($klarna_tax[$value['code']]) {
+						$total_data[$key]['tax_rate'] = abs($klarna_tax[$value['code']] / $value['value'] * 100);
+					} else {
+						$total_data[$key]['tax_rate'] = 0;
+					}
+				} else {
+					$total_data[$key]['tax_rate'] = '0';
+				}
 			}
-            
-            $this->session->data['klarna'][$this->session->data['order_id']] = $total_data;
+			
+			$this->session->data['klarna'][$this->session->data['order_id']] = $total_data;
 						
 			// Order must have identical shipping and billing address or have no shipping address at all
 			if ($this->cart->hasShipping() && !($order_info['payment_firstname'] == $order_info['shipping_firstname'] && $order_info['payment_lastname'] == $order_info['shipping_lastname'] && $order_info['payment_address_1'] == $order_info['shipping_address_1'] && $order_info['payment_address_2'] == $order_info['shipping_address_2'] && $order_info['payment_postcode'] == $order_info['shipping_postcode'] && $order_info['payment_city'] == $order_info['shipping_city'] && $order_info['payment_zone_id'] == $order_info['shipping_zone_id'] && $order_info['payment_zone_code'] == $order_info['shipping_zone_code'] && $order_info['payment_country_id'] == $order_info['shipping_country_id'] && $order_info['payment_country'] == $order_info['shipping_country'] && $order_info['payment_iso_code_3'] == $order_info['shipping_iso_code_3'])) {
@@ -139,16 +139,16 @@ class ControllerPaymentKlarnaInvoice extends Controller {
 	
 			$this->render();
 		}
-    }
+	}
 
-    public function send() {
-        $this->data += $this->language->load('payment/klarna_invoice');
+	public function send() {
+		$this->data += $this->language->load('payment/klarna_invoice');
 		
 		$json = array();
 		 
 		$this->load->model('checkout/order');
 
-        $order_info = $this->model_checkout_order->getOrder($this->session->data['order_id']);
+		$order_info = $this->model_checkout_order->getOrder($this->session->data['order_id']);
 		
 		// Order must have identical shipping and billing address or have no shipping address at all
 		if ($order_info) {
@@ -260,7 +260,7 @@ class ControllerPaymentKlarnaInvoice extends Controller {
 				$product_query = $this->db->query("SELECT `name`, `model`, `price`, `quantity`, `tax` / `price` * 100 AS 'tax_rate' FROM {order_product} WHERE `order_id` = " . (int) $order_info['order_id'] . " UNION ALL SELECT '', `code`, `amount`, '1', 0.00 FROM {order_voucher} WHERE `order_id` = " . (int) $order_info['order_id'])->rows;
 								
 				foreach ($product_query as $product) {
-                    $goods_list[] = array(
+					$goods_list[] = array(
 						'qty'   => (int)$product['quantity'],
 						'goods' => array(
 							'artno'    => $product['model'],
@@ -272,13 +272,13 @@ class ControllerPaymentKlarnaInvoice extends Controller {
 						)
 					);
 				}
-                
+				
 				if (isset($this->session->data['klarna'][$this->session->data['order_id']])) {
 					$totals = $this->session->data['klarna'][$this->session->data['order_id']];
 				} else {
 					$totals = array();
 				}
-                
+				
 				foreach ($totals as $total) {
 					if ($total['code'] != 'sub_total' && $total['code'] != 'tax' && $total['code'] != 'total') {
 						$goods_list[] = array(
@@ -294,13 +294,13 @@ class ControllerPaymentKlarnaInvoice extends Controller {
 						);
 					}
 				}
-                
+				
 				$digest = '';
 				
 				foreach ($goods_list as $goods) {
 					$digest .= utf8_decode(htmlspecialchars(html_entity_decode($goods['goods']['title'], ENT_COMPAT, "UTF-8"))) . ':';
 				}
-                
+				
 				$digest = base64_encode(pack('H*', hash('sha256', $digest . $klarna_invoice[$order_info['payment_iso_code_3']]['secret'])));
 				
 				if (isset($this->request->post['pno'])) {
@@ -357,7 +357,7 @@ class ControllerPaymentKlarnaInvoice extends Controller {
 				
 				$xml .= '  </params>';
 				$xml .= '</methodCall>';
-		        
+			    
 				$header  = 'Content-Type: text/xml' . "\n";
 				$header .= 'Content-Length: ' . strlen($xml) . "\n";
 		 
@@ -370,9 +370,9 @@ class ControllerPaymentKlarnaInvoice extends Controller {
 				curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 				curl_setopt($curl, CURLOPT_HEADER, $header);
 				curl_setopt($curl, CURLOPT_POSTFIELDS, $xml);
-                
+				
 				$response = curl_exec($curl);
-                
+				
 				if (curl_errno($curl)) {
 					$log = new Log('klarna_invoice.log');
 					$log->write('HTTP Error for order #' . $order_info['order_id'] . '. Code: ' . curl_errno($curl) . ' message: ' . curl_error($curl));
@@ -396,9 +396,9 @@ class ControllerPaymentKlarnaInvoice extends Controller {
 						$klarna_order_status = $xml->getElementsByTagName('int')->item(0)->nodeValue;
 		
 						if ($klarna_order_status == '1') {
-                            $order_status = $klarna_invoice[$order_info['payment_iso_code_3']]['accepted_status_id'];
+							$order_status = $klarna_invoice[$order_info['payment_iso_code_3']]['accepted_status_id'];
 						} elseif ($klarna_order_status == '2') {
-                            $order_status = $klarna_invoice[$order_info['payment_iso_code_3']]['pending_status_id'];
+							$order_status = $klarna_invoice[$order_info['payment_iso_code_3']]['pending_status_id'];
 						} else {
 							$order_status = $this->config->get('config_order_status_id');
 						}
@@ -416,118 +416,118 @@ class ControllerPaymentKlarnaInvoice extends Controller {
 		}
 		
 		$this->response->setOutput(json_encode($json));
-    }
-    
-    private function constructXmlrpc($data) {
-        $type = gettype($data);
+	}
+	
+	private function constructXmlrpc($data) {
+		$type = gettype($data);
 
-        switch ($type) {
-            case 'boolean':
-                if ($data == true) {
-                    $value = 1;
-                } else {
-                    $value = false;
-                }
-                
-                $xml = '<boolean>' . $value . '</boolean>';
-                break;
-            case 'integer':
-                $xml = '<int>' . (int)$data . '</int>';
-                break;
-            case 'double':
-                $xml = '<double>' . (float)$data . '</double>';
-                break;
-            case 'string':
-                    $xml = '<string>' . htmlspecialchars($data) . '</string>';
-                break;
-            case 'array':
-                // is numeric ?
-                if ($data === array_values($data)) {
-                    $xml = '<array><data>';
-                    
-                    foreach ($data as $value) {
-                        $xml .= '<value>' . $this->constructXmlrpc($value) . '</value>';
-                    }
-                    
-                    $xml .= '</data></array>';
-                    
-                } else {
-                    // array is associative
-                    $xml = '<struct>';
-                    
-                    foreach ($data as $key => $value) {
-                        $xml .= '<member>';
-                        $xml .= '  <name>' . htmlspecialchars($key) . '</name>';
-                        $xml .= '  <value>' . $this->constructXmlrpc($value) . '</value>';
-                        $xml .= '</member>';
-                    }
-                    
-                    $xml .= '</struct>';
-                }
-                
-                break;
-            default:
-                $xml = '<nil/>';
-                break;
-        }
-        
-        return $xml;
-    }
-    
-    private function splitAddress($address) {
-        $numbers = array('0', '1', '2', '3', '4', '5', '6', '7', '8', '9');
-        
-        $characters = array('-', '/', ' ', '#', '.', 'a', 'b', 'c', 'd', 'e',
-                        'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p',
-                        'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A',
-                        'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L',
-                        'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W',
-                        'X', 'Y', 'Z');
-        
-        $specialchars = array('-', '/', ' ', '#', '.');
+		switch ($type) {
+			case 'boolean':
+				if ($data == true) {
+					$value = 1;
+				} else {
+					$value = false;
+				}
+				
+				$xml = '<boolean>' . $value . '</boolean>';
+				break;
+			case 'integer':
+				$xml = '<int>' . (int)$data . '</int>';
+				break;
+			case 'double':
+				$xml = '<double>' . (float)$data . '</double>';
+				break;
+			case 'string':
+					$xml = '<string>' . htmlspecialchars($data) . '</string>';
+				break;
+			case 'array':
+				// is numeric ?
+				if ($data === array_values($data)) {
+					$xml = '<array><data>';
+					
+					foreach ($data as $value) {
+						$xml .= '<value>' . $this->constructXmlrpc($value) . '</value>';
+					}
+					
+					$xml .= '</data></array>';
+					
+				} else {
+					// array is associative
+					$xml = '<struct>';
+					
+					foreach ($data as $key => $value) {
+						$xml .= '<member>';
+						$xml .= '  <name>' . htmlspecialchars($key) . '</name>';
+						$xml .= '  <value>' . $this->constructXmlrpc($value) . '</value>';
+						$xml .= '</member>';
+					}
+					
+					$xml .= '</struct>';
+				}
+				
+				break;
+			default:
+				$xml = '<nil/>';
+				break;
+		}
+		
+		return $xml;
+	}
+	
+	private function splitAddress($address) {
+		$numbers = array('0', '1', '2', '3', '4', '5', '6', '7', '8', '9');
+		
+		$characters = array('-', '/', ' ', '#', '.', 'a', 'b', 'c', 'd', 'e',
+						'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p',
+						'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A',
+						'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L',
+						'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W',
+						'X', 'Y', 'Z');
+		
+		$specialchars = array('-', '/', ' ', '#', '.');
 
-        $num_pos = $this->strposArr($address, $numbers, 2);
+		$num_pos = $this->strposArr($address, $numbers, 2);
 
-        $street_name = substr($address, 0, $num_pos);
+		$street_name = substr($address, 0, $num_pos);
 
-        $street_name = trim($street_name);
+		$street_name = trim($street_name);
 
-        $number_part = substr($address, $num_pos);
-        
-        $number_part = trim($number_part);
+		$number_part = substr($address, $num_pos);
+		
+		$number_part = trim($number_part);
 
-        $ext_pos = $this->strposArr($number_part, $characters, 0);
+		$ext_pos = $this->strposArr($number_part, $characters, 0);
 
-        if ($ext_pos != '') {
-            $house_number = substr($number_part, 0, $ext_pos);
+		if ($ext_pos != '') {
+			$house_number = substr($number_part, 0, $ext_pos);
 
-            $house_extension = substr($number_part, $ext_pos);
+			$house_extension = substr($number_part, $ext_pos);
 
-            $house_extension = str_replace($specialchars, '', $house_extension);
-        } else {
-            $house_number = $number_part;
-            $house_extension = '';
-        }
+			$house_extension = str_replace($specialchars, '', $house_extension);
+		} else {
+			$house_number = $number_part;
+			$house_extension = '';
+		}
 
-        return array($street_name, $house_number, $house_extension);
-    }
-    
-    private function strposArr($haystack, $needle, $where) {
-        $defpos = 10000;
-        
-        if (!is_array($needle)) {
-            $needle = array($needle);
-        }
+		return array($street_name, $house_number, $house_extension);
+	}
+	
+	private function strposArr($haystack, $needle, $where) {
+		$defpos = 10000;
+		
+		if (!is_array($needle)) {
+			$needle = array($needle);
+		}
 
-        foreach ($needle as $what) {
-            if (($pos = strpos($haystack, $what, $where)) !== false) {
-                if ($pos < $defpos) {
-                    $defpos = $pos;
-                }
-            }
-        }
-        
-        return $defpos;
-    }
+		foreach ($needle as $what) {
+			if (($pos = strpos($haystack, $what, $where)) !== false) {
+				if ($pos < $defpos) {
+					$defpos = $pos;
+				}
+			}
+		}
+		
+		return $defpos;
+	}
 }
 ?>

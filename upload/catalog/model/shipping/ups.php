@@ -167,14 +167,14 @@ class ModelShippingUps extends Model {
 			$xml .= '				<Code>' . $this->config->get('ups_packaging') . '</Code>';
 			$xml .= '			</PackagingType>';
 
-			$xml .= '		    <Dimensions>';
-    		$xml .= '				<UnitOfMeasurement>';
-    		$xml .= '					<Code>' . $length_code . '</Code>';
-    		$xml .= '				</UnitOfMeasurement>';
-    		$xml .= '				<Length>' . $length . '</Length>';
-    		$xml .= '				<Width>' . $width . '</Width>';
-    		$xml .= '				<Height>' . $height . '</Height>';
-    		$xml .= '			</Dimensions>';
+			$xml .= '			<Dimensions>';
+			$xml .= '				<UnitOfMeasurement>';
+			$xml .= '					<Code>' . $length_code . '</Code>';
+			$xml .= '				</UnitOfMeasurement>';
+			$xml .= '				<Length>' . $length . '</Length>';
+			$xml .= '				<Width>' . $width . '</Width>';
+			$xml .= '				<Height>' . $height . '</Height>';
+			$xml .= '			</Dimensions>';
 			
 			$xml .= '			<PackageWeight>';
 			$xml .= '				<UnitOfMeasurement>';
@@ -193,7 +193,7 @@ class ModelShippingUps extends Model {
 			}
 			
 			$xml .= '		</Package>';
-        	
+			
 			$xml .= '	</Shipment>';
 			$xml .= '</RatingServiceSelectionRequest>';
 			

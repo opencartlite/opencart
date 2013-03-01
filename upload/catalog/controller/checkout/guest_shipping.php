@@ -1,6 +1,6 @@
 <?php
 class ControllerCheckoutGuestShipping extends Controller {
-  	public function index() {
+	public function index() {
 		$this->data += $this->language->load('checkout/checkout');
 					
 		if (isset($this->session->data['shipping_address']['firstname'])) {

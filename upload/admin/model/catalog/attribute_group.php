@@ -81,7 +81,7 @@ class ModelCatalogAttributeGroup extends Model {
 	}
 	
 	public function getTotalAttributeGroups() {
-      	$query = $this->db->query("SELECT COUNT(*) AS total FROM {attribute_group}");
+		$query = $this->db->query("SELECT COUNT(*) AS total FROM {attribute_group}");
 		
 		return $query->row['total'];
 	}

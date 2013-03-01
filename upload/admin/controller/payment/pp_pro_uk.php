@@ -17,31 +17,31 @@ class ControllerPaymentPPProUK extends Controller {
 			$this->redirect($this->url->link('extension/payment', 'token=' . $this->session->data['token'], 'SSL'));
 		}
 
- 		if (isset($this->error['warning'])) {
+		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
 		} else {
 			$this->data['error_warning'] = '';
 		}
 
- 		if (isset($this->error['vendor'])) {
+		if (isset($this->error['vendor'])) {
 			$this->data['error_vendor'] = $this->error['vendor'];
 		} else {
 			$this->data['error_vendor'] = '';
 		}
 
- 		if (isset($this->error['user'])) {
+		if (isset($this->error['user'])) {
 			$this->data['error_user'] = $this->error['user'];
 		} else {
 			$this->data['error_user'] = '';
 		}
 
- 		if (isset($this->error['password'])) {
+		if (isset($this->error['password'])) {
 			$this->data['error_password'] = $this->error['password'];
 		} else {
 			$this->data['error_password'] = '';
 		}
 
- 		if (isset($this->error['partner'])) {
+		if (isset($this->error['partner'])) {
 			$this->data['error_partner'] = $this->error['partner'];
 		} else {
 			$this->data['error_partner'] = '';
@@ -49,20 +49,20 @@ class ControllerPaymentPPProUK extends Controller {
 
 		$this->data['breadcrumbs'] = array();
 
-   		$this->data['breadcrumbs'][] = array(
-       		'text' => $this->language->get('text_home'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_home'),
 			'href' => $this->url->link('common/home', 'token=' . $this->session->data['token'], 'SSL')
-   		);
+		);
 
-   		$this->data['breadcrumbs'][] = array(
-       		'text' => $this->language->get('text_payment'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_payment'),
 			'href' => $this->url->link('extension/payment', 'token=' . $this->session->data['token'], 'SSL')
-   		);
+		);
 
-   		$this->data['breadcrumbs'][] = array(
-       		'text' => $this->language->get('heading_title'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('heading_title'),
 			'href' => $this->url->link('payment/pp_pro_uk', 'token=' . $this->session->data['token'], 'SSL')
-   		);
+		);
 				
 		$this->data['action'] = $this->url->link('payment/pp_pro_uk', 'token=' . $this->session->data['token'], 'SSL');
 		

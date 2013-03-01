@@ -46,12 +46,12 @@ class ControllerModuleLatest extends Controller {
 			$this->data['products'][] = array(
 				'product_id' => $result['product_id'],
 				'thumb'   	 => $image,
-				'name'    	 => $result['name'],
+				'name'		 => $result['name'],
 				'price'   	 => $price,
 				'special' 	 => $special,
 				'rating'     => $rating,
 				'reviews'    => sprintf($this->language->get('text_reviews'), (int)$result['reviews']),
-				'href'    	 => $this->url->link('product/product', 'product_id=' . $result['product_id']),
+				'href'		 => $this->url->link('product/product', 'product_id=' . $result['product_id']),
 			);
 		}
 

@@ -1,7 +1,7 @@
 <?php
 class ControllerPaymentSagepayUS extends Controller {
 	protected function index() {
-    	$this->data += $this->language->load('payment/sagepay_us');
+		$this->data += $this->language->load('payment/sagepay_us');
 		
 		$this->data['months'] = array();
 		

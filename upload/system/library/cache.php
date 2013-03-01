@@ -23,7 +23,7 @@ class Cache {
 
 		if ($files) {
 			$handle = fopen($files[0], 'r');
-      		
+			
 			$cache = fread($handle, filesize($files[0]));
 			
 			fclose($handle);

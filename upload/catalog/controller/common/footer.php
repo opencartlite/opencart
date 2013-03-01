@@ -14,11 +14,11 @@ class ControllerCommonFooter extends Controller {
 					'href'  => $this->url->link('information/information', 'information_id=' . $result['information_id'])
 				);
 			}
-    	}
+		}
 
 		$this->data['contact'] = $this->url->link('information/contact');
 		$this->data['return'] = $this->url->link('account/return/insert', '', 'SSL');
-    	$this->data['sitemap'] = $this->url->link('information/sitemap');
+		$this->data['sitemap'] = $this->url->link('information/sitemap');
 		$this->data['manufacturer'] = $this->url->link('product/manufacturer');
 		$this->data['voucher'] = $this->url->link('account/voucher', '', 'SSL');
 		$this->data['affiliate'] = $this->url->link('affiliate/account', '', 'SSL');

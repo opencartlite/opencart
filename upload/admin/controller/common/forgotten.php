@@ -51,17 +51,17 @@ class ControllerCommonForgotten extends Controller {
 			$this->redirect($this->url->link('common/login', '', 'SSL'));
 		}
 
-      	$this->data['breadcrumbs'] = array();
+		$this->data['breadcrumbs'] = array();
 
-      	$this->data['breadcrumbs'][] = array(
-        	'text' => $this->language->get('text_home'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_home'),
 			'href' => $this->url->link('common/home')
-      	);
+		);
 		
-      	$this->data['breadcrumbs'][] = array(
-        	'text' => $this->language->get('text_forgotten'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_forgotten'),
 			'href' => $this->url->link('common/forgotten', '', 'SSL')
-      	);
+		);
 
 		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
@@ -70,14 +70,14 @@ class ControllerCommonForgotten extends Controller {
 		}
 		
 		$this->data['action'] = $this->url->link('common/forgotten', '', 'SSL');
- 
+
 		$this->data['cancel'] = $this->url->link('common/login', '', 'SSL');
-    	
+		
 		if (isset($this->request->post['email'])) {
-      		$this->data['email'] = $this->request->post['email'];
+			$this->data['email'] = $this->request->post['email'];
 		} else {
-      		$this->data['email'] = '';
-    	}
+			$this->data['email'] = '';
+		}
 				
 		$this->template = 'common/forgotten.tpl';
 		$this->children = array(

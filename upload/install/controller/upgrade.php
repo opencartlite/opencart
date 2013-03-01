@@ -51,11 +51,11 @@ class ControllerUpgrade extends Controller {
 			}
 		}
 
-    	if (!$this->error) {
-      		return true;
-    	} else {
-      		return false;
-    	}
+		if (!$this->error) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 }
 ?>

@@ -41,10 +41,10 @@ class ControllerProductCategory extends Controller {
 							
 		$this->data['breadcrumbs'] = array();
 
-   		$this->data['breadcrumbs'][] = array(
-       		'text' => $this->language->get('text_home'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_home'),
 			'href' => $this->url->link('common/home')
-   		);
+		);
 			
 		if (isset($this->request->get['path'])) {
 			$url = '';
@@ -77,10 +77,10 @@ class ControllerProductCategory extends Controller {
 				$category_info = $this->model_catalog_category->getCategory($path_id);
 				
 				if ($category_info) {
-	       			$this->data['breadcrumbs'][] = array(
-   	    				'text' => $category_info['name'],
+		   			$this->data['breadcrumbs'][] = array(
+						'text' => $category_info['name'],
 						'href' => $this->url->link('product/category', 'path=' . $path . $url)
-        			);
+					);
 				}
 			}
 		} else {
@@ -372,7 +372,7 @@ class ControllerProductCategory extends Controller {
 			);
 				
 			$this->response->setOutput($this->render());
-    	} else {
+		} else {
 			$url = '';
 			
 			if (isset($this->request->get['path'])) {
@@ -406,9 +406,9 @@ class ControllerProductCategory extends Controller {
 				
 			$this->document->setTitle($this->language->get('text_error'));
 
-      		$this->data['heading_title'] = $this->language->get('text_error');
+			$this->data['heading_title'] = $this->language->get('text_error');
 
-      		$this->data['continue'] = $this->url->link('common/home');
+			$this->data['continue'] = $this->url->link('common/home');
 
 			if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/error/not_found.tpl')) {
 				$this->template = $this->config->get('config_template') . '/template/error/not_found.tpl';
@@ -427,6 +427,6 @@ class ControllerProductCategory extends Controller {
 					
 			$this->response->setOutput($this->render());
 		}
-  	}
+	}
 }
 ?>

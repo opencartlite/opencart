@@ -1,13 +1,13 @@
 <?php
 class ControllerInformationContact extends Controller {
 	private $error = array();
-	    
-  	public function index() {
+		
+	public function index() {
 		$this->data += $this->language->load('information/contact');
 
-    	$this->document->setTitle($this->language->get('heading_title'));
+		$this->document->setTitle($this->language->get('heading_title'));
 	 
-    	if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
+		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
 			$mail = new Mail();
 			$mail->protocol = $this->config->get('config_mail_protocol');
 			$mail->parameter = $this->config->get('config_mail_parameter');
@@ -21,25 +21,25 @@ class ControllerInformationContact extends Controller {
 	  		$mail->setSender($this->request->post['name']);
 	  		$mail->setSubject(html_entity_decode(sprintf($this->language->get('email_subject'), $this->request->post['name']), ENT_QUOTES, 'UTF-8'));
 	  		$mail->setText(strip_tags(html_entity_decode($this->request->post['enquiry'], ENT_QUOTES, 'UTF-8')));
-      		$mail->send();
+			$mail->send();
 
 	  		$this->redirect($this->url->link('information/contact/success'));
-    	}
+		}
 
-      	$this->data['breadcrumbs'] = array();
+		$this->data['breadcrumbs'] = array();
 
-      	$this->data['breadcrumbs'][] = array(
-        	'text' => $this->language->get('text_home'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_home'),
 			'href' => $this->url->link('common/home')
-      	);
+		);
 
-      	$this->data['breadcrumbs'][] = array(
-        	'text' => $this->language->get('heading_title'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('heading_title'),
 			'href' => $this->url->link('information/contact')
-      	);
+		);
 
 		if (isset($this->error['name'])) {
-    		$this->data['error_name'] = $this->error['name'];
+			$this->data['error_name'] = $this->error['name'];
 		} else {
 			$this->data['error_name'] = '';
 		}
@@ -56,19 +56,19 @@ class ControllerInformationContact extends Controller {
 			$this->data['error_enquiry'] = '';
 		}
 		
- 		if (isset($this->error['captcha'])) {
+		if (isset($this->error['captcha'])) {
 			$this->data['error_captcha'] = $this->error['captcha'];
 		} else {
 			$this->data['error_captcha'] = '';
 		}
-    
+	
 		$this->data['action'] = $this->url->link('information/contact');
 		
 		$this->data['store'] = $this->config->get('config_name');
-    	$this->data['address'] = nl2br($this->config->get('config_address'));
-    	$this->data['telephone'] = $this->config->get('config_telephone');
-    	$this->data['fax'] = $this->config->get('config_fax');
-    	
+		$this->data['address'] = nl2br($this->config->get('config_address'));
+		$this->data['telephone'] = $this->config->get('config_telephone');
+		$this->data['fax'] = $this->config->get('config_fax');
+		
 		if (isset($this->request->post['name'])) {
 			$this->data['name'] = $this->request->post['name'];
 		} else {
@@ -93,26 +93,26 @@ class ControllerInformationContact extends Controller {
 			$this->data['captcha'] = '';
 		}
 
-        $this->data['locations'] = array();
-        
-        $this->load->model('setting/location');
-        
+		$this->data['locations'] = array();
+		
+		$this->load->model('setting/location');
+		
 		$results = $this->model_setting_location->getLocations();
-        
-        foreach($results as $result) {
-             $this->data['locations'][] = array(
-                  'location_id' => $result['location_id'],
-                  'name'        => $result['name'],
-                  'address_1'   => $result['address_1'],
-                  'address_2'   => $result['address_2'],
-                  'city'        => $result['city'],
-                  'postcode'    => $result['postcode'],
-                  'geocode'     => $result['geocode'],
-				  'open'        => $result['open'],
-                  'comment'     => $result['comment']
-             );
-        }
-        
+		
+		foreach($results as $result) {
+			$this->data['locations'][] = array(
+				'location_id' => $result['location_id'],
+				'name'        => $result['name'],
+				'address_1'   => $result['address_1'],
+				'address_2'   => $result['address_2'],
+				'city'        => $result['city'],
+				'postcode'    => $result['postcode'],
+				'geocode'     => $result['geocode'],
+				'open'        => $result['open'],
+				'comment'     => $result['comment']
+			);
+		}
+		
 		if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/information/contact.tpl')) {
 			$this->template = $this->config->get('config_template') . '/template/information/contact.tpl';
 		} else {
@@ -128,27 +128,27 @@ class ControllerInformationContact extends Controller {
 			'common/header'
 		);
 				
- 		$this->response->setOutput($this->render());
-  	}
+		$this->response->setOutput($this->render());
+	}
 
-  	public function success() {
+	public function success() {
 		$this->data += $this->language->load('information/contact');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 
-      	$this->data['breadcrumbs'] = array();
+		$this->data['breadcrumbs'] = array();
 
-      	$this->data['breadcrumbs'][] = array(
-        	'text' => $this->language->get('text_home'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_home'),
 			'href' => $this->url->link('common/home')
-      	);
+		);
 
-      	$this->data['breadcrumbs'][] = array(
-        	'text' => $this->language->get('heading_title'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('heading_title'),
 			'href' => $this->url->link('information/contact')
-      	);
+		);
 
-    	$this->data['continue'] = $this->url->link('common/home');
+		$this->data['continue'] = $this->url->link('common/home');
 
 		if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/common/success.tpl')) {
 			$this->template = $this->config->get('config_template') . '/template/common/success.tpl';
@@ -165,32 +165,32 @@ class ControllerInformationContact extends Controller {
 			'common/header'
 		);
 				
- 		$this->response->setOutput($this->render());
+		$this->response->setOutput($this->render());
 	}
 	
-  	protected function validate() {
-    	if ((utf8_strlen($this->request->post['name']) < 3) || (utf8_strlen($this->request->post['name']) > 32)) {
-      		$this->error['name'] = $this->language->get('error_name');
-    	}
+	protected function validate() {
+		if ((utf8_strlen($this->request->post['name']) < 3) || (utf8_strlen($this->request->post['name']) > 32)) {
+			$this->error['name'] = $this->language->get('error_name');
+		}
 
-    	if (!preg_match('/^[^\@]+@.*\.[a-z]{2,6}$/i', $this->request->post['email'])) {
-      		$this->error['email'] = $this->language->get('error_email');
-    	}
+		if (!preg_match('/^[^\@]+@.*\.[a-z]{2,6}$/i', $this->request->post['email'])) {
+			$this->error['email'] = $this->language->get('error_email');
+		}
 
-    	if ((utf8_strlen($this->request->post['enquiry']) < 10) || (utf8_strlen($this->request->post['enquiry']) > 3000)) {
-      		$this->error['enquiry'] = $this->language->get('error_enquiry');
-    	}
+		if ((utf8_strlen($this->request->post['enquiry']) < 10) || (utf8_strlen($this->request->post['enquiry']) > 3000)) {
+			$this->error['enquiry'] = $this->language->get('error_enquiry');
+		}
 
-    	if (empty($this->session->data['captcha']) || ($this->session->data['captcha'] != $this->request->post['captcha'])) {
-      		$this->error['captcha'] = $this->language->get('error_captcha');
-    	}
+		if (empty($this->session->data['captcha']) || ($this->session->data['captcha'] != $this->request->post['captcha'])) {
+			$this->error['captcha'] = $this->language->get('error_captcha');
+		}
 		
 		if (!$this->error) {
 	  		return true;
 		} else {
 	  		return false;
 		}
-  	}
+	}
 
 	public function captcha() {
 		$this->session->data['captcha'] = substr(sha1(mt_rand()), 17, 6);

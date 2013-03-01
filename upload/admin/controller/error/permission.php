@@ -1,21 +1,21 @@
 <?php
 class ControllerErrorPermission extends Controller {
 	public function index() {
-    	$this->data += $this->language->load('error/permission');
-  
-    	$this->document->setTitle($this->language->get('heading_title'));
+		$this->data += $this->language->load('error/permission');
+
+		$this->document->setTitle($this->language->get('heading_title'));
 													
-  		$this->data['breadcrumbs'] = array();
+		$this->data['breadcrumbs'] = array();
 
-   		$this->data['breadcrumbs'][] = array(
-       		'text' => $this->language->get('text_home'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_home'),
 			'href' => $this->url->link('common/home', 'token=' . $this->session->data['token'], 'SSL')
-   		);
+		);
 
-   		$this->data['breadcrumbs'][] = array(
-       		'text' => $this->language->get('heading_title'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('heading_title'),
 			'href' => $this->url->link('error/permission', 'token=' . $this->session->data['token'], 'SSL')
-   		);
+		);
 
 		$this->template = 'error/permission.tpl';
 		$this->children = array(
@@ -24,6 +24,6 @@ class ControllerErrorPermission extends Controller {
 		);
 				
 		$this->response->setOutput($this->render());
-  	}
+	}
 }
 ?>

@@ -38,7 +38,7 @@ class ControllerCheckoutPaymentAddress extends Controller {
 		}
 	
 		$this->response->setOutput($this->render());
-  	}
+	}
 	
 	public function save() {
 		$this->data += $this->language->load('checkout/checkout');

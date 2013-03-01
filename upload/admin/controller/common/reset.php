@@ -87,13 +87,13 @@ class ControllerCommonReset extends Controller {
 	}
 
 	protected function validate() {
-    	if ((utf8_strlen($this->request->post['password']) < 4) || (utf8_strlen($this->request->post['password']) > 20)) {
-      		$this->error['password'] = $this->language->get('error_password');
-    	}
+		if ((utf8_strlen($this->request->post['password']) < 4) || (utf8_strlen($this->request->post['password']) > 20)) {
+			$this->error['password'] = $this->language->get('error_password');
+		}
 
-    	if ($this->request->post['confirm'] != $this->request->post['password']) {
-      		$this->error['confirm'] = $this->language->get('error_confirm');
-    	}
+		if ($this->request->post['confirm'] != $this->request->post['password']) {
+			$this->error['confirm'] = $this->language->get('error_confirm');
+		}
 
 		if (!$this->error) {
 			return true;

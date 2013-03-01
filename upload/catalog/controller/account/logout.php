@@ -1,8 +1,8 @@
 <?php
 class ControllerAccountLogout extends Controller {
 	public function index() {
-    	if ($this->customer->isLogged()) {
-      		$this->customer->logout();
+		if ($this->customer->isLogged()) {
+			$this->customer->logout();
 	  		$this->cart->clear();
 			
 			unset($this->session->data['wishlist']);
@@ -19,31 +19,31 @@ class ControllerAccountLogout extends Controller {
 			unset($this->session->data['voucher']);
 			unset($this->session->data['vouchers']);
 			
-      		$this->redirect($this->url->link('account/logout', '', 'SSL'));
-    	}
- 
-    	$this->data += $this->language->load('account/logout');
+			$this->redirect($this->url->link('account/logout', '', 'SSL'));
+		}
+
+		$this->data += $this->language->load('account/logout');
 		
 		$this->document->setTitle($this->language->get('heading_title'));
-      	
+		
 		$this->data['breadcrumbs'] = array();
 
-      	$this->data['breadcrumbs'][] = array(
-        	'text' => $this->language->get('text_home'),
-			'href' => $this->url->link('common/home')
-      	);
-      	
 		$this->data['breadcrumbs'][] = array(
-        	'text' => $this->language->get('text_account'),
-			'href' => $this->url->link('account/account', '', 'SSL')
-      	);
+			'text' => $this->language->get('text_home'),
+			'href' => $this->url->link('common/home')
+		);
 		
-      	$this->data['breadcrumbs'][] = array(
-        	'text' => $this->language->get('text_logout'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_account'),
+			'href' => $this->url->link('account/account', '', 'SSL')
+		);
+		
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_logout'),
 			'href' => $this->url->link('account/logout', '', 'SSL')
-      	);
+		);
 
-    	$this->data['continue'] = $this->url->link('common/home');
+		$this->data['continue'] = $this->url->link('common/home');
 		
 		if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/common/success.tpl')) {
 			$this->template = $this->config->get('config_template') . '/template/common/success.tpl';
@@ -61,6 +61,6 @@ class ControllerAccountLogout extends Controller {
 		);
 						
 		$this->response->setOutput($this->render());
-  	}
+	}
 }
 ?>

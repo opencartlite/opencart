@@ -1,33 +1,33 @@
 <?php
 class ControllerAccountSuccess extends Controller {
 	public function index() {
-    	$this->data += $this->language->load('account/success');
-  
-    	$this->document->setTitle($this->language->get('heading_title'));
+		$this->data += $this->language->load('account/success');
+
+		$this->document->setTitle($this->language->get('heading_title'));
 
 		$this->data['breadcrumbs'] = array();
 
-      	$this->data['breadcrumbs'][] = array(
-        	'text' => $this->language->get('text_home'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_home'),
 			'href' => $this->url->link('common/home')
-      	);
+		);
 
-      	$this->data['breadcrumbs'][] = array(
-        	'text' => $this->language->get('text_account'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_account'),
 			'href' => $this->url->link('account/account', '', 'SSL')
-      	);
+		);
 
-      	$this->data['breadcrumbs'][] = array(
-        	'text' => $this->language->get('text_success'),
+		$this->data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_success'),
 			'href' => $this->url->link('account/success')
-      	);
+		);
 
 		$this->load->model('account/customer_group');
 		
 		$customer_group = $this->model_account_customer_group->getCustomerGroup($this->customer->getCustomerGroupId());
 
 		if ($customer_group && !$customer_group['approval']) {
-    		$this->data['text_message'] = sprintf($this->language->get('text_message'), $this->url->link('information/contact'));
+			$this->data['text_message'] = sprintf($this->language->get('text_message'), $this->url->link('information/contact'));
 		} else {
 			$this->data['text_message'] = sprintf($this->language->get('text_approval'), $this->config->get('config_name'), $this->url->link('information/contact'));
 		}
@@ -54,6 +54,6 @@ class ControllerAccountSuccess extends Controller {
 		);
 						
 		$this->response->setOutput($this->render());
-  	}
+	}
 }
 ?>

@@ -32,7 +32,7 @@ class ControllerCheckoutManual extends Controller {
 				$this->config->set($key, $value);
 			}
 			
-    		// Customer
+			// Customer
 			if ($this->request->post['customer_id']) {
 				$this->load->model('account/customer');
 
@@ -575,7 +575,7 @@ class ControllerCheckoutManual extends Controller {
 			unset($this->session->data['voucher']);
 			unset($this->session->data['vouchers']);
 		} else {
-      		$json['error']['warning'] = $this->language->get('error_permission');
+			$json['error']['warning'] = $this->language->get('error_permission');
 		}
 	
 		$this->response->setOutput(json_encode($json));
