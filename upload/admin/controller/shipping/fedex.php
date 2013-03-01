@@ -154,7 +154,7 @@ class ControllerShippingFedex extends Controller {
 			'text'  => $this->language->get('text_fedex_express_saver'),
 			'value' => 'FEDEX_EXPRESS_SAVER'
 		);
-		   
+		
 		$this->data['services'][] = array(
 			'text'  => $this->language->get('text_fedex_first_freight'),
 			'value' => 'FEDEX_FIRST_FREIGHT'

@@ -39,7 +39,7 @@ class ControllerPaymentKlarnaAccount extends Controller {
 			$total_data = array();
 			$total = 0;
 			$taxes = $this->cart->getTaxes();
-			 
+			
 			$this->load->model('setting/extension');
 			
 			$sort_order = array();
@@ -57,7 +57,7 @@ class ControllerPaymentKlarnaAccount extends Controller {
 			foreach ($results as $result) {
 				if ($this->config->get($result['code'] . '_status')) {
 					$this->load->model('total/' . $result['code']);
-			                
+							
 					$taxes = array();
 					
 					$this->{'model_total_' . $result['code']}->getTotal($total_data, $total, $taxes);
@@ -211,7 +211,7 @@ class ControllerPaymentKlarnaAccount extends Controller {
 							$balance = $new_balance - $new_payment;
 							
 							$pay_data[] = $new_payment;
-								   
+								
 							$months -= 1;
 						}
 
@@ -238,7 +238,7 @@ class ControllerPaymentKlarnaAccount extends Controller {
 			}
 			
 			$sort_order = array();
-			  
+			
 			foreach ($payment_option as $key => $value) {
 				$sort_order[$key] = $value['pclass_id'];
 			}

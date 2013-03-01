@@ -5,7 +5,7 @@ class ModelTotalCoupon extends Model {
 			$this->language->load('total/coupon');
 			
 			$this->load->model('checkout/coupon');
-			 
+			
 			$coupon_info = $this->model_checkout_coupon->getCoupon($this->session->data['coupon']);
 			
 			if ($coupon_info) {

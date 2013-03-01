@@ -157,7 +157,7 @@ class ControllerDesignBanner extends Controller {
 		
 		$this->data['insert'] = $this->url->link('design/banner/insert', 'token=' . $this->session->data['token'] . $url, 'SSL');
 		$this->data['delete'] = $this->url->link('design/banner/delete', 'token=' . $this->session->data['token'] . $url, 'SSL');
-		 
+		
 		$this->data['banners'] = array();
 
 		$data = array(

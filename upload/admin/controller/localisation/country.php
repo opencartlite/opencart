@@ -157,7 +157,7 @@ class ControllerLocalisationCountry extends Controller {
 		
 		$this->data['insert'] = $this->url->link('localisation/country/insert', 'token=' . $this->session->data['token'] . $url, 'SSL');
 		$this->data['delete'] = $this->url->link('localisation/country/delete', 'token=' . $this->session->data['token'] . $url, 'SSL');
-		 
+		
 		$this->data['countries'] = array();
 
 		$data = array(

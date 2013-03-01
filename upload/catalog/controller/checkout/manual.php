@@ -364,7 +364,7 @@ class ControllerCheckoutManual extends Controller {
 					}
 			
 					$sort_order = array();
-				  
+				
 					foreach ($json['shipping_method'] as $key => $value) {
 						$sort_order[$key] = $value['sort_order'];
 					}
@@ -461,7 +461,7 @@ class ControllerCheckoutManual extends Controller {
 				}
 				
 				$sort_order = array();
-			  
+			
 				foreach ($json['order_total'] as $key => $value) {
 					$sort_order[$key] = $value['sort_order'];
 				}
@@ -538,9 +538,9 @@ class ControllerCheckoutManual extends Controller {
 						}
 					}
 				}
-							 
+							
 				$sort_order = array();
-			  
+			
 				foreach ($json['payment_method'] as $key => $value) {
 					$sort_order[$key] = $value['sort_order'];
 				}

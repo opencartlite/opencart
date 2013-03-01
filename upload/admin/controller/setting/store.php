@@ -6,12 +6,12 @@ class ControllerSettingStore extends Controller {
 		$this->data += $this->language->load('setting/store');
 
 		$this->document->setTitle($this->language->get('heading_title'));
-		 
+		
 		$this->load->model('setting/store');
 
 		$this->getList();
 	}
-		  
+		
 	public function insert() {
 		$this->data += $this->language->load('setting/store');
 
@@ -21,7 +21,7 @@ class ControllerSettingStore extends Controller {
 		
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
 			$store_id = $this->model_setting_store->addStore($this->request->post);
-	  		
+			
 			$this->load->model('setting/setting');
 			
 			$this->model_setting_setting->editSetting('config', $this->request->post, $store_id);
@@ -162,7 +162,7 @@ class ControllerSettingStore extends Controller {
 				
 		$this->response->setOutput($this->render());
 	}
-	 
+	
 	public function getForm() {
 		
 		if (isset($this->error['warning'])) {

@@ -306,14 +306,14 @@ class ControllerCheckoutGuest extends Controller {
 			$output .= '<option value="' . $result['zone_id'] . '"';
 	
 			if (isset($this->request->get['zone_id']) && ($this->request->get['zone_id'] == $result['zone_id'])) {
-		  		$output .= ' selected="selected"';
+				$output .= ' selected="selected"';
 			}
 	
 			$output .= '>' . $result['name'] . '</option>';
 		}
 		
 		if (!$results) {
-		  	$output .= '<option value="0">' . $this->language->get('text_none') . '</option>';
+			$output .= '<option value="0">' . $this->language->get('text_none') . '</option>';
 		}
 	
 		$this->response->setOutput($output);

@@ -1,10 +1,10 @@
 <?php
 class ControllerAffiliateRegister extends Controller {
 	private $error = array();
-		  
+		
 	public function index() {
 		if ($this->affiliate->isLogged()) {
-	  		$this->redirect($this->url->link('affiliate/account', '', 'SSL'));
+			$this->redirect($this->url->link('affiliate/account', '', 'SSL'));
 		}
 
 		$this->data += $this->language->load('affiliate/register');
@@ -20,7 +20,7 @@ class ControllerAffiliateRegister extends Controller {
 
 			$this->affiliate->login($this->request->post['email'], $this->request->post['password']);
 
-	  		$this->redirect($this->url->link('affiliate/success'));
+			$this->redirect($this->url->link('affiliate/success'));
 		}
 
 		$this->data['breadcrumbs'] = array();

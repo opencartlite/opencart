@@ -143,7 +143,7 @@ class ModelSaleCoupon extends Model {
 	}
 	
 	public function getTotalCouponHistories($coupon_id) {
-	  	$query = $this->db->query("SELECT COUNT(*) AS total FROM {coupon_history} WHERE coupon_id = '" . (int)$coupon_id . "'");
+		$query = $this->db->query("SELECT COUNT(*) AS total FROM {coupon_history} WHERE coupon_id = '" . (int)$coupon_id . "'");
 
 		return $query->row['total'];
 	}

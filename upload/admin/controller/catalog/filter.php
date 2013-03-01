@@ -157,7 +157,7 @@ class ControllerCatalogFilter extends Controller {
 		
 		$this->data['insert'] = $this->url->link('catalog/filter/insert', 'token=' . $this->session->data['token'] . $url, 'SSL');
 		$this->data['delete'] = $this->url->link('catalog/filter/delete', 'token=' . $this->session->data['token'] . $url, 'SSL');
-		 
+		
 		$this->data['filters'] = array();
 		
 		$data = array(
@@ -408,7 +408,7 @@ class ControllerCatalogFilter extends Controller {
 		}
 
 		$sort_order = array();
-	  
+	
 		foreach ($json as $key => $value) {
 			$sort_order[$key] = $value['name'];
 		}

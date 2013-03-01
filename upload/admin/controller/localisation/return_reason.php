@@ -21,7 +21,7 @@ class ControllerLocalisationReturnReason extends Controller {
 			
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
 			$this->model_localisation_return_reason->addReturnReason($this->request->post);
-		  	
+			
 			$this->session->data['success'] = $this->language->get('text_success');
 
 			$url = '';
@@ -52,7 +52,7 @@ class ControllerLocalisationReturnReason extends Controller {
 		$this->load->model('localisation/return_reason');
 		
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
-	  		$this->model_localisation_return_reason->editReturnReason($this->request->get['return_reason_id'], $this->request->post);
+			$this->model_localisation_return_reason->editReturnReason($this->request->get['return_reason_id'], $this->request->post);
 			
 			$this->session->data['success'] = $this->language->get('text_success');
 
@@ -87,7 +87,7 @@ class ControllerLocalisationReturnReason extends Controller {
 			foreach ($this->request->post['selected'] as $return_reason_id) {
 				$this->model_localisation_return_reason->deleteReturnReason($return_reason_id);
 			}
-				  		
+						
 			$this->session->data['success'] = $this->language->get('text_success');
 
 			$url = '';
@@ -327,9 +327,9 @@ class ControllerLocalisationReturnReason extends Controller {
 		}
 		
 		if (!$this->error) {
-	  		return true;
+			return true;
 		} else {
-	  		return false;
+			return false;
 		}
 	}
 
@@ -344,14 +344,14 @@ class ControllerLocalisationReturnReason extends Controller {
 			$return_total = $this->model_sale_return->getTotalReturnsByReturnReasonId($return_reason_id);
 		
 			if ($return_total) {
-	  			$this->error['warning'] = sprintf($this->language->get('error_return'), $return_total);
+				$this->error['warning'] = sprintf($this->language->get('error_return'), $return_total);
 			}
-	  	}
+		}
 		
 		if (!$this->error) {
-	  		return true;
+			return true;
 		} else {
-	  		return false;
+			return false;
 		}
 	}
 }

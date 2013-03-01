@@ -149,9 +149,9 @@ class ControllerExtensionTotal extends Controller {
 		}
 		
 		if (!$this->error) {
-	  		return true;
+			return true;
 		} else {
-	  		return false;
+			return false;
 		}
 	}
 }

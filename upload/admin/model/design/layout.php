@@ -37,7 +37,7 @@ class ModelDesignLayout extends Model {
 		
 		return $query->row;
 	}
-		 
+		
 	public function getLayouts($data = array()) {
 		$sql = "SELECT * FROM {layout}";
 		

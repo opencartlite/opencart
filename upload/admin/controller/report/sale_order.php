@@ -156,7 +156,7 @@ class ControllerReportSaleOrder extends Controller {
 		$this->data['filter_date_end'] = $filter_date_end;
 		$this->data['filter_group'] = $filter_group;
 		$this->data['filter_order_status_id'] = $filter_order_status_id;
-				 
+				
 		$this->template = 'report/sale_order.tpl';
 		$this->children = array(
 			'common/header',

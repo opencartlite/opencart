@@ -38,7 +38,7 @@ class ControllerPaymentKlarnaInvoice extends Controller {
 			// Store Taxes to send to Klarna
 			$total_data = array();
 			$total = 0;
-			 
+			
 			$this->load->model('setting/extension');
 			
 			$sort_order = array();
@@ -56,7 +56,7 @@ class ControllerPaymentKlarnaInvoice extends Controller {
 			foreach ($results as $result) {
 				if ($this->config->get($result['code'] . '_status')) {
 					$this->load->model('total/' . $result['code']);
-			                
+							
 					$taxes = array();
 					
 					$this->{'model_total_' . $result['code']}->getTotal($total_data, $total, $taxes);
@@ -145,7 +145,7 @@ class ControllerPaymentKlarnaInvoice extends Controller {
 		$this->data += $this->language->load('payment/klarna_invoice');
 		
 		$json = array();
-		 
+		
 		$this->load->model('checkout/order');
 
 		$order_info = $this->model_checkout_order->getOrder($this->session->data['order_id']);
@@ -357,12 +357,12 @@ class ControllerPaymentKlarnaInvoice extends Controller {
 				
 				$xml .= '  </params>';
 				$xml .= '</methodCall>';
-			    
+				
 				$header  = 'Content-Type: text/xml' . "\n";
 				$header .= 'Content-Length: ' . strlen($xml) . "\n";
-		 
+		
 				$curl = curl_init();
-		 
+		
 				curl_setopt($curl, CURLOPT_URL, $url);
 				curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
 				curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 1);
@@ -386,7 +386,7 @@ class ControllerPaymentKlarnaInvoice extends Controller {
 						
 						$log = new Log('klarna_invoice.log');
 						$log->write('Failed to create an invoice for order #' . $order_info['order_id'] . '. Message: ' . utf8_encode($match[1]) . ' Code: ' . $match2[1]);
-					   
+					
 						$json['error'] = utf8_encode($match[1]);
 					} else {
 						$xml = new DOMDocument();

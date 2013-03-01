@@ -153,7 +153,7 @@ class ControllerReportSaleReturn extends Controller {
 		$this->data['filter_date_end'] = $filter_date_end;
 		$this->data['filter_group'] = $filter_group;
 		$this->data['filter_return_status_id'] = $filter_return_status_id;
-				 
+				
 		$this->template = 'report/sale_return.tpl';
 		$this->children = array(
 			'common/header',

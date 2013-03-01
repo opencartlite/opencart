@@ -61,7 +61,7 @@ class ControllerPaymentPaypoint extends Controller {
 		}
 		
 		$this->data['options'] = 'test_status=' . $status . ',dups=false,cb_post=false';
-	 
+	
 		if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/payment/paypoint.tpl')) {
 			$this->template = $this->config->get('config_template') . '/template/payment/paypoint.tpl';
 		} else {

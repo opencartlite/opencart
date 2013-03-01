@@ -138,7 +138,7 @@ class ControllerCheckoutRegister extends Controller {
 			if ($customer_group) {
 			
 			}
-			 
+			
 			if ((utf8_strlen($this->request->post['address_1']) < 3) || (utf8_strlen($this->request->post['address_1']) > 128)) {
 				$json['error']['address_1'] = $this->language->get('error_address_1');
 			}

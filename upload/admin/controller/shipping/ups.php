@@ -112,7 +112,7 @@ class ControllerShippingUPS extends Controller {
 		}
 		
 		$this->data['pickups'] = array();
-		  
+		
 		$this->data['pickups'][] = array(
 			'value' => '01',
 			'text'  => $this->language->get('text_daily_pickup')
@@ -155,7 +155,7 @@ class ControllerShippingUPS extends Controller {
 		}
 					
 		$this->data['packages'] = array();
-		  
+		
 		$this->data['packages'][] = array(
 			'value' => '02',
 			'text'  => $this->language->get('text_package')
@@ -219,7 +219,7 @@ class ControllerShippingUPS extends Controller {
 		}
 				
 		$this->data['origins'] = array();
-		  
+		
 		$this->data['origins'][] = array(
 			'value' => 'US',
 			'text'  => $this->language->get('text_us')
@@ -287,7 +287,7 @@ class ControllerShippingUPS extends Controller {
 		}
 
 		$this->data['quote_types'] = array();
-		  
+		
 		$this->data['quote_types'][] = array(
 			'value' => 'residential',
 			'text'  => $this->language->get('text_residential')

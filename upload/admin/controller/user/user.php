@@ -276,13 +276,13 @@ class ControllerUserUser extends Controller {
 			$this->data['error_confirm'] = '';
 		}
 		
-	 	if (isset($this->error['firstname'])) {
+		if (isset($this->error['firstname'])) {
 			$this->data['error_firstname'] = $this->error['firstname'];
 		} else {
 			$this->data['error_firstname'] = '';
 		}
 		
-	 	if (isset($this->error['lastname'])) {
+		if (isset($this->error['lastname'])) {
 			$this->data['error_lastname'] = $this->error['lastname'];
 		} else {
 			$this->data['error_lastname'] = '';
@@ -319,7 +319,7 @@ class ControllerUserUser extends Controller {
 		} else {
 			$this->data['action'] = $this->url->link('user/user/update', 'token=' . $this->session->data['token'] . '&user_id=' . $this->request->get['user_id'] . $url, 'SSL');
 		}
-		  
+		
 		$this->data['cancel'] = $this->url->link('user/user', 'token=' . $this->session->data['token'] . $url, 'SSL');
 
 		if (isset($this->request->get['user_id']) && ($this->request->server['REQUEST_METHOD'] != 'POST')) {
@@ -433,9 +433,9 @@ class ControllerUserUser extends Controller {
 				$this->error['password'] = $this->language->get('error_password');
 			}
 	
-	  		if ($this->request->post['password'] != $this->request->post['confirm']) {
+			if ($this->request->post['password'] != $this->request->post['confirm']) {
 				$this->error['confirm'] = $this->language->get('error_confirm');
-	  		}
+			}
 		}
 	
 		if (!$this->error) {
@@ -449,17 +449,17 @@ class ControllerUserUser extends Controller {
 		if (!$this->user->hasPermission('modify', 'user/user')) {
 			$this->error['warning'] = $this->language->get('error_permission');
 		}
-	  	  
+		
 		foreach ($this->request->post['selected'] as $user_id) {
 			if ($this->user->getId() == $user_id) {
 				$this->error['warning'] = $this->language->get('error_account');
 			}
 		}
-		 
+		
 		if (!$this->error) {
-	  		return true;
+			return true;
 		} else {
-	  		return false;
+			return false;
 		}
 	}
 }

@@ -1,7 +1,7 @@
 <?php
 class ControllerAffiliatePassword extends Controller {
 	private $error = array();
-		 
+		
 	public function index() {
 		if (!$this->affiliate->isLogged()) {
 			$this->session->data['redirect'] = $this->url->link('affiliate/password', '', 'SSL');
@@ -12,15 +12,15 @@ class ControllerAffiliatePassword extends Controller {
 		$this->data += $this->language->load('affiliate/password');
 
 		$this->document->setTitle($this->language->get('heading_title'));
-			  
+			
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
 			$this->load->model('affiliate/affiliate');
 			
 			$this->model_affiliate_affiliate->editPassword($this->affiliate->getEmail(), $this->request->post['password']);
 
 			$this->session->data['success'] = $this->language->get('text_success');
-	  
-	  		$this->redirect($this->url->link('affiliate/account', '', 'SSL'));
+	
+			$this->redirect($this->url->link('affiliate/account', '', 'SSL'));
 		}
 
 		$this->data['breadcrumbs'] = array();
@@ -96,9 +96,9 @@ class ControllerAffiliatePassword extends Controller {
 		}
 	
 		if (!$this->error) {
-	  		return true;
+			return true;
 		} else {
-	  		return false;
+			return false;
 		}
 	}
 }

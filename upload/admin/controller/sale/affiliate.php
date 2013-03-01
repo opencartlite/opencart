@@ -4,7 +4,7 @@ class ControllerSaleAffiliate extends Controller {
 
 	public function index() {
 		$this->data += $this->language->load('sale/affiliate');
-		 
+		
 		$this->document->setTitle($this->language->get('heading_title'));
 		
 		$this->load->model('sale/affiliate');
@@ -20,10 +20,10 @@ class ControllerSaleAffiliate extends Controller {
 		$this->load->model('sale/affiliate');
 			
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
-		  	$this->model_sale_affiliate->addAffiliate($this->request->post);
+			$this->model_sale_affiliate->addAffiliate($this->request->post);
 			
 			$this->session->data['success'] = $this->language->get('text_success');
-		  
+		
 			$url = '';
 
 			if (isset($this->request->get['filter_name'])) {
@@ -73,9 +73,9 @@ class ControllerSaleAffiliate extends Controller {
 		
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
 			$this->model_sale_affiliate->editAffiliate($this->request->get['affiliate_id'], $this->request->post);
-	  		
+			
 			$this->session->data['success'] = $this->language->get('text_success');
-	  
+	
 			$url = '';
 
 			if (isset($this->request->get['filter_name'])) {
@@ -169,7 +169,7 @@ class ControllerSaleAffiliate extends Controller {
 	
 		$this->getList();
 	}
-		 
+		
 	public function approve() {
 		$this->data += $this->language->load('sale/affiliate');
 		
@@ -614,7 +614,7 @@ class ControllerSaleAffiliate extends Controller {
 		} else {
 			$this->data['action'] = $this->url->link('sale/affiliate/update', 'token=' . $this->session->data['token'] . '&affiliate_id=' . $this->request->get['affiliate_id'] . $url, 'SSL');
 		}
-		  
+		
 		$this->data['cancel'] = $this->url->link('sale/affiliate', 'token=' . $this->session->data['token'] . $url, 'SSL');
 
 		if (isset($this->request->get['affiliate_id']) && ($this->request->server['REQUEST_METHOD'] != 'POST')) {
@@ -884,9 +884,9 @@ class ControllerSaleAffiliate extends Controller {
 				$this->error['password'] = $this->language->get('error_password');
 			}
 	
-	  		if ($this->request->post['password'] != $this->request->post['confirm']) {
+			if ($this->request->post['password'] != $this->request->post['confirm']) {
 				$this->error['confirm'] = $this->language->get('error_confirm');
-	  		}
+			}
 		}
 		
 		if ((utf8_strlen($this->request->post['address_1']) < 3) || (utf8_strlen($this->request->post['address_1']) > 128)) {
@@ -918,9 +918,9 @@ class ControllerSaleAffiliate extends Controller {
 		}
 					
 		if (!$this->error) {
-	  		return true;
+			return true;
 		} else {
-	  		return false;
+			return false;
 		}
 	}
 
@@ -928,11 +928,11 @@ class ControllerSaleAffiliate extends Controller {
 		if (!$this->user->hasPermission('modify', 'sale/affiliate')) {
 			$this->error['warning'] = $this->language->get('error_permission');
 		}
-	  	 
+		
 		if (!$this->error) {
-	  		return true;
+			return true;
 		} else {
-	  		return false;
+			return false;
 		}
 	}
 

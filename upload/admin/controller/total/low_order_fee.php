@@ -1,7 +1,7 @@
 <?php
 class ControllerTotalLowOrderFee extends Controller {
 	private $error = array();
-	 
+	
 	public function index() {
 		$this->data += $this->language->load('total/low_order_fee');
 

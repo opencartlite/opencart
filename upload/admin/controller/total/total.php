@@ -1,7 +1,7 @@
 <?php
 class ControllerTotalTotal extends Controller {
 	private $error = array();
-	 
+	
 	public function index() {
 		$this->data += $this->language->load('total/total');
 

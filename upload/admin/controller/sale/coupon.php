@@ -55,7 +55,7 @@ class ControllerSaleCoupon extends Controller {
 			$this->model_sale_coupon->editCoupon($this->request->get['coupon_id'], $this->request->post);
 			
 			$this->session->data['success'] = $this->language->get('text_success');
-	  
+	
 			$url = '';
 
 			if (isset($this->request->get['sort'])) {
@@ -89,7 +89,7 @@ class ControllerSaleCoupon extends Controller {
 			}
 			
 			$this->session->data['success'] = $this->language->get('text_success');
-	  
+	
 			$url = '';
 
 			if (isset($this->request->get['sort'])) {
@@ -271,7 +271,7 @@ class ControllerSaleCoupon extends Controller {
 		} else {
 			$this->data['error_warning'] = '';
 		}
-	 	
+		
 		if (isset($this->error['name'])) {
 			$this->data['error_name'] = $this->error['name'];
 		} else {
@@ -519,11 +519,11 @@ class ControllerSaleCoupon extends Controller {
 		if (!$this->user->hasPermission('modify', 'sale/coupon')) {
 			$this->error['warning'] = $this->language->get('error_permission');
 		}
-	  	
+		
 		if (!$this->error) {
-	  		return true;
+			return true;
 		} else {
-	  		return false;
+			return false;
 		}
 	}
 	

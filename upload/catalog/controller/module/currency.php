@@ -27,9 +27,9 @@ class ControllerModuleCurrency extends Controller {
 		$this->data['currency_code'] = $this->currency->getCode();
 		
 		$this->load->model('localisation/currency');
-		 
-		 $this->data['currencies'] = array();
-		 
+		
+		$this->data['currencies'] = array();
+		
 		$results = $this->model_localisation_currency->getCurrencies();
 		
 		foreach ($results as $result) {

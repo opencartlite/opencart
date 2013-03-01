@@ -1,12 +1,12 @@
 <?php
 class ControllerAccountAddress extends Controller {
 	private $error = array();
-	  
+	
 	public function index() {
 		if (!$this->customer->isLogged()) {
-	  		$this->session->data['redirect'] = $this->url->link('account/address', '', 'SSL');
+			$this->session->data['redirect'] = $this->url->link('account/address', '', 'SSL');
 
-	  		$this->redirect($this->url->link('account/login', '', 'SSL'));
+			$this->redirect($this->url->link('account/login', '', 'SSL'));
 		}
 	
 		$this->data += $this->language->load('account/address');
@@ -20,9 +20,9 @@ class ControllerAccountAddress extends Controller {
 
 	public function insert() {
 		if (!$this->customer->isLogged()) {
-	  		$this->session->data['redirect'] = $this->url->link('account/address', '', 'SSL');
+			$this->session->data['redirect'] = $this->url->link('account/address', '', 'SSL');
 
-	  		$this->redirect($this->url->link('account/login', '', 'SSL'));
+			$this->redirect($this->url->link('account/login', '', 'SSL'));
 		}
 
 		$this->data += $this->language->load('account/address');
@@ -36,17 +36,17 @@ class ControllerAccountAddress extends Controller {
 			
 			$this->session->data['success'] = $this->language->get('text_insert');
 
-	  		$this->redirect($this->url->link('account/address', '', 'SSL'));
+			$this->redirect($this->url->link('account/address', '', 'SSL'));
 		}
-	  	
+		
 		$this->getForm();
 	}
 
 	public function update() {
 		if (!$this->customer->isLogged()) {
-	  		$this->session->data['redirect'] = $this->url->link('account/address', '', 'SSL');
+			$this->session->data['redirect'] = $this->url->link('account/address', '', 'SSL');
 
-	  		$this->redirect($this->url->link('account/login', '', 'SSL'));
+			$this->redirect($this->url->link('account/login', '', 'SSL'));
 		}
 		
 		$this->data += $this->language->load('account/address');
@@ -57,7 +57,7 @@ class ControllerAccountAddress extends Controller {
 		
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
 			$this->model_account_address->editAddress($this->request->get['address_id'], $this->request->post);
-	  		
+			
 			// Default Shipping Address
 			if (isset($this->session->data['shipping_address']['address_id']) && ($this->request->get['address_id'] == $this->session->data['shipping_address']['address_id'])) {
 				$this->session->data['shipping_address'] = $this->model_account_address->getAddress($this->request->get['address_id']);
@@ -69,24 +69,24 @@ class ControllerAccountAddress extends Controller {
 			// Default Payment Address
 			if (isset($this->session->data['payment_address']['address_id']) && ($this->request->get['address_id'] == $this->session->data['payment_address']['address_id'])) {
 				$this->session->data['payment_address'] = $this->model_account_address->getAddress($this->request->get['address_id']);
-	  			
+				
 				unset($this->session->data['payment_method']);
 				unset($this->session->data['payment_methods']);
 			}
 			
 			$this->session->data['success'] = $this->language->get('text_update');
-	  
-	  		$this->redirect($this->url->link('account/address', '', 'SSL'));
+	
+			$this->redirect($this->url->link('account/address', '', 'SSL'));
 		}
-	  	
+		
 		$this->getForm();
 	}
 
 	public function delete() {
 		if (!$this->customer->isLogged()) {
-	  		$this->session->data['redirect'] = $this->url->link('account/address', '', 'SSL');
+			$this->session->data['redirect'] = $this->url->link('account/address', '', 'SSL');
 
-	  		$this->redirect($this->url->link('account/login', '', 'SSL'));
+			$this->redirect($this->url->link('account/login', '', 'SSL'));
 		}
 			
 		$this->data += $this->language->load('account/address');
@@ -113,8 +113,8 @@ class ControllerAccountAddress extends Controller {
 			}
 			
 			$this->session->data['success'] = $this->language->get('text_delete');
-	  
-	  		$this->redirect($this->url->link('account/address', '', 'SSL'));
+	
+			$this->redirect($this->url->link('account/address', '', 'SSL'));
 		}
 	
 		$this->getList();
@@ -162,9 +162,9 @@ class ControllerAccountAddress extends Controller {
 			}
 		
 			$find = array(
-	  			'{firstname}',
-	  			'{lastname}',
-	  			'{company}',
+				'{firstname}',
+				'{lastname}',
+				'{company}',
 				'{address_1}',
 				'{address_2}',
 				'{city}',
@@ -175,9 +175,9 @@ class ControllerAccountAddress extends Controller {
 			);
 	
 			$replace = array(
-	  			'firstname' => $result['firstname'],
-	  			'lastname'  => $result['lastname'],
-	  			'company'   => $result['company'],
+				'firstname' => $result['firstname'],
+				'lastname'  => $result['lastname'],
+				'company'   => $result['company'],
 				'address_1' => $result['address_1'],
 				'address_2' => $result['address_2'],
 				'city'      => $result['city'],

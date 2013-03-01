@@ -21,7 +21,7 @@ class ControllerCatalogAttributeGroup extends Controller {
 			
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
 			$this->model_catalog_attribute_group->addAttributeGroup($this->request->post);
-		  	
+			
 			$this->session->data['success'] = $this->language->get('text_success');
 
 			$url = '';
@@ -52,7 +52,7 @@ class ControllerCatalogAttributeGroup extends Controller {
 		$this->load->model('catalog/attribute_group');
 		
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
-	  		$this->model_catalog_attribute_group->editAttributeGroup($this->request->get['attribute_group_id'], $this->request->post);
+			$this->model_catalog_attribute_group->editAttributeGroup($this->request->get['attribute_group_id'], $this->request->post);
 			
 			$this->session->data['success'] = $this->language->get('text_success');
 
@@ -87,7 +87,7 @@ class ControllerCatalogAttributeGroup extends Controller {
 			foreach ($this->request->post['selected'] as $attribute_group_id) {
 				$this->model_catalog_attribute_group->deleteAttributeGroup($attribute_group_id);
 			}
-				  		
+						
 			$this->session->data['success'] = $this->language->get('text_success');
 
 			$url = '';
@@ -341,9 +341,9 @@ class ControllerCatalogAttributeGroup extends Controller {
 		}
 		
 		if (!$this->error) {
-	  		return true;
+			return true;
 		} else {
-	  		return false;
+			return false;
 		}
 	}
 
@@ -360,12 +360,12 @@ class ControllerCatalogAttributeGroup extends Controller {
 			if ($attribute_total) {
 				$this->error['warning'] = sprintf($this->language->get('error_attribute'), $attribute_total);
 			}
-	  	}
+		}
 		
 		if (!$this->error) {
-	  		return true;
+			return true;
 		} else {
-	  		return false;
+			return false;
 		}
 	}
 }

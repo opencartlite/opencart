@@ -157,7 +157,7 @@ class ControllerCatalogOption extends Controller {
 		
 		$this->data['insert'] = $this->url->link('catalog/option/insert', 'token=' . $this->session->data['token'] . $url, 'SSL');
 		$this->data['delete'] = $this->url->link('catalog/option/delete', 'token=' . $this->session->data['token'] . $url, 'SSL');
-		 
+		
 		$this->data['options'] = array();
 		
 		$data = array(
@@ -347,7 +347,7 @@ class ControllerCatalogOption extends Controller {
 		$this->load->model('tool/image');
 		
 		$this->data['option_values'] = array();
-		 
+		
 		foreach ($option_values as $option_value) {
 			if ($option_value['image'] && file_exists(DIR_IMAGE . $option_value['image'])) {
 				$image = $option_value['image'];
@@ -468,7 +468,7 @@ class ControllerCatalogOption extends Controller {
 					}
 					
 					$sort_order = array();
-				  
+				
 					foreach ($option_value_data as $key => $value) {
 						$sort_order[$key] = $value['name'];
 					}
@@ -505,7 +505,7 @@ class ControllerCatalogOption extends Controller {
 		}
 
 		$sort_order = array();
-	  
+	
 		foreach ($json as $key => $value) {
 			$sort_order[$key] = $value['name'];
 		}

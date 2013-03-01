@@ -11,7 +11,7 @@ class ControllerPaymentWorldPay extends Controller {
 		}else{
 			$this->data['action'] = 'https://secure-test.worldpay.com/wcc/purchase';
 		}
-	  
+	
 		$this->data['merchant'] = $this->config->get('worldpay_merchant');
 		$this->data['order_id'] = $order_info['order_id'];
 		$this->data['amount'] = $this->currency->format($order_info['total'], $order_info['currency_code'], $order_info['currency_value'], false);

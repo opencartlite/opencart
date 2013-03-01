@@ -22,8 +22,8 @@ class ControllerAccountVoucher extends Controller {
 				'message'          => $this->request->post['message'],
 				'amount'           => $this->currency->convert($this->request->post['amount'], $this->currency->getCode(), $this->config->get('config_currency'))
 			);
-	  	  	
-	  		$this->redirect($this->url->link('account/voucher/success'));
+			
+			$this->redirect($this->url->link('account/voucher/success'));
 		}
 
 		$this->data['breadcrumbs'] = array();

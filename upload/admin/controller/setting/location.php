@@ -167,7 +167,7 @@ class ControllerSettingLocation extends Controller {
 			'start' => ($page - 1) * $this->config->get('config_admin_limit'),
 			'limit' => $this->config->get('config_admin_limit')
 		);
-			 
+			
 		$location_total = $this->model_setting_location->getTotalLocations();
 		
 		$results = $this->model_setting_location->getLocations($data); //  retrieve db information for locations from function in Model
@@ -302,7 +302,7 @@ class ControllerSettingLocation extends Controller {
 		} else {
 			$this->data['error_geocode'] = '';
 		}
-			            
+						
 		$url = '';
 		
 		if (isset($this->request->get['sort'])) {
@@ -504,11 +504,11 @@ class ControllerSettingLocation extends Controller {
 		if (!$this->user->hasPermission('modify', 'setting/location')) {
 			$this->error['warning'] = $this->language->get('error_permission');
 		}
-	  	 
+		
 		if (!$this->error) {
-	  		return true;
+			return true;
 		} else {
-	  		return false;
+			return false;
 		}
 	}
 	

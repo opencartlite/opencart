@@ -50,8 +50,8 @@ class ModelShippingUsps extends Model {
 				
 				// Calculate girth based on usps calculation
 				$xml .= '		<Girth>' . (round(((float)$this->config->get('usps_length') + (float)$this->config->get('usps_width') * 2 + (float)$this->config->get('usps_height') * 2), 1)) . '</Girth>';
-				 
-				 
+				
+				
 				$xml .=	'		<Machinable>' . ($this->config->get('usps_machinable') ? 'true' : 'false') . '</Machinable>';
 				$xml .=	'	</Package>';
 				$xml .= '</RateV4Request>';
@@ -452,7 +452,7 @@ class ModelShippingUsps extends Model {
 				}
 			}
 
-	  		if ($quote_data) {
+			if ($quote_data) {
 				$title = $this->language->get('text_title');
 
 				if ($this->config->get('usps_display_weight')) {

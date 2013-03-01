@@ -29,7 +29,7 @@ class ControllerCheckoutShippingMethod extends Controller {
 			}
 	
 			$sort_order = array();
-		  
+		
 			foreach ($quote_data as $key => $value) {
 				$sort_order[$key] = $value['sort_order'];
 			}

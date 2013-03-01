@@ -21,7 +21,7 @@ class ControllerLocalisationStockStatus extends Controller {
 			
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
 			$this->model_localisation_stock_status->addStockStatus($this->request->post);
-		  	
+			
 			$this->session->data['success'] = $this->language->get('text_success');
 
 			$url = '';
@@ -52,7 +52,7 @@ class ControllerLocalisationStockStatus extends Controller {
 		$this->load->model('localisation/stock_status');
 		
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
-	  		$this->model_localisation_stock_status->editStockStatus($this->request->get['stock_status_id'], $this->request->post);
+			$this->model_localisation_stock_status->editStockStatus($this->request->get['stock_status_id'], $this->request->post);
 			
 			$this->session->data['success'] = $this->language->get('text_success');
 
@@ -87,7 +87,7 @@ class ControllerLocalisationStockStatus extends Controller {
 			foreach ($this->request->post['selected'] as $stock_status_id) {
 				$this->model_localisation_stock_status->deleteStockStatus($stock_status_id);
 			}
-				  		
+						
 			$this->session->data['success'] = $this->language->get('text_success');
 
 			$url = '';
@@ -327,9 +327,9 @@ class ControllerLocalisationStockStatus extends Controller {
 		}
 		
 		if (!$this->error) {
-	  		return true;
+			return true;
 		} else {
-	  		return false;
+			return false;
 		}
 	}
 
@@ -349,14 +349,14 @@ class ControllerLocalisationStockStatus extends Controller {
 			$product_total = $this->model_catalog_product->getTotalProductsByStockStatusId($stock_status_id);
 		
 			if ($product_total) {
-	  			$this->error['warning'] = sprintf($this->language->get('error_product'), $product_total);
+				$this->error['warning'] = sprintf($this->language->get('error_product'), $product_total);
 			}
-	  	}
+		}
 		
 		if (!$this->error) {
-	  		return true;
+			return true;
 		} else {
-	  		return false;
+			return false;
 		}
 	}
 }

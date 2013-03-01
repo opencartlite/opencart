@@ -57,7 +57,7 @@ class ControllerCheckoutConfirm extends Controller {
 			$total_data = array();
 			$total = 0;
 			$taxes = $this->cart->getTaxes();
-			 
+			
 			$this->load->model('setting/extension');
 			
 			$sort_order = array();
@@ -79,7 +79,7 @@ class ControllerCheckoutConfirm extends Controller {
 			}
 			
 			$sort_order = array();
-		  
+		
 			foreach ($total_data as $key => $value) {
 				$sort_order[$key] = $value['sort_order'];
 			}
@@ -207,7 +207,7 @@ class ControllerCheckoutConfirm extends Controller {
 						'type'                    => $option['type']
 					);
 				}
-	 
+	
 				$product_data[] = array(
 					'product_id' => $product['product_id'],
 					'name'       => $product['name'],
@@ -315,7 +315,7 @@ class ControllerCheckoutConfirm extends Controller {
 						'value' => (utf8_strlen($value) > 20 ? utf8_substr($value, 0, 20) . '..' : $value)
 					);
 				}
-	 
+	
 				$this->data['products'][] = array(
 					'product_id' => $product['product_id'],
 					'name'       => $product['name'],

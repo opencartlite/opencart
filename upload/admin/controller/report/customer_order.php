@@ -127,7 +127,7 @@ class ControllerReportCustomerOrder extends Controller {
 		$this->data['filter_date_start'] = $filter_date_start;
 		$this->data['filter_date_end'] = $filter_date_end;
 		$this->data['filter_order_status_id'] = $filter_order_status_id;
-				 
+				
 		$this->template = 'report/customer_order.tpl';
 		$this->children = array(
 			'common/header',

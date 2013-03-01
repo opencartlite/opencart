@@ -21,7 +21,7 @@ class ControllerExtensionModification extends Controller {
 			
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
 			$this->model_setting_modification->addModification($this->request->post);
-		  	
+			
 			$this->session->data['success'] = $this->language->get('text_success');
 
 			$url = '';
@@ -52,7 +52,7 @@ class ControllerExtensionModification extends Controller {
 		$this->load->model('setting/modification');
 		
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
-	  		$this->model_setting_modification->editModification($this->request->get['modification_id'], $this->request->post);
+			$this->model_setting_modification->editModification($this->request->get['modification_id'], $this->request->post);
 			
 			$this->session->data['success'] = $this->language->get('text_success');
 
@@ -87,7 +87,7 @@ class ControllerExtensionModification extends Controller {
 			foreach ($this->request->post['selected'] as $modification_id) {
 				$this->model_setting_modification->deleteModification($modification_id);
 			}
-				  		
+						
 			$this->session->data['success'] = $this->language->get('text_success');
 
 			$url = '';
@@ -188,7 +188,7 @@ class ControllerExtensionModification extends Controller {
 		}
 						
 		$this->data += $this->language->load('extension/modification');
-		 
+		
 		$this->document->setTitle($this->language->get('heading_title'));
 
 		$this->data['breadcrumbs'] = array();
@@ -371,9 +371,9 @@ class ControllerExtensionModification extends Controller {
 		}
 		
 		if (!$this->error) {
-	  		return true;
+			return true;
 		} else {
-	  		return false;
+			return false;
 		}
 	}
 
@@ -383,9 +383,9 @@ class ControllerExtensionModification extends Controller {
 		}
 		
 		if (!$this->error) {
-	  		return true;
+			return true;
 		} else {
-	  		return false;
+			return false;
 		}
 	}
 			

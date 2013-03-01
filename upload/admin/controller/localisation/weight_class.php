@@ -157,7 +157,7 @@ class ControllerLocalisationWeightClass extends Controller {
 		
 		$this->data['insert'] = $this->url->link('localisation/weight_class/insert', 'token=' . $this->session->data['token'] . $url, 'SSL');
 		$this->data['delete'] = $this->url->link('localisation/weight_class/delete', 'token=' . $this->session->data['token'] . $url, 'SSL');
-		 
+		
 		$this->data['weight_classes'] = array();
 		
 		$data = array(

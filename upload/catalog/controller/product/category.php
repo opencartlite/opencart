@@ -77,7 +77,7 @@ class ControllerProductCategory extends Controller {
 				$category_info = $this->model_catalog_category->getCategory($path_id);
 				
 				if ($category_info) {
-		   			$this->data['breadcrumbs'][] = array(
+					$this->data['breadcrumbs'][] = array(
 						'text' => $category_info['name'],
 						'href' => $this->url->link('product/category', 'path=' . $path . $url)
 					);
@@ -90,7 +90,7 @@ class ControllerProductCategory extends Controller {
 		$category_info = $this->model_catalog_category->getCategory($category_id);
 	
 		if ($category_info) {
-	  		$this->document->setTitle($category_info['name']);
+			$this->document->setTitle($category_info['name']);
 			$this->document->setDescription($category_info['meta_description']);
 			$this->document->setKeywords($category_info['meta_keyword']);
 			$this->document->addScript('catalog/view/javascript/jquery/jquery.cookie.js');

@@ -1,7 +1,7 @@
 <?php
 class ControllerAccountPassword extends Controller {
 	private $error = array();
-		 
+		
 	public function index() {
 		if (!$this->customer->isLogged()) {
 			$this->session->data['redirect'] = $this->url->link('account/password', '', 'SSL');
@@ -12,15 +12,15 @@ class ControllerAccountPassword extends Controller {
 		$this->data += $this->language->load('account/password');
 
 		$this->document->setTitle($this->language->get('heading_title'));
-			  
+			
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
 			$this->load->model('account/customer');
 			
 			$this->model_account_customer->editPassword($this->customer->getEmail(), $this->request->post['password']);
 
 			$this->session->data['success'] = $this->language->get('text_success');
-	  
-	  		$this->redirect($this->url->link('account/account', '', 'SSL'));
+	
+			$this->redirect($this->url->link('account/account', '', 'SSL'));
 		}
 
 		$this->data['breadcrumbs'] = array();
@@ -96,9 +96,9 @@ class ControllerAccountPassword extends Controller {
 		}
 	
 		if (!$this->error) {
-	  		return true;
+			return true;
 		} else {
-	  		return false;
+			return false;
 		}
 	}
 }

@@ -349,7 +349,7 @@ class ModelSaleCustomer extends Model {
 	}
 
 	public function getTotalHistories($customer_id) {
-	  	$query = $this->db->query("SELECT COUNT(*) AS total FROM {customer_history} WHERE customer_id = '" . (int)$customer_id . "'");
+		$query = $this->db->query("SELECT COUNT(*) AS total FROM {customer_history} WHERE customer_id = '" . (int)$customer_id . "'");
 
 		return $query->row['total'];
 	}
@@ -524,7 +524,7 @@ class ModelSaleCustomer extends Model {
 			
 	public function getTotalBanIpsByIp($ip) {
 		$query = $this->db->query("SELECT COUNT(*) AS total FROM {customer_ban_ip} WHERE `ip` = '" . $this->db->escape($ip) . "'");
-				 
+				
 		return $query->row['total'];
 	}
 }

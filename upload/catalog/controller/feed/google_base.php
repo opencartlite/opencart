@@ -54,7 +54,7 @@ class ControllerFeedGoogleBase extends Controller {
 					} else {
 						$output .= '<g:price>' . $this->currency->format($this->tax->calculate($product['price'], $product['tax_class_id']), $currency_code, $currency_value, false) . '</g:price>';
 					}
-			   
+			
 					$categories = $this->model_catalog_product->getCategories($product['product_id']);
 					
 					foreach ($categories as $category) {
@@ -74,7 +74,7 @@ class ControllerFeedGoogleBase extends Controller {
 									}
 								}
 							}
-						 
+						
 							$output .= '<g:product_type>' . $string . '</g:product_type>';
 						}
 					}

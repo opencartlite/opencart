@@ -2,9 +2,9 @@
 class ControllerAffiliateAccount extends Controller {
 	public function index() {
 		if (!$this->affiliate->isLogged()) {
-	  		$this->session->data['redirect'] = $this->url->link('affiliate/account', '', 'SSL');
-	  
-	  		$this->redirect($this->url->link('affiliate/login', '', 'SSL'));
+			$this->session->data['redirect'] = $this->url->link('affiliate/account', '', 'SSL');
+	
+			$this->redirect($this->url->link('affiliate/login', '', 'SSL'));
 		}
 	
 		$this->data += $this->language->load('affiliate/account');

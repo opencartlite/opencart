@@ -6,7 +6,7 @@ class ControllerInformationContact extends Controller {
 		$this->data += $this->language->load('information/contact');
 
 		$this->document->setTitle($this->language->get('heading_title'));
-	 
+	
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
 			$mail = new Mail();
 			$mail->protocol = $this->config->get('config_mail_protocol');
@@ -17,13 +17,13 @@ class ControllerInformationContact extends Controller {
 			$mail->port = $this->config->get('config_smtp_port');
 			$mail->timeout = $this->config->get('config_smtp_timeout');
 			$mail->setTo($this->config->get('config_email'));
-	  		$mail->setFrom($this->request->post['email']);
-	  		$mail->setSender($this->request->post['name']);
-	  		$mail->setSubject(html_entity_decode(sprintf($this->language->get('email_subject'), $this->request->post['name']), ENT_QUOTES, 'UTF-8'));
-	  		$mail->setText(strip_tags(html_entity_decode($this->request->post['enquiry'], ENT_QUOTES, 'UTF-8')));
+			$mail->setFrom($this->request->post['email']);
+			$mail->setSender($this->request->post['name']);
+			$mail->setSubject(html_entity_decode(sprintf($this->language->get('email_subject'), $this->request->post['name']), ENT_QUOTES, 'UTF-8'));
+			$mail->setText(strip_tags(html_entity_decode($this->request->post['enquiry'], ENT_QUOTES, 'UTF-8')));
 			$mail->send();
 
-	  		$this->redirect($this->url->link('information/contact/success'));
+			$this->redirect($this->url->link('information/contact/success'));
 		}
 
 		$this->data['breadcrumbs'] = array();
@@ -186,9 +186,9 @@ class ControllerInformationContact extends Controller {
 		}
 		
 		if (!$this->error) {
-	  		return true;
+			return true;
 		} else {
-	  		return false;
+			return false;
 		}
 	}
 

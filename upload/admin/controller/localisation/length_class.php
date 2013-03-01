@@ -157,7 +157,7 @@ class ControllerLocalisationLengthClass extends Controller {
 		
 		$this->data['insert'] = $this->url->link('localisation/length_class/insert', 'token=' . $this->session->data['token'] . $url, 'SSL');
 		$this->data['delete'] = $this->url->link('localisation/length_class/delete', 'token=' . $this->session->data['token'] . $url, 'SSL');
-		 
+		
 		$this->data['length_classes'] = array();
 		
 		$data = array(

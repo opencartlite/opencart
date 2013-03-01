@@ -16,7 +16,7 @@ class ControllerCheckoutSuccess extends Controller {
 			unset($this->session->data['voucher']);
 			unset($this->session->data['vouchers']);
 		}
-									   
+									
 		$this->data += $this->language->load('checkout/success');
 		
 		$this->document->setTitle($this->language->get('heading_title'));

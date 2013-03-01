@@ -5,7 +5,7 @@ class ModelTotalVoucher extends Model {
 			$this->language->load('total/voucher');
 			
 			$this->load->model('checkout/voucher');
-			 
+			
 			$voucher_info = $this->model_checkout_voucher->getVoucher($this->session->data['voucher']);
 			
 			if ($voucher_info) {

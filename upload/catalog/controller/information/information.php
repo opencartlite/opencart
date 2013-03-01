@@ -21,7 +21,7 @@ class ControllerInformationInformation extends Controller {
 		$information_info = $this->model_catalog_information->getInformation($information_id);
 		
 		if ($information_info) {
-	  		$this->document->setTitle($information_info['title']);
+			$this->document->setTitle($information_info['title']);
 
 			$this->data['breadcrumbs'][] = array(
 				'text'      => $information_info['title'],
@@ -49,14 +49,14 @@ class ControllerInformationInformation extends Controller {
 				'common/header'
 			);
 						
-	  		$this->response->setOutput($this->render());
+			$this->response->setOutput($this->render());
 		} else {
 			$this->data['breadcrumbs'][] = array(
 				'text' => $this->language->get('text_error'),
 				'href' => $this->url->link('information/information', 'information_id=' . $information_id)
 			);
 				
-	  		$this->document->setTitle($this->language->get('text_error'));
+			$this->document->setTitle($this->language->get('text_error'));
 			
 			$this->data['heading_title'] = $this->language->get('text_error');
 
@@ -77,7 +77,7 @@ class ControllerInformationInformation extends Controller {
 				'common/header'
 			);
 					
-	  		$this->response->setOutput($this->render());
+			$this->response->setOutput($this->render());
 		}
 	}
 	

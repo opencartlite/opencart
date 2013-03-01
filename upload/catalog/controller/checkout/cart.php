@@ -137,7 +137,7 @@ class ControllerCheckoutCart extends Controller {
 			} else {
 				$this->data['weight'] = '';
 			}
-						 
+						
 			$this->load->model('tool/image');
 			
 			$this->data['products'] = array();
@@ -229,7 +229,7 @@ class ControllerCheckoutCart extends Controller {
 			} else {
 				$this->data['next'] = '';
 			}
-						 
+						
 			$this->data['coupon_status'] = $this->config->get('coupon_status');
 			
 			if (isset($this->request->post['coupon'])) {
@@ -325,7 +325,7 @@ class ControllerCheckoutCart extends Controller {
 					}
 					
 					$sort_order = array();
-				  
+				
 					foreach ($total_data as $key => $value) {
 						$sort_order[$key] = $value['sort_order'];
 					}
@@ -536,7 +536,7 @@ class ControllerCheckoutCart extends Controller {
 						}
 						
 						$sort_order = array();
-					  
+					
 						foreach ($total_data as $key => $value) {
 							$sort_order[$key] = $value['sort_order'];
 						}
@@ -609,7 +609,7 @@ class ControllerCheckoutCart extends Controller {
 				$zone = '';
 				$zone_code = '';
 			}
-		 
+		
 			$this->session->data['shipping_address'] = array(
 				'firstname'      => '',
 				'lastname'       => '',
@@ -652,7 +652,7 @@ class ControllerCheckoutCart extends Controller {
 			}
 	
 			$sort_order = array();
-		  
+		
 			foreach ($quote_data as $key => $value) {
 				$sort_order[$key] = $value['sort_order'];
 			}

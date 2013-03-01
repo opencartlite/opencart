@@ -2,7 +2,7 @@
 class ModelAffiliateTransaction extends Model {
 	public function getTransactions($data = array()) {
 		$sql = "SELECT * FROM {affiliate_transaction} WHERE affiliate_id = '" . (int)$this->affiliate->getId() . "'";
-		   
+		
 		$sort_data = array(
 			'amount',
 			'description',

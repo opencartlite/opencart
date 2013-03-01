@@ -157,7 +157,7 @@ class ModelPaymentKlarnaAccount extends Model {
 		}
 		
 		$sort_order = array();
-		  
+		
 		foreach ($payment_option as $key => $value) {
 			$sort_order[$key] = $value['monthly_cost'];
 		}

@@ -8,7 +8,7 @@ class ControllerCatalogCategory extends Controller {
 		$this->document->setTitle($this->language->get('heading_title'));
 		
 		$this->load->model('catalog/category');
-		 
+		
 		$this->getList();
 	}
 
@@ -446,7 +446,7 @@ class ControllerCatalogCategory extends Controller {
 		}
 
 		$sort_order = array();
-	  
+	
 		foreach ($json as $key => $value) {
 			$sort_order[$key] = $value['name'];
 		}

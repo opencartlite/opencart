@@ -49,7 +49,7 @@ class ControllerCheckoutPaymentMethod extends Controller {
 			}
 
 			$sort_order = array();
-		  
+		
 			foreach ($method_data as $key => $value) {
 				$sort_order[$key] = $value['sort_order'];
 			}
@@ -71,7 +71,7 @@ class ControllerCheckoutPaymentMethod extends Controller {
 		} else {
 			$this->data['payment_methods'] = array();
 		}
-	  
+	
 		if (isset($this->session->data['payment_method']['code'])) {
 			$this->data['code'] = $this->session->data['payment_method']['code'];
 		} else {
@@ -166,7 +166,7 @@ class ControllerCheckoutPaymentMethod extends Controller {
 			
 			if (!$json) {
 				$this->session->data['payment_method'] = $this->session->data['payment_methods'][$this->request->post['payment_method']];
-			  
+			
 				$this->session->data['comment'] = strip_tags($this->request->post['comment']);
 			}
 		}

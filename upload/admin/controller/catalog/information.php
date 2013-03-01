@@ -6,7 +6,7 @@ class ControllerCatalogInformation extends Controller {
 		$this->data += $this->language->load('catalog/information');
 
 		$this->document->setTitle($this->language->get('heading_title'));
-		 
+		
 		$this->load->model('catalog/information');
 
 		$this->getList();
@@ -262,7 +262,7 @@ class ControllerCatalogInformation extends Controller {
 			$this->data['error_title'] = array();
 		}
 		
-	 	if (isset($this->error['description'])) {
+		if (isset($this->error['description'])) {
 			$this->data['error_description'] = $this->error['description'];
 		} else {
 			$this->data['error_description'] = array();

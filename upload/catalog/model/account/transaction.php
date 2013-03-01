@@ -2,7 +2,7 @@
 class ModelAccountTransaction extends Model {
 	public function getTransactions($data = array()) {
 		$sql = "SELECT * FROM {customer_transaction} WHERE customer_id = '" . (int)$this->customer->getId() . "'";
-		   
+		
 		$sort_data = array(
 			'amount',
 			'description',

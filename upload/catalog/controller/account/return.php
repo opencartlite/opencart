@@ -6,7 +6,7 @@ class ControllerAccountReturn extends Controller {
 		if (!$this->customer->isLogged()) {
 			$this->session->data['redirect'] = $this->url->link('account/return', '', 'SSL');
 
-	  		$this->redirect($this->url->link('account/login', '', 'SSL'));
+			$this->redirect($this->url->link('account/login', '', 'SSL'));
 		}
 
 		$this->data += $this->language->load('account/return');
@@ -249,7 +249,7 @@ class ControllerAccountReturn extends Controller {
 
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
 			$this->model_account_return->addReturn($this->request->post);
-	  		
+			
 			$this->redirect($this->url->link('account/return/success', '', 'SSL'));
 		}
 							
@@ -492,7 +492,7 @@ class ControllerAccountReturn extends Controller {
 
 		$this->document->setTitle($this->language->get('heading_title'));
 	
-	  	$this->data['breadcrumbs'] = array();
+		$this->data['breadcrumbs'] = array();
 
 		$this->data['breadcrumbs'][] = array(
 			'text' => $this->language->get('text_home'),

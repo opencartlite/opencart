@@ -6,7 +6,7 @@ class ControllerCatalogManufacturer extends Controller {
 		$this->data += $this->language->load('catalog/manufacturer');
 		
 		$this->document->setTitle($this->language->get('heading_title'));
-		 
+		
 		$this->load->model('catalog/manufacturer');
 		
 		$this->getList();
@@ -249,7 +249,7 @@ class ControllerCatalogManufacturer extends Controller {
 	}
 
 	protected function getForm() {
-			  
+			
 		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
 		} else {
@@ -366,7 +366,7 @@ class ControllerCatalogManufacturer extends Controller {
 				
 		$this->response->setOutput($this->render());
 	}
-	 
+	
 	protected function validateForm() {
 		if (!$this->user->hasPermission('modify', 'catalog/manufacturer')) {
 			$this->error['warning'] = $this->language->get('error_permission');
@@ -377,9 +377,9 @@ class ControllerCatalogManufacturer extends Controller {
 		}
 		
 		if (!$this->error) {
-	  		return true;
+			return true;
 		} else {
-	  		return false;
+			return false;
 		}
 	}
 
@@ -394,14 +394,14 @@ class ControllerCatalogManufacturer extends Controller {
 			$product_total = $this->model_catalog_product->getTotalProductsByManufacturerId($manufacturer_id);
 	
 			if ($product_total) {
-	  			$this->error['warning'] = sprintf($this->language->get('error_product'), $product_total);
+				$this->error['warning'] = sprintf($this->language->get('error_product'), $product_total);
 			}
-	  	}
+		}
 		
 		if (!$this->error) {
-	  		return true;
+			return true;
 		} else {
-	  		return false;
+			return false;
 		}
 	}
 	
@@ -428,7 +428,7 @@ class ControllerCatalogManufacturer extends Controller {
 		}
 
 		$sort_order = array();
-	  
+	
 		foreach ($json as $key => $value) {
 			$sort_order[$key] = $value['name'];
 		}

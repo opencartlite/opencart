@@ -4,7 +4,7 @@ class ControllerSaleCustomerBanIp extends Controller {
 
 	public function index() {
 		$this->data += $this->language->load('sale/customer_ban_ip');
-		 
+		
 		$this->document->setTitle($this->language->get('heading_title'));
 		
 		$this->load->model('sale/customer_ban_ip');
@@ -20,10 +20,10 @@ class ControllerSaleCustomerBanIp extends Controller {
 		$this->load->model('sale/customer_ban_ip');
 			
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
-		  	$this->model_sale_customer_ban_ip->addCustomerBanIp($this->request->post);
+			$this->model_sale_customer_ban_ip->addCustomerBanIp($this->request->post);
 			
 			$this->session->data['success'] = $this->language->get('text_success');
-		  
+		
 			$url = '';
 							
 			if (isset($this->request->get['sort'])) {
@@ -53,9 +53,9 @@ class ControllerSaleCustomerBanIp extends Controller {
 		
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
 			$this->model_sale_customer_ban_ip->editCustomerBanIp($this->request->get['customer_ban_ip_id'], $this->request->post);
-	  		
+			
 			$this->session->data['success'] = $this->language->get('text_success');
-	  
+	
 			$url = '';
 						
 			if (isset($this->request->get['sort'])) {
@@ -293,7 +293,7 @@ class ControllerSaleCustomerBanIp extends Controller {
 		} else {
 			$this->data['action'] = $this->url->link('sale/customer_ban_ip/update', 'token=' . $this->session->data['token'] . '&customer_ban_ip_id=' . $this->request->get['customer_ban_ip_id'] . $url, 'SSL');
 		}
-		  
+		
 		$this->data['cancel'] = $this->url->link('sale/customer_ban_ip', 'token=' . $this->session->data['token'] . $url, 'SSL');
 
 		if (isset($this->request->get['customer_ban_ip_id']) && ($this->request->server['REQUEST_METHOD'] != 'POST')) {
@@ -316,7 +316,7 @@ class ControllerSaleCustomerBanIp extends Controller {
 				
 		$this->response->setOutput($this->render());
 	}
-			 
+			
 	protected function validateForm() {
 		if (!$this->user->hasPermission('modify', 'sale/customer_ban_ip')) {
 			$this->error['warning'] = $this->language->get('error_permission');
@@ -327,9 +327,9 @@ class ControllerSaleCustomerBanIp extends Controller {
 		}
 		
 		if (!$this->error) {
-	  		return true;
+			return true;
 		} else {
-	  		return false;
+			return false;
 		}
 	}
 
@@ -337,11 +337,11 @@ class ControllerSaleCustomerBanIp extends Controller {
 		if (!$this->user->hasPermission('modify', 'sale/customer_ban_ip')) {
 			$this->error['warning'] = $this->language->get('error_permission');
 		}
-	  	 
+		
 		if (!$this->error) {
-	  		return true;
+			return true;
 		} else {
-	  		return false;
+			return false;
 		}
 	}
 }

@@ -2,9 +2,9 @@
 class ControllerAffiliateTracking extends Controller {
 	public function index() {
 		if (!$this->affiliate->isLogged()) {
-	  		$this->session->data['redirect'] = $this->url->link('affiliate/tracking', '', 'SSL');
-	  
-	  		$this->redirect($this->url->link('affiliate/login', '', 'SSL'));
+			$this->session->data['redirect'] = $this->url->link('affiliate/tracking', '', 'SSL');
+	
+			$this->redirect($this->url->link('affiliate/login', '', 'SSL'));
 		}
 	
 		$this->data += $this->language->load('affiliate/tracking');
@@ -57,7 +57,7 @@ class ControllerAffiliateTracking extends Controller {
 		
 		if (isset($this->request->get['filter_name'])) {
 			$this->load->model('catalog/product');
-			 
+			
 			$data = array(
 				'filter_name' => $this->request->get['filter_name'],
 				'start'       => 0,

@@ -269,7 +269,7 @@ class ModelSaleOrder extends Model {
 				$commission = ($total / 100) * $affiliate_info['commission'];
 			}
 		}
-				 
+				
 		$this->db->query("UPDATE {order} SET total = '" . (float)$total . "', affiliate_id = '" . (int)$affiliate_id . "', commission = '" . (float)$commission . "' WHERE order_id = '" . (int)$order_id . "'");
 	}
 	
@@ -735,13 +735,13 @@ class ModelSaleOrder extends Model {
 	}
 	
 	public function getTotalOrderHistories($order_id) {
-	  	$query = $this->db->query("SELECT COUNT(*) AS total FROM {order_history} WHERE order_id = '" . (int)$order_id . "'");
+		$query = $this->db->query("SELECT COUNT(*) AS total FROM {order_history} WHERE order_id = '" . (int)$order_id . "'");
 
 		return $query->row['total'];
 	}
 		
 	public function getTotalOrderHistoriesByOrderStatusId($order_status_id) {
-	  	$query = $this->db->query("SELECT COUNT(*) AS total FROM {order_history} WHERE order_status_id = '" . (int)$order_status_id . "'");
+		$query = $this->db->query("SELECT COUNT(*) AS total FROM {order_history} WHERE order_status_id = '" . (int)$order_status_id . "'");
 
 		return $query->row['total'];
 	}

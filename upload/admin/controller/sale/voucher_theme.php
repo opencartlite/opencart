@@ -21,7 +21,7 @@ class ControllerSaleVoucherTheme extends Controller {
 			
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
 			$this->model_sale_voucher_theme->addVoucherTheme($this->request->post);
-		  	
+			
 			$this->session->data['success'] = $this->language->get('text_success');
 
 			$url = '';
@@ -52,7 +52,7 @@ class ControllerSaleVoucherTheme extends Controller {
 		$this->load->model('sale/voucher_theme');
 		
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
-	  		$this->model_sale_voucher_theme->editVoucherTheme($this->request->get['voucher_theme_id'], $this->request->post);
+			$this->model_sale_voucher_theme->editVoucherTheme($this->request->get['voucher_theme_id'], $this->request->post);
 			
 			$this->session->data['success'] = $this->language->get('text_success');
 
@@ -87,7 +87,7 @@ class ControllerSaleVoucherTheme extends Controller {
 			foreach ($this->request->post['selected'] as $voucher_theme_id) {
 				$this->model_sale_voucher_theme->deleteVoucherTheme($voucher_theme_id);
 			}
-				  		
+						
 			$this->session->data['success'] = $this->language->get('text_success');
 
 			$url = '';
@@ -361,9 +361,9 @@ class ControllerSaleVoucherTheme extends Controller {
 		}
 		
 		if (!$this->error) {
-	  		return true;
+			return true;
 		} else {
-	  		return false;
+			return false;
 		}
 	}
 
@@ -378,14 +378,14 @@ class ControllerSaleVoucherTheme extends Controller {
 			$voucher_total = $this->model_sale_voucher->getTotalVouchersByVoucherThemeId($voucher_theme_id);
 		
 			if ($voucher_total) {
-	  			$this->error['warning'] = sprintf($this->language->get('error_voucher'), $voucher_total);
+				$this->error['warning'] = sprintf($this->language->get('error_voucher'), $voucher_total);
 			}
-	  	}
+		}
 		
 		if (!$this->error) {
-	  		return true;
+			return true;
 		} else {
-	  		return false;
+			return false;
 		}
 	}
 }

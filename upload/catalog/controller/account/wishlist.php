@@ -2,9 +2,9 @@
 class ControllerAccountWishList extends Controller {
 	public function index() {
 		if (!$this->customer->isLogged()) {
-	  		$this->session->data['redirect'] = $this->url->link('account/wishlist', '', 'SSL');
+			$this->session->data['redirect'] = $this->url->link('account/wishlist', '', 'SSL');
 
-	  		$this->redirect($this->url->link('account/login', '', 'SSL'));
+			$this->redirect($this->url->link('account/login', '', 'SSL'));
 		}
 		
 		$this->data += $this->language->load('account/wishlist');
@@ -147,7 +147,7 @@ class ControllerAccountWishList extends Controller {
 			if (!in_array($this->request->post['product_id'], $this->session->data['wishlist'])) {
 				$this->session->data['wishlist'][] = $this->request->post['product_id'];
 			}
-			 
+			
 			if ($this->customer->isLogged()) {
 				$json['success'] = sprintf($this->language->get('text_success'), $this->url->link('product/product', 'product_id=' . $this->request->post['product_id']), $product_info['name'], $this->url->link('account/wishlist'));
 			} else {

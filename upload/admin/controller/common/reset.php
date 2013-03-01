@@ -26,9 +26,9 @@ class ControllerCommonReset extends Controller {
 			
 			if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
 				$this->model_user_user->editPassword($user_info['user_id'], $this->request->post['password']);
-	 
+	
 				$this->session->data['success'] = $this->language->get('text_success');
-		  
+		
 				$this->redirect($this->url->link('common/login', '', 'SSL'));
 			}
 			
@@ -57,7 +57,7 @@ class ControllerCommonReset extends Controller {
 			}
 			
 			$this->data['action'] = $this->url->link('common/reset', 'code=' . $code, 'SSL');
-	 
+	
 			$this->data['cancel'] = $this->url->link('common/login', '', 'SSL');
 			
 			if (isset($this->request->post['password'])) {

@@ -1,7 +1,7 @@
 <?php
 class ControllerModuleWelcome extends Controller {
 	private $error = array();
-	 
+	
 	public function index() {
 		$this->data += $this->language->load('module/welcome');
 

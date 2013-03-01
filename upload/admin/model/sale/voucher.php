@@ -204,7 +204,7 @@ class ModelSaleVoucher extends Model {
 	}
 	
 	public function getTotalVoucherHistories($voucher_id) {
-	  	$query = $this->db->query("SELECT COUNT(*) AS total FROM {voucher_history} WHERE voucher_id = '" . (int)$voucher_id . "'");
+		$query = $this->db->query("SELECT COUNT(*) AS total FROM {voucher_history} WHERE voucher_id = '" . (int)$voucher_id . "'");
 
 		return $query->row['total'];
 	}

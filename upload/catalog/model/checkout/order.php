@@ -83,7 +83,7 @@ class ModelCheckoutOrder extends Model {
 				$language_filename = '';
 				$language_directory = '';
 			}
-		 			
+					
 			return array(
 				'order_id'                => $order_query->row['order_id'],
 				'invoice_no'              => $order_query->row['invoice_no'],
@@ -156,7 +156,7 @@ class ModelCheckoutOrder extends Model {
 
 	public function confirm($order_id, $order_status_id, $comment = '', $notify = false) {
 		$order_info = $this->getOrder($order_id);
-		 
+		
 		if ($order_info && !$order_info['order_status_id']) {
 			// Fraud Detection
 			if ($this->config->get('config_fraud_detection')) {
@@ -244,7 +244,7 @@ class ModelCheckoutOrder extends Model {
 			$language = new Language($order_info['language_directory']);
 			$language->load($order_info['language_filename']);
 			$language->load('mail/order');
-		 
+		
 			$order_status_query = $this->db->query("SELECT * FROM {order_status} WHERE order_status_id = '" . (int)$order_status_id . "' AND language_id = '" . (int)$order_info['language_id'] . "'");
 			
 			if ($order_status_query->num_rows) {
@@ -396,7 +396,7 @@ class ModelCheckoutOrder extends Model {
 						'value' => (utf8_strlen($value) > 20 ? utf8_substr($value, 0, 20) . '..' : $value)
 					);
 				}
-			  
+			
 				$template->data['products'][] = array(
 					'name'     => $product['name'],
 					'model'    => $product['model'],

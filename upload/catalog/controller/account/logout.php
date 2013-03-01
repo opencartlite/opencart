@@ -3,7 +3,7 @@ class ControllerAccountLogout extends Controller {
 	public function index() {
 		if ($this->customer->isLogged()) {
 			$this->customer->logout();
-	  		$this->cart->clear();
+			$this->cart->clear();
 			
 			unset($this->session->data['wishlist']);
 			unset($this->session->data['shipping_address']);

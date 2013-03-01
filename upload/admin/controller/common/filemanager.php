@@ -176,7 +176,7 @@ class ControllerCommonFileManager extends Controller {
 		
 		if (isset($this->request->post['path'])) {
 			$path = rtrim(DIR_IMAGE . 'data/' . str_replace('../', '', html_entity_decode($this->request->post['path'], ENT_QUOTES, 'UTF-8')), '/');
-			 
+			
 			if (!file_exists($path)) {
 				$json['error'] = $this->language->get('error_select');
 			}
@@ -294,7 +294,7 @@ class ControllerCommonFileManager extends Controller {
 			}
 			
 			$new_name = dirname($old_name) . '/' . str_replace('../', '', html_entity_decode($this->request->post['name'], ENT_QUOTES, 'UTF-8') . $ext);
-																			   
+																			
 			if (file_exists($new_name)) {
 				$json['error'] = $this->language->get('error_exists');
 			}
@@ -378,7 +378,7 @@ class ControllerCommonFileManager extends Controller {
 			}
 			
 			$new_name = dirname($old_name) . '/' . str_replace('../', '', html_entity_decode($this->request->post['name'], ENT_QUOTES, 'UTF-8') . $ext);
-																			   
+																			
 			if (file_exists($new_name)) {
 				$json['error'] = $this->language->get('error_exists');
 			}

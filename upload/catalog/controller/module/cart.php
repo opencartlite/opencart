@@ -36,7 +36,7 @@ class ControllerModuleCart extends Controller {
 				}
 				
 				$sort_order = array();
-			  
+			
 				foreach ($total_data as $key => $value) {
 					$sort_order[$key] = $value['sort_order'];
 				}

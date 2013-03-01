@@ -2,9 +2,9 @@
 class ControllerAccountNewsletter extends Controller {
 	public function index() {
 		if (!$this->customer->isLogged()) {
-	  		$this->session->data['redirect'] = $this->url->link('account/newsletter', '', 'SSL');
-	  
-	  		$this->redirect($this->url->link('account/login', '', 'SSL'));
+			$this->session->data['redirect'] = $this->url->link('account/newsletter', '', 'SSL');
+	
+			$this->redirect($this->url->link('account/login', '', 'SSL'));
 		}
 		
 		$this->data += $this->language->load('account/newsletter');

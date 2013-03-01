@@ -11,7 +11,7 @@ class ControllerCatalogDownload extends Controller {
 		
 		$this->getList();
 	}
-		    
+			
 	public function insert() {
 		$this->data += $this->language->load('catalog/download');
 	
@@ -21,9 +21,9 @@ class ControllerCatalogDownload extends Controller {
 			
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
 			$this->model_catalog_download->addDownload($this->request->post);
-	  		
+			
 			$this->session->data['success'] = $this->language->get('text_success');
-	  
+	
 			$url = '';
 			
 			if (isset($this->request->get['sort'])) {
@@ -53,9 +53,9 @@ class ControllerCatalogDownload extends Controller {
 			
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
 			$this->model_catalog_download->editDownload($this->request->get['download_id'], $this->request->post);
-	  		
+			
 			$this->session->data['success'] = $this->language->get('text_success');
-		  
+		
 			$url = '';
 			
 			if (isset($this->request->get['sort'])) {
@@ -355,7 +355,7 @@ class ControllerCatalogDownload extends Controller {
 		} else {
 			$this->data['remaining'] = 1;
 		}
-				 	  
+					
 		if (isset($this->request->post['update'])) {
 			$this->data['update'] = $this->request->post['update'];
 		} else {
@@ -395,9 +395,9 @@ class ControllerCatalogDownload extends Controller {
 		}
 			
 		if (!$this->error) {
-	  		return true;
+			return true;
 		} else {
-	  		return false;
+			return false;
 		}
 	}
 
@@ -412,14 +412,14 @@ class ControllerCatalogDownload extends Controller {
 			$product_total = $this->model_catalog_product->getTotalProductsByDownloadId($download_id);
 	
 			if ($product_total) {
-	  			$this->error['warning'] = sprintf($this->language->get('error_product'), $product_total);
+				$this->error['warning'] = sprintf($this->language->get('error_product'), $product_total);
 			}
 		}
-			  	  	 
+					
 		if (!$this->error) {
-	  		return true;
+			return true;
 		} else {
-	  		return false;
+			return false;
 		}
 	}
 
@@ -481,7 +481,7 @@ class ControllerCatalogDownload extends Controller {
 		if (!isset($json['error'])) {
 			if (is_uploaded_file($this->request->files['file']['tmp_name']) && file_exists($this->request->files['file']['tmp_name'])) {
 				$ext = md5(mt_rand());
-				 
+				
 				$json['filename'] = $filename . '.' . $ext;
 				$json['mask'] = $filename;
 				
@@ -517,7 +517,7 @@ class ControllerCatalogDownload extends Controller {
 		}
 
 		$sort_order = array();
-	  
+	
 		foreach ($json as $key => $value) {
 			$sort_order[$key] = $value['name'];
 		}

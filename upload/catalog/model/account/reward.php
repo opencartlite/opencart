@@ -2,7 +2,7 @@
 class ModelAccountReward extends Model {
 	public function getRewards($data = array()) {
 		$sql = "SELECT * FROM {customer_reward} WHERE customer_id = '" . (int)$this->customer->getId() . "'";
-		   
+		
 		$sort_data = array(
 			'points',
 			'description',

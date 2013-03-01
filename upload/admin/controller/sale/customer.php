@@ -4,7 +4,7 @@ class ControllerSaleCustomer extends Controller {
 
 	public function index() {
 		$this->data += $this->language->load('sale/customer');
-		 
+		
 		$this->document->setTitle($this->language->get('heading_title'));
 		
 		$this->load->model('sale/customer');
@@ -20,10 +20,10 @@ class ControllerSaleCustomer extends Controller {
 		$this->load->model('sale/customer');
 			
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
-		  	$this->model_sale_customer->addCustomer($this->request->post);
+			$this->model_sale_customer->addCustomer($this->request->post);
 			
 			$this->session->data['success'] = $this->language->get('text_success');
-		  
+		
 			$url = '';
 
 			if (isset($this->request->get['filter_name'])) {
@@ -81,9 +81,9 @@ class ControllerSaleCustomer extends Controller {
 		
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
 			$this->model_sale_customer->editCustomer($this->request->get['customer_id'], $this->request->post);
-	  		
+			
 			$this->session->data['success'] = $this->language->get('text_success');
-	  
+	
 			$url = '';
 
 			if (isset($this->request->get['filter_name'])) {
@@ -715,7 +715,7 @@ class ControllerSaleCustomer extends Controller {
 		} else {
 			$this->data['action'] = $this->url->link('sale/customer/update', 'token=' . $this->session->data['token'] . '&customer_id=' . $this->request->get['customer_id'] . $url, 'SSL');
 		}
-		  
+		
 		$this->data['cancel'] = $this->url->link('sale/customer', 'token=' . $this->session->data['token'] . $url, 'SSL');
 
 		if (isset($this->request->get['customer_id']) && ($this->request->server['REQUEST_METHOD'] != 'POST')) {
@@ -848,7 +848,7 @@ class ControllerSaleCustomer extends Controller {
 				
 		$this->response->setOutput($this->render());
 	}
-			 
+			
 	protected function validateForm() {
 		if (!$this->user->hasPermission('modify', 'sale/customer')) {
 			$this->error['warning'] = $this->language->get('error_permission');
@@ -887,9 +887,9 @@ class ControllerSaleCustomer extends Controller {
 				$this->error['password'] = $this->language->get('error_password');
 			}
 	
-	  		if ($this->request->post['password'] != $this->request->post['confirm']) {
+			if ($this->request->post['password'] != $this->request->post['confirm']) {
 				$this->error['confirm'] = $this->language->get('error_confirm');
-	  		}
+			}
 		}
 
 		if (isset($this->request->post['address'])) {
@@ -933,9 +933,9 @@ class ControllerSaleCustomer extends Controller {
 		}
 		
 		if (!$this->error) {
-	  		return true;
+			return true;
 		} else {
-	  		return false;
+			return false;
 		}
 	}
 
@@ -943,11 +943,11 @@ class ControllerSaleCustomer extends Controller {
 		if (!$this->user->hasPermission('modify', 'sale/customer')) {
 			$this->error['warning'] = $this->language->get('error_permission');
 		}
-	  	 
+		
 		if (!$this->error) {
-	  		return true;
+			return true;
 		} else {
-	  		return false;
+			return false;
 		}
 	}
 	
@@ -1244,7 +1244,7 @@ class ControllerSaleCustomer extends Controller {
 		}
 
 		$sort_order = array();
-	  
+	
 		foreach ($json as $key => $value) {
 			$sort_order[$key] = $value['name'];
 		}

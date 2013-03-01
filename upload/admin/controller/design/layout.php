@@ -157,7 +157,7 @@ class ControllerDesignLayout extends Controller {
 		
 		$this->data['insert'] = $this->url->link('design/layout/insert', 'token=' . $this->session->data['token'] . $url, 'SSL');
 		$this->data['delete'] = $this->url->link('design/layout/delete', 'token=' . $this->session->data['token'] . $url, 'SSL');
-		 
+		
 		$this->data['layouts'] = array();
 
 		$data = array(

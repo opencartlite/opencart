@@ -32,7 +32,7 @@ class ControllerPaymentKlarnaAccount extends Controller {
 
 			$this->redirect($this->url->link('extension/payment', 'token=' . $this->session->data['token'], 'SSL'));
 		}
-					    
+						
 		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
 		} else {
@@ -113,7 +113,7 @@ class ControllerPaymentKlarnaAccount extends Controller {
 		$this->load->model('localisation/order_status');
 			
 		$this->data['order_statuses'] = $this->model_localisation_order_status->getOrderStatuses();
-						    
+							
 		$file = DIR_LOGS . 'klarna_account.log';
 		
 		if (file_exists($file)) {

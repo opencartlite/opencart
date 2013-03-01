@@ -20,10 +20,10 @@ class ControllerSaleOrder extends Controller {
 		$this->load->model('sale/order');
 
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
-		  	$this->model_sale_order->addOrder($this->request->post);
+			$this->model_sale_order->addOrder($this->request->post);
 			
 			$this->session->data['success'] = $this->language->get('text_success');
-		  
+		
 			$url = '';
 			
 			if (isset($this->request->get['filter_order_id'])) {
@@ -77,9 +77,9 @@ class ControllerSaleOrder extends Controller {
 		
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
 			$this->model_sale_order->editOrder($this->request->get['order_id'], $this->request->post);
-	  		
+			
 			$this->session->data['success'] = $this->language->get('text_success');
-	  
+	
 			$url = '';
 
 			if (isset($this->request->get['filter_order_id'])) {
@@ -1165,9 +1165,9 @@ class ControllerSaleOrder extends Controller {
 		}
 		
 		if (!$this->error) {
-	  		return true;
+			return true;
 		} else {
-	  		return false;
+			return false;
 		}
 	}
 	
@@ -1177,9 +1177,9 @@ class ControllerSaleOrder extends Controller {
 		}
 
 		if (!$this->error) {
-	  		return true;
+			return true;
 		} else {
-	  		return false;
+			return false;
 		}
 	}
 	
@@ -1424,7 +1424,7 @@ class ControllerSaleOrder extends Controller {
 			$this->data['vouchers'] = array();
 			
 			$vouchers = $this->model_sale_order->getOrderVouchers($this->request->get['order_id']);
-			 
+			
 			foreach ($vouchers as $voucher) {
 				$this->data['vouchers'][] = array(
 					'description' => $voucher['description'],

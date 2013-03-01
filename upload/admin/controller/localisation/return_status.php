@@ -21,7 +21,7 @@ class ControllerLocalisationReturnStatus extends Controller {
 			
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
 			$this->model_localisation_return_status->addReturnStatus($this->request->post);
-		  	
+			
 			$this->session->data['success'] = $this->language->get('text_success');
 
 			$url = '';
@@ -52,7 +52,7 @@ class ControllerLocalisationReturnStatus extends Controller {
 		$this->load->model('localisation/return_status');
 		
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
-	  		$this->model_localisation_return_status->editReturnStatus($this->request->get['return_status_id'], $this->request->post);
+			$this->model_localisation_return_status->editReturnStatus($this->request->get['return_status_id'], $this->request->post);
 			
 			$this->session->data['success'] = $this->language->get('text_success');
 
@@ -87,7 +87,7 @@ class ControllerLocalisationReturnStatus extends Controller {
 			foreach ($this->request->post['selected'] as $return_status_id) {
 				$this->model_localisation_return_status->deleteReturnStatus($return_status_id);
 			}
-				  		
+						
 			$this->session->data['success'] = $this->language->get('text_success');
 
 			$url = '';
@@ -327,9 +327,9 @@ class ControllerLocalisationReturnStatus extends Controller {
 		}
 		
 		if (!$this->error) {
-	  		return true;
+			return true;
 		} else {
-	  		return false;
+			return false;
 		}
 	}
 
@@ -342,26 +342,26 @@ class ControllerLocalisationReturnStatus extends Controller {
 		
 		foreach ($this->request->post['selected'] as $return_status_id) {
 			if ($this->config->get('config_return_status_id') == $return_status_id) {
-	  			$this->error['warning'] = $this->language->get('error_default');
+				$this->error['warning'] = $this->language->get('error_default');
 			}
 			
 			$return_total = $this->model_sale_return->getTotalReturnsByReturnStatusId($return_status_id);
 		
 			if ($return_total) {
-	  			$this->error['warning'] = sprintf($this->language->get('error_return'), $return_total);
+				$this->error['warning'] = sprintf($this->language->get('error_return'), $return_total);
 			}
 			
 			$return_total = $this->model_sale_return->getTotalReturnHistoriesByReturnStatusId($return_status_id);
 		
 			if ($return_total) {
-	  			$this->error['warning'] = sprintf($this->language->get('error_return'), $return_total);
+				$this->error['warning'] = sprintf($this->language->get('error_return'), $return_total);
 			}
-	  	}
+		}
 		
 		if (!$this->error) {
-	  		return true;
+			return true;
 		} else {
-	  		return false;
+			return false;
 		}
 	}
 }

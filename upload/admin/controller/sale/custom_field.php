@@ -157,7 +157,7 @@ class ControllerSaleCustomField extends Controller {
 		
 		$this->data['insert'] = $this->url->link('sale/custom_field/insert', 'token=' . $this->session->data['token'] . $url, 'SSL');
 		$this->data['delete'] = $this->url->link('sale/custom_field/delete', 'token=' . $this->session->data['token'] . $url, 'SSL');
-		 
+		
 		$this->data['custom_fields'] = array();
 		
 		$data = array(
@@ -463,7 +463,7 @@ class ControllerSaleCustomField extends Controller {
 		}
 		
 		$this->data['custom_field_values'] = array();
-		 
+		
 		foreach ($custom_field_values as $custom_field_value) {
 			$this->data['custom_field_values'][] = array(
 				'custom_field_value_id'          => $custom_field_value['custom_field_value_id'],

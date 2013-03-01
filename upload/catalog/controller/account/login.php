@@ -26,7 +26,7 @@ class ControllerAccountLogin extends Controller {
 			
 			$customer_info = $this->model_account_customer->getCustomerByToken($this->request->get['token']);
 			
-		 	if ($customer_info && $this->customer->login($customer_info['email'], '', true)) {
+			if ($customer_info && $this->customer->login($customer_info['email'], '', true)) {
 				// Default Addresses
 				$this->load->model('account/address');
 					
@@ -104,7 +104,7 @@ class ControllerAccountLogin extends Controller {
 			$this->data['redirect'] = $this->request->post['redirect'];
 		} elseif (isset($this->session->data['redirect'])) {
 			$this->data['redirect'] = $this->session->data['redirect'];
-	  		
+			
 			unset($this->session->data['redirect']);
 		} else {
 			$this->data['redirect'] = '';

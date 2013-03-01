@@ -30,7 +30,7 @@ class ModelCatalogDownload extends Model {
 	
 	public function deleteDownload($download_id) {
 		$this->db->query("DELETE FROM {download} WHERE download_id = '" . (int)$download_id . "'");
-	  	$this->db->query("DELETE FROM {download_description} WHERE download_id = '" . (int)$download_id . "'");
+		$this->db->query("DELETE FROM {download_description} WHERE download_id = '" . (int)$download_id . "'");
 	}
 
 	public function getDownload($download_id) {

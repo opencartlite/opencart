@@ -55,7 +55,7 @@ class ControllerSaleVoucher extends Controller {
 			$this->model_sale_voucher->editVoucher($this->request->get['voucher_id'], $this->request->post);
 			
 			$this->session->data['success'] = $this->language->get('text_success');
-	  
+	
 			$url = '';
 			
 			if (isset($this->request->get['sort'])) {
@@ -89,7 +89,7 @@ class ControllerSaleVoucher extends Controller {
 			}
 			
 			$this->session->data['success'] = $this->language->get('text_success');
-	  
+	
 			$url = '';
 			
 			if (isset($this->request->get['sort'])) {
@@ -267,7 +267,7 @@ class ControllerSaleVoucher extends Controller {
 		} else {
 			$this->data['voucher_id'] = 0;
 		}
-		 		
+				
 		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
 		} else {
@@ -453,7 +453,7 @@ class ControllerSaleVoucher extends Controller {
 				$this->error['warning'] = $this->language->get('error_exists');
 			}
 		}
-						  
+						
 		if ((utf8_strlen($this->request->post['to_name']) < 1) || (utf8_strlen($this->request->post['to_name']) > 64)) {
 			$this->error['to_name'] = $this->language->get('error_to_name');
 		}
@@ -499,9 +499,9 @@ class ControllerSaleVoucher extends Controller {
 		}
 		
 		if (!$this->error) {
-	  		return true;
+			return true;
 		} else {
-	  		return false;
+			return false;
 		}
 	}
 	

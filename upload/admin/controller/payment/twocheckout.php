@@ -16,7 +16,7 @@ class ControllerPaymentTwoCheckout extends Controller {
 
 			$this->redirect($this->url->link('extension/payment', 'token=' . $this->session->data['token'], 'SSL'));
 		}
-		 
+		
 		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
 		} else {

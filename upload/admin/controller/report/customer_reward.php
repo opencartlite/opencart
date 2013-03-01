@@ -107,7 +107,7 @@ class ControllerReportCustomerReward extends Controller {
 		
 		$this->data['filter_date_start'] = $filter_date_start;
 		$this->data['filter_date_end'] = $filter_date_end;
-				 
+				
 		$this->template = 'report/customer_reward.tpl';
 		$this->children = array(
 			'common/header',

@@ -83,7 +83,7 @@ class ControllerReportProductViewed extends Controller {
 		$pagination->url = $this->url->link('report/product_viewed', 'token=' . $this->session->data['token'] . '&page={page}', 'SSL');
 			
 		$this->data['pagination'] = $pagination->render();
-				 
+				
 		$this->template = 'report/product_viewed.tpl';
 		$this->children = array(
 			'common/header',

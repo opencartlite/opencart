@@ -1,14 +1,14 @@
 <?php
 class ControllerCatalogAttribute extends Controller {
 	private $error = array();
-	 
+	
 	public function index() {
 		$this->data += $this->language->load('catalog/attribute');
-	  
+	
 		$this->document->setTitle($this->language->get('heading_title'));
-		  
+		
 		$this->load->model('catalog/attribute');
-		  
+		
 		$this->getList();
 	}
 			
@@ -21,7 +21,7 @@ class ControllerCatalogAttribute extends Controller {
 			
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
 			$this->model_catalog_attribute->addAttribute($this->request->post);
-		  	
+			
 			$this->session->data['success'] = $this->language->get('text_success');
 
 			$url = '';
@@ -52,7 +52,7 @@ class ControllerCatalogAttribute extends Controller {
 		$this->load->model('catalog/attribute');
 		
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
-	  		$this->model_catalog_attribute->editAttribute($this->request->get['attribute_id'], $this->request->post);
+			$this->model_catalog_attribute->editAttribute($this->request->get['attribute_id'], $this->request->post);
 			
 			$this->session->data['success'] = $this->language->get('text_success');
 
@@ -87,7 +87,7 @@ class ControllerCatalogAttribute extends Controller {
 			foreach ($this->request->post['selected'] as $attribute_id) {
 				$this->model_catalog_attribute->deleteAttribute($attribute_id);
 			}
-				  		
+						
 			$this->session->data['success'] = $this->language->get('text_success');
 
 			$url = '';
@@ -355,9 +355,9 @@ class ControllerCatalogAttribute extends Controller {
 		}
 		
 		if (!$this->error) {
-	  		return true;
+			return true;
 		} else {
-	  		return false;
+			return false;
 		}
 	}
 
@@ -374,12 +374,12 @@ class ControllerCatalogAttribute extends Controller {
 			if ($product_total) {
 				$this->error['warning'] = sprintf($this->language->get('error_product'), $product_total);
 			}
-	  	}
+		}
 		
 		if (!$this->error) {
-	  		return true;
+			return true;
 		} else {
-	  		return false;
+			return false;
 		}
 	}
 	
@@ -409,7 +409,7 @@ class ControllerCatalogAttribute extends Controller {
 		}
 
 		$sort_order = array();
-	  
+	
 		foreach ($json as $key => $value) {
 			$sort_order[$key] = $value['name'];
 		}

@@ -116,7 +116,7 @@ class ControllerSaleCustomerGroup extends Controller {
 		} else {
 			$sort = 'cgd.name';
 		}
-		 
+		
 		if (isset($this->request->get['order'])) {
 			$order = $this->request->get['order'];
 		} else {
@@ -293,7 +293,7 @@ class ControllerSaleCustomerGroup extends Controller {
 		} else {
 			$this->data['action'] = $this->url->link('sale/customer_group/update', 'token=' . $this->session->data['token'] . '&customer_group_id=' . $this->request->get['customer_group_id'] . $url, 'SSL');
 		}
-		  
+		
 		$this->data['cancel'] = $this->url->link('sale/customer_group', 'token=' . $this->session->data['token'] . $url, 'SSL');
 
 		if (isset($this->request->get['customer_group_id']) && ($this->request->server['REQUEST_METHOD'] != 'POST')) {
@@ -365,7 +365,7 @@ class ControllerSaleCustomerGroup extends Controller {
 		
 		foreach ($this->request->post['selected'] as $customer_group_id) {
 			if ($this->config->get('config_customer_group_id') == $customer_group_id) {
-	  			$this->error['warning'] = $this->language->get('error_default');
+				$this->error['warning'] = $this->language->get('error_default');
 			}
 			
 			$store_total = $this->model_setting_store->getTotalStoresByCustomerGroupId($customer_group_id);

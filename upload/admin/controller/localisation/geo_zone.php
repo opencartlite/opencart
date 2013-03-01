@@ -213,7 +213,7 @@ class ControllerLocalisationGeoZone extends Controller {
 		if (isset($this->request->get['page'])) {
 			$url .= '&page=' . $this->request->get['page'];
 		}
-		 
+		
 		$this->data['sort_name'] = $this->url->link('localisation/geo_zone', 'token=' . $this->session->data['token'] . '&sort=name' . $url, 'SSL');
 		$this->data['sort_description'] = $this->url->link('localisation/geo_zone', 'token=' . $this->session->data['token'] . '&sort=description' . $url, 'SSL');
 		
@@ -325,7 +325,7 @@ class ControllerLocalisationGeoZone extends Controller {
 		}
 		
 		$this->load->model('localisation/country');
-		 
+		
 		$this->data['countries'] = $this->model_localisation_country->getCountries();
 		
 		if (isset($this->request->post['zone_to_geo_zone'])) {

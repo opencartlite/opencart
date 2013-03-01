@@ -18,7 +18,7 @@ class ControllerProductSpecial extends Controller {
 		} else {
 			$order = 'ASC';
 		}
-			 
+			
 		if (isset($this->request->get['page'])) {
 			$page = $this->request->get['page'];
 		} else {

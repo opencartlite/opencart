@@ -2,7 +2,7 @@
 class ControllerCommonHome extends Controller {
 	public function index() {
 		$this->data += $this->language->load('common/home');
-	 
+	
 		$this->document->setTitle($this->language->get('heading_title'));
 		
 		// Check install directory exists
@@ -139,7 +139,7 @@ class ControllerCommonHome extends Controller {
 		
 		foreach ($results as $result) {
 			$action = array();
-			 
+			
 			$action[] = array(
 				'text' => $this->language->get('text_view'),
 				'href' => $this->url->link('sale/order/info', 'token=' . $this->session->data['token'] . '&order_id=' . $result['order_id'], 'SSL')

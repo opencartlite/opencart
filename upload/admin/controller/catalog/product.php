@@ -21,9 +21,9 @@ class ControllerCatalogProduct extends Controller {
 		
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
 			$this->model_catalog_product->addProduct($this->request->post);
-	  		
+			
 			$this->session->data['success'] = $this->language->get('text_success');
-	  
+	
 			$url = '';
 			
 			if (isset($this->request->get['filter_name'])) {
@@ -126,7 +126,7 @@ class ControllerCatalogProduct extends Controller {
 		if (isset($this->request->post['selected']) && $this->validateDelete()) {
 			foreach ($this->request->post['selected'] as $product_id) {
 				$this->model_catalog_product->deleteProduct($product_id);
-	  		}
+			}
 
 			$this->session->data['success'] = $this->language->get('text_success');
 			
@@ -180,7 +180,7 @@ class ControllerCatalogProduct extends Controller {
 		if (isset($this->request->post['selected']) && $this->validateCopy()) {
 			foreach ($this->request->post['selected'] as $product_id) {
 				$this->model_catalog_product->copyProduct($product_id);
-	  		}
+			}
 
 			$this->session->data['success'] = $this->language->get('text_success');
 			
@@ -189,7 +189,7 @@ class ControllerCatalogProduct extends Controller {
 			if (isset($this->request->get['filter_name'])) {
 				$url .= '&filter_name=' . urlencode(html_entity_decode($this->request->get['filter_name'], ENT_QUOTES, 'UTF-8'));
 			}
-		  
+		
 			if (isset($this->request->get['filter_model'])) {
 				$url .= '&filter_model=' . urlencode(html_entity_decode($this->request->get['filter_model'], ENT_QUOTES, 'UTF-8'));
 			}
@@ -382,7 +382,7 @@ class ControllerCatalogProduct extends Controller {
 				'action'     => $action
 			);
 		}
-		 
+		
 		$this->data['token'] = $this->session->data['token'];
 		
 		if (isset($this->error['warning'])) {
@@ -496,7 +496,7 @@ class ControllerCatalogProduct extends Controller {
 	}
 
 	protected function getForm() {
-		 
+		
 		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
 		} else {
@@ -734,7 +734,7 @@ class ControllerCatalogProduct extends Controller {
 		} else {
 			$this->data['tax_class_id'] = 0;
 		}
-			  	
+				
 		if (isset($this->request->post['date_available'])) {
 			$this->data['date_available'] = $this->request->post['date_available'];
 		} elseif (!empty($product_info)) {
@@ -1161,9 +1161,9 @@ class ControllerCatalogProduct extends Controller {
 		}
 		
 		if (!$this->error) {
-	  		return true;
+			return true;
 		} else {
-	  		return false;
+			return false;
 		}
 	}
 	
@@ -1173,9 +1173,9 @@ class ControllerCatalogProduct extends Controller {
 		}
 		
 		if (!$this->error) {
-	  		return true;
+			return true;
 		} else {
-	  		return false;
+			return false;
 		}
 	}
 		

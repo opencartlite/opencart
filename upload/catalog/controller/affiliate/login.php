@@ -55,7 +55,7 @@ class ControllerAffiliateLogin extends Controller {
 			$this->data['redirect'] = $this->request->post['redirect'];
 		} elseif (isset($this->session->data['redirect'])) {
 			$this->data['redirect'] = $this->session->data['redirect'];
-	  		
+			
 			unset($this->session->data['redirect']);
 		} else {
 			$this->data['redirect'] = '';

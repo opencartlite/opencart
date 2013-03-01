@@ -137,7 +137,7 @@ class ControllerProductManufacturer extends Controller {
 			if (isset($this->request->get['limit'])) {
 				$url .= '&limit=' . $this->request->get['limit'];
 			}
-		   			
+					
 			$this->data['breadcrumbs'][] = array(
 				'text' => $manufacturer_info['name'],
 				'href' => $this->url->link('product/manufacturer/info', 'manufacturer_id=' . $this->request->get['manufacturer_id'] . $url)

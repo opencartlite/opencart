@@ -2,7 +2,7 @@
 class ControllerAccountRegister extends Controller {
 	public function index() {
 		if ($this->customer->isLogged()) {
-	  		$this->redirect($this->url->link('account/account', '', 'SSL'));
+			$this->redirect($this->url->link('account/account', '', 'SSL'));
 		}
 
 		$this->data += $this->language->load('account/register');
@@ -168,9 +168,9 @@ class ControllerAccountRegister extends Controller {
 			
 			// Custom Fields
 			$this->load->model('account/custom_field');
-			 
+			
 			$custom_fields = $this->model_account_custom_field->getCustomFields('customer', $this->request->get['customer_group_id']);
-			 
+			
 			foreach ($custom_fields as $custom_field) {
 				if ($custom_field['required'] && empty($this->request->post['custom_field'][$custom_field['custom_field_id']])) {
 					$json['error']['custom_field'][$custom_field['custom_field_id']] = sprintf($this->language->get('error_required'), $custom_field['name']);
@@ -205,8 +205,8 @@ class ControllerAccountRegister extends Controller {
 			if ($this->config->get('config_tax_customer') == 'shipping') {
 				$this->session->data['shipping_addess'] = $this->model_account_address->getAddress($this->customer->getAddressId());
 			}
-							  	  
-	  		$json['redirect'] = $this->url->link('account/success');
+								
+			$json['redirect'] = $this->url->link('account/success');
 		}
 		
 		$this->response->setOutput(json_encode($json));
@@ -218,9 +218,9 @@ class ControllerAccountRegister extends Controller {
 		$this->data['custom_fields'] = array();
 		
 		$this->load->model('account/custom_field');
-		 
+		
 		$custom_fields = $this->model_account_custom_field->getCustomFields('customer', $this->request->get['customer_group_id']);
-		 
+		
 		foreach ($custom_fields as $custom_field) {
 			$custom_field_value_data = array();
 			

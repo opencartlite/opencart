@@ -635,7 +635,7 @@ class ControllerProductProduct extends Controller {
 			
 			if ((utf8_strlen($filename) < 3) || (utf8_strlen($filename) > 64)) {
 				$json['error'] = $this->language->get('error_filename');
-	  		}
+			}
 
 			// Allowed file extension types
 			$allowed = array();

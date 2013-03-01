@@ -93,7 +93,7 @@ class ModelDesignBanner extends Model {
 		
 		foreach ($banner_image_query->rows as $banner_image) {
 			$banner_image_description_data = array();
-			 
+			
 			$banner_image_description_query = $this->db->query("SELECT * FROM {banner_image_description} WHERE banner_image_id = '" . (int)$banner_image['banner_image_id'] . "' AND banner_id = '" . (int)$banner_id . "'");
 			
 			foreach ($banner_image_description_query->rows as $banner_image_description) {

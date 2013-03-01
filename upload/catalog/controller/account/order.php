@@ -6,7 +6,7 @@ class ControllerAccountOrder extends Controller {
 		if (!$this->customer->isLogged()) {
 			$this->session->data['redirect'] = $this->url->link('account/order', '', 'SSL');
 
-	  		$this->redirect($this->url->link('account/login', '', 'SSL'));
+			$this->redirect($this->url->link('account/login', '', 'SSL'));
 		}
 		
 		$this->data += $this->language->load('account/order');
@@ -195,9 +195,9 @@ class ControllerAccountOrder extends Controller {
 			}
 		
 			$find = array(
-	  			'{firstname}',
-	  			'{lastname}',
-	  			'{company}',
+				'{firstname}',
+				'{lastname}',
+				'{company}',
 				'{address_1}',
 				'{address_2}',
 				'{city}',
@@ -208,9 +208,9 @@ class ControllerAccountOrder extends Controller {
 			);
 	
 			$replace = array(
-	  			'firstname' => $order_info['payment_firstname'],
-	  			'lastname'  => $order_info['payment_lastname'],
-	  			'company'   => $order_info['payment_company'],
+				'firstname' => $order_info['payment_firstname'],
+				'lastname'  => $order_info['payment_lastname'],
+				'company'   => $order_info['payment_company'],
 				'address_1' => $order_info['payment_address_1'],
 				'address_2' => $order_info['payment_address_2'],
 				'city'      => $order_info['payment_city'],
@@ -231,9 +231,9 @@ class ControllerAccountOrder extends Controller {
 			}
 		
 			$find = array(
-	  			'{firstname}',
-	  			'{lastname}',
-	  			'{company}',
+				'{firstname}',
+				'{lastname}',
+				'{company}',
 				'{address_1}',
 				'{address_2}',
 				'{city}',
@@ -244,9 +244,9 @@ class ControllerAccountOrder extends Controller {
 			);
 	
 			$replace = array(
-	  			'firstname' => $order_info['shipping_firstname'],
-	  			'lastname'  => $order_info['shipping_lastname'],
-	  			'company'   => $order_info['shipping_company'],
+				'firstname' => $order_info['shipping_firstname'],
+				'lastname'  => $order_info['shipping_lastname'],
+				'company'   => $order_info['shipping_company'],
 				'address_1' => $order_info['shipping_address_1'],
 				'address_2' => $order_info['shipping_address_2'],
 				'city'      => $order_info['shipping_city'],
@@ -367,7 +367,7 @@ class ControllerAccountOrder extends Controller {
 			);
 												
 			$this->data['continue'] = $this->url->link('account/order', '', 'SSL');
-			 			
+						
 			if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/error/not_found.tpl')) {
 				$this->template = $this->config->get('config_template') . '/template/error/not_found.tpl';
 			} else {

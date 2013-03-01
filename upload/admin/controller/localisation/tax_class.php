@@ -212,7 +212,7 @@ class ControllerLocalisationTaxClass extends Controller {
 		if (isset($this->request->get['page'])) {
 			$url .= '&page=' . $this->request->get['page'];
 		}
-		 
+		
 		$this->data['sort_title'] = $this->url->link('localisation/tax_class', 'token=' . $this->session->data['token'] . '&sort=title' . $url, 'SSL');
 		
 		$url = '';

@@ -637,7 +637,7 @@ function utf8_strtoupper($string) {
 
 function utf8_to_unicode($str) {
 	$mState = 0;     // cached expected number of octets after the current octet
-					 // until the beginning of the next UTF8 character sequence
+					// until the beginning of the next UTF8 character sequence
 	$mUcs4  = 0;     // cached Unicode character
 	$mBytes = 1;     // cached expected number of octets in the current sequence
 
@@ -701,8 +701,8 @@ function utf8_to_unicode($str) {
 
 			} else {
 				/* Current octet is neither in the US-ASCII range nor a legal first
-				 * octet of a multi-octet sequence.
-				 */
+				* octet of a multi-octet sequence.
+				*/
 				trigger_error('utf8_to_unicode: Illegal sequence identifier ' . 'in UTF-8 at byte ' . $i, E_USER_WARNING);
 
 				return FALSE;
