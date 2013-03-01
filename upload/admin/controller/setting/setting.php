@@ -110,6 +110,37 @@ class ControllerSettingSetting extends Controller {
 			'google_analytics',
 		);
 		
+		$errors = array(
+			'warning',
+			'name',
+			'owner',
+			'address',
+			'email',
+			'telephone',
+			'title',
+			'customer_group_display',
+			'voucher_min',
+			'voucher_max',
+			'ftp_host',
+			'ftp_port',
+			'ftp_username',
+			'ftp_password',
+			'image_category',
+			'image_thumb',
+			'image_popup',
+			'image_product',
+			'image_additional',
+			'image_related',
+			'image_compare',
+			'image_wishlist',
+			'image_cart',
+			'error_filename',
+			'catalog_limit',
+			'list_description_limit',
+			'admin_limit',
+			'encryption',
+		);
+		
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
 			$this->model_setting_setting->editSetting('config', $this->request->post);
 
@@ -124,173 +155,9 @@ class ControllerSettingSetting extends Controller {
 			$this->redirect($this->url->link('setting/store', 'token=' . $this->session->data['token'], 'SSL'));
 		}																			
 
- 		if (isset($this->error['warning'])) {
-			$this->data['error_warning'] = $this->error['warning'];
-		} else {
-			$this->data['error_warning'] = '';
+		foreach($errors as $error) {
+			$this->data['error_' . $error] = isset($this->error[$error]) ? $this->error[$error] : '';
 		}
-		
- 		if (isset($this->error['name'])) {
-			$this->data['error_name'] = $this->error['name'];
-		} else {
-			$this->data['error_name'] = '';
-		}
-		
- 		if (isset($this->error['owner'])) {
-			$this->data['error_owner'] = $this->error['owner'];
-		} else {
-			$this->data['error_owner'] = '';
-		}
-
- 		if (isset($this->error['address'])) {
-			$this->data['error_address'] = $this->error['address'];
-		} else {
-			$this->data['error_address'] = '';
-		}
-		
- 		if (isset($this->error['email'])) {
-			$this->data['error_email'] = $this->error['email'];
-		} else {
-			$this->data['error_email'] = '';
-		}
-
-		if (isset($this->error['telephone'])) {
-			$this->data['error_telephone'] = $this->error['telephone'];
-		} else {
-			$this->data['error_telephone'] = '';
-		}
- 
-  		if (isset($this->error['title'])) {
-			$this->data['error_title'] = $this->error['title'];
-		} else {
-			$this->data['error_title'] = '';
-		}
-		
-  		if (isset($this->error['customer_group_display'])) {
-			$this->data['error_customer_group_display'] = $this->error['customer_group_display'];
-		} else {
-			$this->data['error_customer_group_display'] = '';
-		}
-				
-  		if (isset($this->error['voucher_min'])) {
-			$this->data['error_voucher_min'] = $this->error['voucher_min'];
-		} else {
-			$this->data['error_voucher_min'] = '';
-		}	
-			
-  		if (isset($this->error['voucher_max'])) {
-			$this->data['error_voucher_max'] = $this->error['voucher_max'];
-		} else {
-			$this->data['error_voucher_max'] = '';
-		}
-		
- 		if (isset($this->error['ftp_host'])) {
-			$this->data['error_ftp_host'] = $this->error['ftp_host'];
-		} else {
-			$this->data['error_ftp_host'] = '';
-		}
-		
- 		if (isset($this->error['ftp_port'])) {
-			$this->data['error_ftp_port'] = $this->error['ftp_port'];
-		} else {
-			$this->data['error_ftp_port'] = '';
-		}
-		
- 		if (isset($this->error['ftp_username'])) {
-			$this->data['error_ftp_username'] = $this->error['ftp_username'];
-		} else {
-			$this->data['error_ftp_username'] = '';
-		}
-		
- 		if (isset($this->error['ftp_password'])) {
-			$this->data['error_ftp_password'] = $this->error['ftp_password'];
-		} else {
-			$this->data['error_ftp_password'] = '';
-		}
-														
- 		if (isset($this->error['image_category'])) {
-			$this->data['error_image_category'] = $this->error['image_category'];
-		} else {
-			$this->data['error_image_category'] = '';
-		}
-				
- 		if (isset($this->error['image_thumb'])) {
-			$this->data['error_image_thumb'] = $this->error['image_thumb'];
-		} else {
-			$this->data['error_image_thumb'] = '';
-		}
-		
- 		if (isset($this->error['image_popup'])) {
-			$this->data['error_image_popup'] = $this->error['image_popup'];
-		} else {
-			$this->data['error_image_popup'] = '';
-		}
-		
- 		if (isset($this->error['image_product'])) {
-			$this->data['error_image_product'] = $this->error['image_product'];
-		} else {
-			$this->data['error_image_product'] = '';
-		}
-		
- 		if (isset($this->error['image_additional'])) {
-			$this->data['error_image_additional'] = $this->error['image_additional'];
-		} else {
-			$this->data['error_image_additional'] = '';
-		}	
-		
- 		if (isset($this->error['image_related'])) {
-			$this->data['error_image_related'] = $this->error['image_related'];
-		} else {
-			$this->data['error_image_related'] = '';
-		}
-		
- 		if (isset($this->error['image_compare'])) {
-			$this->data['error_image_compare'] = $this->error['image_compare'];
-		} else {
-			$this->data['error_image_compare'] = '';
-		}
-		
-  		if (isset($this->error['image_wishlist'])) {
-			$this->data['error_image_wishlist'] = $this->error['image_wishlist'];
-		} else {
-			$this->data['error_image_wishlist'] = '';
-		}
-				
-		if (isset($this->error['image_cart'])) {
-			$this->data['error_image_cart'] = $this->error['image_cart'];
-		} else {
-			$this->data['error_image_cart'] = '';
-		}
-				
-		if (isset($this->error['error_filename'])) {
-			$this->data['error_error_filename'] = $this->error['error_filename'];
-		} else {
-			$this->data['error_error_filename'] = '';
-		}
-		
-		if (isset($this->error['catalog_limit'])) {
-			$this->data['error_catalog_limit'] = $this->error['catalog_limit'];
-		} else {
-			$this->data['error_catalog_limit'] = '';
-		}
-		
-		if (isset($this->error['list_description_limit'])) {
-			$this->data['error_list_description_limit'] = $this->error['list_description_limit'];
-		} else {
-			$this->data['error_list_description_limit'] = '';
-		}
-		
-		if (isset($this->error['admin_limit'])) {
-			$this->data['error_admin_limit'] = $this->error['admin_limit'];
-		} else {
-			$this->data['error_admin_limit'] = '';
-		}
-		
-		if (isset($this->error['encryption'])) {
-			$this->data['error_encryption'] = $this->error['encryption'];
-		} else {
-			$this->data['error_encryption'] = '';
-		}		
 		
   		$this->data['breadcrumbs'] = array();
 
