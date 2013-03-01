@@ -1,4 +1,4 @@
-<?php  
+<?php
 class ControllerModuleLanguage extends Controller {
 	protected function index() {
     	if (isset($this->request->post['language_code'])) {
@@ -9,7 +9,7 @@ class ControllerModuleLanguage extends Controller {
 			} else {
 				$this->redirect($this->url->link('common/home'));
 			}
-    	}		
+    	}
 		
 		$this->data += $this->language->load('module/language');
 		
@@ -35,7 +35,7 @@ class ControllerModuleLanguage extends Controller {
 					'name'  => $result['name'],
 					'code'  => $result['code'],
 					'image' => $result['image']
-				);	
+				);
 			}
 		}
 
@@ -54,7 +54,7 @@ class ControllerModuleLanguage extends Controller {
 			
 			if ($data) {
 				$url = '&' . urldecode(http_build_query($data, '', '&'));
-			}	
+			}
 					
 			$this->data['redirect'] = $this->url->link($route, $url, $connection);
 		}

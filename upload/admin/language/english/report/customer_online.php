@@ -2,7 +2,7 @@
 // Heading
 $_['heading_title']     = 'Customers Online Report';
 
-// Text 
+// Text
 $_['text_guest']        = 'Guest';
  
 // Column

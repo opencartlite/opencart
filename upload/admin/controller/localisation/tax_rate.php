@@ -9,7 +9,7 @@ class ControllerLocalisationTaxRate extends Controller {
 		
 		$this->load->model('localisation/tax_rate');
 		
-		$this->getList(); 
+		$this->getList();
 	}
 
 	public function insert() {
@@ -153,10 +153,10 @@ class ControllerLocalisationTaxRate extends Controller {
    		$this->data['breadcrumbs'][] = array(
        		'text' => $this->language->get('heading_title'),
 			'href' => $this->url->link('localisation/tax_rate', 'token=' . $this->session->data['token'] . $url, 'SSL')
-   		);		
+   		);
 		
 		$this->data['insert'] = $this->url->link('localisation/tax_rate/insert', 'token=' . $this->session->data['token'] . $url, 'SSL');
-		$this->data['delete'] = $this->url->link('localisation/tax_rate/delete', 'token=' . $this->session->data['token'] . $url, 'SSL');		
+		$this->data['delete'] = $this->url->link('localisation/tax_rate/delete', 'token=' . $this->session->data['token'] . $url, 'SSL');
 		
 		$this->data['tax_rates'] = array();
 		
@@ -183,14 +183,14 @@ class ControllerLocalisationTaxRate extends Controller {
 				'tax_rate_id'   => $result['tax_rate_id'],
 				'name'          => $result['name'],
 				'rate'          => $result['rate'],
-				'type'          => ($result['type'] == 'F' ? $this->language->get('text_amount') : $this->language->get('text_percent')),				
+				'type'          => ($result['type'] == 'F' ? $this->language->get('text_amount') : $this->language->get('text_percent')),
 				'geo_zone'      => $result['geo_zone'],
 				'date_added'    => date($this->language->get('date_format_short'), strtotime($result['date_added'])),
 				'date_modified' => date($this->language->get('date_format_short'), strtotime($result['date_modified'])),
 				'selected'      => isset($this->request->post['selected']) && in_array($result['tax_rate_id'], $this->request->post['selected']),
-				'action'        => $action				
+				'action'        => $action
 			);
-		}	
+		}
  
  		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
@@ -256,7 +256,7 @@ class ControllerLocalisationTaxRate extends Controller {
 		$this->response->setOutput($this->render());
 	}
 
-	protected function getForm() {				
+	protected function getForm() {
 
  		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
@@ -344,7 +344,7 @@ class ControllerLocalisationTaxRate extends Controller {
 			$this->data['tax_rate_customer_group'] = $this->model_localisation_tax_rate->getTaxRateCustomerGroups($this->request->get['tax_rate_id']);
 		} else {
 			$this->data['tax_rate_customer_group'] = array();
-		}	
+		}
 		
 		$this->load->model('sale/customer_group');
 		
@@ -411,6 +411,6 @@ class ControllerLocalisationTaxRate extends Controller {
 		} else {
 			return false;
 		}
-	}	
+	}
 }
 ?>

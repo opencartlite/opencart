@@ -1,4 +1,4 @@
-<?php 
+<?php
 class ControllerCheckoutPaymentAddress extends Controller {
 	public function index() {
 		$this->data += $this->language->load('checkout/checkout');
@@ -14,13 +14,13 @@ class ControllerCheckoutPaymentAddress extends Controller {
 		$this->data['addresses'] = $this->model_account_address->getAddresses();
 												
 		if (isset($this->session->data['payment_address']['country_id'])) {
-			$this->data['country_id'] = $this->session->data['payment_address']['country_id'];		
+			$this->data['country_id'] = $this->session->data['payment_address']['country_id'];
 		} else {
 			$this->data['country_id'] = $this->config->get('config_country_id');
 		}
 				
 		if (isset($this->session->data['payment_address']['zone_id'])) {
-			$this->data['zone_id'] = $this->session->data['payment_address']['zone_id'];		
+			$this->data['zone_id'] = $this->session->data['payment_address']['zone_id'];
 		} else {
 			$this->data['zone_id'] = '';
 		}
@@ -37,7 +37,7 @@ class ControllerCheckoutPaymentAddress extends Controller {
 			$this->template = 'default/template/checkout/payment_address.tpl';
 		}
 	
-		$this->response->setOutput($this->render());			
+		$this->response->setOutput($this->render());
   	}
 	
 	public function save() {
@@ -53,9 +53,9 @@ class ControllerCheckoutPaymentAddress extends Controller {
 		// Validate cart has products and has stock.
 		if ((!$this->cart->hasProducts() && empty($this->session->data['vouchers'])) || (!$this->cart->hasStock() && !$this->config->get('config_stock_checkout'))) {
 			$json['redirect'] = $this->url->link('checkout/cart');
-		}	
+		}
 		
-		// Validate minimum quantity requirments.			
+		// Validate minimum quantity requirments.
 		$products = $this->cart->getProducts();
 				
 		foreach ($products as $product) {
@@ -65,13 +65,13 @@ class ControllerCheckoutPaymentAddress extends Controller {
 				if ($product_2['product_id'] == $product['product_id']) {
 					$product_total += $product_2['quantity'];
 				}
-			}		
+			}
 			
 			if ($product['minimum'] > $product_total) {
 				$json['redirect'] = $this->url->link('checkout/cart');
 				
 				break;
-			}				
+			}
 		}
 				
 		if (!$json) {
@@ -84,13 +84,13 @@ class ControllerCheckoutPaymentAddress extends Controller {
 					$json['error']['warning'] = $this->language->get('error_address');
 				}
 					
-				if (!$json) {	
+				if (!$json) {
 					// Default Payment Address
 					$this->load->model('account/address');
 	
 					$this->session->data['payment_address'] = $this->model_account_address->getAddress($this->request->post['address_id']);
 						
-					unset($this->session->data['payment_method']);	
+					unset($this->session->data['payment_method']);
 					unset($this->session->data['payment_methods']);
 				}
 			} else {
@@ -134,10 +134,10 @@ class ControllerCheckoutPaymentAddress extends Controller {
 
 					$this->session->data['payment_address'] = $this->model_account_address->getAddress($address_id);
 															
-					unset($this->session->data['payment_method']);	
+					unset($this->session->data['payment_method']);
 					unset($this->session->data['payment_methods']);
-				}		
-			}		
+				}
+			}
 		}
 		
 		$this->response->setOutput(json_encode($json));

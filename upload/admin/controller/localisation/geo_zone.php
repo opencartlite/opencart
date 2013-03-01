@@ -1,5 +1,5 @@
 <?php
-class ControllerLocalisationGeoZone extends Controller { 
+class ControllerLocalisationGeoZone extends Controller {
 	private $error = array();
  
 	public function index() {
@@ -119,7 +119,7 @@ class ControllerLocalisationGeoZone extends Controller {
 		
 		if (isset($this->request->get['order'])) {
 			$order = $this->request->get['order'];
-		} else { 
+		} else {
 			$order = 'ASC';
 		}
 		
@@ -186,7 +186,7 @@ class ControllerLocalisationGeoZone extends Controller {
 				'selected'    => isset($this->request->post['selected']) && in_array($result['geo_zone_id'], $this->request->post['selected']),
 				'action'      => $action
 			);
-		}	
+		}
  
  		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
@@ -405,6 +405,6 @@ class ControllerLocalisationGeoZone extends Controller {
 		}
 
 		$this->response->setOutput($output);
-	} 		
+	}
 }
 ?>

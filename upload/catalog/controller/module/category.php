@@ -1,4 +1,4 @@
-<?php  
+<?php
 class ControllerModuleCategory extends Controller {
 	protected function index($setting) {
 		$this->data += $this->language->load('module/category');
@@ -43,8 +43,8 @@ class ControllerModuleCategory extends Controller {
 				$children_data[] = array(
 					'category_id' => $child['category_id'],
 					'name'        => $child['name'] . ($this->config->get('config_product_count') ? ' (' . $this->model_catalog_product->getTotalProducts($data) . ')' : ''),
-					'href'        => $this->url->link('product/category', 'path=' . $category['category_id'] . '_' . $child['category_id'])	
-				);		
+					'href'        => $this->url->link('product/category', 'path=' . $category['category_id'] . '_' . $child['category_id'])
+				);
 			}
 
 			$data = array(
@@ -57,7 +57,7 @@ class ControllerModuleCategory extends Controller {
 				'name'        => $category['name'] . ($this->config->get('config_product_count') ? ' (' . $this->model_catalog_product->getTotalProducts($data) . ')' : ''),
 				'children'    => $children_data,
 				'href'        => $this->url->link('product/category', 'path=' . $category['category_id'])
-			);	
+			);
 		}
 		
 		if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/module/category.tpl')) {

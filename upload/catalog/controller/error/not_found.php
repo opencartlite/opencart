@@ -1,6 +1,6 @@
-<?php   
+<?php
 class ControllerErrorNotFound extends Controller {
-	public function index() {		
+	public function index() {
 		$this->data += $this->language->load('error/not_found');
 		
 		$this->document->setTitle($this->language->get('heading_title'));
@@ -10,7 +10,7 @@ class ControllerErrorNotFound extends Controller {
       	$this->data['breadcrumbs'][] = array(
         	'text' => $this->language->get('text_home'),
 			'href' => $this->url->link('common/home')
-      	);		
+      	);
 		
 		if (isset($this->request->get['route'])) {
 			$data = $this->request->get;
@@ -25,7 +25,7 @@ class ControllerErrorNotFound extends Controller {
 			
 			if ($data) {
 				$url = '&' . urldecode(http_build_query($data, '', '&'));
-			}	
+			}
 			
 			if (isset($this->request->server['HTTPS']) && (($this->request->server['HTTPS'] == 'on') || ($this->request->server['HTTPS'] == '1'))) {
 				$connection = 'SSL';
@@ -36,7 +36,7 @@ class ControllerErrorNotFound extends Controller {
        		$this->data['breadcrumbs'][] = array(
 				'text' => $this->language->get('heading_title'),
 				'href' => $this->url->link($route, $url, $connection)
-      		);	   	
+      		);
 		}
 		
 		$this->response->addHeader($this->request->server['SERVER_PROTOCOL'] . '/1.1 404 Not Found');

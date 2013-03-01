@@ -1,11 +1,11 @@
 <?php
-class Cache { 
-	private $expire = 3600; 
+class Cache {
+	private $expire = 3600;
 	
 	public function __construct() {
 		$files = glob(DIR_CACHE . 'cache.*');
 
-		if ($files) {			
+		if ($files) {
 			foreach ($files as $file) {
 				$time = substr(strrchr($file, '.'), 1);
 

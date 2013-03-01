@@ -1,8 +1,8 @@
-<?php 
-class ControllerTotalTotal extends Controller { 
-	private $error = array(); 
+<?php
+class ControllerTotalTotal extends Controller {
+	private $error = array();
 	 
-	public function index() { 
+	public function index() {
 		$this->data += $this->language->load('total/total');
 
 		$this->document->setTitle($this->language->get('heading_title'));
@@ -74,7 +74,7 @@ class ControllerTotalTotal extends Controller {
 			return true;
 		} else {
 			return false;
-		}	
+		}
 	}
 }
 ?>

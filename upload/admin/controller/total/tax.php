@@ -1,8 +1,8 @@
-<?php 
-class ControllerTotalTax extends Controller { 
+<?php
+class ControllerTotalTax extends Controller {
 	private $error = array();
 	 
-	public function index() { 
+	public function index() {
 		$this->data += $this->language->load('total/tax');
 
 		$this->document->setTitle($this->language->get('heading_title'));
@@ -74,7 +74,7 @@ class ControllerTotalTax extends Controller {
 			return true;
 		} else {
 			return false;
-		}	
+		}
 	}
 }
 ?>

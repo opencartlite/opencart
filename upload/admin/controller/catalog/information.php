@@ -1,5 +1,5 @@
 <?php
-class ControllerCatalogInformation extends Controller { 
+class ControllerCatalogInformation extends Controller {
 	private $error = array();
 
 	public function index() {
@@ -156,7 +156,7 @@ class ControllerCatalogInformation extends Controller {
    		);
 							
 		$this->data['insert'] = $this->url->link('catalog/information/insert', 'token=' . $this->session->data['token'] . $url, 'SSL');
-		$this->data['delete'] = $this->url->link('catalog/information/delete', 'token=' . $this->session->data['token'] . $url, 'SSL');	
+		$this->data['delete'] = $this->url->link('catalog/information/delete', 'token=' . $this->session->data['token'] . $url, 'SSL');
 
 		$this->data['informations'] = array();
 
@@ -186,7 +186,7 @@ class ControllerCatalogInformation extends Controller {
 				'selected'       => isset($this->request->post['selected']) && in_array($result['information_id'], $this->request->post['selected']),
 				'action'         => $action
 			);
-		}			
+		}
  
  		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
@@ -330,7 +330,7 @@ class ControllerCatalogInformation extends Controller {
 			$this->data['information_store'] = $this->model_catalog_information->getInformationStores($this->request->get['information_id']);
 		} else {
 			$this->data['information_store'] = array(0);
-		}		
+		}
 		
 		if (isset($this->request->post['keyword'])) {
 			$this->data['keyword'] = $this->request->post['keyword'];

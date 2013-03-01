@@ -1,4 +1,4 @@
-<?php   
+<?php
 class ControllerModuleStore extends Controller {
 	protected function index() {
 		$status = true;

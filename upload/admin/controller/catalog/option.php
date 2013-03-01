@@ -1,6 +1,6 @@
 <?php
 class ControllerCatalogOption extends Controller {
-	private $error = array();  
+	private $error = array();
  
 	public function index() {
 		$this->data += $this->language->load('catalog/option');
@@ -186,7 +186,7 @@ class ControllerCatalogOption extends Controller {
 				'selected'   => isset($this->request->post['selected']) && in_array($result['option_id'], $this->request->post['selected']),
 				'action'     => $action
 			);
-		}	
+		}
  
  		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
@@ -248,7 +248,7 @@ class ControllerCatalogOption extends Controller {
 		$this->response->setOutput($this->render());
 	}
 
-	protected function getForm() {	
+	protected function getForm() {
 
  		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
@@ -260,13 +260,13 @@ class ControllerCatalogOption extends Controller {
 			$this->data['error_name'] = $this->error['name'];
 		} else {
 			$this->data['error_name'] = array();
-		}	
+		}
 				
  		if (isset($this->error['option_value'])) {
 			$this->data['error_option_value'] = $this->error['option_value'];
 		} else {
 			$this->data['error_option_value'] = array();
-		}	
+		}
 
 		$url = '';
 
@@ -296,7 +296,7 @@ class ControllerCatalogOption extends Controller {
 		
 		if (!isset($this->request->get['option_id'])) {
 			$this->data['action'] = $this->url->link('catalog/option/insert', 'token=' . $this->session->data['token'] . $url, 'SSL');
-		} else { 
+		} else {
 			$this->data['action'] = $this->url->link('catalog/option/update', 'token=' . $this->session->data['token'] . '&option_id=' . $this->request->get['option_id'] . $url, 'SSL');
 		}
 
@@ -318,7 +318,7 @@ class ControllerCatalogOption extends Controller {
 			$this->data['option_description'] = $this->model_catalog_option->getOptionDescriptions($this->request->get['option_id']);
 		} else {
 			$this->data['option_description'] = array();
-		}	
+		}
 
 		if (isset($this->request->post['type'])) {
 			$this->data['type'] = $this->request->post['type'];
@@ -394,10 +394,10 @@ class ControllerCatalogOption extends Controller {
 			foreach ($this->request->post['option_value'] as $option_value_id => $option_value) {
 				foreach ($option_value['option_value_description'] as $language_id => $option_value_description) {
 					if ((utf8_strlen($option_value_description['name']) < 1) || (utf8_strlen($option_value_description['name']) > 128)) {
-						$this->error['option_value'][$option_value_id][$language_id] = $this->language->get('error_option_value'); 
-					}					
+						$this->error['option_value'][$option_value_id][$language_id] = $this->language->get('error_option_value');
+					}
 				}
-			}	
+			}
 		}
 
 		if (!$this->error) {
@@ -427,7 +427,7 @@ class ControllerCatalogOption extends Controller {
 		} else {
 			return false;
 		}
-	}	
+	}
 	
 	public function autocomplete() {
 		$json = array();
@@ -463,7 +463,7 @@ class ControllerCatalogOption extends Controller {
 						$option_value_data[] = array(
 							'option_value_id' => $option_value['option_value_id'],
 							'name'            => strip_tags(html_entity_decode($option_value['name'], ENT_QUOTES, 'UTF-8')),
-							'image'           => $image					
+							'image'           => $image
 						);
 					}
 					
@@ -473,7 +473,7 @@ class ControllerCatalogOption extends Controller {
 						$sort_order[$key] = $value['name'];
 					}
 			
-					array_multisort($sort_order, SORT_ASC, $option_value_data);					
+					array_multisort($sort_order, SORT_ASC, $option_value_data);
 				}
 				
 				$type = '';

@@ -1,12 +1,12 @@
 <?php
-class ControllerCheckoutCheckout extends Controller { 
+class ControllerCheckoutCheckout extends Controller {
 	public function index() {
 		// Validate cart has products and has stock.
 		if ((!$this->cart->hasProducts() && empty($this->session->data['vouchers'])) || (!$this->cart->hasStock() && !$this->config->get('config_stock_checkout'))) {
 	  		$this->redirect($this->url->link('checkout/cart'));
-    	}	
+    	}
 		
-		// Validate minimum quantity requirments.			
+		// Validate minimum quantity requirments.
 		$products = $this->cart->getProducts();
 				
 		foreach ($products as $product) {
@@ -16,16 +16,16 @@ class ControllerCheckoutCheckout extends Controller {
 				if ($product_2['product_id'] == $product['product_id']) {
 					$product_total += $product_2['quantity'];
 				}
-			}		
+			}
 			
 			if ($product['minimum'] > $product_total) {
 				$this->redirect($this->url->link('checkout/cart'));
-			}				
+			}
 		}
 				
 		$this->data += $this->language->load('checkout/checkout');
 		
-		$this->document->setTitle($this->language->get('heading_title')); 
+		$this->document->setTitle($this->language->get('heading_title'));
 		
 		$this->document->addScript('catalog/view/javascript/jquery/colorbox/jquery.colorbox-min.js');
 		$this->document->addStyle('catalog/view/javascript/jquery/colorbox/colorbox.css');
@@ -35,7 +35,7 @@ class ControllerCheckoutCheckout extends Controller {
       	$this->data['breadcrumbs'][] = array(
         	'text' => $this->language->get('text_home'),
 			'href' => $this->url->link('common/home')
-      	); 
+      	);
 
       	$this->data['breadcrumbs'][] = array(
         	'text' => $this->language->get('text_cart'),
@@ -45,10 +45,10 @@ class ControllerCheckoutCheckout extends Controller {
       	$this->data['breadcrumbs'][] = array(
         	'text' => $this->language->get('heading_title'),
 			'href' => $this->url->link('checkout/checkout', '', 'SSL')
-      	);		
+      	);
 		
 		$this->data['logged'] = $this->customer->isLogged();
-		$this->data['shipping_required'] = $this->cart->hasShipping();	
+		$this->data['shipping_required'] = $this->cart->hasShipping();
 		
 		if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/checkout/checkout.tpl')) {
 			$this->template = $this->config->get('config_template') . '/template/checkout/checkout.tpl';
@@ -62,7 +62,7 @@ class ControllerCheckoutCheckout extends Controller {
 			'common/content_top',
 			'common/content_bottom',
 			'common/footer',
-			'common/header'	
+			'common/header'
 		);
 				
 		$this->response->setOutput($this->render());
@@ -86,7 +86,7 @@ class ControllerCheckoutCheckout extends Controller {
 				'address_format'    => $country_info['address_format'],
 				'postcode_required' => $country_info['postcode_required'],
 				'zone'              => $this->model_localisation_zone->getZonesByCountryId($this->request->get['country_id']),
-				'status'            => $country_info['status']		
+				'status'            => $country_info['status']
 			);
 		}
 		

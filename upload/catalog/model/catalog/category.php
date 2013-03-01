@@ -35,7 +35,7 @@ class ModelCatalogCategory extends Model {
 				foreach ($filter_query->rows as $filter) {
 					$filter_data[] = array(
 						'filter_id' => $filter['filter_id'],
-						'name'      => $filter['name']			
+						'name'      => $filter['name']
 					);
 				}
 				
@@ -44,7 +44,7 @@ class ModelCatalogCategory extends Model {
 						'filter_group_id' => $filter_group['filter_group_id'],
 						'name'            => $filter_group['name'],
 						'filter'          => $filter_data
-					);	
+					);
 				}
 			}
 		}

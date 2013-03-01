@@ -2,7 +2,7 @@
 class ControllerAffiliatePassword extends Controller {
 	private $error = array();
 	     
-  	public function index() {	
+  	public function index() {
     	if (!$this->affiliate->isLogged()) {
       		$this->session->data['redirect'] = $this->url->link('affiliate/password', '', 'SSL');
 
@@ -28,7 +28,7 @@ class ControllerAffiliatePassword extends Controller {
       	$this->data['breadcrumbs'][] = array(
         	'text' => $this->language->get('text_home'),
 			'href' => $this->url->link('common/home')
-      	); 
+      	);
 
       	$this->data['breadcrumbs'][] = array(
         	'text' => $this->language->get('text_account'),
@@ -40,13 +40,13 @@ class ControllerAffiliatePassword extends Controller {
 			'href' => $this->url->link('affiliate/password', '', 'SSL')
       	);
     	
-		if (isset($this->error['password'])) { 
+		if (isset($this->error['password'])) {
 			$this->data['error_password'] = $this->error['password'];
 		} else {
 			$this->data['error_password'] = '';
 		}
 
-		if (isset($this->error['confirm'])) { 
+		if (isset($this->error['confirm'])) {
 			$this->data['error_confirm'] = $this->error['confirm'];
 		} else {
 			$this->data['error_confirm'] = '';
@@ -80,10 +80,10 @@ class ControllerAffiliatePassword extends Controller {
 			'common/content_top',
 			'common/content_bottom',
 			'common/footer',
-			'common/header'	
+			'common/header'
 		);
 								
-		$this->response->setOutput($this->render());				
+		$this->response->setOutput($this->render());
   	}
   
   	protected function validate() {
@@ -93,7 +93,7 @@ class ControllerAffiliatePassword extends Controller {
 
     	if ($this->request->post['confirm'] != $this->request->post['password']) {
       		$this->error['confirm'] = $this->language->get('error_confirm');
-    	}  
+    	}
 	
 		if (!$this->error) {
 	  		return true;

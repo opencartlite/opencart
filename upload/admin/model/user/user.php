@@ -49,12 +49,12 @@ class ModelUserUser extends Model {
 			'username',
 			'status',
 			'date_added'
-		);	
+		);
 			
 		if (isset($data['sort']) && in_array($data['sort'], $sort_data)) {
-			$sql .= " ORDER BY " . $data['sort'];	
+			$sql .= " ORDER BY " . $data['sort'];
 		} else {
-			$sql .= " ORDER BY username";	
+			$sql .= " ORDER BY username";
 		}
 			
 		if (isset($data['order']) && ($data['order'] == 'DESC')) {
@@ -66,11 +66,11 @@ class ModelUserUser extends Model {
 		if (isset($data['start']) || isset($data['limit'])) {
 			if ($data['start'] < 0) {
 				$data['start'] = 0;
-			}			
+			}
 			
 			if ($data['limit'] < 1) {
 				$data['limit'] = 20;
-			}	
+			}
 			
 			$sql .= " LIMIT " . (int)$data['start'] . "," . (int)$data['limit'];
 		}
@@ -96,6 +96,6 @@ class ModelUserUser extends Model {
       	$query = $this->db->query("SELECT COUNT(*) AS total FROM {user} WHERE LCASE(email) = '" . $this->db->escape(utf8_strtolower($email)) . "'");
 		
 		return $query->row['total'];
-	}	
+	}
 }
 ?>

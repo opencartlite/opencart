@@ -28,7 +28,7 @@ class ModelAccountCustomField extends Model {
 				'required'           => $custom_field['required'],
 				'location'           => $custom_field['location'],
 				'position'           => $custom_field['position']
-			);			
+			);
 		}
 		
 		return $custom_field_data;

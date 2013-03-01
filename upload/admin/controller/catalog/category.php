@@ -1,5 +1,5 @@
-<?php 
-class ControllerCatalogCategory extends Controller { 
+<?php
+class ControllerCatalogCategory extends Controller {
 	private $error = array();
  
 	public function index() {
@@ -30,7 +30,7 @@ class ControllerCatalogCategory extends Controller {
 				$url .= '&page=' . $this->request->get['page'];
 			}
 						
-			$this->redirect($this->url->link('catalog/category', 'token=' . $this->session->data['token'] . $url, 'SSL')); 
+			$this->redirect($this->url->link('catalog/category', 'token=' . $this->session->data['token'] . $url, 'SSL'));
 		}
 
 		$this->getForm();
@@ -101,7 +101,7 @@ class ControllerCatalogCategory extends Controller {
 			$this->redirect($this->url->link('catalog/category', 'token=' . $this->session->data['token'], 'SSL'));
 		}
 		
-		$this->getList();	
+		$this->getList();
 	}
 	
 	protected function getList() {
@@ -193,7 +193,7 @@ class ControllerCatalogCategory extends Controller {
 		$this->response->setOutput($this->render());
 	}
 
-	protected function getForm() {				
+	protected function getForm() {
 		
  		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
@@ -265,7 +265,7 @@ class ControllerCatalogCategory extends Controller {
 		
 		if (isset($this->request->post['category_filter'])) {
 			$filters = $this->request->post['category_filter'];
-		} elseif (isset($this->request->get['category_id'])) {		
+		} elseif (isset($this->request->get['category_id'])) {
 			$filters = $this->model_catalog_category->getCategoryFilters($this->request->get['category_id']);
 		} else {
 			$filters = array();
@@ -282,7 +282,7 @@ class ControllerCatalogCategory extends Controller {
 					'name'      => $filter_info['group'] . ' &gt; ' . $filter_info['name']
 				);
 			}
-		}	
+		}
 										
 		$this->load->model('setting/store');
 		
@@ -294,7 +294,7 @@ class ControllerCatalogCategory extends Controller {
 			$this->data['category_store'] = $this->model_catalog_category->getCategoryStores($this->request->get['category_id']);
 		} else {
 			$this->data['category_store'] = array(0);
-		}			
+		}
 		
 		if (isset($this->request->post['keyword'])) {
 			$this->data['keyword'] = $this->request->post['keyword'];
@@ -405,7 +405,7 @@ class ControllerCatalogCategory extends Controller {
 		}
  
 		if (!$this->error) {
-			return true; 
+			return true;
 		} else {
 			return false;
 		}
@@ -417,7 +417,7 @@ class ControllerCatalogCategory extends Controller {
 		}
  
 		if (!$this->error) {
-			return true; 
+			return true;
 		} else {
 			return false;
 		}
@@ -439,10 +439,10 @@ class ControllerCatalogCategory extends Controller {
 				
 			foreach ($results as $result) {
 				$json[] = array(
-					'category_id' => $result['category_id'], 
+					'category_id' => $result['category_id'],
 					'name'        => strip_tags(html_entity_decode($result['name'], ENT_QUOTES, 'UTF-8'))
 				);
-			}		
+			}
 		}
 
 		$sort_order = array();
@@ -454,6 +454,6 @@ class ControllerCatalogCategory extends Controller {
 		array_multisort($sort_order, SORT_ASC, $json);
 
 		$this->response->setOutput(json_encode($json));
-	}		
+	}
 }
 ?>

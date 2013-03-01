@@ -1,11 +1,11 @@
-<?php 
-class ControllerAccountNewsletter extends Controller {  
+<?php
+class ControllerAccountNewsletter extends Controller {
 	public function index() {
 		if (!$this->customer->isLogged()) {
 	  		$this->session->data['redirect'] = $this->url->link('account/newsletter', '', 'SSL');
 	  
 	  		$this->redirect($this->url->link('account/login', '', 'SSL'));
-    	} 
+    	}
 		
 		$this->data += $this->language->load('account/newsletter');
     	
@@ -26,7 +26,7 @@ class ControllerAccountNewsletter extends Controller {
       	$this->data['breadcrumbs'][] = array(
         	'text' => $this->language->get('text_home'),
 			'href' => $this->url->link('common/home')
-      	); 
+      	);
 
       	$this->data['breadcrumbs'][] = array(
         	'text' => $this->language->get('text_account'),
@@ -56,10 +56,10 @@ class ControllerAccountNewsletter extends Controller {
 			'common/content_top',
 			'common/content_bottom',
 			'common/footer',
-			'common/header'	
+			'common/header'
 		);
 						
-		$this->response->setOutput($this->render());			
+		$this->response->setOutput($this->render());
   	}
 }
 ?>

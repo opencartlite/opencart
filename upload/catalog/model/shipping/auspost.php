@@ -49,7 +49,7 @@ class ModelShippingAusPost extends Model {
 					
 						if ($this->config->get('auspost_display_time')) {
 							$title .= ' (' . $response_info['days'] . ' ' . $this->language->get('text_eta') . ')';
-						}	
+						}
 			
 						$quote_data['standard'] = array(
 							'code'         => 'auspost.standard',
@@ -71,7 +71,7 @@ class ModelShippingAusPost extends Model {
 				
 				$response = curl_exec($curl);
 				
-				curl_close($curl); 
+				curl_close($curl);
 				
 				if ($response) {
 					$response_info = array();
@@ -91,7 +91,7 @@ class ModelShippingAusPost extends Model {
 						
 						if ($this->config->get('auspost_display_time')) {
 							$title .= ' (' . $response_info['days'] . ' ' . $this->language->get('text_eta') . ')';
-						}	
+						}
 		
 						$quote_data['express'] = array(
 							'code'         => 'auspost.express',
@@ -113,7 +113,7 @@ class ModelShippingAusPost extends Model {
 				'title'      => $this->language->get('text_title'),
 				'quote'      => $quote_data,
 				'sort_order' => $this->config->get('auspost_sort_order'),
-				'error'      => $error 
+				'error'      => $error
 			);
 		}
 		

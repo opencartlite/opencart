@@ -38,11 +38,11 @@ class ModelPaymentKlarnaAccount extends Model {
 			
 			if (!isset($country_to_currency[$address['iso_code_3']]) || !$this->currency->has($country_to_currency[$address['iso_code_3']])) {
 				$status = false;
-			} 
+			}
 			
 			if ($address['iso_code_3'] == 'NLD' && $this->currency->has('EUR') && $this->currency->format($total, 'EUR', '', false) > 250.00) {
 				$status = false;
-			}			
+			}
 		}
         
 		$payment_option = array();
@@ -156,13 +156,13 @@ class ModelPaymentKlarnaAccount extends Model {
 			$status = false;
 		}
 		
-		$sort_order = array(); 
+		$sort_order = array();
 		  
 		foreach ($payment_option as $key => $value) {
 			$sort_order[$key] = $value['monthly_cost'];
 		}
 	
-		array_multisort($sort_order, SORT_ASC, $payment_option);	
+		array_multisort($sort_order, SORT_ASC, $payment_option);
 					
 		if ($address['company']) {
 			$status = false;

@@ -29,7 +29,7 @@ class ControllerExtensionFeed extends Controller {
 			
 			$this->session->data['success'] = $this->language->get('text_success');
 			
-			$this->redirect($this->url->link('extension/feed', 'token=' . $this->session->data['token'], 'SSL'));			
+			$this->redirect($this->url->link('extension/feed', 'token=' . $this->session->data['token'], 'SSL'));
 		}
 		
 		$this->getList();
@@ -40,9 +40,9 @@ class ControllerExtensionFeed extends Controller {
 		
 		$this->document->setTitle($this->language->get('heading_title'));
 		
-		$this->load->model('setting/extension');		
+		$this->load->model('setting/extension');
 		
-    	if ($this->validate()) {		
+    	if ($this->validate()) {
 			$this->model_setting_extension->uninstall('feed', $this->request->get['extension']);
 		
 			$this->load->model('setting/setting');
@@ -148,6 +148,6 @@ class ControllerExtensionFeed extends Controller {
 		} else {
 	  		return false;
 		}
-  	}	
+  	}
 }
 ?>

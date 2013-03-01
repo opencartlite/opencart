@@ -10,7 +10,7 @@ final class Action {
 
 		$parts = explode('/', str_replace('../', '', (string)$route));
 
-		foreach ($parts as $part) { 
+		foreach ($parts as $part) {
 			$path .= $part;
 			
 			if (is_dir(DIR_APPLICATION . 'controller/' . $path)) {

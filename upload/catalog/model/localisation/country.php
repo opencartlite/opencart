@@ -4,7 +4,7 @@ class ModelLocalisationCountry extends Model {
 		$query = $this->db->query("SELECT * FROM {country} WHERE country_id = '" . (int)$country_id . "' AND status = '1'");
 		
 		return $query->row;
-	}	
+	}
 	
 	public function getCountries() {
 		$country_data = $this->cache->get('country.status');

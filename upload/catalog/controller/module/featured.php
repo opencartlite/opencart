@@ -1,15 +1,15 @@
 <?php
 class ControllerModuleFeatured extends Controller {
 	protected function index($setting) {
-		$this->data += $this->language->load('module/featured'); 
+		$this->data += $this->language->load('module/featured');
 		
-		$this->load->model('catalog/product'); 
+		$this->load->model('catalog/product');
 		
 		$this->load->model('tool/image');
 
 		$this->data['products'] = array();
 
-		$products = explode(',', $this->config->get('featured_product'));		
+		$products = explode(',', $this->config->get('featured_product'));
 
 		if (empty($setting['limit'])) {
 			$setting['limit'] = 5;

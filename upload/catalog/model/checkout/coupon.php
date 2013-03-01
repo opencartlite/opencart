@@ -44,7 +44,7 @@ class ModelCheckoutCoupon extends Model {
 			
 			foreach ($coupon_category_query->rows as $category) {
 				$coupon_category_data[] = $category['category_id'];
-			}			
+			}
 			
 			$product_data = array();
 			
@@ -63,9 +63,9 @@ class ModelCheckoutCoupon extends Model {
 							$product_data[] = $product['product_id'];
 							
 							continue;
-						}						
+						}
 					}
-				}	
+				}
 			
 				if (!$product_data) {
 					$status = false;

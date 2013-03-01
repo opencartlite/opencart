@@ -38,7 +38,7 @@ class ControllerCommonForgotten extends Controller {
 			$mail->username = $this->config->get('config_smtp_username');
 			$mail->password = $this->config->get('config_smtp_password');
 			$mail->port = $this->config->get('config_smtp_port');
-			$mail->timeout = $this->config->get('config_smtp_timeout');				
+			$mail->timeout = $this->config->get('config_smtp_timeout');
 			$mail->setTo($this->request->post['email']);
 			$mail->setFrom($this->config->get('config_email'));
 			$mail->setSender($this->config->get('config_name'));
@@ -56,7 +56,7 @@ class ControllerCommonForgotten extends Controller {
       	$this->data['breadcrumbs'][] = array(
         	'text' => $this->language->get('text_home'),
 			'href' => $this->url->link('common/home')
-      	); 
+      	);
 		
       	$this->data['breadcrumbs'][] = array(
         	'text' => $this->language->get('text_forgotten'),
@@ -85,7 +85,7 @@ class ControllerCommonForgotten extends Controller {
 			'common/footer'
 		);
 								
-		$this->response->setOutput($this->render());		
+		$this->response->setOutput($this->render());
 	}
 
 	protected function validate() {

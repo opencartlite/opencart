@@ -16,7 +16,7 @@ class ControllerAccountDownload extends Controller {
       	$this->data['breadcrumbs'][] = array(
         	'text' => $this->language->get('text_home'),
 			'href' => $this->url->link('common/home')
-      	); 
+      	);
 
       	$this->data['breadcrumbs'][] = array(
         	'text' => $this->language->get('text_account'),
@@ -38,7 +38,7 @@ class ControllerAccountDownload extends Controller {
 				$page = $this->request->get['page'];
 			} else {
 				$page = 1;
-			}			
+			}
 	
 			$this->data['downloads'] = array();
 			
@@ -101,10 +101,10 @@ class ControllerAccountDownload extends Controller {
 				'common/content_top',
 				'common/content_bottom',
 				'common/footer',
-				'common/header'		
+				'common/header'
 			);
 							
-			$this->response->setOutput($this->render());				
+			$this->response->setOutput($this->render());
 		} else {
 
 			$this->data['text_error'] = $this->language->get('text_empty');
@@ -123,7 +123,7 @@ class ControllerAccountDownload extends Controller {
 				'common/content_top',
 				'common/content_bottom',
 				'common/footer',
-				'common/header'		
+				'common/header'
 			);
 										
 			$this->response->setOutput($this->render());

@@ -1,5 +1,5 @@
 <?php
-class ModelToolOnline extends Model {	
+class ModelToolOnline extends Model {
 	public function whosonline($ip, $customer_id, $url, $referer) {
 		$this->db->query("DELETE FROM {customer_online} WHERE (UNIX_TIMESTAMP(`date_added`) + 3600) < UNIX_TIMESTAMP(NOW())");
 		 

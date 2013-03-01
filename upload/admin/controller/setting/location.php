@@ -19,7 +19,7 @@ class ControllerSettingLocation extends Controller {
 		
 		$this->load->model('setting/location');
 		
-		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {   
+		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
 			$this->model_setting_location->addLocation($this->request->post);
 			
 			$this->session->data['success'] = $this->language->get('text_success');
@@ -41,7 +41,7 @@ class ControllerSettingLocation extends Controller {
 			$this->redirect($this->url->link('setting/location', 'token=' . $this->session->data['token'] . $url, 'SSL'));
 		}
 		
-		$this->getForm();   
+		$this->getForm();
 	}
 
 	public function update() {
@@ -104,13 +104,13 @@ class ControllerSettingLocation extends Controller {
 				$url .= '&page=' . $this->request->get['page'];
 			}
 			
-			$this->redirect($this->url->link('setting/location', 'token=' . $this->session->data['token'] . $url, 'SSL'));  
+			$this->redirect($this->url->link('setting/location', 'token=' . $this->session->data['token'] . $url, 'SSL'));
 		}
 		
 		$this->getList();
 	}
 
-	protected function getList() {                  
+	protected function getList() {
 		if (isset($this->request->get['sort'])) {
 			$sort = $this->request->get['sort'];
 		} else {
@@ -178,14 +178,14 @@ class ControllerSettingLocation extends Controller {
 			$action[] = array(
 				'text' => $this->language->get('text_edit'),
 				'href' => $this->url->link('setting/location/update', 'token=' . $this->session->data['token'] . '&location_id=' . $result['location_id'] . $url, 'SSL')
-			);			
+			);
 		
 			$this->data['location'][] =   array(
 				'location_id' => $result['location_id'],
 				'name'        => $result['name'],
-				'address_1'   => $result['address_1'], 
-				'zone'        => $result['zone'],    
-				'country'     => $result['country'],                   
+				'address_1'   => $result['address_1'],
+				'zone'        => $result['zone'],
+				'country'     => $result['country'],
 				'selected'    => isset($this->request->post['selected']) && in_array($result['location_id'], $this->request->post['selected']),
 				'action'      => $action
 			);
@@ -244,7 +244,7 @@ class ControllerSettingLocation extends Controller {
 		$this->data['sort'] = $sort;
 		$this->data['order'] = $order;
 		
-		$this->template = 'setting/location_list.tpl';   
+		$this->template = 'setting/location_list.tpl';
 		$this->children = array(
 			'common/header',
 			'common/footer'
@@ -253,7 +253,7 @@ class ControllerSettingLocation extends Controller {
 		$this->response->setOutput($this->render());
 	}
 	
-	protected function getForm() {		                  
+	protected function getForm() {
 		
  		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
@@ -277,13 +277,13 @@ class ControllerSettingLocation extends Controller {
 			$this->data['error_city'] = $this->error['city'];
 		} else {
 			$this->data['error_city'] = '';
-		}   
+		}
 		
 		if (isset($this->error['postcode'])) {
 			$this->data['error_postcode'] = $this->error['postcode'];
 		} else {
 			$this->data['error_postcode'] = '';
-		}   
+		}
 		
 		if (isset($this->error['country'])) {
 			$this->data['error_country'] = $this->error['country'];
@@ -301,7 +301,7 @@ class ControllerSettingLocation extends Controller {
 			$this->data['error_geocode'] = $this->error['geocode'];
 		} else {
 			$this->data['error_geocode'] = '';
-		} 
+		}
 		                
 		$url = '';
 		
@@ -341,7 +341,7 @@ class ControllerSettingLocation extends Controller {
 			$location_info = $this->model_setting_location->getLocation($this->request->get['location_id']);
 		}
 		
-		$this->data['token'] = $this->session->data['token'];  
+		$this->data['token'] = $this->session->data['token'];
 		
 		if (isset($this->request->post['name'])) {
 			$this->data['name'] = $this->request->post['name'];
@@ -385,7 +385,7 @@ class ControllerSettingLocation extends Controller {
 		
 		if (isset($this->request->post['country_id'])) {
       		$this->data['country_id'] = $this->request->post['country_id'];
-    	} elseif (!empty($location_info)) { 
+    	} elseif (!empty($location_info)) {
 			$this->data['country_id'] = $location_info['country_id'];
 		} else {
       		$this->data['country_id'] = '';
@@ -397,7 +397,7 @@ class ControllerSettingLocation extends Controller {
 				
 		if (isset($this->request->post['zone_id'])) {
       		$this->data['zone_id'] = $this->request->post['zone_id'];
-    	} elseif (!empty($location_info)) { 
+    	} elseif (!empty($location_info)) {
 			$this->data['zone_id'] = $location_info['zone_id'];
 		} else {
       		$this->data['zone_id'] = '';
@@ -434,7 +434,7 @@ class ControllerSettingLocation extends Controller {
 		if (isset($this->request->post['open'])) {
 			$this->data['open'] = $this->request->post['open'];
 		} elseif (!empty($location_info)) {
-			$this->data['open']  =   $location_info['open'];        
+			$this->data['open']  =   $location_info['open'];
 		} else {
 			$this->data['open']    =   '';
 		}
@@ -453,8 +453,8 @@ class ControllerSettingLocation extends Controller {
 			'common/footer'
 		);
 		
-		$this->response->setOutput($this->render());         
-	}           
+		$this->response->setOutput($this->render());
+	}
 	
 	protected function validateForm() {
 		if (!$this->user->hasPermission('modify', 'setting/location')) {
@@ -470,7 +470,7 @@ class ControllerSettingLocation extends Controller {
 		}
 		
     	if ((utf8_strlen($this->request->post['city']) < 2) || (utf8_strlen($this->request->post['city']) > 128)) {
-			$this->error['city'] = $this->language->get('city'); 
+			$this->error['city'] = $this->language->get('city');
 		}
 		
 		$this->load->model('localisation/country');
@@ -503,13 +503,13 @@ class ControllerSettingLocation extends Controller {
   	protected function validateDelete() {
     	if (!$this->user->hasPermission('modify', 'setting/location')) {
       		$this->error['warning'] = $this->language->get('error_permission');
-    	}	
+    	}
 	  	 
 		if (!$this->error) {
 	  		return true;
 		} else {
 	  		return false;
-		}  
+		}
   	}
 	
 	public function country() {
@@ -530,7 +530,7 @@ class ControllerSettingLocation extends Controller {
 				'address_format'    => $country_info['address_format'],
 				'postcode_required' => $country_info['postcode_required'],
 				'zone'              => $this->model_localisation_zone->getZonesByCountryId($this->request->get['country_id']),
-				'status'            => $country_info['status']		
+				'status'            => $country_info['status']
 			);
 		}
 		

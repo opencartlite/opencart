@@ -5,7 +5,7 @@ class ControllerAccountReward extends Controller {
 			$this->session->data['redirect'] = $this->url->link('account/reward', '', 'SSL');
 			
 	  		$this->redirect($this->url->link('account/login', '', 'SSL'));
-    	}		
+    	}
 		
 		$this->data += $this->language->load('account/reward');
 
@@ -16,14 +16,14 @@ class ControllerAccountReward extends Controller {
       	$this->data['breadcrumbs'][] = array(
         	'text' => $this->language->get('text_home'),
 			'href' => $this->url->link('common/home')
-      	); 
+      	);
 
-      	$this->data['breadcrumbs'][] = array(       	
+      	$this->data['breadcrumbs'][] = array(
         	'text' => $this->language->get('text_account'),
 			'href' => $this->url->link('account/account', '', 'SSL')
       	);
 		
-      	$this->data['breadcrumbs'][] = array(       	
+      	$this->data['breadcrumbs'][] = array(
         	'text' => $this->language->get('text_reward'),
 			'href' => $this->url->link('account/reward', '', 'SSL')
       	);
@@ -34,11 +34,11 @@ class ControllerAccountReward extends Controller {
 			$page = $this->request->get['page'];
 		} else {
 			$page = 1;
-		}		
+		}
 		
 		$this->data['rewards'] = array();
 		
-		$data = array(				  
+		$data = array(
 			'sort'  => 'date_added',
 			'order' => 'DESC',
 			'start' => ($page - 1) * 10,
@@ -57,12 +57,12 @@ class ControllerAccountReward extends Controller {
 				'date_added'  => date($this->language->get('date_format_short'), strtotime($result['date_added'])),
 				'href'        => $this->url->link('account/order/info', 'order_id=' . $result['order_id'], 'SSL')
 			);
-		}	
+		}
 
 		$pagination = new Pagination();
 		$pagination->total = $reward_total;
 		$pagination->page = $page;
-		$pagination->limit = 10; 
+		$pagination->limit = 10;
 		$pagination->text = $this->language->get('text_pagination');
 		$pagination->url = $this->url->link('account/reward', 'page={page}', 'SSL');
 			
@@ -84,10 +84,10 @@ class ControllerAccountReward extends Controller {
 			'common/content_top',
 			'common/content_bottom',
 			'common/footer',
-			'common/header'	
+			'common/header'
 		);
 						
-		$this->response->setOutput($this->render());		
-	} 		
+		$this->response->setOutput($this->render());
+	}
 }
 ?>

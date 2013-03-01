@@ -22,7 +22,7 @@ class ModelAccountAddress extends Model {
 	
 	public function deleteAddress($address_id) {
 		$this->db->query("DELETE FROM {address} WHERE address_id = '" . (int)$address_id . "' AND customer_id = '" . (int)$this->customer->getId() . "'");
-	}	
+	}
 	
 	public function getAddress($address_id) {
 		$address_query = $this->db->query("SELECT DISTINCT * FROM {address} WHERE address_id = '" . (int)$address_id . "' AND customer_id = '" . (int)$this->customer->getId() . "'");
@@ -38,7 +38,7 @@ class ModelAccountAddress extends Model {
 			} else {
 				$country = '';
 				$iso_code_2 = '';
-				$iso_code_3 = '';	
+				$iso_code_3 = '';
 				$address_format = '';
 			}
 			
@@ -50,7 +50,7 @@ class ModelAccountAddress extends Model {
 			} else {
 				$zone = '';
 				$zone_code = '';
-			}		
+			}
 			
 			$address_data = array(
 				'address_id'     => $address_query->row['address_id'],
@@ -65,7 +65,7 @@ class ModelAccountAddress extends Model {
 				'zone'           => $zone,
 				'zone_code'      => $zone_code,
 				'country_id'     => $address_query->row['country_id'],
-				'country'        => $country,	
+				'country'        => $country,
 				'iso_code_2'     => $iso_code_2,
 				'iso_code_3'     => $iso_code_3,
 				'address_format' => $address_format
@@ -73,7 +73,7 @@ class ModelAccountAddress extends Model {
 			
 			return $address_data;
 		} else {
-			return false;	
+			return false;
 		}
 	}
 	
@@ -93,7 +93,7 @@ class ModelAccountAddress extends Model {
 			} else {
 				$country = '';
 				$iso_code_2 = '';
-				$iso_code_3 = '';	
+				$iso_code_3 = '';
 				$address_format = '';
 			}
 			
@@ -105,13 +105,13 @@ class ModelAccountAddress extends Model {
 			} else {
 				$zone = '';
 				$zone_code = '';
-			}		
+			}
 		
 			$address_data[$result['address_id']] = array(
 				'address_id'     => $result['address_id'],
 				'firstname'      => $result['firstname'],
 				'lastname'       => $result['lastname'],
-				'company'        => $result['company'],			
+				'company'        => $result['company'],
 				'address_1'      => $result['address_1'],
 				'address_2'      => $result['address_2'],
 				'postcode'       => $result['postcode'],
@@ -120,15 +120,15 @@ class ModelAccountAddress extends Model {
 				'zone'           => $zone,
 				'zone_code'      => $zone_code,
 				'country_id'     => $result['country_id'],
-				'country'        => $country,	
+				'country'        => $country,
 				'iso_code_2'     => $iso_code_2,
 				'iso_code_3'     => $iso_code_3,
 				'address_format' => $address_format
 			);
-		}		
+		}
 		
 		return $address_data;
-	}	
+	}
 	
 	public function getTotalAddresses() {
 		$query = $this->db->query("SELECT COUNT(*) AS total FROM {address} WHERE customer_id = '" . (int)$this->customer->getId() . "'");

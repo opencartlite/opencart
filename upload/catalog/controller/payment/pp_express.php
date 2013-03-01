@@ -6,7 +6,7 @@ class ControllerPaymentPPExpress extends Controller {
     		$this->data['action'] = 'https://www.pp_express.com/cgi-bin/webscr';
   		} else {
 			$this->data['action'] = 'https://www.sandbox.pp_express.com/cgi-bin/webscr';
-		}		
+		}
 		
 		$this->load->model('checkout/order');
 		
@@ -22,9 +22,9 @@ class ControllerPaymentPPExpress extends Controller {
 			$this->template = $this->config->get('config_template') . '/template/payment/pp_express.tpl';
 		} else {
 			$this->template = 'default/template/payment/pp_express.tpl';
-		}	
+		}
 
-		$this->render();		
+		$this->render();
 	}
 }
 ?>

@@ -11,9 +11,9 @@ class ControllerPaymentBankTransfer extends Controller {
 			$this->template = $this->config->get('config_template') . '/template/payment/bank_transfer.tpl';
 		} else {
 			$this->template = 'default/template/payment/bank_transfer.tpl';
-		}	
+		}
 		
-		$this->render(); 
+		$this->render();
 	}
 	
 	public function confirm() {

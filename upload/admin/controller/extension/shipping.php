@@ -19,7 +19,7 @@ class ControllerExtensionShipping extends Controller {
 		
 		$this->load->model('setting/extension');
 		
-		if ($this->validate()) {		
+		if ($this->validate()) {
 			$this->model_setting_extension->install('shipping', $this->request->get['extension']);
 
 			$this->load->model('user/user_group');
@@ -42,7 +42,7 @@ class ControllerExtensionShipping extends Controller {
 		
 		$this->load->model('setting/extension');
 		
-		if ($this->validate()) {	
+		if ($this->validate()) {
 			$this->model_setting_extension->uninstall('shipping', $this->request->get['extension']);
 		
 			$this->load->model('setting/setting');
@@ -68,7 +68,7 @@ class ControllerExtensionShipping extends Controller {
    		$this->data['breadcrumbs'][] = array(
        		'text' => $this->language->get('heading_title'),
 			'href' => $this->url->link('extension/shipping', 'token=' . $this->session->data['token'], 'SSL')
-   		);		
+   		);
 	
  		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
@@ -153,6 +153,6 @@ class ControllerExtensionShipping extends Controller {
 		} else {
 	  		return false;
 		}
-  	}		
+  	}
 }
 ?>

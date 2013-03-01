@@ -3,7 +3,7 @@ class ControllerSettingSetting extends Controller {
 	private $error = array();
  
 	public function index() {
-		$this->data += $this->language->load('setting/setting'); 
+		$this->data += $this->language->load('setting/setting');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 		
@@ -148,12 +148,12 @@ class ControllerSettingSetting extends Controller {
 				$this->load->model('localisation/currency');
 		
 				$this->model_localisation_currency->updateCurrencies();
-			}	
+			}
 			
 			$this->session->data['success'] = $this->language->get('text_success');
 
 			$this->redirect($this->url->link('setting/store', 'token=' . $this->session->data['token'], 'SSL'));
-		}																			
+		}
 
 		foreach($errors as $error) {
 			$this->data['error_' . $error] = isset($this->error[$error]) ? $this->error[$error] : '';
@@ -229,9 +229,9 @@ class ControllerSettingSetting extends Controller {
 		if (isset($this->request->post['config_customer_group_display'])) {
 			$this->data['config_customer_group_display'] = $this->request->post['config_customer_group_display'];
 		} elseif ($this->config->get('config_customer_group_display')) {
-			$this->data['config_customer_group_display'] = $this->config->get('config_customer_group_display');	
+			$this->data['config_customer_group_display'] = $this->config->get('config_customer_group_display');
 		} else {
-			$this->data['config_customer_group_display'] = array();			
+			$this->data['config_customer_group_display'] = array();
 		}
 				
 		$this->load->model('catalog/information');
@@ -241,7 +241,7 @@ class ControllerSettingSetting extends Controller {
 		if (isset($this->request->post['config_order_edit'])) {
 			$this->data['config_order_edit'] = $this->request->post['config_order_edit'];
 		} elseif ($this->config->get('config_order_edit')) {
-			$this->data['config_order_edit'] = $this->config->get('config_order_edit');			
+			$this->data['config_order_edit'] = $this->config->get('config_order_edit');
 		} else {
 			$this->data['config_order_edit'] = 7;
 		}
@@ -249,10 +249,10 @@ class ControllerSettingSetting extends Controller {
 		if (isset($this->request->post['config_invoice_prefix'])) {
 			$this->data['config_invoice_prefix'] = $this->request->post['config_invoice_prefix'];
 		} elseif ($this->config->get('config_invoice_prefix')) {
-			$this->data['config_invoice_prefix'] = $this->config->get('config_invoice_prefix');			
+			$this->data['config_invoice_prefix'] = $this->config->get('config_invoice_prefix');
 		} else {
 			$this->data['config_invoice_prefix'] = 'INV-' . date('Y') . '-00';
-		}	
+		}
 		
 		$this->load->model('localisation/order_status');
 		
@@ -265,35 +265,35 @@ class ControllerSettingSetting extends Controller {
 		if (isset($this->request->post['config_commission'])) {
 			$this->data['config_commission'] = $this->request->post['config_commission'];
 		} elseif ($this->config->has('config_commission')) {
-			$this->data['config_commission'] = $this->config->get('config_commission');		
+			$this->data['config_commission'] = $this->config->get('config_commission');
 		} else {
 			$this->data['config_commission'] = '5.00';
 		}
 		
 		$this->load->model('localisation/return_status');
 		
-		$this->data['return_statuses'] = $this->model_localisation_return_status->getReturnStatuses();	
+		$this->data['return_statuses'] = $this->model_localisation_return_status->getReturnStatuses();
 			
 		$this->load->model('tool/image');
 
 		if ($this->config->get('config_logo') && file_exists(DIR_IMAGE . $this->config->get('config_logo')) && is_file(DIR_IMAGE . $this->config->get('config_logo'))) {
-			$this->data['logo'] = $this->model_tool_image->resize($this->config->get('config_logo'), 100, 100);		
+			$this->data['logo'] = $this->model_tool_image->resize($this->config->get('config_logo'), 100, 100);
 		} else {
 			$this->data['logo'] = $this->model_tool_image->resize('no_image.jpg', 100, 100);
 		}
 		
 		if ($this->config->get('config_icon') && file_exists(DIR_IMAGE . $this->config->get('config_icon')) && is_file(DIR_IMAGE . $this->config->get('config_icon'))) {
-			$this->data['icon'] = $this->model_tool_image->resize($this->config->get('config_icon'), 100, 100);		
+			$this->data['icon'] = $this->model_tool_image->resize($this->config->get('config_icon'), 100, 100);
 		} else {
 			$this->data['icon'] = $this->model_tool_image->resize('no_image.jpg', 100, 100);
 		}
 		
-		$this->data['no_image'] = $this->model_tool_image->resize('no_image.jpg', 100, 100);		
+		$this->data['no_image'] = $this->model_tool_image->resize('no_image.jpg', 100, 100);
 				
 		if (isset($this->request->post['config_ftp_host'])) {
 			$this->data['config_ftp_host'] = $this->request->post['config_ftp_host'];
 		} elseif ($this->config->get('config_ftp_host')) {
-			$this->data['config_ftp_host'] = $this->config->get('config_ftp_host');		
+			$this->data['config_ftp_host'] = $this->config->get('config_ftp_host');
 		} else {
 			$this->data['config_ftp_host'] = str_replace('www.', '', $this->request->server['HTTP_HOST']);
 		}
@@ -304,7 +304,7 @@ class ControllerSettingSetting extends Controller {
 			$this->data['config_ftp_port'] = $this->config->get('config_ftp_port');
 		} else {
 			$this->data['config_ftp_port'] = 21;
-		}	
+		}
 		
 		if (isset($this->request->post['config_smtp_port'])) {
 			$this->data['config_smtp_port'] = $this->request->post['config_smtp_port'];
@@ -312,14 +312,14 @@ class ControllerSettingSetting extends Controller {
 			$this->data['config_smtp_port'] = $this->config->get('config_smtp_port');
 		} else {
 			$this->data['config_smtp_port'] = 25;
-		}	
+		}
 		
 		if (isset($this->request->post['config_smtp_timeout'])) {
 			$this->data['config_smtp_timeout'] = $this->request->post['config_smtp_timeout'];
 		} elseif ($this->config->get('config_smtp_timeout')) {
 			$this->data['config_smtp_timeout'] = $this->config->get('config_smtp_timeout');
 		} else {
-			$this->data['config_smtp_timeout'] = 5;	
+			$this->data['config_smtp_timeout'] = 5;
 		}
 		
 		if (isset($this->request->post['config_image_file_size'])) {
@@ -327,7 +327,7 @@ class ControllerSettingSetting extends Controller {
 		} elseif ($this->config->get('config_image_file_size')) {
 			$this->data['config_image_file_size'] = $this->config->get('config_image_file_size');
 		} else {
-			$this->data['config_image_file_size'] = 300000;	
+			$this->data['config_image_file_size'] = 300000;
 		}
 						
 		$this->template = 'setting/setting.tpl';
@@ -346,7 +346,7 @@ class ControllerSettingSetting extends Controller {
 
 		if (!$this->request->post['config_name']) {
 			$this->error['name'] = $this->language->get('error_name');
-		}	
+		}
 		
 		if ((utf8_strlen($this->request->post['config_owner']) < 3) || (utf8_strlen($this->request->post['config_owner']) > 64)) {
 			$this->error['owner'] = $this->language->get('error_owner');
@@ -366,31 +366,31 @@ class ControllerSettingSetting extends Controller {
 
 		if (!$this->request->post['config_title']) {
 			$this->error['title'] = $this->language->get('error_title');
-		}	
+		}
 		
 		if (!empty($this->request->post['config_customer_group_display']) && !in_array($this->request->post['config_customer_group_id'], $this->request->post['config_customer_group_display'])) {
 			$this->error['customer_group_display'] = $this->language->get('error_customer_group_display');
-		}	
+		}
 		
 		if (!$this->request->post['config_voucher_min']) {
 			$this->error['voucher_min'] = $this->language->get('error_voucher_min');
-		}	
+		}
 		
 		if (!$this->request->post['config_voucher_max']) {
 			$this->error['voucher_max'] = $this->language->get('error_voucher_max');
-		}	
+		}
 								
 		if (!$this->request->post['config_image_category_width'] || !$this->request->post['config_image_category_height']) {
 			$this->error['image_category'] = $this->language->get('error_image_category');
-		} 
+		}
 				
 		if (!$this->request->post['config_image_thumb_width'] || !$this->request->post['config_image_thumb_height']) {
 			$this->error['image_thumb'] = $this->language->get('error_image_thumb');
-		}	
+		}
 		
 		if (!$this->request->post['config_image_popup_width'] || !$this->request->post['config_image_popup_height']) {
 			$this->error['image_popup'] = $this->language->get('error_image_popup');
-		}	
+		}
 		
 		if (!$this->request->post['config_image_product_width'] || !$this->request->post['config_image_product_height']) {
 			$this->error['image_product'] = $this->language->get('error_image_product');
@@ -410,7 +410,7 @@ class ControllerSettingSetting extends Controller {
 		
 		if (!$this->request->post['config_image_wishlist_width'] || !$this->request->post['config_image_wishlist_height']) {
 			$this->error['image_wishlist'] = $this->language->get('error_image_wishlist');
-		}			
+		}
 		
 		if (!$this->request->post['config_image_cart_width'] || !$this->request->post['config_image_cart_height']) {
 			$this->error['image_cart'] = $this->language->get('error_image_cart');
@@ -427,11 +427,11 @@ class ControllerSettingSetting extends Controller {
 			
 			if (!$this->request->post['config_ftp_username']) {
 				$this->error['ftp_username'] = $this->language->get('error_ftp_username');
-			}	
+			}
 			
 			if (!$this->request->post['config_ftp_password']) {
 				$this->error['ftp_password'] = $this->language->get('error_ftp_password');
-			}											
+			}
 		}
 	
 		if (!$this->request->post['config_error_filename']) {
@@ -479,7 +479,7 @@ class ControllerSettingSetting extends Controller {
 		}
 		
 		$this->response->setOutput('<img src="' . $image . '" alt="" title="" style="border: 1px solid #EEEEEE;" />');
-	}		
+	}
 		
 	public function country() {
 		$json = array();
@@ -499,7 +499,7 @@ class ControllerSettingSetting extends Controller {
 				'address_format'    => $country_info['address_format'],
 				'postcode_required' => $country_info['postcode_required'],
 				'zone'              => $this->model_localisation_zone->getZonesByCountryId($this->request->get['country_id']),
-				'status'            => $country_info['status']		
+				'status'            => $country_info['status']
 			);
 		}
 		

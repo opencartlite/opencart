@@ -1,5 +1,5 @@
-<?php    
-class ControllerSaleCustomerBanIp extends Controller { 
+<?php
+class ControllerSaleCustomerBanIp extends Controller {
 	private $error = array();
   
   	public function index() {
@@ -42,7 +42,7 @@ class ControllerSaleCustomerBanIp extends Controller {
 		}
     	
     	$this->getForm();
-  	} 
+  	}
    
   	public function update() {
 		$this->data += $this->language->load('sale/customer_ban_ip');
@@ -74,7 +74,7 @@ class ControllerSaleCustomerBanIp extends Controller {
 		}
     
     	$this->getForm();
-  	}   
+  	}
 
   	public function delete() {
 		$this->data += $this->language->load('sale/customer_ban_ip');
@@ -108,13 +108,13 @@ class ControllerSaleCustomerBanIp extends Controller {
     	}
     
     	$this->getList();
-  	}  
+  	}
     
   	protected function getList() {
 		if (isset($this->request->get['sort'])) {
 			$sort = $this->request->get['sort'];
 		} else {
-			$sort = 'ip'; 
+			$sort = 'ip';
 		}
 		
 		if (isset($this->request->get['order'])) {
@@ -187,7 +187,7 @@ class ControllerSaleCustomerBanIp extends Controller {
 				'selected'           => isset($this->request->post['selected']) && in_array($result['customer_ban_ip_id'], $this->request->post['selected']),
 				'action'             => $action
 			);
-		}			
+		}
 
 		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
@@ -302,7 +302,7 @@ class ControllerSaleCustomerBanIp extends Controller {
 			
     	if (isset($this->request->post['ip'])) {
       		$this->data['ip'] = $this->request->post['ip'];
-		} elseif (!empty($customer_ban_ip_info)) { 
+		} elseif (!empty($customer_ban_ip_info)) {
 			$this->data['ip'] = $customer_ban_ip_info['ip'];
 		} else {
       		$this->data['ip'] = '';
@@ -331,18 +331,18 @@ class ControllerSaleCustomerBanIp extends Controller {
 		} else {
 	  		return false;
 		}
-  	}    
+  	}
 
   	protected function validateDelete() {
     	if (!$this->user->hasPermission('modify', 'sale/customer_ban_ip')) {
       		$this->error['warning'] = $this->language->get('error_permission');
-    	}	
+    	}
 	  	 
 		if (!$this->error) {
 	  		return true;
 		} else {
 	  		return false;
-		}  
-  	} 
+		}
+  	}
 }
 ?>

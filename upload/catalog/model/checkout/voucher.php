@@ -23,7 +23,7 @@ class ModelCheckoutVoucher extends Model {
 			
 				if (!$order_voucher_query->num_rows) {
 					$status = false;
-				}				
+				}
 			}
 			
 			$voucher_history_query = $this->db->query("SELECT SUM(amount) AS total FROM {voucher_history} vh WHERE vh.voucher_id = '" . (int)$voucher_query->row['voucher_id'] . "' GROUP BY vh.voucher_id");
@@ -36,7 +36,7 @@ class ModelCheckoutVoucher extends Model {
 			
 			if ($amount <= 0) {
 				$status = false;
-			}	
+			}
 		} else {
 			$status = false;
 		}
@@ -69,7 +69,7 @@ class ModelCheckoutVoucher extends Model {
 			$this->load->model('localisation/language');
 			
 			$language = new Language($order_info['language_directory']);
-			$language->load($order_info['language_filename']);	
+			$language->load($order_info['language_filename']);
 			$language->load('mail/voucher');
 			
 			$voucher_query = $this->db->query("SELECT *, vtd.name AS theme FROM {voucher} v LEFT JOIN {voucher_theme} vt ON (v.voucher_theme_id = vt.voucher_theme_id) LEFT JOIN {voucher_theme_description} vtd ON (vt.voucher_theme_id = vtd.voucher_theme_id) AND vtd.language_id = '" . (int)$order_info['language_id'] . "' WHERE v.order_id = '" . (int)$order_id . "'");
@@ -102,20 +102,20 @@ class ModelCheckoutVoucher extends Model {
 					$html = $template->fetch('default/template/mail/voucher.tpl');
 				}
 					
-				$mail = new Mail(); 
+				$mail = new Mail();
 				$mail->protocol = $this->config->get('config_mail_protocol');
 				$mail->parameter = $this->config->get('config_mail_parameter');
 				$mail->hostname = $this->config->get('config_smtp_host');
 				$mail->username = $this->config->get('config_smtp_username');
 				$mail->password = $this->config->get('config_smtp_password');
 				$mail->port = $this->config->get('config_smtp_port');
-				$mail->timeout = $this->config->get('config_smtp_timeout');			
+				$mail->timeout = $this->config->get('config_smtp_timeout');
 				$mail->setTo($voucher['to_email']);
 				$mail->setFrom($this->config->get('config_email'));
 				$mail->setSender($order_info['store_name']);
 				$mail->setSubject(html_entity_decode(sprintf($language->get('text_subject'), $voucher['from_name']), ENT_QUOTES, 'UTF-8'));
-				$mail->setHtml($html);				
-				$mail->send();		
+				$mail->setHtml($html);
+				$mail->send();
 			}
 		}
 	}

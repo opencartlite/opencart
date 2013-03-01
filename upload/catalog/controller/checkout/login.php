@@ -1,5 +1,5 @@
-<?php  
-class ControllerCheckoutLogin extends Controller { 
+<?php
+class ControllerCheckoutLogin extends Controller {
 	public function index() {
 		$this->data += $this->language->load('checkout/checkout');
 		
@@ -28,12 +28,12 @@ class ControllerCheckoutLogin extends Controller {
 		$json = array();
 		
 		if ($this->customer->isLogged()) {
-			$json['redirect'] = $this->url->link('checkout/checkout', '', 'SSL');			
+			$json['redirect'] = $this->url->link('checkout/checkout', '', 'SSL');
 		}
 		
 		if ((!$this->cart->hasProducts() && empty($this->session->data['vouchers'])) || (!$this->cart->hasStock() && !$this->config->get('config_stock_checkout'))) {
 			$json['redirect'] = $this->url->link('checkout/cart');
-		}	
+		}
 		
 		if (!$json) {
 			if (!$this->customer->login($this->request->post['email'], $this->request->post['password'])) {
@@ -46,7 +46,7 @@ class ControllerCheckoutLogin extends Controller {
 			
 			if ($customer_info && !$customer_info['approved']) {
 				$json['error']['warning'] = $this->language->get('error_approved');
-			}		
+			}
 		}
 		
 		if (!$json) {
@@ -55,17 +55,17 @@ class ControllerCheckoutLogin extends Controller {
 			$this->load->model('account/address');
 				
 			if ($this->config->get('config_tax_customer') == 'payment') {
-				$this->session->data['payment_addess'] = $this->model_account_address->getAddress($this->customer->getAddressId());						
+				$this->session->data['payment_addess'] = $this->model_account_address->getAddress($this->customer->getAddressId());
 			}
 			
 			if ($this->config->get('config_tax_customer') == 'shipping') {
-				$this->session->data['shipping_addess'] = $this->model_account_address->getAddress($this->customer->getAddressId());	
-			}	
+				$this->session->data['shipping_addess'] = $this->model_account_address->getAddress($this->customer->getAddressId());
+			}
 			
 			$json['redirect'] = $this->url->link('checkout/checkout', '', 'SSL');
 		}
 					
-		$this->response->setOutput(json_encode($json));		
+		$this->response->setOutput(json_encode($json));
 	}
 }
 ?>

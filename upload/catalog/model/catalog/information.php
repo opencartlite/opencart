@@ -20,6 +20,6 @@ class ModelCatalogInformation extends Model {
 		} else {
 			return $this->config->get('config_layout_information');
 		}
-	}	
+	}
 }
 ?>

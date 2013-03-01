@@ -114,7 +114,7 @@ class ControllerExtensionModification extends Controller {
 		$this->data += $this->language->load('extension/payment');
 		
 		if (!$this->user->hasPermission('modify', 'extension/payment')) {
-			$this->session->data['error'] = $this->language->get('error_permission'); 
+			$this->session->data['error'] = $this->language->get('error_permission');
 			
 			$this->redirect($this->url->link('extension/payment', 'token=' . $this->session->data['token'], 'SSL'));
 		} else {
@@ -137,10 +137,10 @@ class ControllerExtensionModification extends Controller {
 		$this->data += $this->language->load('extension/payment');
 		
 		if (!$this->user->hasPermission('modify', 'extension/payment')) {
-			$this->session->data['error'] = $this->language->get('error_permission'); 
+			$this->session->data['error'] = $this->language->get('error_permission');
 			
 			$this->redirect($this->url->link('extension/payment', 'token=' . $this->session->data['token'], 'SSL'));
-		} else {		
+		} else {
 			$this->load->model('setting/extension');
 			$this->load->model('setting/setting');
 				
@@ -150,8 +150,8 @@ class ControllerExtensionModification extends Controller {
 		
 			$this->session->data['success'] = $this->language->get('text_success');
 
-			$this->redirect($this->url->link('extension/payment', 'token=' . $this->session->data['token'], 'SSL'));	
-		}			
+			$this->redirect($this->url->link('extension/payment', 'token=' . $this->session->data['token'], 'SSL'));
+		}
 	}
 	
 	protected function getList() {
@@ -189,7 +189,7 @@ class ControllerExtensionModification extends Controller {
 						
 		$this->data += $this->language->load('extension/modification');
 		 
-		$this->document->setTitle($this->language->get('heading_title')); 
+		$this->document->setTitle($this->language->get('heading_title'));
 
   		$this->data['breadcrumbs'] = array();
 
@@ -204,7 +204,7 @@ class ControllerExtensionModification extends Controller {
    		);
 				
 		$this->data['insert'] = $this->url->link('extension/modification/insert', 'token=' . $this->session->data['token'] . $url, 'SSL');
-		$this->data['delete'] = $this->url->link('extension/modification/delete', 'token=' . $this->session->data['token'] . $url, 'SSL');	
+		$this->data['delete'] = $this->url->link('extension/modification/delete', 'token=' . $this->session->data['token'] . $url, 'SSL');
 
 		$this->data['modifications'] = array();
 
@@ -236,7 +236,7 @@ class ControllerExtensionModification extends Controller {
 				'selected'        => isset($this->request->post['selected']) && in_array($result['modification_id'], $this->request->post['selected']),
 				'action'          => $action
 			);
-		}			
+		}
 		
 		if (isset($this->session->data['success'])) {
 			$this->data['success'] = $this->session->data['success'];
@@ -362,7 +362,7 @@ class ControllerExtensionModification extends Controller {
 			'common/footer'
 		);
 				
-		$this->response->setOutput($this->render());	
+		$this->response->setOutput($this->render());
   	}
 	
 	protected function validateForm() {
@@ -382,7 +382,7 @@ class ControllerExtensionModification extends Controller {
       		$this->error['warning'] = $this->language->get('error_permission');
     	}
 		
-		if (!$this->error) { 
+		if (!$this->error) {
 	  		return true;
 		} else {
 	  		return false;
@@ -390,8 +390,8 @@ class ControllerExtensionModification extends Controller {
   	}
 			
 	public function upload() {
-/* 
-New XML Modifcation Standard 
+/*
+New XML Modifcation Standard
 
 <modification>
 	<id><![CDATA[Test]]></id>
@@ -411,9 +411,9 @@ New XML Modifcation Standard
 			
 			]]></add>
 		</operation>
-	</file>	
+	</file>
 </modification>
-*/	
+*/
 		
 		$this->data += $this->language->load('extension/manager');
 		
@@ -421,7 +421,7 @@ New XML Modifcation Standard
 		
 		if (!$this->user->hasPermission('modify', 'extension/manager')) {
       		$json['error'] = $this->language->get('error_permission') . "\n";
-    	}		
+    	}
 		
 		if (!empty($this->request->files['file']['name'])) {
 			if (strrchr($this->request->files['file']['name'], '.') != '.zip') {
@@ -501,10 +501,10 @@ New XML Modifcation Standard
 								echo 'Made directory ' . $destination . '<br />';
 							}
 						}
-					}	
+					}
 					
 					if (is_file($file)) {
-						if (ftp_put($connection, $destination, $file, FTP_ASCII)) {		
+						if (ftp_put($connection, $destination, $file, FTP_ASCII)) {
 							echo 'Successfully uploaded ' . $file . '<br />';
 						}
 					}
@@ -526,7 +526,7 @@ New XML Modifcation Standard
 				if (is_file($file)) {
 					unlink($file);
 				} elseif (is_dir($file)) {
-					rmdir($file);	
+					rmdir($file);
 				}
 			}
 			
@@ -535,17 +535,17 @@ New XML Modifcation Standard
 			}
 						
 			$json['success'] = $this->language->get('text_success');
-		}	
+		}
 		
 		
-		if (file_exists($file)) { 
+		if (file_exists($file)) {
 			$xml = file_get_contents($file);
 			
 			$this->parse($xml);
 		} else {
 			trigger_error('Error: Could not load modification ' . $file . '!');
 			exit();
-		}	
+		}
 		
 
 					
@@ -564,7 +564,7 @@ New XML Modifcation Standard
 					$query = str_replace("CREATE TABLE `oc_", "CREATE TABLE `" . $data['db_prefix'], $query);
 					$query = str_replace("INSERT INTO `oc_", "INSERT INTO `" . $data['db_prefix'], $query);
 					
-					$result = mysql_query($query, $connection); 
+					$result = mysql_query($query, $connection);
 
 					if (!$result) {
 						die(mysql_error());
@@ -573,7 +573,7 @@ New XML Modifcation Standard
 					$query = '';
 				}
 			}
-		}	
+		}
 	}
 	
 	public function xml() {
@@ -582,7 +582,7 @@ New XML Modifcation Standard
 		
 		$files = array();
 		
-		$files = $dom->getElementsByTagName('modification')->item(0)->getElementsByTagName('file');		
+		$files = $dom->getElementsByTagName('modification')->item(0)->getElementsByTagName('file');
 		
 
 		
@@ -592,7 +592,7 @@ New XML Modifcation Standard
 			
 		//		if ($files) {
 			
-		//		}			
+		//		}
 		//	}
 
 			$filename = $file->getAttribute('name');
@@ -603,7 +603,7 @@ New XML Modifcation Standard
 				} else {
 					trigger_error('Error: Could not load language ' . $filename . '!');
 					exit();
-				}			
+				}
 			} else {
 				$content = $this->data[$filename];
 			}
@@ -627,7 +627,7 @@ New XML Modifcation Standard
 						break;
 					case 'before':
 						$replace = $add . $search;
-						break;					
+						break;
 					case 'after':
 						$replace = $search . $add;
 						break;
@@ -638,10 +638,10 @@ New XML Modifcation Standard
 				$result = array();
 
 				while (($pos = strpos($content, $search, $pos + 1)) !== false) {
-					$result[$i++] = $pos; 
+					$result[$i++] = $pos;
 				}
 				
-				// Only replace the occurance of the string that is equal to the index					
+				// Only replace the occurance of the string that is equal to the index
 				if (isset($result[$index - 1])) {
 					$content = substr_replace($content, $replace, $result[$index - 1], strlen($search));
 				}
@@ -652,6 +652,6 @@ New XML Modifcation Standard
 			echo $content;
 			echo '</pre>';
 		}
-	}			
+	}
 }
 ?>

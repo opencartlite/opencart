@@ -1,4 +1,4 @@
-<?php  
+<?php
 class ControllerModuleFilter extends Controller {
 	protected function index($setting) {
 		if (isset($this->request->get['path'])) {
@@ -20,11 +20,11 @@ class ControllerModuleFilter extends Controller {
 			
 			if (isset($this->request->get['sort'])) {
 				$url .= '&sort=' . $this->request->get['sort'];
-			}	
+			}
 
 			if (isset($this->request->get['order'])) {
 				$url .= '&order=' . $this->request->get['order'];
-			}	
+			}
 			
 			if (isset($this->request->get['limit'])) {
 				$url .= '&limit=' . $this->request->get['limit'];
@@ -52,7 +52,7 @@ class ControllerModuleFilter extends Controller {
 						$data = array(
 							'filter_category_id' => $category_id,
 							'filter_filter'      => $filter['filter_id']
-						);	
+						);
 						
 						$filter_data[] = array(
 							'filter_id' => $filter['filter_id'],
@@ -65,7 +65,7 @@ class ControllerModuleFilter extends Controller {
 						'name'            => $filter_group['name'],
 						'filter'          => $filter_data
 					);
-				} 
+				}
 			
 				if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/module/filter.tpl')) {
 					$this->template = $this->config->get('config_template') . '/template/module/filter.tpl';

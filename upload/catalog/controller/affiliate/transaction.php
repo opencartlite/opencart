@@ -5,7 +5,7 @@ class ControllerAffiliateTransaction extends Controller {
 			$this->session->data['redirect'] = $this->url->link('affiliate/transaction', '', 'SSL');
 			
 	  		$this->redirect($this->url->link('affiliate/login', '', 'SSL'));
-    	}		
+    	}
 		
 		$this->data += $this->language->load('affiliate/transaction');
 
@@ -16,14 +16,14 @@ class ControllerAffiliateTransaction extends Controller {
       	$this->data['breadcrumbs'][] = array(
         	'text' => $this->language->get('text_home'),
 			'href' => $this->url->link('common/home')
-      	); 
+      	);
 
-      	$this->data['breadcrumbs'][] = array(       	
+      	$this->data['breadcrumbs'][] = array(
         	'text' => $this->language->get('text_account'),
 			'href' => $this->url->link('affiliate/account', '', 'SSL')
       	);
 		
-      	$this->data['breadcrumbs'][] = array(       	
+      	$this->data['breadcrumbs'][] = array(
         	'text' => $this->language->get('text_transaction'),
 			'href' => $this->url->link('affiliate/transaction', '', 'SSL')
       	);
@@ -35,11 +35,11 @@ class ControllerAffiliateTransaction extends Controller {
 			$page = $this->request->get['page'];
 		} else {
 			$page = 1;
-		}		
+		}
 		
 		$this->data['transactions'] = array();
 		
-		$data = array(				  
+		$data = array(
 			'sort'  => 't.date_added',
 			'order' => 'DESC',
 			'start' => ($page - 1) * 10,
@@ -56,12 +56,12 @@ class ControllerAffiliateTransaction extends Controller {
 				'description' => $result['description'],
 				'date_added'  => date($this->language->get('date_format_short'), strtotime($result['date_added']))
 			);
-		}	
+		}
 
 		$pagination = new Pagination();
 		$pagination->total = $transaction_total;
 		$pagination->page = $page;
-		$pagination->limit = 10; 
+		$pagination->limit = 10;
 		$pagination->text = $this->language->get('text_pagination');
 		$pagination->url = $this->url->link('affiliate/transaction', 'page={page}', 'SSL');
 			
@@ -83,10 +83,10 @@ class ControllerAffiliateTransaction extends Controller {
 			'common/content_top',
 			'common/content_bottom',
 			'common/footer',
-			'common/header'	
+			'common/header'
 		);
 						
-		$this->response->setOutput($this->render());		
-	} 		
+		$this->response->setOutput($this->render());
+	}
 }
 ?>

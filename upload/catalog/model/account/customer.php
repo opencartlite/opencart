@@ -45,7 +45,7 @@ class ModelAccountCustomer extends Model {
 		$mail->username = $this->config->get('config_smtp_username');
 		$mail->password = $this->config->get('config_smtp_password');
 		$mail->port = $this->config->get('config_smtp_port');
-		$mail->timeout = $this->config->get('config_smtp_timeout');				
+		$mail->timeout = $this->config->get('config_smtp_timeout');
 		$mail->setTo($data['email']);
 		$mail->setFrom($this->config->get('config_email'));
 		$mail->setSender($this->config->get('config_name'));
@@ -132,19 +132,19 @@ class ModelAccountCustomer extends Model {
 		
 		if (isset($data['filter_customer_group_id']) && $data['filter_customer_group_id'] !== null) {
 			$implode[] = "cg.customer_group_id = '" . $this->db->escape($data['filter_customer_group_id']) . "'";
-		}	
+		}
 		
 		if (isset($data['filter_status']) && $data['filter_status'] !== null) {
 			$implode[] = "c.status = '" . (int)$data['filter_status'] . "'";
-		}	
+		}
 		
 		if (isset($data['filter_approved']) && $data['filter_approved'] !== null) {
 			$implode[] = "c.approved = '" . (int)$data['filter_approved'] . "'";
-		}	
+		}
 			
 		if (isset($data['filter_ip']) && $data['filter_ip'] !== null) {
 			$implode[] = "c.customer_id IN (SELECT customer_id FROM {customer_ip} WHERE ip = '" . $this->db->escape($data['filter_ip']) . "')";
-		}	
+		}
 				
 		if (isset($data['filter_date_added']) && $data['filter_date_added'] !== null) {
 			$implode[] = "DATE(c.date_added) = DATE('" . $this->db->escape($data['filter_date_added']) . "')";
@@ -161,12 +161,12 @@ class ModelAccountCustomer extends Model {
 			'c.status',
 			'c.ip',
 			'c.date_added'
-		);	
+		);
 			
 		if (isset($data['sort']) && in_array($data['sort'], $sort_data)) {
-			$sql .= " ORDER BY " . $data['sort'];	
+			$sql .= " ORDER BY " . $data['sort'];
 		} else {
-			$sql .= " ORDER BY name";	
+			$sql .= " ORDER BY name";
 		}
 			
 		if (isset($data['order']) && ($data['order'] == 'DESC')) {
@@ -178,18 +178,18 @@ class ModelAccountCustomer extends Model {
 		if (isset($data['start']) || isset($data['limit'])) {
 			if ($data['start'] < 0) {
 				$data['start'] = 0;
-			}			
+			}
 
 			if ($data['limit'] < 1) {
 				$data['limit'] = 20;
-			}	
+			}
 			
 			$sql .= " LIMIT " . (int)$data['start'] . "," . (int)$data['limit'];
-		}		
+		}
 		
 		$query = $this->db->query($sql);
 		
-		return $query->rows;	
+		return $query->rows;
 	}
 		
 	public function getTotalCustomersByEmail($email) {
@@ -202,12 +202,12 @@ class ModelAccountCustomer extends Model {
 		$query = $this->db->query("SELECT * FROM {customer_ip} WHERE customer_id = '" . (int)$customer_id . "'");
 		
 		return $query->rows;
-	}	
+	}
 	
 	public function isBanIp($ip) {
 		$query = $this->db->query("SELECT * FROM {customer_ban_ip} WHERE ip = '" . $this->db->escape($ip) . "'");
 		
 		return $query->num_rows;
-	}	
+	}
 }
 ?>

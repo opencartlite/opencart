@@ -1,8 +1,8 @@
 <?php
 class ControllerModuleStore extends Controller {
-	private $error = array(); 
+	private $error = array();
 	
-	public function index() {   
+	public function index() {
 		$this->data += $this->language->load('module/store');
 
 		$this->document->setTitle($this->language->get('heading_title'));
@@ -10,12 +10,12 @@ class ControllerModuleStore extends Controller {
 		$this->load->model('setting/setting');
 				
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
-			$this->model_setting_setting->editSetting('store', $this->request->post);		
+			$this->model_setting_setting->editSetting('store', $this->request->post);
 					 
 			$this->session->data['success'] = $this->language->get('text_success');
 						
 			$this->redirect($this->url->link('extension/module', 'token=' . $this->session->data['token'], 'SSL'));
-		}		
+		}
 		
  		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
@@ -48,13 +48,13 @@ class ControllerModuleStore extends Controller {
 			$this->data['store_admin'] = $this->request->post['store_admin'];
 		} else {
 			$this->data['store_admin'] = $this->config->get('store_admin');
-		}	
+		}
 			
 		$this->data['modules'] = array();
 		
 		if (isset($this->request->post['store_module'])) {
 			$this->data['modules'] = $this->request->post['store_module'];
-		} elseif ($this->config->get('store_module')) { 
+		} elseif ($this->config->get('store_module')) {
 			$this->data['modules'] = $this->config->get('store_module');
 		}
 		
@@ -80,7 +80,7 @@ class ControllerModuleStore extends Controller {
 			return true;
 		} else {
 			return false;
-		}	
+		}
 	}
 }
 ?>

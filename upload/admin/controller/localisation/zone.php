@@ -1,6 +1,6 @@
-<?php 
+<?php
 class ControllerLocalisationZone extends Controller {
-	private $error = array(); 
+	private $error = array();
 
 	public function index() {
 		$this->data += $this->language->load('localisation/zone');
@@ -52,7 +52,7 @@ class ControllerLocalisationZone extends Controller {
 		$this->load->model('localisation/zone');
 		
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
-			$this->model_localisation_zone->editZone($this->request->get['zone_id'], $this->request->post);			
+			$this->model_localisation_zone->editZone($this->request->get['zone_id'], $this->request->post);
 			
 			$this->session->data['success'] = $this->language->get('text_success');
 			
@@ -86,7 +86,7 @@ class ControllerLocalisationZone extends Controller {
 		if (isset($this->request->post['selected']) && $this->validateDelete()) {
 			foreach ($this->request->post['selected'] as $zone_id) {
 				$this->model_localisation_zone->deleteZone($zone_id);
-			}			
+			}
 			
 			$this->session->data['success'] = $this->language->get('text_success');
 			
@@ -185,9 +185,9 @@ class ControllerLocalisationZone extends Controller {
 				'name'     => $result['name'] . (($result['zone_id'] == $this->config->get('config_zone_id')) ? $this->language->get('text_default') : null),
 				'code'     => $result['code'],
 				'selected' => isset($this->request->post['selected']) && in_array($result['zone_id'], $this->request->post['selected']),
-				'action'   => $action			
+				'action'   => $action
 			);
-		}	
+		}
  
  		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];

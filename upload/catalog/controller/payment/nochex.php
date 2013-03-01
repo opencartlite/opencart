@@ -52,7 +52,7 @@ class ControllerPaymentNochex extends Controller {
 				$this->data['delivery_address'] = $order_info['shipping_address_1'] . "\r\n" . $order_info['payment_city'] . "\r\n" . $order_info['payment_zone'] . "\r\n";
 			}
 		
-        	$this->data['delivery_postcode'] = $order_info['payment_postcode'];			
+        	$this->data['delivery_postcode'] = $order_info['payment_postcode'];
 		}
 		
         $this->data['email_address'] = $order_info['email'];
@@ -67,7 +67,7 @@ class ControllerPaymentNochex extends Controller {
 			$this->template = $this->config->get('config_template') . '/template/payment/nochex.tpl';
 		} else {
 			$this->template = 'default/template/payment/nochex.tpl';
-		}	
+		}
 		
 		$this->render();
 	}
@@ -78,7 +78,7 @@ class ControllerPaymentNochex extends Controller {
 		if (isset($this->request->get['method']) && $this->request->get['method'] == 'decline') {
 			$this->session->data['error'] = $this->language->get('error_declined');
 			
-			$this->redirect($this->url->link('checkout/cart')); 
+			$this->redirect($this->url->link('checkout/cart'));
 		}
 		
 		if (isset($this->request->post['order_id'])) {

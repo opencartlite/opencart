@@ -11,7 +11,7 @@ class ModelShippingFedex extends Model {
 			$status = true;
 		} else {
 			$status = false;
-		}	
+		}
 		
 		$error = '';
 		
@@ -69,8 +69,8 @@ class ModelShippingFedex extends Model {
 			$xml .= '			<ns1:ReturnTransitAndCommit>true</ns1:ReturnTransitAndCommit>';
 			$xml .= '			<ns1:RequestedShipment>';
 			$xml .= '				<ns1:ShipTimestamp>' . date('c', $date) . '</ns1:ShipTimestamp>';
-			$xml .= '				<ns1:DropoffType>' . $this->config->get('fedex_dropoff_type') . '</ns1:DropoffType>';	
-			$xml .= '				<ns1:PackagingType>' . $this->config->get('fedex_packaging_type') . '</ns1:PackagingType>';					
+			$xml .= '				<ns1:DropoffType>' . $this->config->get('fedex_dropoff_type') . '</ns1:DropoffType>';
+			$xml .= '				<ns1:PackagingType>' . $this->config->get('fedex_packaging_type') . '</ns1:PackagingType>';
 			$xml .= '				<ns1:Shipper>';
 			$xml .= '					<ns1:Contact>';
             $xml .= '						<ns1:PersonName>' . $this->config->get('config_owner') . '</ns1:PersonName>';
@@ -137,23 +137,23 @@ class ModelShippingFedex extends Model {
 			$xml .= '			</ns1:RequestedShipment>';
 			$xml .= '		</ns1:RateRequest>';
 			$xml .= '	</SOAP-ENV:Body>';
-			$xml .= '</SOAP-ENV:Envelope>';		
+			$xml .= '</SOAP-ENV:Envelope>';
 						
-			$curl = curl_init($url);  
+			$curl = curl_init($url);
 			
 			curl_setopt($curl, CURLOPT_POST, true);
 			curl_setopt($curl, CURLOPT_POSTFIELDS, $xml);
 			curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 			curl_setopt($curl, CURLOPT_HEADER, false);
 			curl_setopt($curl, CURLOPT_TIMEOUT, 30);
-			curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false); 
+			curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
 			
-			$response = curl_exec($curl);  
+			$response = curl_exec($curl);
 			
-			curl_close($curl); 
+			curl_close($curl);
 			
 			$dom = new DOMDocument('1.0', 'UTF-8');
-			$dom->loadXml($response);	
+			$dom->loadXml($response);
 	
 			if ($dom->getElementsByTagName('HighestSeverity')->item(0)->nodeValue == 'FAILURE' || $dom->getElementsByTagName('HighestSeverity')->item(0)->nodeValue == 'ERROR') {
 				$error = $dom->getElementsByTagName('HighestSeverity')->item(0)->nodeValue;
@@ -162,7 +162,7 @@ class ModelShippingFedex extends Model {
 			} else {
 				$rate_reply_details = $dom->getElementsByTagName('RateReplyDetails');
 				
-				foreach ($rate_reply_details as $rate_reply_detail) { 
+				foreach ($rate_reply_details as $rate_reply_detail) {
 					$code = strtolower($rate_reply_detail->getElementsByTagName('ServiceType')->item(0)->nodeValue);
 					
 					if (in_array(strtoupper($code), $this->config->get('fedex_service'))) {
@@ -210,5 +210,5 @@ class ModelShippingFedex extends Model {
 	
 		return $method_data;
 	}
-}		
+}
 ?>

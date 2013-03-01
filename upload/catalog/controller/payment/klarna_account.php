@@ -6,13 +6,13 @@ class ControllerPaymentKlarnaAccount extends Controller {
         $order_info = $this->model_checkout_order->getOrder($this->session->data['order_id']);
 		
 		if ($order_info) {
-			$this->data += $this->language->load('payment/klarna_account');																
+			$this->data += $this->language->load('payment/klarna_account');
 			
 			$this->data['days'] = array();
 			
 			for ($i = 1; $i <= 31; $i++) {
 				$this->data['days'][] = array(
-					'text'  => sprintf('%02d', $i), 
+					'text'  => sprintf('%02d', $i),
 					'value' => $i
 				);
 			}
@@ -21,10 +21,10 @@ class ControllerPaymentKlarnaAccount extends Controller {
 			
 			for ($i = 1; $i <= 12; $i++) {
 				$this->data['months'][] = array(
-					'text'  => sprintf('%02d', $i), 
+					'text'  => sprintf('%02d', $i),
 					'value' => $i
 				);
-			}			
+			}
 				
 			$this->data['years'] = array();
 	
@@ -33,7 +33,7 @@ class ControllerPaymentKlarnaAccount extends Controller {
 					'text'  => $i,
 					'value' => $i
 				);
-			}			
+			}
 
 			// Store Taxes to send to Klarna
 			$total_data = array();
@@ -42,7 +42,7 @@ class ControllerPaymentKlarnaAccount extends Controller {
 			 
 			$this->load->model('setting/extension');
 			
-			$sort_order = array(); 
+			$sort_order = array();
 			
 			$results = $this->model_setting_extension->getExtensions('total');
 			
@@ -144,7 +144,7 @@ class ControllerPaymentKlarnaAccount extends Controller {
 				$pclasses = array();
 			}
 
-			foreach ($pclasses as $pclass) {                
+			foreach ($pclasses as $pclass) {
 				// 0 - Campaign
 				// 1 - Account
 				// 2 - Special
@@ -237,7 +237,7 @@ class ControllerPaymentKlarnaAccount extends Controller {
 				$payment_option[$pclass['id']]['monthly_cost'] = $monthly_cost;
 			}
 			
-			$sort_order = array(); 
+			$sort_order = array();
 			  
 			foreach ($payment_option as $key => $value) {
 				$sort_order[$key] = $value['pclass_id'];
@@ -281,7 +281,7 @@ class ControllerPaymentKlarnaAccount extends Controller {
 			
 			if ($this->cart->hasShipping() && !($order_info['payment_firstname'] == $order_info['shipping_firstname'] && $order_info['payment_lastname'] == $order_info['shipping_lastname'] && $order_info['payment_address_1'] == $order_info['shipping_address_1'] && $order_info['payment_address_2'] == $order_info['shipping_address_2'] && $order_info['payment_postcode'] == $order_info['shipping_postcode'] && $order_info['payment_city'] == $order_info['shipping_city'] && $order_info['payment_zone_id'] == $order_info['shipping_zone_id'] && $order_info['payment_zone_code'] == $order_info['shipping_zone_code'] && $order_info['payment_country_id'] == $order_info['shipping_country_id'] && $order_info['payment_country'] == $order_info['shipping_country'] && $order_info['payment_iso_code_3'] == $order_info['shipping_iso_code_3'])) {
 				$json['error'] = $this->language->get('error_address_match');
-			}		
+			}
 		
 			if (!$json) {
 				$klarna_account = $this->config->get('klarna_account');
@@ -323,21 +323,21 @@ class ControllerPaymentKlarnaAccount extends Controller {
 						$encoding = 5;
 						$currency = 3;
 						break;
-					// Norway	
+					// Norway
 					case 'NOR':
 						$country = 164;
 						$language = 97;
 						$encoding = 3;
 						$currency = 1;
 						break;
-					// Germany	
+					// Germany
 					case 'DEU':
 						$country = 81;
 						$language = 28;
 						$encoding = 6;
 						$currency = 2;
 						break;
-					// Netherlands															
+					// Netherlands
 					case 'NLD':
 						$country = 154;
 						$language = 101;
@@ -450,20 +450,20 @@ class ControllerPaymentKlarnaAccount extends Controller {
 					$pno,
 					$gender,
 					'',
-					'', 
-					(string)$order_info['order_id'], 
 					'',
-					$address, 
-					$address, 
+					(string)$order_info['order_id'],
+					'',
+					$address,
+					$address,
 					$order_info['ip'],
-					0, 
-					$currency, 
+					0,
+					$currency,
 					$country,
-					$language, 
+					$language,
 					(int)$klarna_account[$order_info['payment_iso_code_3']]['merchant'],
-					$digest, 
+					$digest,
 					$encoding,
-					$pclass, 
+					$pclass,
 					$goods_list,
 					$order_info['comment'],
 					array('delay_adjust' => 1),
@@ -483,7 +483,7 @@ class ControllerPaymentKlarnaAccount extends Controller {
 				}
 				
 				$xml .= '  </params>';
-				$xml .= '</methodCall>';        
+				$xml .= '</methodCall>';
 				
 				$header  = 'Content-Type: text/xml' . "\n";
 				$header .= 'Content-Length: ' . strlen($xml) . "\n";
@@ -514,7 +514,7 @@ class ControllerPaymentKlarnaAccount extends Controller {
 						$log = new Log('klarna_account.log');
 						$log->write('Failed to create an invoice for order #' . $order_info['order_id'] . '. Message: ' . utf8_encode($match[1]) . ' Code: ' . $match2[1]);
 						
-						$json['error'] = utf8_encode($match[1]); 
+						$json['error'] = utf8_encode($match[1]);
 					} else {
 						$xml = new DOMDocument();
 						$xml->loadXML($response);
@@ -681,6 +681,6 @@ class ControllerPaymentKlarnaAccount extends Controller {
         }
         
         return $defpos;
-    }	
+    }
 }
 ?>

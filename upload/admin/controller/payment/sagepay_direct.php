@@ -1,6 +1,6 @@
-<?php 
+<?php
 class ControllerPaymentSagepayDirect extends Controller {
-	private $error = array(); 
+	private $error = array();
 
 	public function index() {
 		$this->data += $this->language->load('payment/sagepay_direct');
@@ -10,12 +10,12 @@ class ControllerPaymentSagepayDirect extends Controller {
 		$this->load->model('setting/setting');
 			
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
-			$this->model_setting_setting->editSetting('sagepay_direct', $this->request->post);				
+			$this->model_setting_setting->editSetting('sagepay_direct', $this->request->post);
 			
 			$this->session->data['success'] = $this->language->get('text_success');
 
 			$this->redirect($this->url->link('extension/payment', 'token=' . $this->session->data['token'], 'SSL'));
-		}			
+		}
 
  		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
@@ -78,14 +78,14 @@ class ControllerPaymentSagepayDirect extends Controller {
 		if (isset($this->request->post['sagepay_direct_total'])) {
 			$this->data['sagepay_direct_total'] = $this->request->post['sagepay_direct_total'];
 		} else {
-			$this->data['sagepay_direct_total'] = $this->config->get('sagepay_direct_total'); 
-		} 
+			$this->data['sagepay_direct_total'] = $this->config->get('sagepay_direct_total');
+		}
 				
 		if (isset($this->request->post['sagepay_direct_order_status_id'])) {
 			$this->data['sagepay_direct_order_status_id'] = $this->request->post['sagepay_direct_order_status_id'];
 		} else {
-			$this->data['sagepay_direct_order_status_id'] = $this->config->get('sagepay_direct_order_status_id'); 
-		} 
+			$this->data['sagepay_direct_order_status_id'] = $this->config->get('sagepay_direct_order_status_id');
+		}
 
 		$this->load->model('localisation/order_status');
 		
@@ -94,8 +94,8 @@ class ControllerPaymentSagepayDirect extends Controller {
 		if (isset($this->request->post['sagepay_direct_geo_zone_id'])) {
 			$this->data['sagepay_direct_geo_zone_id'] = $this->request->post['sagepay_direct_geo_zone_id'];
 		} else {
-			$this->data['sagepay_direct_geo_zone_id'] = $this->config->get('sagepay_direct_geo_zone_id'); 
-		} 
+			$this->data['sagepay_direct_geo_zone_id'] = $this->config->get('sagepay_direct_geo_zone_id');
+		}
 		
 		$this->load->model('localisation/geo_zone');
 										
@@ -135,7 +135,7 @@ class ControllerPaymentSagepayDirect extends Controller {
 			return true;
 		} else {
 			return false;
-		}	
+		}
 	}
 }
 ?>

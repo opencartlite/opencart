@@ -1,6 +1,6 @@
 <?php
-class ControllerCheckoutSuccess extends Controller { 
-	public function index() { 	
+class ControllerCheckoutSuccess extends Controller {
+	public function index() {
 		if (isset($this->session->data['order_id'])) {
 			$this->cart->clear();
 
@@ -10,23 +10,23 @@ class ControllerCheckoutSuccess extends Controller {
 			unset($this->session->data['payment_methods']);
 			unset($this->session->data['guest']);
 			unset($this->session->data['comment']);
-			unset($this->session->data['order_id']);	
+			unset($this->session->data['order_id']);
 			unset($this->session->data['coupon']);
 			unset($this->session->data['reward']);
 			unset($this->session->data['voucher']);
 			unset($this->session->data['vouchers']);
-		}	
+		}
 									   
 		$this->data += $this->language->load('checkout/success');
 		
 		$this->document->setTitle($this->language->get('heading_title'));
 		
-		$this->data['breadcrumbs'] = array(); 
+		$this->data['breadcrumbs'] = array();
 
       	$this->data['breadcrumbs'][] = array(
         	'text' => $this->language->get('text_home'),
 			'href' => $this->url->link('common/home')
-      	); 
+      	);
 		
       	$this->data['breadcrumbs'][] = array(
         	'text' => $this->language->get('text_basket'),
@@ -36,7 +36,7 @@ class ControllerCheckoutSuccess extends Controller {
 		$this->data['breadcrumbs'][] = array(
 			'text' => $this->language->get('text_checkout'),
 			'href' => $this->url->link('checkout/checkout', '', 'SSL')
-		);	
+		);
 					
       	$this->data['breadcrumbs'][] = array(
         	'text' => $this->language->get('text_success'),
@@ -63,7 +63,7 @@ class ControllerCheckoutSuccess extends Controller {
 			'common/content_top',
 			'common/content_bottom',
 			'common/footer',
-			'common/header'			
+			'common/header'
 		);
 				
 		$this->response->setOutput($this->render());

@@ -10,7 +10,7 @@ class ControllerStep2 extends Controller {
 		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
 		} else {
-			$this->data['error_warning'] = '';	
+			$this->data['error_warning'] = '';
 		}
 		
 		$this->data['action'] = $this->url->link('step_2');
@@ -31,7 +31,7 @@ class ControllerStep2 extends Controller {
 		$this->children = array(
 			'header',
 			'footer'
-		);		
+		);
 		
 		$this->response->setOutput($this->render());
 	}

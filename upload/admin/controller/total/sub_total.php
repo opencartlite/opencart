@@ -1,8 +1,8 @@
-<?php 
-class ControllerTotalSubTotal extends Controller { 
-	private $error = array(); 
+<?php
+class ControllerTotalSubTotal extends Controller {
+	private $error = array();
 	 
-	public function index() { 
+	public function index() {
 		$this->data += $this->language->load('total/sub_total');
 
 		$this->document->setTitle($this->language->get('heading_title'));
@@ -74,7 +74,7 @@ class ControllerTotalSubTotal extends Controller {
 			return true;
 		} else {
 			return false;
-		}	
+		}
 	}
 }
 ?>

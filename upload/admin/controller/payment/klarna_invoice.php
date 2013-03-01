@@ -18,7 +18,7 @@ class ControllerPaymentKlarnaInvoice extends Controller {
 					
 					break;
 				}
-			}			
+			}
 			
 			$data = array(
 				'klarna_invoice_pclasses' => $this->pclasses,
@@ -30,7 +30,7 @@ class ControllerPaymentKlarnaInvoice extends Controller {
 			$this->session->data['success'] = $this->language->get('text_success');
 
             $this->redirect($this->url->link('extension/payment', 'token=' . $this->session->data['token'], 'SSL'));
-        }			
+        }
 				       
         if (isset($this->error['warning'])) {
             $this->data['error_warning'] = $this->error['warning'];
@@ -121,7 +121,7 @@ class ControllerPaymentKlarnaInvoice extends Controller {
             $this->data['log'] = '';
         }
         
-        $this->data['clear'] = $this->url->link('payment/klarna_invoice/clear', 'token=' . $this->session->data['token'], 'SSL'); 
+        $this->data['clear'] = $this->url->link('payment/klarna_invoice/clear', 'token=' . $this->session->data['token'], 'SSL');
 
         $this->template = 'payment/klarna_invoice.tpl';
         $this->children = array(
@@ -196,13 +196,13 @@ class ControllerPaymentKlarnaInvoice extends Controller {
 		
 		$file = DIR_LOGS . 'klarna_invoice.log';
 		
-		$handle = fopen($file, 'w+'); 
+		$handle = fopen($file, 'w+');
 				
-		fclose($handle); 
+		fclose($handle);
 				
 		$this->session->data['success'] = $this->language->get('text_success');
         
         $this->redirect($this->url->link('payment/klarna_invoice', 'token=' . $this->session->data['token'], 'SSL'));
-    }    
+    }
 }
 ?>

@@ -1,5 +1,5 @@
-<?php 
-class ControllerLocalisationReturnReason extends Controller { 
+<?php
+class ControllerLocalisationReturnReason extends Controller {
 	private $error = array();
    
   	public function index() {
@@ -156,7 +156,7 @@ class ControllerLocalisationReturnReason extends Controller {
    		);
 							
 		$this->data['insert'] = $this->url->link('localisation/return_reason/insert', 'token=' . $this->session->data['token'] . $url, 'SSL');
-		$this->data['delete'] = $this->url->link('localisation/return_reason/delete', 'token=' . $this->session->data['token'] . $url, 'SSL');	
+		$this->data['delete'] = $this->url->link('localisation/return_reason/delete', 'token=' . $this->session->data['token'] . $url, 'SSL');
 
 		$this->data['return_reasons'] = array();
 
@@ -185,7 +185,7 @@ class ControllerLocalisationReturnReason extends Controller {
 				'selected'      => isset($this->request->post['selected']) && in_array($result['return_reason_id'], $this->request->post['selected']),
 				'action'        => $action
 			);
-		}			
+		}
  
  		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
@@ -312,7 +312,7 @@ class ControllerLocalisationReturnReason extends Controller {
 			'common/footer'
 		);
 				
-		$this->response->setOutput($this->render());	
+		$this->response->setOutput($this->render());
   	}
   	
 	protected function validateForm() {
@@ -344,15 +344,15 @@ class ControllerLocalisationReturnReason extends Controller {
 			$return_total = $this->model_sale_return->getTotalReturnsByReturnReasonId($return_reason_id);
 		
 			if ($return_total) {
-	  			$this->error['warning'] = sprintf($this->language->get('error_return'), $return_total);	
-			}  
+	  			$this->error['warning'] = sprintf($this->language->get('error_return'), $return_total);
+			}
 	  	}
 		
-		if (!$this->error) { 
+		if (!$this->error) {
 	  		return true;
 		} else {
 	  		return false;
 		}
-  	}	  
+  	}
 }
 ?>

@@ -1,6 +1,6 @@
-<?php 
+<?php
 class ControllerPaymentAuthorizenetAim extends Controller {
-	private $error = array(); 
+	private $error = array();
 
 	public function index() {
 		$this->data += $this->language->load('payment/authorizenet_aim');
@@ -10,12 +10,12 @@ class ControllerPaymentAuthorizenetAim extends Controller {
 		$this->load->model('setting/setting');
 			
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
-			$this->model_setting_setting->editSetting('authorizenet_aim', $this->request->post);				
+			$this->model_setting_setting->editSetting('authorizenet_aim', $this->request->post);
 			
 			$this->session->data['success'] = $this->language->get('text_success');
 
 			$this->redirect($this->url->link('extension/payment', 'token=' . $this->session->data['token'], 'SSL'));
-		}					
+		}
 
  		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
@@ -95,14 +95,14 @@ class ControllerPaymentAuthorizenetAim extends Controller {
 		if (isset($this->request->post['authorizenet_aim_total'])) {
 			$this->data['authorizenet_aim_total'] = $this->request->post['authorizenet_aim_total'];
 		} else {
-			$this->data['authorizenet_aim_total'] = $this->config->get('authorizenet_aim_total'); 
-		} 
+			$this->data['authorizenet_aim_total'] = $this->config->get('authorizenet_aim_total');
+		}
 				
 		if (isset($this->request->post['authorizenet_aim_order_status_id'])) {
 			$this->data['authorizenet_aim_order_status_id'] = $this->request->post['authorizenet_aim_order_status_id'];
 		} else {
-			$this->data['authorizenet_aim_order_status_id'] = $this->config->get('authorizenet_aim_order_status_id'); 
-		} 
+			$this->data['authorizenet_aim_order_status_id'] = $this->config->get('authorizenet_aim_order_status_id');
+		}
 
 		$this->load->model('localisation/order_status');
 		
@@ -111,8 +111,8 @@ class ControllerPaymentAuthorizenetAim extends Controller {
 		if (isset($this->request->post['authorizenet_aim_geo_zone_id'])) {
 			$this->data['authorizenet_aim_geo_zone_id'] = $this->request->post['authorizenet_aim_geo_zone_id'];
 		} else {
-			$this->data['authorizenet_aim_geo_zone_id'] = $this->config->get('authorizenet_aim_geo_zone_id'); 
-		} 
+			$this->data['authorizenet_aim_geo_zone_id'] = $this->config->get('authorizenet_aim_geo_zone_id');
+		}
 		
 		$this->load->model('localisation/geo_zone');
 										
@@ -156,7 +156,7 @@ class ControllerPaymentAuthorizenetAim extends Controller {
 			return true;
 		} else {
 			return false;
-		}	
+		}
 	}
 }
 ?>

@@ -1,4 +1,4 @@
-<?php 
+<?php
 class ModelPaymentPayMate extends Model {
   	public function getMethod($address, $total) {
 		$this->language->load('payment/paymate');
@@ -29,8 +29,8 @@ class ModelPaymentPayMate extends Model {
 					
 		$method_data = array();
 	
-		if ($status) {  
-      		$method_data = array( 
+		if ($status) {
+      		$method_data = array(
         		'code'       => 'paymate',
         		'title'      => $this->language->get('text_title'),
 				'sort_order' => $this->config->get('paymate_sort_order')

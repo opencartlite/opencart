@@ -1,7 +1,7 @@
-<?php 
+<?php
 class ModelSettingSetting extends Model {
 	public function getSetting($group, $store_id = 0) {
-		$data = array(); 
+		$data = array();
 		
 		$query = $this->db->query("SELECT * FROM {setting} WHERE store_id = '" . (int)$store_id . "' AND `group` = '" . $this->db->escape($group) . "'");
 		
@@ -38,6 +38,6 @@ class ModelSettingSetting extends Model {
 		} else {
 			$this->db->query("UDPATE {setting} SET `value` = '" . $this->db->escape(serialize($value)) . "' WHERE `group` = '" . $this->db->escape($group) . "' AND `key` = '" . $this->db->escape($key) . "' AND store_id = '" . (int)$store_id . "', serialized = '1'");
 		}
-	}	
+	}
 }
 ?>

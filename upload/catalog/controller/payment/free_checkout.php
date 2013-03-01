@@ -10,7 +10,7 @@ class ControllerPaymentFreeCheckout extends Controller {
             $this->template = 'default/template/payment/free_checkout.tpl';
         }
 		
-		$this->render();		 
+		$this->render();
 	}
 	
 	public function confirm() {

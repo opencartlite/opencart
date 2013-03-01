@@ -1,6 +1,6 @@
 <?php
 class ModelReportOnline extends Model {
-	public function getCustomersOnline($data = array()) { 
+	public function getCustomersOnline($data = array()) {
 		$sql = "SELECT co.ip, co.customer_id, co.url, co.referer, co.date_added FROM {customer_online} co LEFT JOIN {customer} c ON (co.customer_id = c.customer_id)";
 
 		$implode = array();
@@ -22,11 +22,11 @@ class ModelReportOnline extends Model {
 		if (isset($data['start']) || isset($data['limit'])) {
 			if ($data['start'] < 0) {
 				$data['start'] = 0;
-			}			
+			}
 			
 			if ($data['limit'] < 1) {
 				$data['limit'] = 20;
-			}	
+			}
 			
 			$sql .= " LIMIT " . (int)$data['start'] . "," . (int)$data['limit'];
 		}

@@ -1,4 +1,4 @@
-<?php 
+<?php
 class ControllerDesignBanner extends Controller {
 	private $error = array();
  
@@ -181,12 +181,12 @@ class ControllerDesignBanner extends Controller {
 
 			$this->data['banners'][] = array(
 				'banner_id' => $result['banner_id'],
-				'name'      => $result['name'],	
-				'status'    => ($result['status'] ? $this->language->get('text_enabled') : $this->language->get('text_disabled')),				
-				'selected'  => isset($this->request->post['selected']) && in_array($result['banner_id'], $this->request->post['selected']),				
+				'name'      => $result['name'],
+				'status'    => ($result['status'] ? $this->language->get('text_enabled') : $this->language->get('text_disabled')),
+				'selected'  => isset($this->request->post['selected']) && in_array($result['banner_id'], $this->request->post['selected']),
 				'action'    => $action
 			);
-		}	
+		}
  
  		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
@@ -248,7 +248,7 @@ class ControllerDesignBanner extends Controller {
 		$this->response->setOutput($this->render());
 	}
 
-	protected function getForm() {					
+	protected function getForm() {
 
  		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
@@ -266,7 +266,7 @@ class ControllerDesignBanner extends Controller {
 			$this->data['error_banner_image'] = $this->error['banner_image'];
 		} else {
 			$this->data['error_banner_image'] = array();
-		}	
+		}
 						
 		$url = '';
 
@@ -294,7 +294,7 @@ class ControllerDesignBanner extends Controller {
 			'href' => $this->url->link('design/banner', 'token=' . $this->session->data['token'] . $url, 'SSL')
    		);
 							
-		if (!isset($this->request->get['banner_id'])) { 
+		if (!isset($this->request->get['banner_id'])) {
 			$this->data['action'] = $this->url->link('design/banner/insert', 'token=' . $this->session->data['token'] . $url, 'SSL');
 		} else {
 			$this->data['action'] = $this->url->link('design/banner/update', 'token=' . $this->session->data['token'] . '&banner_id=' . $this->request->get['banner_id'] . $url, 'SSL');
@@ -333,7 +333,7 @@ class ControllerDesignBanner extends Controller {
 		if (isset($this->request->post['banner_image'])) {
 			$banner_images = $this->request->post['banner_image'];
 		} elseif (isset($this->request->get['banner_id'])) {
-			$banner_images = $this->model_design_banner->getBannerImages($this->request->get['banner_id']);	
+			$banner_images = $this->model_design_banner->getBannerImages($this->request->get['banner_id']);
 		} else {
 			$banner_images = array();
 		}
@@ -345,17 +345,17 @@ class ControllerDesignBanner extends Controller {
 				$image = $banner_image['image'];
 			} else {
 				$image = 'no_image.jpg';
-			}			
+			}
 			
 			$this->data['banner_images'][] = array(
 				'banner_image_description' => $banner_image['banner_image_description'],
 				'link'                     => $banner_image['link'],
 				'image'                    => $image,
 				'thumb'                    => $this->model_tool_image->resize($image, 100, 100)
-			);	
-		} 
+			);
+		}
 	
-		$this->data['no_image'] = $this->model_tool_image->resize('no_image.jpg', 100, 100);		
+		$this->data['no_image'] = $this->model_tool_image->resize('no_image.jpg', 100, 100);
 
 		$this->template = 'design/banner_form.tpl';
 		$this->children = array(
@@ -379,10 +379,10 @@ class ControllerDesignBanner extends Controller {
 			foreach ($this->request->post['banner_image'] as $banner_image_id => $banner_image) {
 				foreach ($banner_image['banner_image_description'] as $language_id => $banner_image_description) {
 					if ((utf8_strlen($banner_image_description['title']) < 2) || (utf8_strlen($banner_image_description['title']) > 64)) {
-						$this->error['banner_image'][$banner_image_id][$language_id] = $this->language->get('error_title'); 
-					}					
+						$this->error['banner_image'][$banner_image_id][$language_id] = $this->language->get('error_title');
+					}
 				}
-			}	
+			}
 		}
 		
 		if (!$this->error) {

@@ -1,6 +1,6 @@
 <?php
-class ControllerReportProductPurchased extends Controller { 
-	public function index() {   
+class ControllerReportProductPurchased extends Controller {
+	public function index() {
 		$this->data += $this->language->load('report/product_purchased');
 
 		$this->document->setTitle($this->language->get('heading_title'));
@@ -21,7 +21,7 @@ class ControllerReportProductPurchased extends Controller {
 			$filter_order_status_id = $this->request->get['filter_order_status_id'];
 		} else {
 			$filter_order_status_id = 0;
-		}	
+		}
 						
 		if (isset($this->request->get['page'])) {
 			$page = $this->request->get['page'];
@@ -57,15 +57,15 @@ class ControllerReportProductPurchased extends Controller {
    		$this->data['breadcrumbs'][] = array(
        		'text' => $this->language->get('heading_title'),
 			'href' => $this->url->link('report/product_purchased', 'token=' . $this->session->data['token'] . $url, 'SSL')
-   		);		
+   		);
 		
 		$this->load->model('report/product');
 		
 		$this->data['products'] = array();
 		
 		$data = array(
-			'filter_date_start'	     => $filter_date_start, 
-			'filter_date_end'	     => $filter_date_end, 
+			'filter_date_start'	     => $filter_date_start,
+			'filter_date_end'	     => $filter_date_end,
 			'filter_order_status_id' => $filter_order_status_id,
 			'start'                  => ($page - 1) * $this->config->get('config_admin_limit'),
 			'limit'                  => $this->config->get('config_admin_limit')
@@ -111,10 +111,10 @@ class ControllerReportProductPurchased extends Controller {
 		$pagination->text = $this->language->get('text_pagination');
 		$pagination->url = $this->url->link('report/product_purchased', 'token=' . $this->session->data['token'] . $url . '&page={page}');
 			
-		$this->data['pagination'] = $pagination->render();		
+		$this->data['pagination'] = $pagination->render();
 		
 		$this->data['filter_date_start'] = $filter_date_start;
-		$this->data['filter_date_end'] = $filter_date_end;		
+		$this->data['filter_date_end'] = $filter_date_end;
 		$this->data['filter_order_status_id'] = $filter_order_status_id;
 		
 		$this->template = 'report/product_purchased.tpl';
@@ -124,6 +124,6 @@ class ControllerReportProductPurchased extends Controller {
 		);
 				
 		$this->response->setOutput($this->render());
-	}	
+	}
 }
 ?>

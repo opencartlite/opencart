@@ -1,4 +1,4 @@
-<?php 
+<?php
 class ControllerCheckoutShippingAddress extends Controller {
 	public function index() {
 		$this->data += $this->language->load('checkout/checkout');
@@ -14,19 +14,19 @@ class ControllerCheckoutShippingAddress extends Controller {
 		$this->data['addresses'] = $this->model_account_address->getAddresses();
 
 		if (isset($this->session->data['shipping_address']['postcode'])) {
-			$this->data['postcode'] = $this->session->data['shipping_address']['postcode'];		
+			$this->data['postcode'] = $this->session->data['shipping_address']['postcode'];
 		} else {
 			$this->data['postcode'] = '';
 		}
 				
 		if (isset($this->session->data['shipping_address']['country_id'])) {
-			$this->data['country_id'] = $this->session->data['shipping_address']['country_id'];		
+			$this->data['country_id'] = $this->session->data['shipping_address']['country_id'];
 		} else {
 			$this->data['country_id'] = $this->config->get('config_country_id');
 		}
 				
 		if (isset($this->session->data['shipping_address']['zone_id'])) {
-			$this->data['zone_id'] = $this->session->data['shipping_address']['zone_id'];		
+			$this->data['zone_id'] = $this->session->data['shipping_address']['zone_id'];
 		} else {
 			$this->data['zone_id'] = '';
 		}
@@ -42,7 +42,7 @@ class ControllerCheckoutShippingAddress extends Controller {
 		}
 				
 		$this->response->setOutput($this->render());
-  	}	
+  	}
 	
 	public function save() {
 		$this->data += $this->language->load('checkout/checkout');
@@ -59,12 +59,12 @@ class ControllerCheckoutShippingAddress extends Controller {
 			$json['redirect'] = $this->url->link('checkout/checkout', '', 'SSL');
 		}
 		
-		// Validate cart has products and has stock.		
+		// Validate cart has products and has stock.
 		if ((!$this->cart->hasProducts() && empty($this->session->data['vouchers'])) || (!$this->cart->hasStock() && !$this->config->get('config_stock_checkout'))) {
 			$json['redirect'] = $this->url->link('checkout/cart');
-		}	
+		}
 
-		// Validate minimum quantity requirments.			
+		// Validate minimum quantity requirments.
 		$products = $this->cart->getProducts();
 				
 		foreach ($products as $product) {
@@ -74,13 +74,13 @@ class ControllerCheckoutShippingAddress extends Controller {
 				if ($product_2['product_id'] == $product['product_id']) {
 					$product_total += $product_2['quantity'];
 				}
-			}		
+			}
 			
 			if ($product['minimum'] > $product_total) {
 				$json['redirect'] = $this->url->link('checkout/cart');
 				
 				break;
-			}				
+			}
 		}
 								
 		if (!$json) {
@@ -93,13 +93,13 @@ class ControllerCheckoutShippingAddress extends Controller {
 					$json['error']['warning'] = $this->language->get('error_address');
 				}
 						
-				if (!$json) {			
+				if (!$json) {
 					// Default Shipping Address
 					$this->load->model('account/address');
 
 					$this->session->data['shipping_address'] = $this->model_account_address->getAddress($this->request->post['address_id']);
 										
-					unset($this->session->data['shipping_method']);							
+					unset($this->session->data['shipping_method']);
 					unset($this->session->data['shipping_methods']);
 				}
 			} else {
@@ -135,15 +135,15 @@ class ControllerCheckoutShippingAddress extends Controller {
 					$json['error']['zone'] = $this->language->get('error_zone');
 				}
 				
-				if (!$json) {						
+				if (!$json) {
 					// Default Shipping Address
-					$this->load->model('account/address');		
+					$this->load->model('account/address');
 					
 					$address_id = $this->model_account_address->addAddress($this->request->post);
 					
 					$this->session->data['shipping_address'] = $this->model_account_address->getAddress($address_id);
 									
-					unset($this->session->data['shipping_method']);						
+					unset($this->session->data['shipping_method']);
 					unset($this->session->data['shipping_methods']);
 				}
 			}

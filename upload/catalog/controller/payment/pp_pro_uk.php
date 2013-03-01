@@ -12,30 +12,30 @@ class ControllerPaymentPPProUK extends Controller {
 		$this->data['cards'] = array();
 
 		$this->data['cards'][] = array(
-			'text'  => 'Visa', 
+			'text'  => 'Visa',
 			'value' => '0'
 		);
 
 		$this->data['cards'][] = array(
-			'text'  => 'MasterCard', 
+			'text'  => 'MasterCard',
 			'value' => '1'
 		);
 
 		$this->data['cards'][] = array(
-			'text'  => 'Maestro', 
+			'text'  => 'Maestro',
 			'value' => '9'
 		);
 		
 		$this->data['cards'][] = array(
-			'text'  => 'Solo', 
+			'text'  => 'Solo',
 			'value' => 'S'
-		);		
+		);
 	
 		$this->data['months'] = array();
 		
 		for ($i = 1; $i <= 12; $i++) {
 			$this->data['months'][] = array(
-				'text'  => strftime('%B', mktime(0, 0, 0, $i, 1, 2000)), 
+				'text'  => strftime('%B', mktime(0, 0, 0, $i, 1, 2000)),
 				'value' => sprintf('%02d', $i)
 			);
 		}
@@ -44,9 +44,9 @@ class ControllerPaymentPPProUK extends Controller {
 		
 		$this->data['year_valid'] = array();
 		
-		for ($i = $today['year'] - 10; $i < $today['year'] + 1; $i++) {	
+		for ($i = $today['year'] - 10; $i < $today['year'] + 1; $i++) {
 			$this->data['year_valid'][] = array(
-				'text'  => strftime('%Y', mktime(0, 0, 0, 1, 1, $i)), 
+				'text'  => strftime('%Y', mktime(0, 0, 0, 1, 1, $i)),
 				'value' => strftime('%Y', mktime(0, 0, 0, 1, 1, $i))
 			);
 		}
@@ -56,7 +56,7 @@ class ControllerPaymentPPProUK extends Controller {
 		for ($i = $today['year']; $i < $today['year'] + 11; $i++) {
 			$this->data['year_expire'][] = array(
 				'text'  => strftime('%Y', mktime(0, 0, 0, 1, 1, $i)),
-				'value' => strftime('%Y', mktime(0, 0, 0, 1, 1, $i)) 
+				'value' => strftime('%Y', mktime(0, 0, 0, 1, 1, $i))
 			);
 		}
 		
@@ -64,9 +64,9 @@ class ControllerPaymentPPProUK extends Controller {
 			$this->template = $this->config->get('config_template') . '/template/payment/pp_pro_uk.tpl';
 		} else {
 			$this->template = 'default/template/payment/pp_pro_uk.tpl';
-		}	
+		}
 		
-		$this->render();		
+		$this->render();
 	}
 
 	public function send() {
@@ -77,7 +77,7 @@ class ControllerPaymentPPProUK extends Controller {
 		$order_info = $this->model_checkout_order->getOrder($this->session->data['order_id']);
 				
 		if (!$this->config->get('pp_pro_uk_transaction')) {
-			$payment_type = 'A';	
+			$payment_type = 'A';
 		} else {
 			$payment_type = 'S';
 		}
@@ -154,7 +154,7 @@ class ControllerPaymentPPProUK extends Controller {
 			
 			$this->model_checkout_order->update($this->session->data['order_id'], $this->config->get('pp_pro_uk_order_status_id'), $message, false);
 		
-			$json['success'] = $this->url->link('checkout/success'); 
+			$json['success'] = $this->url->link('checkout/success');
 		} else {
 			switch ($response_info['RESULT']) {
 				case '1':
@@ -174,7 +174,7 @@ class ControllerPaymentPPProUK extends Controller {
 				default:
 					$json['error'] = $this->language->get('error_general');
 					break;
-			}		
+			}
 		}
 		
 		$this->response->setOutput(json_encode($json));

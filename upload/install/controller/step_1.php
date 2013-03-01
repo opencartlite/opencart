@@ -10,8 +10,8 @@ class ControllerStep1 extends Controller {
 		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
 		} else {
-			$this->data['error_warning'] = '';	
-		}		
+			$this->data['error_warning'] = '';
+		}
 		
 		$this->data['action'] = $this->url->link('step_1');
 		
@@ -33,7 +33,7 @@ class ControllerStep1 extends Controller {
       		return true;
     	} else {
       		return false;
-    	}		
-	}	
+    	}
+	}
 }
 ?>

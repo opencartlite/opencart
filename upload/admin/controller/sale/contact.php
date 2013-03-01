@@ -1,11 +1,11 @@
-<?php 
+<?php
 class ControllerSaleContact extends Controller {
 	private $error = array();
 	 
 	public function index() {
 		$this->data += $this->language->load('sale/contact');
  
-		$this->document->setTitle($this->language->get('heading_title'));					
+		$this->document->setTitle($this->language->get('heading_title'));
 		
 		$this->data['token'] = $this->session->data['token'];
 
@@ -61,7 +61,7 @@ class ControllerSaleContact extends Controller {
 			if (!$json) {
 				$this->load->model('setting/store');
 			
-				$store_info = $this->model_setting_store->getStore($this->request->post['store_id']);			
+				$store_info = $this->model_setting_store->getStore($this->request->post['store_id']);
 				
 				if ($store_info) {
 					$store_name = $store_info['name'];
@@ -115,7 +115,7 @@ class ControllerSaleContact extends Controller {
 				
 						foreach ($results as $result) {
 							$emails[] = $result['email'];
-						}						
+						}
 						break;
 					case 'customer_group':
 						$customer_data = array(
@@ -130,10 +130,10 @@ class ControllerSaleContact extends Controller {
 				
 						foreach ($results as $result) {
 							$emails[$result['customer_id']] = $result['email'];
-						}						
+						}
 						break;
 					case 'customer':
-						if (!empty($this->request->post['customer'])) {					
+						if (!empty($this->request->post['customer'])) {
 							foreach ($this->request->post['customer'] as $customer_id) {
 								$customer_info = $this->model_sale_customer->getCustomer($customer_id);
 								
@@ -142,23 +142,23 @@ class ControllerSaleContact extends Controller {
 								}
 							}
 						}
-						break;	
+						break;
 					case 'affiliate_all':
 						$affiliate_data = array(
 							'start'  => ($page - 1) * 10,
 							'limit'  => 10
 						);
 						
-						$email_total = $this->model_sale_affiliate->getTotalAffiliates($affiliate_data);		
+						$email_total = $this->model_sale_affiliate->getTotalAffiliates($affiliate_data);
 						
 						$results = $this->model_sale_affiliate->getAffiliates($affiliate_data);
 				
 						foreach ($results as $result) {
 							$emails[] = $result['email'];
-						}						
-						break;	
+						}
+						break;
 					case 'affiliate':
-						if (!empty($this->request->post['affiliate'])) {					
+						if (!empty($this->request->post['affiliate'])) {
 							foreach ($this->request->post['affiliate'] as $affiliate_id) {
 								$affiliate_info = $this->model_sale_affiliate->getAffiliate($affiliate_id);
 								
@@ -167,10 +167,10 @@ class ControllerSaleContact extends Controller {
 								}
 							}
 						}
-						break;											
+						break;
 					case 'product':
 						if (isset($this->request->post['product'])) {
-							$email_total = $this->model_sale_order->getTotalEmailsByProductsOrdered($this->request->post['product']);	
+							$email_total = $this->model_sale_order->getTotalEmailsByProductsOrdered($this->request->post['product']);
 							
 							$results = $this->model_sale_order->getEmailsByProductsOrdered($this->request->post['product'], ($page - 1) * 10, 10);
 													
@@ -178,7 +178,7 @@ class ControllerSaleContact extends Controller {
 								$emails[] = $result['email'];
 							}
 						}
-						break;												
+						break;
 				}
 				
 				if ($emails) {
@@ -187,9 +187,9 @@ class ControllerSaleContact extends Controller {
 					
 					if ($end < $email_total) {
 						$json['success'] = sprintf($this->language->get('text_sent'), $start, $email_total);
-					} else { 
+					} else {
 						$json['success'] = $this->language->get('text_success');
-					}				
+					}
 						
 					if ($end < $email_total) {
 						$json['next'] = str_replace('&amp;', '&', $this->url->link('sale/contact/send', 'token=' . $this->session->data['token'] . '&page=' . ($page + 1), 'SSL'));
@@ -206,18 +206,18 @@ class ControllerSaleContact extends Controller {
 					$message .= '</html>' . "\n";
 					
 					foreach ($emails as $email) {
-						$mail = new Mail();	
+						$mail = new Mail();
 						$mail->protocol = $this->config->get('config_mail_protocol');
 						$mail->parameter = $this->config->get('config_mail_parameter');
 						$mail->hostname = $this->config->get('config_smtp_host');
 						$mail->username = $this->config->get('config_smtp_username');
 						$mail->password = $this->config->get('config_smtp_password');
 						$mail->port = $this->config->get('config_smtp_port');
-						$mail->timeout = $this->config->get('config_smtp_timeout');				
+						$mail->timeout = $this->config->get('config_smtp_timeout');
 						$mail->setTo($email);
 						$mail->setFrom($this->config->get('config_email'));
 						$mail->setSender($store_name);
-						$mail->setSubject(html_entity_decode($this->request->post['subject'], ENT_QUOTES, 'UTF-8'));					
+						$mail->setSubject(html_entity_decode($this->request->post['subject'], ENT_QUOTES, 'UTF-8'));
 						$mail->setHtml($message);
 						$mail->send();
 					}
@@ -225,7 +225,7 @@ class ControllerSaleContact extends Controller {
 			}
 		}
 		
-		$this->response->setOutput(json_encode($json));	
+		$this->response->setOutput(json_encode($json));
 	}
 }
 ?>

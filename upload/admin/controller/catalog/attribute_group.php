@@ -1,5 +1,5 @@
-<?php 
-class ControllerCatalogAttributeGroup extends Controller { 
+<?php
+class ControllerCatalogAttributeGroup extends Controller {
 	private $error = array();
    
   	public function index() {
@@ -156,7 +156,7 @@ class ControllerCatalogAttributeGroup extends Controller {
    		);
 							
 		$this->data['insert'] = $this->url->link('catalog/attribute_group/insert', 'token=' . $this->session->data['token'] . $url, 'SSL');
-		$this->data['delete'] = $this->url->link('catalog/attribute_group/delete', 'token=' . $this->session->data['token'] . $url, 'SSL');	
+		$this->data['delete'] = $this->url->link('catalog/attribute_group/delete', 'token=' . $this->session->data['token'] . $url, 'SSL');
 
 		$this->data['attribute_groups'] = array();
 
@@ -186,7 +186,7 @@ class ControllerCatalogAttributeGroup extends Controller {
 				'selected'           => isset($this->request->post['selected']) && in_array($result['attribute_group_id'], $this->request->post['selected']),
 				'action'             => $action
 			);
-		}			
+		}
  
  		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
@@ -326,7 +326,7 @@ class ControllerCatalogAttributeGroup extends Controller {
 			'common/footer'
 		);
 				
-		$this->response->setOutput($this->render());	
+		$this->response->setOutput($this->render());
   	}
   	
 	protected function validateForm() {
@@ -362,11 +362,11 @@ class ControllerCatalogAttributeGroup extends Controller {
 			}
 	  	}
 		
-		if (!$this->error) { 
+		if (!$this->error) {
 	  		return true;
 		} else {
 	  		return false;
 		}
-  	}	  
+  	}
 }
 ?>

@@ -1,8 +1,8 @@
 <?php
 class ControllerShippingFedex extends Controller {
-	private $error = array(); 
+	private $error = array();
 	
-	public function index() {   
+	public function index() {
 		$this->data += $this->language->load('shipping/fedex');
 
 		$this->document->setTitle($this->language->get('heading_title'));
@@ -10,12 +10,12 @@ class ControllerShippingFedex extends Controller {
 		$this->load->model('setting/setting');
 				
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
-			$this->model_setting_setting->editSetting('fedex', $this->request->post);		
+			$this->model_setting_setting->editSetting('fedex', $this->request->post);
 					
 			$this->session->data['success'] = $this->language->get('text_success');
 						
 			$this->redirect($this->url->link('extension/shipping', 'token=' . $this->session->data['token'], 'SSL'));
-		}				
+		}
 
  		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
@@ -115,7 +115,7 @@ class ControllerShippingFedex extends Controller {
 		} elseif ($this->config->has('fedex_service')) {
 			$this->data['fedex_service'] = $this->config->get('fedex_service');
 		} else {
-			$this->data['fedex_service'] = array();	
+			$this->data['fedex_service'] = array();
 		}
 		
 		$this->data['services'] = array();
@@ -148,7 +148,7 @@ class ControllerShippingFedex extends Controller {
 		$this->data['services'][] = array(
 			'text'  => $this->language->get('text_fedex_3_day_freight'),
 			'value' => 'FEDEX_3_DAY_FREIGHT'
-		);		
+		);
 				
 		$this->data['services'][] = array(
 			'text'  => $this->language->get('text_fedex_express_saver'),
@@ -158,22 +158,22 @@ class ControllerShippingFedex extends Controller {
 		$this->data['services'][] = array(
 			'text'  => $this->language->get('text_fedex_first_freight'),
 			'value' => 'FEDEX_FIRST_FREIGHT'
-		);	
+		);
 
 		$this->data['services'][] = array(
 			'text'  => $this->language->get('text_fedex_freight_economy'),
 			'value' => 'FEDEX_FREIGHT_ECONOMY'
-		);	
+		);
 
 		$this->data['services'][] = array(
 			'text'  => $this->language->get('text_fedex_freight_priority'),
 			'value' => 'FEDEX_FREIGHT_PRIORITY'
-		);	
+		);
 
 		$this->data['services'][] = array(
 			'text'  => $this->language->get('text_fedex_ground'),
 			'value' => 'FEDEX_GROUND'
-		);	
+		);
 
 		$this->data['services'][] = array(
 			'text'  => $this->language->get('text_first_overnight'),
@@ -183,7 +183,7 @@ class ControllerShippingFedex extends Controller {
 		$this->data['services'][] = array(
 			'text'  => $this->language->get('text_ground_home_delivery'),
 			'value' => 'GROUND_HOME_DELIVERY'
-		);	
+		);
 
 		$this->data['services'][] = array(
 			'text'  => $this->language->get('text_international_economy'),
@@ -193,12 +193,12 @@ class ControllerShippingFedex extends Controller {
 		$this->data['services'][] = array(
 			'text'  => $this->language->get('text_international_economy_freight'),
 			'value' => 'INTERNATIONAL_ECONOMY_FREIGHT'
-		);			
+		);
 	
 		$this->data['services'][] = array(
 			'text'  => $this->language->get('text_international_first'),
 			'value' => 'INTERNATIONAL_FIRST'
-		);		
+		);
 
 		$this->data['services'][] = array(
 			'text'  => $this->language->get('text_international_priority'),
@@ -208,7 +208,7 @@ class ControllerShippingFedex extends Controller {
 		$this->data['services'][] = array(
 			'text'  => $this->language->get('text_international_priority_freight'),
 			'value' => 'INTERNATIONAL_PRIORITY_FREIGHT'
-		);	
+		);
 
 		$this->data['services'][] = array(
 			'text'  => $this->language->get('text_priority_overnight'),
@@ -223,13 +223,13 @@ class ControllerShippingFedex extends Controller {
 		$this->data['services'][] = array(
 			'text'  => $this->language->get('text_standard_overnight'),
 			'value' => 'STANDARD_OVERNIGHT'
-		);	
+		);
 		
 		if (isset($this->request->post['fedex_dropoff_type'])) {
 			$this->data['fedex_dropoff_type'] = $this->request->post['fedex_dropoff_type'];
 		} else {
 			$this->data['fedex_dropoff_type'] = $this->config->get('fedex_dropoff_type');
-		}		
+		}
 		
 		if (isset($this->request->post['fedex_packaging_type'])) {
 			$this->data['fedex_packaging_type'] = $this->request->post['fedex_packaging_type'];
@@ -295,13 +295,13 @@ class ControllerShippingFedex extends Controller {
 			$this->data['fedex_status'] = $this->request->post['fedex_status'];
 		} else {
 			$this->data['fedex_status'] = $this->config->get('fedex_status');
-		}	
+		}
 		
 		if (isset($this->request->post['fedex_sort_order'])) {
 			$this->data['fedex_sort_order'] = $this->request->post['fedex_sort_order'];
 		} else {
 			$this->data['fedex_sort_order'] = $this->config->get('fedex_sort_order');
-		}				
+		}
 								
 		$this->template = 'shipping/fedex.tpl';
 		$this->children = array(
@@ -341,7 +341,7 @@ class ControllerShippingFedex extends Controller {
 			return TRUE;
 		} else {
 			return FALSE;
-		}	
+		}
 	}
 }
 ?>

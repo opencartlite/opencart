@@ -1,6 +1,6 @@
-<?php 
-class ControllerProductSpecial extends Controller { 	
-	public function index() { 
+<?php
+class ControllerProductSpecial extends Controller {
+	public function index() {
     	$this->data += $this->language->load('product/special');
 		
 		$this->load->model('catalog/product');
@@ -46,7 +46,7 @@ class ControllerProductSpecial extends Controller {
 		
 		if (isset($this->request->get['sort'])) {
 			$url .= '&sort=' . $this->request->get['sort'];
-		}	
+		}
 
 		if (isset($this->request->get['order'])) {
 			$url .= '&order=' . $this->request->get['order'];
@@ -54,7 +54,7 @@ class ControllerProductSpecial extends Controller {
 				
 		if (isset($this->request->get['page'])) {
 			$url .= '&page=' . $this->request->get['page'];
-		}	
+		}
 		
 		if (isset($this->request->get['limit'])) {
 			$url .= '&limit=' . $this->request->get['limit'];
@@ -64,7 +64,7 @@ class ControllerProductSpecial extends Controller {
        		'text' => $this->language->get('heading_title'),
 			'href' => $this->url->link('product/special', $url)
    		);
-		$this->data['text_compare'] = sprintf($this->language->get('text_compare'), (isset($this->session->data['compare']) ? count($this->session->data['compare']) : 0));			
+		$this->data['text_compare'] = sprintf($this->language->get('text_compare'), (isset($this->session->data['compare']) ? count($this->session->data['compare']) : 0));
 		
 		$this->data['compare'] = $this->url->link('product/compare');
 		
@@ -98,13 +98,13 @@ class ControllerProductSpecial extends Controller {
 				$special = $this->currency->format($this->tax->calculate($result['special'], $result['tax_class_id'], $this->config->get('config_tax')));
 			} else {
 				$special = false;
-			}	
+			}
 			
 			if ($this->config->get('config_tax')) {
 				$tax = $this->currency->format((float)$result['special'] ? $result['special'] : $result['price']);
 			} else {
 				$tax = false;
-			}				
+			}
 			
 			if ($this->config->get('config_review_status')) {
 				$rating = (int)$result['rating'];
@@ -144,32 +144,32 @@ class ControllerProductSpecial extends Controller {
 			'text'  => $this->language->get('text_name_asc'),
 			'value' => 'pd.name-ASC',
 			'href'  => $this->url->link('product/special', 'sort=pd.name&order=ASC' . $url)
-		); 
+		);
 
 		$this->data['sorts'][] = array(
 			'text'  => $this->language->get('text_name_desc'),
 			'value' => 'pd.name-DESC',
 			'href'  => $this->url->link('product/special', 'sort=pd.name&order=DESC' . $url)
-		);  
+		);
 
 		$this->data['sorts'][] = array(
 			'text'  => $this->language->get('text_price_asc'),
 			'value' => 'ps.price-ASC',
 			'href'  => $this->url->link('product/special', 'sort=ps.price&order=ASC' . $url)
-		); 
+		);
 
 		$this->data['sorts'][] = array(
 			'text'  => $this->language->get('text_price_desc'),
 			'value' => 'ps.price-DESC',
 			'href'  => $this->url->link('product/special', 'sort=ps.price&order=DESC' . $url)
-		); 
+		);
 		
-		if ($this->config->get('config_review_status')) {	
+		if ($this->config->get('config_review_status')) {
 			$this->data['sorts'][] = array(
 				'text'  => $this->language->get('text_rating_desc'),
 				'value' => 'rating-DESC',
 				'href'  => $this->url->link('product/special', 'sort=rating&order=DESC' . $url)
-			); 
+			);
 				
 			$this->data['sorts'][] = array(
 				'text'  => $this->language->get('text_rating_asc'),
@@ -182,7 +182,7 @@ class ControllerProductSpecial extends Controller {
 				'text'  => $this->language->get('text_model_asc'),
 				'value' => 'p.model-ASC',
 				'href'  => $this->url->link('product/special', 'sort=p.model&order=ASC' . $url)
-		); 
+		);
 
 		$this->data['sorts'][] = array(
 			'text'  => $this->language->get('text_model_desc'),
@@ -194,7 +194,7 @@ class ControllerProductSpecial extends Controller {
 
 		if (isset($this->request->get['sort'])) {
 			$url .= '&sort=' . $this->request->get['sort'];
-		}	
+		}
 
 		if (isset($this->request->get['order'])) {
 			$url .= '&order=' . $this->request->get['order'];
@@ -218,7 +218,7 @@ class ControllerProductSpecial extends Controller {
 
 		if (isset($this->request->get['sort'])) {
 			$url .= '&sort=' . $this->request->get['sort'];
-		}	
+		}
 
 		if (isset($this->request->get['order'])) {
 			$url .= '&order=' . $this->request->get['order'];
@@ -256,7 +256,7 @@ class ControllerProductSpecial extends Controller {
 			'common/header'
 		);
 	
-		$this->response->setOutput($this->render());			
+		$this->response->setOutput($this->render());
   	}
 }
 ?>

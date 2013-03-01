@@ -2,7 +2,7 @@
 class ControllerStep3 extends Controller {
 	private $error = array();
 	
-	public function index() {		
+	public function index() {
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
 			$this->load->model('install');
 			
@@ -34,7 +34,7 @@ class ControllerStep3 extends Controller {
 			$output .= 'define(\'DB_PASSWORD\', \'' . addslashes($this->request->post['db_password']) . '\');' . "\n";
 			$output .= 'define(\'DB_DATABASE\', \'' . addslashes($this->request->post['db_name']) . '\');' . "\n";
 			$output .= 'define(\'DB_PREFIX\', \'' . addslashes($this->request->post['db_prefix']) . '\');' . "\n";
-			$output .= '?>';				
+			$output .= '?>';
 		
 			$file = fopen(DIR_OPENCART . 'config.php', 'w');
 		
@@ -71,7 +71,7 @@ class ControllerStep3 extends Controller {
 			$output .= 'define(\'DB_PASSWORD\', \'' . addslashes($this->request->post['db_password']) . '\');' . "\n";
 			$output .= 'define(\'DB_DATABASE\', \'' . addslashes($this->request->post['db_name']) . '\');' . "\n";
 			$output .= 'define(\'DB_PREFIX\', \'' . addslashes($this->request->post['db_prefix']) . '\');' . "\n";
-			$output .= '?>';	
+			$output .= '?>';
 
 			$file = fopen(DIR_OPENCART . 'admin/config.php', 'w');
 		
@@ -122,13 +122,13 @@ class ControllerStep3 extends Controller {
 			$this->data['error_password'] = $this->error['password'];
 		} else {
 			$this->data['error_password'] = '';
-		}		
+		}
 		
 		if (isset($this->error['email'])) {
 			$this->data['error_email'] = $this->error['email'];
 		} else {
 			$this->data['error_email'] = '';
-		}	
+		}
 		
 		$this->data['action'] = $this->url->link('step_3');
 		
@@ -194,7 +194,7 @@ class ControllerStep3 extends Controller {
 			'footer'
 		);
 		
-		$this->response->setOutput($this->render());		
+		$this->response->setOutput($this->render());
 	}
 	
 	private function validate() {
@@ -244,13 +244,13 @@ class ControllerStep3 extends Controller {
 	
 		if (!is_writable(DIR_OPENCART . 'admin/config.php')) {
 			$this->error['warning'] = 'Error: Could not write to config.php please check you have set the correct permissions on: ' . DIR_OPENCART . 'admin/config.php!';
-		}	
+		}
 		
     	if (!$this->error) {
       		return true;
     	} else {
       		return false;
-    	}		
+    	}
 	}
 }
 ?>

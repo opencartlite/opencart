@@ -1,4 +1,4 @@
-<?php  
+<?php
 class ControllerModuleBanner extends Controller {
 	protected function index($setting) {
 		static $module = 0;

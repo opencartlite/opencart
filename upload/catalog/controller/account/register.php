@@ -1,4 +1,4 @@
-<?php 
+<?php
 class ControllerAccountRegister extends Controller {
   	public function index() {
 		if ($this->customer->isLogged()) {
@@ -17,7 +17,7 @@ class ControllerAccountRegister extends Controller {
       	$this->data['breadcrumbs'][] = array(
         	'text' => $this->language->get('text_home'),
 			'href' => $this->url->link('common/home')
-      	); 
+      	);
 
       	$this->data['breadcrumbs'][] = array(
         	'text' => $this->language->get('text_account'),
@@ -48,19 +48,19 @@ class ControllerAccountRegister extends Controller {
 		$this->data['customer_group_id'] = $this->config->get('config_customer_group_id');
 		
 		if (isset($this->session->data['shipping_address']['postcode'])) {
-			$this->data['postcode'] = $this->session->data['shipping_address']['postcode'];		
+			$this->data['postcode'] = $this->session->data['shipping_address']['postcode'];
 		} else {
 			$this->data['postcode'] = '';
 		}
 
 		if (isset($this->session->data['shipping_address']['country_id'])) {
-			$this->data['country_id'] = $this->session->data['shipping_address']['country_id'];		
-		} else {	
+			$this->data['country_id'] = $this->session->data['shipping_address']['country_id'];
+		} else {
       		$this->data['country_id'] = $this->config->get('config_country_id');
     	}
 
     	if (isset($this->session->data['shipping_address']['zone_id'])) {
-			$this->data['zone_id'] = $this->session->data['shipping_address']['zone_id'];			
+			$this->data['zone_id'] = $this->session->data['shipping_address']['zone_id'];
 		} else {
       		$this->data['zone_id'] = '';
     	}
@@ -95,10 +95,10 @@ class ControllerAccountRegister extends Controller {
 			'common/content_top',
 			'common/content_bottom',
 			'common/footer',
-			'common/header'	
+			'common/header'
 		);
 				
-		$this->response->setOutput($this->render());	
+		$this->response->setOutput($this->render());
   	}
 
   	public function save() {
@@ -108,7 +108,7 @@ class ControllerAccountRegister extends Controller {
 		
 		// Validate if customer is already logged out.
 		if ($this->customer->isLogged()) {
-			$json['redirect'] = $this->url->link('account/account', '', 'SSL');			
+			$json['redirect'] = $this->url->link('account/account', '', 'SSL');
 		}
 		
 		if (!$json) {
@@ -199,7 +199,7 @@ class ControllerAccountRegister extends Controller {
 			$this->load->model('account/address');
 				
 			if ($this->config->get('config_tax_customer') == 'payment') {
-				$this->session->data['payment_addess'] = $this->model_account_address->getAddress($this->customer->getAddressId());				
+				$this->session->data['payment_addess'] = $this->model_account_address->getAddress($this->customer->getAddressId());
 			}
 						
 			if ($this->config->get('config_tax_customer') == 'shipping') {
@@ -229,7 +229,7 @@ class ControllerAccountRegister extends Controller {
 					'custom_field_value_id' => $option_value['custom_field_value_id'],
 					'name'                  => $option_value['name']
 				);
-			}			
+			}
 			
 			$json[] = array(
 				'custom_field_id'    => $custom_field['custom_field_id'],
@@ -241,7 +241,7 @@ class ControllerAccountRegister extends Controller {
 				'location'           => $custom_field['location'],
 				'position'           => $custom_field['position']
 			);
-		} 
+		}
 		
 		$this->response->setOutput(json_encode($json));
 	}
@@ -264,11 +264,11 @@ class ControllerAccountRegister extends Controller {
 				'address_format'    => $country_info['address_format'],
 				'postcode_required' => $country_info['postcode_required'],
 				'zone'              => $this->model_localisation_zone->getZonesByCountryId($this->request->get['country_id']),
-				'status'            => $country_info['status']		
+				'status'            => $country_info['status']
 			);
 		}
 		
 		$this->response->setOutput(json_encode($json));
-	}	
+	}
 }
 ?>

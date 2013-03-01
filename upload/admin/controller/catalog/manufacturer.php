@@ -1,5 +1,5 @@
-<?php    
-class ControllerCatalogManufacturer extends Controller { 
+<?php
+class ControllerCatalogManufacturer extends Controller {
 	private $error = array();
   
   	public function index() {
@@ -42,7 +42,7 @@ class ControllerCatalogManufacturer extends Controller {
 		}
     
     	$this->getForm();
-  	} 
+  	}
    
   	public function update() {
 		$this->data += $this->language->load('catalog/manufacturer');
@@ -74,7 +74,7 @@ class ControllerCatalogManufacturer extends Controller {
 		}
     
     	$this->getForm();
-  	}   
+  	}
 
   	public function delete() {
 		$this->data += $this->language->load('catalog/manufacturer');
@@ -108,7 +108,7 @@ class ControllerCatalogManufacturer extends Controller {
     	}
 	
     	$this->getList();
-  	}  
+  	}
     
   	protected function getList() {
 		if (isset($this->request->get['sort'])) {
@@ -156,7 +156,7 @@ class ControllerCatalogManufacturer extends Controller {
    		);
 							
 		$this->data['insert'] = $this->url->link('catalog/manufacturer/insert', 'token=' . $this->session->data['token'] . $url, 'SSL');
-		$this->data['delete'] = $this->url->link('catalog/manufacturer/delete', 'token=' . $this->session->data['token'] . $url, 'SSL');	
+		$this->data['delete'] = $this->url->link('catalog/manufacturer/delete', 'token=' . $this->session->data['token'] . $url, 'SSL');
 
 		$this->data['manufacturers'] = array();
 
@@ -186,7 +186,7 @@ class ControllerCatalogManufacturer extends Controller {
 				'selected'        => isset($this->request->post['selected']) && in_array($result['manufacturer_id'], $this->request->post['selected']),
 				'action'          => $action
 			);
-		}			
+		}
  
  		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
@@ -248,7 +248,7 @@ class ControllerCatalogManufacturer extends Controller {
 		$this->response->setOutput($this->render());
 	}
   
-  	protected function getForm() {			
+  	protected function getForm() {
 			  
  		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
@@ -306,7 +306,7 @@ class ControllerCatalogManufacturer extends Controller {
       		$this->data['name'] = $this->request->post['name'];
     	} elseif (!empty($manufacturer_info)) {
 			$this->data['name'] = $manufacturer_info['name'];
-		} else {	
+		} else {
       		$this->data['name'] = '';
     	}
 		
@@ -320,7 +320,7 @@ class ControllerCatalogManufacturer extends Controller {
 			$this->data['manufacturer_store'] = $this->model_catalog_manufacturer->getManufacturerStores($this->request->get['manufacturer_id']);
 		} else {
 			$this->data['manufacturer_store'] = array(0);
-		}	
+		}
 		
 		if (isset($this->request->post['keyword'])) {
 			$this->data['keyword'] = $this->request->post['keyword'];
@@ -365,7 +365,7 @@ class ControllerCatalogManufacturer extends Controller {
 		);
 				
 		$this->response->setOutput($this->render());
-	}  
+	}
 	 
   	protected function validateForm() {
     	if (!$this->user->hasPermission('modify', 'catalog/manufacturer')) {
@@ -381,12 +381,12 @@ class ControllerCatalogManufacturer extends Controller {
 		} else {
 	  		return false;
 		}
-  	}    
+  	}
 
   	protected function validateDelete() {
     	if (!$this->user->hasPermission('modify', 'catalog/manufacturer')) {
 			$this->error['warning'] = $this->language->get('error_permission');
-    	}	
+    	}
 		
 		$this->load->model('catalog/product');
 
@@ -394,15 +394,15 @@ class ControllerCatalogManufacturer extends Controller {
   			$product_total = $this->model_catalog_product->getTotalProductsByManufacturerId($manufacturer_id);
     
 			if ($product_total) {
-	  			$this->error['warning'] = sprintf($this->language->get('error_product'), $product_total);	
-			}	
-	  	} 
+	  			$this->error['warning'] = sprintf($this->language->get('error_product'), $product_total);
+			}
+	  	}
 		
 		if (!$this->error) {
 	  		return true;
 		} else {
 	  		return false;
-		}  
+		}
   	}
 	
 	public function autocomplete() {
@@ -421,10 +421,10 @@ class ControllerCatalogManufacturer extends Controller {
 				
 			foreach ($results as $result) {
 				$json[] = array(
-					'manufacturer_id' => $result['manufacturer_id'], 
+					'manufacturer_id' => $result['manufacturer_id'],
 					'name'            => strip_tags(html_entity_decode($result['name'], ENT_QUOTES, 'UTF-8'))
 				);
-			}		
+			}
 		}
 
 		$sort_order = array();
@@ -436,6 +436,6 @@ class ControllerCatalogManufacturer extends Controller {
 		array_multisort($sort_order, SORT_ASC, $json);
 
 		$this->response->setOutput(json_encode($json));
-	}	
+	}
 }
 ?>

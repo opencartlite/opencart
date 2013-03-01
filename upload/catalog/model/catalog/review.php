@@ -1,5 +1,5 @@
 <?php
-class ModelCatalogReview extends Model {		
+class ModelCatalogReview extends Model {
 	public function addReview($product_id, $data) {
 		$this->db->query("INSERT INTO {review} SET author = '" . $this->db->escape($data['name']) . "', customer_id = '" . (int)$this->customer->getId() . "', product_id = '" . (int)$product_id . "', text = '" . $this->db->escape($data['text']) . "', rating = '" . (int)$data['rating'] . "', date_added = NOW()");
 		
@@ -26,7 +26,7 @@ class ModelCatalogReview extends Model {
 			$mail->username = $this->config->get('config_smtp_username');
 			$mail->password = $this->config->get('config_smtp_password');
 			$mail->port = $this->config->get('config_smtp_port');
-			$mail->timeout = $this->config->get('config_smtp_timeout');	
+			$mail->timeout = $this->config->get('config_smtp_timeout');
 			$mail->setTo(array($this->config->get('config_email')));
 			$mail->setFrom($this->config->get('config_email'));
 			$mail->setSender($this->config->get('config_name'));
@@ -53,7 +53,7 @@ class ModelCatalogReview extends Model {
 		
 		if ($limit < 1) {
 			$limit = 20;
-		}		
+		}
 		
 		$query = $this->db->query("SELECT r.review_id, r.author, r.rating, r.text, p.product_id, pd.name, p.price, p.image, r.date_added FROM {review} r LEFT JOIN {product} p ON (r.product_id = p.product_id) LEFT JOIN {product_description} pd ON (p.product_id = pd.product_id) WHERE p.product_id = '" . (int)$product_id . "' AND p.date_available <= NOW() AND p.status = '1' AND r.status = '1' AND pd.language_id = '" . (int)$this->config->get('config_language_id') . "' ORDER BY r.date_added DESC LIMIT " . (int)$start . "," . (int)$limit);
 			

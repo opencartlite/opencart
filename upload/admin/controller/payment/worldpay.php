@@ -1,6 +1,6 @@
-<?php 
+<?php
 class ControllerPaymentWorldPay extends Controller {
-	private $error = array(); 
+	private $error = array();
 
 	public function index() {
 		$this->data += $this->language->load('payment/worldpay');
@@ -10,12 +10,12 @@ class ControllerPaymentWorldPay extends Controller {
 		$this->load->model('setting/setting');
 			
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
-			$this->model_setting_setting->editSetting('worldpay', $this->request->post);				
+			$this->model_setting_setting->editSetting('worldpay', $this->request->post);
 			
 			$this->session->data['success'] = $this->language->get('text_success');
 
 			$this->redirect($this->url->link('extension/payment', 'token=' . $this->session->data['token'], 'SSL'));
-		}			
+		}
 
  		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
@@ -79,14 +79,14 @@ class ControllerPaymentWorldPay extends Controller {
 		if (isset($this->request->post['worldpay_total'])) {
 			$this->data['worldpay_total'] = $this->request->post['worldpay_total'];
 		} else {
-			$this->data['worldpay_total'] = $this->config->get('worldpay_total'); 
-		} 
+			$this->data['worldpay_total'] = $this->config->get('worldpay_total');
+		}
 				
 		if (isset($this->request->post['worldpay_order_status_id'])) {
 			$this->data['worldpay_order_status_id'] = $this->request->post['worldpay_order_status_id'];
 		} else {
-			$this->data['worldpay_order_status_id'] = $this->config->get('worldpay_order_status_id'); 
-		} 
+			$this->data['worldpay_order_status_id'] = $this->config->get('worldpay_order_status_id');
+		}
 		
 		$this->load->model('localisation/order_status');
 		
@@ -95,8 +95,8 @@ class ControllerPaymentWorldPay extends Controller {
 		if (isset($this->request->post['worldpay_geo_zone_id'])) {
 			$this->data['worldpay_geo_zone_id'] = $this->request->post['worldpay_geo_zone_id'];
 		} else {
-			$this->data['worldpay_geo_zone_id'] = $this->config->get('worldpay_geo_zone_id'); 
-		} 
+			$this->data['worldpay_geo_zone_id'] = $this->config->get('worldpay_geo_zone_id');
+		}
 
 		$this->load->model('localisation/geo_zone');
 										
@@ -140,7 +140,7 @@ class ControllerPaymentWorldPay extends Controller {
 			return true;
 		} else {
 			return false;
-		}	
+		}
 	}
 }
 ?>

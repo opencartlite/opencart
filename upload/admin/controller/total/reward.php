@@ -1,8 +1,8 @@
-<?php 
-class ControllerTotalReward extends Controller { 
-	private $error = array(); 
+<?php
+class ControllerTotalReward extends Controller {
+	private $error = array();
 	 
-	public function index() { 
+	public function index() {
 		$this->data += $this->language->load('total/reward');
 
 		$this->document->setTitle($this->language->get('heading_title'));
@@ -74,6 +74,6 @@ class ControllerTotalReward extends Controller {
 			return true;
 		} else {
 			return false;
-		}	
+		}
 	}
 }

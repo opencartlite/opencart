@@ -1,6 +1,6 @@
 <?php
 class ControllerCatalogFilter extends Controller {
-	private $error = array();  
+	private $error = array();
  
 	public function index() {
 		$this->data += $this->language->load('catalog/filter');
@@ -186,7 +186,7 @@ class ControllerCatalogFilter extends Controller {
 				'selected'        => isset($this->request->post['selected']) && in_array($result['filter_id'], $this->request->post['selected']),
 				'action'          => $action
 			);
-		}	
+		}
  
  		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
@@ -266,7 +266,7 @@ class ControllerCatalogFilter extends Controller {
 			$this->data['error_filter'] = $this->error['filter'];
 		} else {
 			$this->data['error_filter'] = array();
-		}	
+		}
 
 		$url = '';
 
@@ -296,7 +296,7 @@ class ControllerCatalogFilter extends Controller {
 		
 		if (!isset($this->request->get['filter_group_id'])) {
 			$this->data['action'] = $this->url->link('catalog/filter/insert', 'token=' . $this->session->data['token'] . $url, 'SSL');
-		} else { 
+		} else {
 			$this->data['action'] = $this->url->link('catalog/filter/update', 'token=' . $this->session->data['token'] . '&filter_group_id=' . $this->request->get['filter_group_id'] . $url, 'SSL');
 		}
 
@@ -318,7 +318,7 @@ class ControllerCatalogFilter extends Controller {
 			$this->data['filter_group_description'] = $this->model_catalog_filter->getFilterGroupDescriptions($this->request->get['filter_group_id']);
 		} else {
 			$this->data['filter_group_description'] = array();
-		}	
+		}
 				
 		if (isset($this->request->post['sort_order'])) {
 			$this->data['sort_order'] = $this->request->post['sort_order'];
@@ -360,10 +360,10 @@ class ControllerCatalogFilter extends Controller {
 			foreach ($this->request->post['filter'] as $filter_id => $filter) {
 				foreach ($filter['filter_description'] as $language_id => $filter_description) {
 					if ((utf8_strlen($filter_description['name']) < 1) || (utf8_strlen($filter_description['name']) > 64)) {
-						$this->error['filter'][$filter_id][$language_id] = $this->language->get('error_name'); 
-					}					
+						$this->error['filter'][$filter_id][$language_id] = $this->language->get('error_name');
+					}
 				}
-			}	
+			}
 		}
 
 		if (!$this->error) {
@@ -383,7 +383,7 @@ class ControllerCatalogFilter extends Controller {
 		} else {
 			return false;
 		}
-	}	
+	}
 	
 	public function autocomplete() {
 		$json = array();
@@ -399,7 +399,7 @@ class ControllerCatalogFilter extends Controller {
 			
 			$filters = $this->model_catalog_filter->getFilters($data);
 			
-			foreach ($filters as $filter) {				
+			foreach ($filters as $filter) {
 				$json[] = array(
 					'filter_id' => $filter['filter_id'],
 					'name'      => strip_tags(html_entity_decode($filter['group'] . ' &gt; ' . $filter['name'], ENT_QUOTES, 'UTF-8'))

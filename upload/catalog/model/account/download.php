@@ -13,7 +13,7 @@ class ModelAccountDownload extends Model {
 		
 		if ($limit < 1) {
 			$limit = 20;
-		}	
+		}
 		
 		$query = $this->db->query("SELECT o.order_id, o.date_added, od.order_download_id, od.name, od.filename, od.remaining FROM {order_download} od LEFT JOIN {order} o ON (od.order_id = o.order_id) WHERE o.customer_id = '" . (int)$this->customer->getId() . "' AND o.order_status_id > '0' AND o.order_status_id = '" . (int)$this->config->get('config_complete_status_id') . "' AND od.remaining > 0 ORDER BY o.date_added DESC LIMIT " . (int)$start . "," . (int)$limit);
 	
@@ -28,6 +28,6 @@ class ModelAccountDownload extends Model {
 		$query = $this->db->query("SELECT COUNT(*) AS total FROM {order_download} od LEFT JOIN {order} o ON (od.order_id = o.order_id) WHERE o.customer_id = '" . (int)$this->customer->getId() . "' AND o.order_status_id > '0' AND o.order_status_id = '" . (int)$this->config->get('config_complete_status_id') . "' AND od.remaining > 0");
 		
 		return $query->row['total'];
-	}	
+	}
 }
 ?>

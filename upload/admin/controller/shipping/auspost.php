@@ -1,8 +1,8 @@
 <?php
 class ControllerShippingAusPost extends Controller {
-	private $error = array(); 
+	private $error = array();
 	
-	public function index() {   
+	public function index() {
 		$this->data += $this->language->load('shipping/auspost');
 		
 		$this->document->setTitle($this->language->get('heading_title'));
@@ -10,12 +10,12 @@ class ControllerShippingAusPost extends Controller {
 		$this->load->model('setting/setting');
 		
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
-			$this->model_setting_setting->editSetting('auspost', $this->request->post);             
+			$this->model_setting_setting->editSetting('auspost', $this->request->post);
 			
 			$this->session->data['success'] = $this->language->get('text_success');
 			
 			$this->redirect($this->url->link('extension/shipping', 'token=' . $this->session->data['token'], 'SSL'));
-		}         
+		}
 		
 		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
@@ -114,12 +114,12 @@ class ControllerShippingAusPost extends Controller {
 			$this->data['auspost_sort_order'] = $this->request->post['auspost_sort_order'];
 		} else {
 			$this->data['auspost_sort_order'] = $this->config->get('auspost_sort_order');
-		}                               
+		}
 		
 		$this->template = 'shipping/auspost.tpl';
 		$this->children = array(
-			'common/header',        
-			'common/footer' 
+			'common/header',
+			'common/footer'
 		);
 		
 		$this->response->setOutput($this->render(TRUE), $this->config->get('config_compression'));
@@ -138,7 +138,7 @@ class ControllerShippingAusPost extends Controller {
 			return true;
 		} else {
 			return false;
-		}       
+		}
 	}
 }
 ?>

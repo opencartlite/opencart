@@ -1,9 +1,9 @@
-<?php  
+<?php
 class ControllerInformationSitemap extends Controller {
 	public function index() {
     	$this->data += $this->language->load('information/sitemap');
  
-		$this->document->setTitle($this->language->get('heading_title')); 
+		$this->document->setTitle($this->language->get('heading_title'));
 
       	$this->data['breadcrumbs'] = array();
 
@@ -15,7 +15,7 @@ class ControllerInformationSitemap extends Controller {
       	$this->data['breadcrumbs'][] = array(
         	'text' => $this->language->get('heading_title'),
 			'href' => $this->url->link('information/sitemap')
-      	);	
+      	);
 			
 		$this->load->model('catalog/category');
 		$this->load->model('catalog/product');
@@ -44,8 +44,8 @@ class ControllerInformationSitemap extends Controller {
 				$level_2_data[] = array(
 					'name'     => $category_2['name'],
 					'children' => $level_3_data,
-					'href'     => $this->url->link('product/category', 'path=' . $category_1['category_id'] . '_' . $category_2['category_id'])	
-				);					
+					'href'     => $this->url->link('product/category', 'path=' . $category_1['category_id'] . '_' . $category_2['category_id'])
+				);
 			}
 			
 			$this->data['categories'][] = array(
@@ -74,7 +74,7 @@ class ControllerInformationSitemap extends Controller {
 		foreach ($this->model_catalog_information->getInformations() as $result) {
       		$this->data['informations'][] = array(
         		'title' => $result['title'],
-        		'href'  => $this->url->link('information/information', 'information_id=' . $result['information_id']) 
+        		'href'  => $this->url->link('information/information', 'information_id=' . $result['information_id'])
       		);
     	}
 
@@ -93,7 +93,7 @@ class ControllerInformationSitemap extends Controller {
 			'common/header'
 		);
 				
- 		$this->response->setOutput($this->render());		
+ 		$this->response->setOutput($this->render());
 	}
 }
 ?>

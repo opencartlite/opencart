@@ -1,4 +1,4 @@
-<?php  
+<?php
 class ControllerSaleCoupon extends Controller {
 	private $error = array();
      
@@ -83,7 +83,7 @@ class ControllerSaleCoupon extends Controller {
 		
 		$this->load->model('sale/coupon');
 		
-    	if (isset($this->request->post['selected']) && $this->validateDelete()) { 
+    	if (isset($this->request->post['selected']) && $this->validateDelete()) {
 			foreach ($this->request->post['selected'] as $coupon_id) {
 				$this->model_sale_coupon->deleteCoupon($coupon_id);
 			}
@@ -190,7 +190,7 @@ class ControllerSaleCoupon extends Controller {
 				'selected'   => isset($this->request->post['selected']) && in_array($result['coupon_id'], $this->request->post['selected']),
 				'action'     => $action
 			);
-		}		
+		}
  
  		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
@@ -249,8 +249,8 @@ class ControllerSaleCoupon extends Controller {
 		
 		$this->template = 'sale/coupon_list.tpl';
 		$this->children = array(
-			'common/header',	
-			'common/footer'	
+			'common/header',
+			'common/footer'
 		);
 		
 		$this->response->setOutput($this->render());
@@ -282,19 +282,19 @@ class ControllerSaleCoupon extends Controller {
 			$this->data['error_code'] = $this->error['code'];
 		} else {
 			$this->data['error_code'] = '';
-		}		
+		}
 		
 		if (isset($this->error['date_start'])) {
 			$this->data['error_date_start'] = $this->error['date_start'];
 		} else {
 			$this->data['error_date_start'] = '';
-		}	
+		}
 		
 		if (isset($this->error['date_end'])) {
 			$this->data['error_date_end'] = $this->error['date_end'];
 		} else {
 			$this->data['error_date_end'] = '';
-		}	
+		}
 
 		$url = '';
 			
@@ -392,7 +392,7 @@ class ControllerSaleCoupon extends Controller {
 		
 		if (isset($this->request->post['coupon_product'])) {
 			$products = $this->request->post['coupon_product'];
-		} elseif (isset($this->request->get['coupon_id'])) {		
+		} elseif (isset($this->request->get['coupon_id'])) {
 			$products = $this->model_sale_coupon->getCouponProducts($this->request->get['coupon_id']);
 		} else {
 			$products = array();
@@ -415,7 +415,7 @@ class ControllerSaleCoupon extends Controller {
 
 		if (isset($this->request->post['coupon_category'])) {
 			$categories = $this->request->post['coupon_category'];
-		} elseif (isset($this->request->get['coupon_id'])) {		
+		} elseif (isset($this->request->get['coupon_id'])) {
 			$categories = $this->model_sale_coupon->getCouponCategories($this->request->get['coupon_id']);
 		} else {
 			$categories = array();
@@ -468,7 +468,7 @@ class ControllerSaleCoupon extends Controller {
       		$this->data['uses_customer'] = 1;
     	}
  
-    	if (isset($this->request->post['status'])) { 
+    	if (isset($this->request->post['status'])) {
       		$this->data['status'] = $this->request->post['status'];
     	} elseif (!empty($coupon_info)) {
 			$this->data['status'] = $coupon_info['status'];
@@ -478,11 +478,11 @@ class ControllerSaleCoupon extends Controller {
 		
 		$this->template = 'sale/coupon_form.tpl';
 		$this->children = array(
-			'common/header',	
-			'common/footer'	
+			'common/header',
+			'common/footer'
 		);
 		
-		$this->response->setOutput($this->render());		
+		$this->response->setOutput($this->render());
   	}
 	
   	protected function validateForm() {
@@ -517,7 +517,7 @@ class ControllerSaleCoupon extends Controller {
 
   	protected function validateDelete() {
     	if (!$this->user->hasPermission('modify', 'sale/coupon')) {
-      		$this->error['warning'] = $this->language->get('error_permission');  
+      		$this->error['warning'] = $this->language->get('error_permission');
     	}
 	  	
 		if (!$this->error) {
@@ -525,7 +525,7 @@ class ControllerSaleCoupon extends Controller {
 		} else {
 	  		return false;
 		}
-  	}	
+  	}
 	
 	public function history() {
     	$this->data += $this->language->load('sale/coupon');
@@ -536,7 +536,7 @@ class ControllerSaleCoupon extends Controller {
 			$page = $this->request->get['page'];
 		} else {
 			$page = 1;
-		}  
+		}
 		
 		$this->data['histories'] = array();
 			
@@ -549,21 +549,21 @@ class ControllerSaleCoupon extends Controller {
 				'amount'     => $result['amount'],
         		'date_added' => date($this->language->get('date_format_short'), strtotime($result['date_added']))
         	);
-      	}			
+      	}
 		
 		$history_total = $this->model_sale_coupon->getTotalCouponHistories($this->request->get['coupon_id']);
 			
 		$pagination = new Pagination();
 		$pagination->total = $history_total;
 		$pagination->page = $page;
-		$pagination->limit = 10; 
+		$pagination->limit = 10;
 		$pagination->url = $this->url->link('sale/coupon/history', 'token=' . $this->session->data['token'] . '&coupon_id=' . $this->request->get['coupon_id'] . '&page={page}', 'SSL');
 			
 		$this->data['pagination'] = $pagination->render();
 		
-		$this->template = 'sale/coupon_history.tpl';		
+		$this->template = 'sale/coupon_history.tpl';
 		
 		$this->response->setOutput($this->render());
-  	}		
+  	}
 }
 ?>

@@ -18,7 +18,7 @@ class ModelSettingStore extends Model {
 		$this->db->query("DELETE FROM {store} WHERE store_id = '" . (int)$store_id . "'");
 			
 		$this->cache->delete('store');
-	}	
+	}
 	
 	public function getStore($store_id) {
 		$query = $this->db->query("SELECT DISTINCT * FROM {store} WHERE store_id = '" . (int)$store_id . "'");
@@ -44,43 +44,43 @@ class ModelSettingStore extends Model {
       	$query = $this->db->query("SELECT COUNT(*) AS total FROM {store}");
 		
 		return $query->row['total'];
-	}	
+	}
 	
 	public function getTotalStoresByLayoutId($layout_id) {
       	$query = $this->db->query("SELECT COUNT(*) AS total FROM {setting} WHERE `key` = 'config_layout_id' AND `value` = '" . (int)$layout_id . "' AND store_id != '0'");
 		
-		return $query->row['total'];		
+		return $query->row['total'];
 	}
 	
 	public function getTotalStoresByLanguage($language) {
       	$query = $this->db->query("SELECT COUNT(*) AS total FROM {setting} WHERE `key` = 'config_language' AND `value` = '" . $this->db->escape($language) . "' AND store_id != '0'");
 		
-		return $query->row['total'];		
+		return $query->row['total'];
 	}
 	
 	public function getTotalStoresByCurrency($currency) {
       	$query = $this->db->query("SELECT COUNT(*) AS total FROM {setting} WHERE `key` = 'config_currency' AND `value` = '" . $this->db->escape($currency) . "' AND store_id != '0'");
 		
-		return $query->row['total'];		
+		return $query->row['total'];
 	}
 	
 	public function getTotalStoresByCountryId($country_id) {
       	$query = $this->db->query("SELECT COUNT(*) AS total FROM {setting} WHERE `key` = 'config_country_id' AND `value` = '" . (int)$country_id . "' AND store_id != '0'");
 		
-		return $query->row['total'];		
+		return $query->row['total'];
 	}
 	
 	public function getTotalStoresByZoneId($zone_id) {
       	$query = $this->db->query("SELECT COUNT(*) AS total FROM {setting} WHERE `key` = 'config_zone_id' AND `value` = '" . (int)$zone_id . "' AND store_id != '0'");
 		
-		return $query->row['total'];		
+		return $query->row['total'];
 	}
 	
 	public function getTotalStoresByCustomerGroupId($customer_group_id) {
       	$query = $this->db->query("SELECT COUNT(*) AS total FROM {setting} WHERE `key` = 'config_customer_group_id' AND `value` = '" . (int)$customer_group_id . "' AND store_id != '0'");
 		
-		return $query->row['total'];		
-	}	
+		return $query->row['total'];
+	}
 	
 	public function getTotalStoresByInformationId($information_id) {
       	$account_query = $this->db->query("SELECT COUNT(*) AS total FROM {setting} WHERE `key` = 'config_account_id' AND `value` = '" . (int)$information_id . "' AND store_id != '0'");
@@ -93,7 +93,7 @@ class ModelSettingStore extends Model {
 	public function getTotalStoresByOrderStatusId($order_status_id) {
       	$query = $this->db->query("SELECT COUNT(*) AS total FROM {setting} WHERE `key` = 'config_order_status_id' AND `value` = '" . (int)$order_status_id . "' AND store_id != '0'");
 		
-		return $query->row['total'];		
-	}	
+		return $query->row['total'];
+	}
 }
 ?>

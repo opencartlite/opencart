@@ -1,4 +1,4 @@
-<?php 
+<?php
 class ControllerAffiliateLogout extends Controller {
 	public function index() {
     	if ($this->affiliate->isLogged()) {
@@ -26,7 +26,7 @@ class ControllerAffiliateLogout extends Controller {
       	$this->data['breadcrumbs'][] = array(
         	'text' => $this->language->get('text_logout'),
 			'href' => $this->url->link('affiliate/logout', '', 'SSL')
-      	);	
+      	);
 
     	$this->data['continue'] = $this->url->link('common/home');
 
@@ -42,10 +42,10 @@ class ControllerAffiliateLogout extends Controller {
 			'common/content_top',
 			'common/content_bottom',
 			'common/footer',
-			'common/header'	
+			'common/header'
 		);
 						
-		$this->response->setOutput($this->render());	
+		$this->response->setOutput($this->render());
   	}
 }
 ?>

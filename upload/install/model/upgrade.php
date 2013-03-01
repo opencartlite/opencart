@@ -1,21 +1,21 @@
 <?php
 class ModelUpgrade extends Model {
 	public function mysql() {
-		// Upgrade script to opgrade opencart to the latest version. 
+		// Upgrade script to opgrade opencart to the latest version.
 		// Oldest version supported is 1.3.2
 			
 		// Load the sql file
 		$file = DIR_APPLICATION . 'opencart.sql';
 		
-		if (!file_exists($file)) { 
-			exit('Could not load sql file: ' . $file); 
+		if (!file_exists($file)) {
+			exit('Could not load sql file: ' . $file);
 		}
 		
-		$string = '';	
+		$string = '';
 		
 		$lines = file($file);
 		
-		$status = false;	
+		$status = false;
 		
 		// Get only the create statements
 		foreach($lines as $line) {
@@ -24,7 +24,7 @@ class ModelUpgrade extends Model {
 			
 			// If line begins with create table we want to start recording
 			if (substr($line, 0, 12) == 'CREATE TABLE') {
-				$status = true;	
+				$status = true;
 			}
 			
 			if ($status) {
@@ -49,7 +49,7 @@ class ModelUpgrade extends Model {
 		$statements = explode(';', $string);
 		
 		foreach ($statements as $sql) {
-			// Get all fields		
+			// Get all fields
 			$field_data = array();
 			
 			preg_match_all('#`(\w[\w\d]*)`\s+((tinyint|smallint|mediumint|bigint|int|tinytext|text|mediumtext|longtext|tinyblob|blob|mediumblob|longblob|varchar|char|datetime|date|float|double|decimal|timestamp|time|year|enum|set|binary|varbinary)(\((\d+)(,\s*(\d+))?\))?){1}\s*(collate (\w+)\s*)?(unsigned\s*)?((NOT\s*NULL\s*)|(NULL\s*))?(auto_increment\s*)?(default \'([^\']*)\'\s*)?#i', $sql, $match);
@@ -73,10 +73,10 @@ class ModelUpgrade extends Model {
 			
 			preg_match('#primary\s*key\s*\([^)]+\)#i', $sql, $match);
 			
-			if (isset($match[0])) { 
-				preg_match_all('#`(\w[\w\d]*)`#', $match[0], $match); 
-			} else{ 
-				$match = array();	
+			if (isset($match[0])) {
+				preg_match_all('#`(\w[\w\d]*)`#', $match[0], $match);
+			} else{
+				$match = array();
 			}
 			
 			if ($match) {
@@ -108,7 +108,7 @@ class ModelUpgrade extends Model {
 						$index_data[$key][] = $field;
 					}
 				}
-			}			
+			}
 			
 			// Table options
 			$option_data = array();
@@ -143,7 +143,7 @@ class ModelUpgrade extends Model {
 				
 		foreach ($table_query->rows as $table) {
 			if (utf8_substr($table['Tables_in_' . DB_DATABASE], 0, strlen(DB_PREFIX)) == DB_PREFIX) {
-				$field_data = array(); 
+				$field_data = array();
 				
 				$field_query = $this->db->query("SHOW COLUMNS FROM `" . $table['Tables_in_' . DB_DATABASE] . "`");
 				
@@ -162,7 +162,7 @@ class ModelUpgrade extends Model {
 			} else {
 				// DB Engine
 				if (isset($table['option']['ENGINE'])) {
-					$this->db->query("ALTER TABLE `" . $table['name'] . "` ENGINE = `" . $table['option']['ENGINE'] . "`");	
+					$this->db->query("ALTER TABLE `" . $table['name'] . "` ENGINE = `" . $table['option']['ENGINE'] . "`");
 				}
 				
 				// Charset
@@ -260,7 +260,7 @@ class ModelUpgrade extends Model {
 					$this->db->query("ALTER TABLE `" . $table['name'] . "` ADD PRIMARY KEY(" . implode(',', $primary_data) . ")");
 				}
 				
-				// Add the new indexes				
+				// Add the new indexes
 				foreach ($table['index'] as $index) {
 					$index_data = array();
 					
@@ -269,11 +269,11 @@ class ModelUpgrade extends Model {
 					}
 					
 					if ($index_data) {
-						$this->db->query("ALTER TABLE `" . $table['name'] . "` ADD INDEX (" . implode(',', $index_data) . ")");			
-					}	
+						$this->db->query("ALTER TABLE `" . $table['name'] . "` ADD INDEX (" . implode(',', $index_data) . ")");
+					}
 				}
 				
-				// Add auto increment to primary keys again 
+				// Add auto increment to primary keys again
 				foreach ($table['field'] as $field) {
 					if ($field['autoincrement']) {
 						$sql = "ALTER TABLE `" . $table['name'] . "` CHANGE `" . $field['name'] . "` `" . $field['name'] . "` " . strtoupper($field['type']);
@@ -339,12 +339,12 @@ class ModelUpgrade extends Model {
 				}
 			}
 			
-			$this->db->query("ALTER TABLE {customer_group} DROP `name`");	
+			$this->db->query("ALTER TABLE {customer_group} DROP `name`");
 		}
 
 		// Rename the option_value field to value
 		if (in_array('option_value', $table_old_data[DB_PREFIX . 'product_option'])) {
-			$this->db->query("ALTER TABLE {product_option} DROP `value`");	
+			$this->db->query("ALTER TABLE {product_option} DROP `value`");
 			$this->db->query("ALTER TABLE {product_option} CHANGE `option_value` `value` TEXT");
 			$this->db->query("ALTER TABLE {product_option} DROP `option_value`");
 		}

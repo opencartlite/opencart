@@ -7,7 +7,7 @@ class ModelSaleCustomerGroup extends Model {
 		
 		foreach ($data['customer_group_description'] as $language_id => $value) {
 			$this->db->query("INSERT INTO {customer_group_description} SET customer_group_id = '" . (int)$customer_group_id . "', language_id = '" . (int)$language_id . "', name = '" . $this->db->escape($value['name']) . "', description = '" . $this->db->escape($value['description']) . "'");
-		}	
+		}
 	}
 	
 	public function editCustomerGroup($customer_group_id, $data) {
@@ -40,12 +40,12 @@ class ModelSaleCustomerGroup extends Model {
 		$sort_data = array(
 			'cgd.name',
 			'cg.sort_order'
-		);	
+		);
 			
 		if (isset($data['sort']) && in_array($data['sort'], $sort_data)) {
-			$sql .= " ORDER BY " . $data['sort'];	
+			$sql .= " ORDER BY " . $data['sort'];
 		} else {
-			$sql .= " ORDER BY cgd.name";	
+			$sql .= " ORDER BY cgd.name";
 		}
 			
 		if (isset($data['order']) && ($data['order'] == 'DESC')) {
@@ -57,11 +57,11 @@ class ModelSaleCustomerGroup extends Model {
 		if (isset($data['start']) || isset($data['limit'])) {
 			if ($data['start'] < 0) {
 				$data['start'] = 0;
-			}			
+			}
 
 			if ($data['limit'] < 1) {
 				$data['limit'] = 20;
-			}	
+			}
 			
 			$sql .= " LIMIT " . (int)$data['start'] . "," . (int)$data['limit'];
 		}

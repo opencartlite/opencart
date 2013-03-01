@@ -1,6 +1,6 @@
-<?php    
-class ControllerErrorPermission extends Controller {    
-	public function index() { 
+<?php
+class ControllerErrorPermission extends Controller {
+	public function index() {
     	$this->data += $this->language->load('error/permission');
   
     	$this->document->setTitle($this->language->get('heading_title'));

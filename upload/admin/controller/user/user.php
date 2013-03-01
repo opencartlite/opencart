@@ -1,5 +1,5 @@
-<?php  
-class ControllerUserUser extends Controller {  
+<?php
+class ControllerUserUser extends Controller {
 	private $error = array();
    
   	public function index() {
@@ -76,7 +76,7 @@ class ControllerUserUser extends Controller {
     	$this->getForm();
   	}
  
-  	public function delete() { 
+  	public function delete() {
     	$this->data += $this->language->load('user/user');
 
     	$this->document->setTitle($this->language->get('heading_title'));
@@ -85,7 +85,7 @@ class ControllerUserUser extends Controller {
 		
     	if (isset($this->request->post['selected']) && $this->validateDelete()) {
       		foreach ($this->request->post['selected'] as $user_id) {
-				$this->model_user_user->deleteUser($user_id);	
+				$this->model_user_user->deleteUser($user_id);
 			}
 
 			$this->session->data['success'] = $this->language->get('text_success');
@@ -156,7 +156,7 @@ class ControllerUserUser extends Controller {
    		);
 			
 		$this->data['insert'] = $this->url->link('user/user/insert', 'token=' . $this->session->data['token'] . $url, 'SSL');
-		$this->data['delete'] = $this->url->link('user/user/delete', 'token=' . $this->session->data['token'] . $url, 'SSL');			
+		$this->data['delete'] = $this->url->link('user/user/delete', 'token=' . $this->session->data['token'] . $url, 'SSL');
 			
     	$this->data['users'] = array();
 
@@ -187,7 +187,7 @@ class ControllerUserUser extends Controller {
 				'selected'   => isset($this->request->post['selected']) && in_array($result['user_id'], $this->request->post['selected']),
 				'action'     => $action
 			);
-		}	
+		}
  
  		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
@@ -396,7 +396,7 @@ class ControllerUserUser extends Controller {
 			'common/footer'
 		);
 				
-		$this->response->setOutput($this->render());	
+		$this->response->setOutput($this->render());
   	}
   	
   	protected function validateForm() {
@@ -445,10 +445,10 @@ class ControllerUserUser extends Controller {
     	}
   	}
 
-  	protected function validateDelete() { 
+  	protected function validateDelete() {
     	if (!$this->user->hasPermission('modify', 'user/user')) {
       		$this->error['warning'] = $this->language->get('error_permission');
-    	} 
+    	}
 	  	  
 		foreach ($this->request->post['selected'] as $user_id) {
 			if ($this->user->getId() == $user_id) {
@@ -458,7 +458,7 @@ class ControllerUserUser extends Controller {
 		 
 		if (!$this->error) {
 	  		return true;
-		} else { 
+		} else {
 	  		return false;
 		}
   	}

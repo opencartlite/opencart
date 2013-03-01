@@ -1,8 +1,8 @@
 <?php
 class ControllerModuleSpecial extends Controller {
-	private $error = array(); 
+	private $error = array();
 	
-	public function index() {   
+	public function index() {
 		$this->data += $this->language->load('module/special');
 
 		$this->document->setTitle($this->language->get('heading_title'));
@@ -10,14 +10,14 @@ class ControllerModuleSpecial extends Controller {
 		$this->load->model('setting/setting');
 				
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
-			$this->model_setting_setting->editSetting('special', $this->request->post);		
+			$this->model_setting_setting->editSetting('special', $this->request->post);
 			
 			$this->cache->delete('product');
 			
 			$this->session->data['success'] = $this->language->get('text_success');
 						
 			$this->redirect($this->url->link('extension/module', 'token=' . $this->session->data['token'], 'SSL'));
-		}		
+		}
 		
  		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
@@ -56,7 +56,7 @@ class ControllerModuleSpecial extends Controller {
 		
 		if (isset($this->request->post['special_module'])) {
 			$this->data['modules'] = $this->request->post['special_module'];
-		} elseif ($this->config->get('special_module')) { 
+		} elseif ($this->config->get('special_module')) {
 			$this->data['modules'] = $this->config->get('special_module');
 		}
 						
@@ -84,13 +84,13 @@ class ControllerModuleSpecial extends Controller {
 					$this->error['image'][$key] = $this->language->get('error_image');
 				}
 			}
-		}	
+		}
 						
 		if (!$this->error) {
 			return true;
 		} else {
 			return false;
-		}	
+		}
 	}
 }
 ?>

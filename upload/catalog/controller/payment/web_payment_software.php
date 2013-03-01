@@ -7,7 +7,7 @@ class ControllerPaymentWebPaymentSoftware extends Controller {
 		
 		for ($i = 1; $i <= 12; $i++) {
 			$this->data['months'][] = array(
-				'text'  => strftime('%B', mktime(0, 0, 0, $i, 1, 2000)), 
+				'text'  => strftime('%B', mktime(0, 0, 0, $i, 1, 2000)),
 				'value' => sprintf('%02d', $i)
 			);
 		}
@@ -19,7 +19,7 @@ class ControllerPaymentWebPaymentSoftware extends Controller {
 		for ($i = $today['year']; $i < $today['year'] + 11; $i++) {
 			$this->data['year_expire'][] = array(
 				'text'  => strftime('%Y', mktime(0, 0, 0, 1, 1, $i)),
-				'value' => strftime('%Y', mktime(0, 0, 0, 1, 1, $i)) 
+				'value' => strftime('%Y', mktime(0, 0, 0, 1, 1, $i))
 			);
 		}
 
@@ -27,9 +27,9 @@ class ControllerPaymentWebPaymentSoftware extends Controller {
 			$this->template = $this->config->get('config_template') . '/template/payment/web_payment_software.tpl';
 		} else {
 			$this->template = 'default/template/payment/web_payment_software.tpl';
-		}	
+		}
 		
-		$this->render();		
+		$this->render();
 	}
 	
 	public function send() {
@@ -129,7 +129,7 @@ class ControllerPaymentWebPaymentSoftware extends Controller {
 				$message .= (string)$xml->response_text . "\n";
 			}
 			
-			$this->model_checkout_order->update($this->session->data['order_id'], $this->config->get('web_payment_software_order_status_id'), $message, false);				
+			$this->model_checkout_order->update($this->session->data['order_id'], $this->config->get('web_payment_software_order_status_id'), $message, false);
 			
 			$json['success'] = $this->url->link('checkout/success', '', 'SSL');
 		} else {

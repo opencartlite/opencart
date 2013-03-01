@@ -26,12 +26,12 @@ class ModelLocalisationCurrency extends Model {
 					'status'        => $result['status'],
 					'date_modified' => $result['date_modified']
       			);
-    		}	
+    		}
 			
 			$this->cache->set('currency', $currency_data);
 		}
 			
-		return $currency_data;	
-	}	
+		return $currency_data;
+	}
 }
 ?>

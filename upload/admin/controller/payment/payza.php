@@ -1,6 +1,6 @@
 <?php
 class ControllerPaymentPayza extends Controller {
-	private $error = array(); 
+	private $error = array();
 
 	public function index() {
 		$this->data += $this->language->load('payment/payza');
@@ -10,12 +10,12 @@ class ControllerPaymentPayza extends Controller {
 		$this->load->model('setting/setting');
 			
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
-			$this->model_setting_setting->editSetting('payza', $this->request->post);				
+			$this->model_setting_setting->editSetting('payza', $this->request->post);
 			
 			$this->session->data['success'] = $this->language->get('text_success');
 
 			$this->redirect($this->url->link('extension/payment', 'token=' . $this->session->data['token'], 'SSL'));
-		}			
+		}
 
   		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
@@ -73,14 +73,14 @@ class ControllerPaymentPayza extends Controller {
 		if (isset($this->request->post['payza_total'])) {
 			$this->data['payza_total'] = $this->request->post['payza_total'];
 		} else {
-			$this->data['payza_total'] = $this->config->get('payza_total'); 
-		} 
+			$this->data['payza_total'] = $this->config->get('payza_total');
+		}
 				
 		if (isset($this->request->post['payza_order_status_id'])) {
 			$this->data['payza_order_status_id'] = $this->request->post['payza_order_status_id'];
 		} else {
-			$this->data['payza_order_status_id'] = $this->config->get('payza_order_status_id'); 
-		} 
+			$this->data['payza_order_status_id'] = $this->config->get('payza_order_status_id');
+		}
 		
 		$this->load->model('localisation/order_status');
 		
@@ -89,8 +89,8 @@ class ControllerPaymentPayza extends Controller {
 		if (isset($this->request->post['payza_geo_zone_id'])) {
 			$this->data['payza_geo_zone_id'] = $this->request->post['payza_geo_zone_id'];
 		} else {
-			$this->data['payza_geo_zone_id'] = $this->config->get('payza_geo_zone_id'); 
-		} 
+			$this->data['payza_geo_zone_id'] = $this->config->get('payza_geo_zone_id');
+		}
 
 		$this->load->model('localisation/geo_zone');
 										
@@ -134,7 +134,7 @@ class ControllerPaymentPayza extends Controller {
 			return true;
 		} else {
 			return false;
-		}	
+		}
 	}
 }
 ?>

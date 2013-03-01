@@ -5,9 +5,9 @@ define('VERSION', '1.6.0');
 // Configuration
 if (file_exists('config.php')) {
 	require_once('config.php');
-}  
+}
 
-// Install 
+// Install
 if (!defined('DIR_APPLICATION')) {
 	header('Location: install/index.php');
 	exit;
@@ -36,7 +36,7 @@ $registry->set('load', $loader);
 $config = new Config();
 $registry->set('config', $config);
 
-// Database 
+// Database
 $db = new DB(DB_DRIVER, DB_HOSTNAME, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
 $registry->set('db', $db);
 
@@ -66,14 +66,14 @@ foreach ($query->rows as $setting) {
 
 if (!$store_query->num_rows) {
 	$config->set('config_url', HTTP_SERVER);
-	$config->set('config_ssl', HTTPS_SERVER);	
+	$config->set('config_ssl', HTTPS_SERVER);
 }
 
 // Url
-$url = new Url($config->get('config_url'), $config->get('config_secure') ? $config->get('config_ssl') : $config->get('config_url'));	
+$url = new Url($config->get('config_url'), $config->get('config_secure') ? $config->get('config_ssl') : $config->get('config_url'));
 $registry->set('url', $url);
 
-// Log 
+// Log
 $log = new Log($config->get('config_error_filename'));
 $registry->set('log', $log);
 
@@ -120,11 +120,11 @@ $registry->set('request', $request);
 $response = new Response();
 $response->addHeader('Content-Type: text/html; charset=utf-8');
 $response->setCompression($config->get('config_compression'));
-$registry->set('response', $response); 
+$registry->set('response', $response);
 		
 // Cache
 $cache = new Cache();
-$registry->set('cache', $cache); 
+$registry->set('cache', $cache);
 
 // Session
 $session = new Session();
@@ -133,7 +133,7 @@ $registry->set('session', $session);
 // Language Detection
 $languages = array();
 
-$query = $db->query("SELECT * FROM {language} WHERE status = '1'"); 
+$query = $db->query("SELECT * FROM {language} WHERE status = '1'");
 
 foreach ($query->rows as $result) {
 	$languages[$result['code']] = $result;
@@ -141,7 +141,7 @@ foreach ($query->rows as $result) {
 
 $detect = '';
 
-if (isset($request->server['HTTP_ACCEPT_LANGUAGE']) && $request->server['HTTP_ACCEPT_LANGUAGE']) { 
+if (isset($request->server['HTTP_ACCEPT_LANGUAGE']) && $request->server['HTTP_ACCEPT_LANGUAGE']) {
 	$browser_languages = explode(',', $request->server['HTTP_ACCEPT_LANGUAGE']);
 	
 	foreach ($browser_languages as $browser_language) {
@@ -171,20 +171,20 @@ if (!isset($session->data['language']) || $session->data['language'] != $code) {
 	$session->data['language'] = $code;
 }
 
-if (!isset($request->cookie['language']) || $request->cookie['language'] != $code) {	  
+if (!isset($request->cookie['language']) || $request->cookie['language'] != $code) {
 	setcookie('language', $code, time() + 60 * 60 * 24 * 30, '/', $request->server['HTTP_HOST']);
-}			
+}
 
 $config->set('config_language_id', $languages[$code]['language_id']);
 $config->set('config_language', $languages[$code]['code']);
 
-// Language	
+// Language
 $language = new Language($languages[$code]['directory']);
-$language->load($languages[$code]['filename']);	
-$registry->set('language', $language); 
+$language->load($languages[$code]['filename']);
+$registry->set('language', $language);
 
 // Document
-$registry->set('document', new Document()); 		
+$registry->set('document', new Document());
 
 // Customer
 $registry->set('customer', new Customer($registry));
@@ -214,14 +214,14 @@ $registry->set('cart', new Cart($registry));
 // Encryption
 $registry->set('encryption', new Encryption($config->get('config_encryption')));
 		
-// Front Controller 
+// Front Controller
 $controller = new Front($registry);
 
 // Maintenance Mode
 $controller->addPreAction(new Action('common/maintenance'));
 
 // SEO URL's
-$controller->addPreAction(new Action('common/seo_url'));	
+$controller->addPreAction(new Action('common/seo_url'));
 	
 // Router
 if (isset($request->get['route'])) {

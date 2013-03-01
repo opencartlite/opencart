@@ -1,4 +1,4 @@
-<?php  
+<?php
 class ControllerModuleGoogleTalk extends Controller {
 	protected function index() {
 		$this->data += $this->language->load('module/google_talk');

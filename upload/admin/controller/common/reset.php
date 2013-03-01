@@ -37,20 +37,20 @@ class ControllerCommonReset extends Controller {
 			$this->data['breadcrumbs'][] = array(
 				'text' => $this->language->get('text_home'),
 				'href' => $this->url->link('common/home')
-			); 
+			);
 			
 			$this->data['breadcrumbs'][] = array(
 				'text' => $this->language->get('text_reset'),
 				'href' => $this->url->link('common/reset', '', 'SSL')
 			);
 	
-			if (isset($this->error['password'])) { 
+			if (isset($this->error['password'])) {
 				$this->data['error_password'] = $this->error['password'];
 			} else {
 				$this->data['error_password'] = '';
 			}
 	
-			if (isset($this->error['confirm'])) { 
+			if (isset($this->error['confirm'])) {
 				$this->data['error_confirm'] = $this->error['confirm'];
 			} else {
 				$this->data['error_confirm'] = '';
@@ -78,7 +78,7 @@ class ControllerCommonReset extends Controller {
 				'common/footer'
 			);
 									
-			$this->response->setOutput($this->render());						
+			$this->response->setOutput($this->render());
 		} else {
 			$this->model_setting_setting->editSettingValue('config', 'config_password', '0');
 			
@@ -93,7 +93,7 @@ class ControllerCommonReset extends Controller {
 
     	if ($this->request->post['confirm'] != $this->request->post['password']) {
       		$this->error['confirm'] = $this->language->get('error_confirm');
-    	}  
+    	}
 
 		if (!$this->error) {
 			return true;

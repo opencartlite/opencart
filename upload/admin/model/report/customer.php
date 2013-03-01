@@ -1,6 +1,6 @@
 <?php
 class ModelReportCustomer extends Model {
-	public function getOrders($data = array()) { 
+	public function getOrders($data = array()) {
 		$sql = "SELECT c.customer_id, CONCAT(c.firstname, ' ', c.lastname) AS customer, c.email, cgd.name AS customer_group, c.status, COUNT(o.order_id) AS orders, SUM(op.quantity) AS products, SUM(o.total) AS `total` FROM {order} o LEFT JOIN {order_product} op ON (o.order_id = op.order_id)LEFT JOIN {customer} c ON (o.customer_id = c.customer_id) LEFT JOIN {customer_group_description} cgd ON (c.customer_group_id = cgd.customer_group_id) WHERE o.customer_id > 0 AND cgd.language_id = '" . (int)$this->config->get('config_language_id') . "'";
 		
 		if (!empty($data['filter_order_status_id'])) {
@@ -22,11 +22,11 @@ class ModelReportCustomer extends Model {
 		if (isset($data['start']) || isset($data['limit'])) {
 			if ($data['start'] < 0) {
 				$data['start'] = 0;
-			}			
+			}
 
 			if ($data['limit'] < 1) {
 				$data['limit'] = 20;
-			}	
+			}
 			
 			$sql .= " LIMIT " . (int)$data['start'] . "," . (int)$data['limit'];
 		}
@@ -58,7 +58,7 @@ class ModelReportCustomer extends Model {
 		return $query->row['total'];
 	}
 	
-	public function getRewardPoints($data = array()) { 
+	public function getRewardPoints($data = array()) {
 		$sql = "SELECT cr.customer_id, CONCAT(c.firstname, ' ', c.lastname) AS customer, c.email, cgd.name AS customer_group, c.status, SUM(cr.points) AS points, COUNT(o.order_id) AS orders, SUM(o.total) AS total FROM {customer_reward} cr LEFT JOIN {customer} c ON (cr.customer_id = c.customer_id) LEFT JOIN {customer_group_description} cgd ON (c.customer_group_id = cgd.customer_group_id) LEFT JOIN {order} o ON (cr.order_id = o.order_id) WHERE cgd.language_id = '" . (int)$this->config->get('config_language_id') . "'";
 		
 		if (!empty($data['filter_date_start'])) {
@@ -74,11 +74,11 @@ class ModelReportCustomer extends Model {
 		if (isset($data['start']) || isset($data['limit'])) {
 			if ($data['start'] < 0) {
 				$data['start'] = 0;
-			}			
+			}
 
 			if ($data['limit'] < 1) {
 				$data['limit'] = 20;
-			}	
+			}
 			
 			$sql .= " LIMIT " . (int)$data['start'] . "," . (int)$data['limit'];
 		}
@@ -108,11 +108,11 @@ class ModelReportCustomer extends Model {
 		if (isset($data['start']) || isset($data['limit'])) {
 			if ($data['start'] < 0) {
 				$data['start'] = 0;
-			}			
+			}
 
 			if ($data['limit'] < 1) {
 				$data['limit'] = 20;
-			}	
+			}
 			
 			$sql .= " LIMIT " . (int)$data['start'] . "," . (int)$data['limit'];
 		}
@@ -122,7 +122,7 @@ class ModelReportCustomer extends Model {
 		return $query->row['total'];
 	}
 	
-	public function getCredit($data = array()) { 
+	public function getCredit($data = array()) {
 		$sql = "SELECT ct.customer_id, CONCAT(c.firstname, ' ', c.lastname) AS customer, c.email, cgd.name AS customer_group, c.status, SUM(ct.amount) AS total FROM {customer_transaction} ct LEFT JOIN {customer} c ON (ct.customer_id = c.customer_id) LEFT JOIN {customer_group_description} cgd ON (c.customer_group_id = cgd.customer_group_id) WHERE cgd.language_id = '" . (int)$this->config->get('config_language_id') . "'";
 		
 		if (!empty($data['filter_date_start'])) {
@@ -138,11 +138,11 @@ class ModelReportCustomer extends Model {
 		if (isset($data['start']) || isset($data['limit'])) {
 			if ($data['start'] < 0) {
 				$data['start'] = 0;
-			}			
+			}
 
 			if ($data['limit'] < 1) {
 				$data['limit'] = 20;
-			}	
+			}
 			
 			$sql .= " LIMIT " . (int)$data['start'] . "," . (int)$data['limit'];
 		}
@@ -172,11 +172,11 @@ class ModelReportCustomer extends Model {
 		if (isset($data['start']) || isset($data['limit'])) {
 			if ($data['start'] < 0) {
 				$data['start'] = 0;
-			}			
+			}
 
 			if ($data['limit'] < 1) {
 				$data['limit'] = 20;
-			}	
+			}
 			
 			$sql .= " LIMIT " . (int)$data['start'] . "," . (int)$data['limit'];
 		}

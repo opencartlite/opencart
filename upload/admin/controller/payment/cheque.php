@@ -1,6 +1,6 @@
-<?php 
+<?php
 class ControllerPaymentCheque extends Controller {
-	private $error = array(); 
+	private $error = array();
 
 	public function index() {
 		$this->data += $this->language->load('payment/cheque');
@@ -10,12 +10,12 @@ class ControllerPaymentCheque extends Controller {
 		$this->load->model('setting/setting');
 			
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
-			$this->model_setting_setting->editSetting('cheque', $this->request->post);				
+			$this->model_setting_setting->editSetting('cheque', $this->request->post);
 			
 			$this->session->data['success'] = $this->language->get('text_success');
 
 			$this->redirect($this->url->link('extension/payment', 'token=' . $this->session->data['token'], 'SSL'));
-		}			
+		}
 
  		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
@@ -59,14 +59,14 @@ class ControllerPaymentCheque extends Controller {
 		if (isset($this->request->post['cheque_total'])) {
 			$this->data['cheque_total'] = $this->request->post['cheque_total'];
 		} else {
-			$this->data['cheque_total'] = $this->config->get('cheque_total'); 
-		} 
+			$this->data['cheque_total'] = $this->config->get('cheque_total');
+		}
 				
 		if (isset($this->request->post['cheque_order_status_id'])) {
 			$this->data['cheque_order_status_id'] = $this->request->post['cheque_order_status_id'];
 		} else {
-			$this->data['cheque_order_status_id'] = $this->config->get('cheque_order_status_id'); 
-		} 
+			$this->data['cheque_order_status_id'] = $this->config->get('cheque_order_status_id');
+		}
 		
 		$this->load->model('localisation/order_status');
 		
@@ -75,8 +75,8 @@ class ControllerPaymentCheque extends Controller {
 		if (isset($this->request->post['cheque_geo_zone_id'])) {
 			$this->data['cheque_geo_zone_id'] = $this->request->post['cheque_geo_zone_id'];
 		} else {
-			$this->data['cheque_geo_zone_id'] = $this->config->get('cheque_geo_zone_id'); 
-		} 
+			$this->data['cheque_geo_zone_id'] = $this->config->get('cheque_geo_zone_id');
+		}
 		
 		$this->load->model('localisation/geo_zone');
 										
@@ -116,7 +116,7 @@ class ControllerPaymentCheque extends Controller {
 			return true;
 		} else {
 			return false;
-		}	
+		}
 	}
 }
 ?>

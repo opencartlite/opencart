@@ -43,7 +43,7 @@ final class MySQLi {
 
 			unset($data);
 
-			return $query;	
+			return $query;
 		} else {
 			return true;
 		}

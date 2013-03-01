@@ -1,8 +1,8 @@
 <?php
 class ControllerModuleInformation extends Controller {
-	private $error = array(); 
+	private $error = array();
 	
-	public function index() {   
+	public function index() {
 		$this->data += $this->language->load('module/information');
 
 		$this->document->setTitle($this->language->get('heading_title'));
@@ -10,12 +10,12 @@ class ControllerModuleInformation extends Controller {
 		$this->load->model('setting/setting');
 				
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
-			$this->model_setting_setting->editSetting('information', $this->request->post);		
+			$this->model_setting_setting->editSetting('information', $this->request->post);
 					
 			$this->session->data['success'] = $this->language->get('text_success');
 						
 			$this->redirect($this->url->link('extension/module', 'token=' . $this->session->data['token'], 'SSL'));
-		}		
+		}
 
  		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
@@ -48,9 +48,9 @@ class ControllerModuleInformation extends Controller {
 		
 		if (isset($this->request->post['information_module'])) {
 			$this->data['modules'] = $this->request->post['information_module'];
-		} elseif ($this->config->get('information_module')) { 
+		} elseif ($this->config->get('information_module')) {
 			$this->data['modules'] = $this->config->get('information_module');
-		}		
+		}
 		
 		$this->load->model('design/layout');
 		
@@ -74,7 +74,7 @@ class ControllerModuleInformation extends Controller {
 			return true;
 		} else {
 			return false;
-		}	
+		}
 	}
 }
 ?>

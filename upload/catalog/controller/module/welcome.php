@@ -1,4 +1,4 @@
-<?php  
+<?php
 class ControllerModuleWelcome extends Controller {
 	protected function index($setting) {
 		$this->data += $this->language->load('module/welcome');

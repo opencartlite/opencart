@@ -1,8 +1,8 @@
-<?php 
-class ControllerTotalLowOrderFee extends Controller { 
-	private $error = array(); 
+<?php
+class ControllerTotalLowOrderFee extends Controller {
+	private $error = array();
 	 
-	public function index() { 
+	public function index() {
 		$this->data += $this->language->load('total/low_order_fee');
 
 		$this->document->setTitle($this->language->get('heading_title'));
@@ -96,7 +96,7 @@ class ControllerTotalLowOrderFee extends Controller {
 			return true;
 		} else {
 			return false;
-		}	
+		}
 	}
 }
 ?>

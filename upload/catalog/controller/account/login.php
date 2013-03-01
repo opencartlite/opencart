@@ -1,4 +1,4 @@
-<?php 
+<?php
 class ControllerAccountLogin extends Controller {
 	private $error = array();
 	
@@ -36,13 +36,13 @@ class ControllerAccountLogin extends Controller {
 				
 				if ($this->config->get('config_tax_customer') == 'shipping') {
 					$this->session->data['shipping_address'] = $this->model_account_address->getAddress($this->customer->getAddressId());
-				}					
+				}
 				
-				$this->redirect($this->url->link('account/account', '', 'SSL')); 
+				$this->redirect($this->url->link('account/account', '', 'SSL'));
 			}
-		}		
+		}
 		
-		if ($this->customer->isLogged()) {  
+		if ($this->customer->isLogged()) {
       		$this->redirect($this->url->link('account/account', '', 'SSL'));
     	}
 	
@@ -58,7 +58,7 @@ class ControllerAccountLogin extends Controller {
 				
 			if ($this->config->get('config_tax_customer') == 'payment') {
 				$this->session->data['payment_address'] = $this->model_account_address->getAddress($this->customer->getAddressId());
-			} 
+			}
 			
 			if ($this->config->get('config_tax_customer') == 'shipping') {
 				$this->session->data['shipping_address'] = $this->model_account_address->getAddress($this->customer->getAddressId());
@@ -68,9 +68,9 @@ class ControllerAccountLogin extends Controller {
 			if (isset($this->request->post['redirect']) && (strpos($this->request->post['redirect'], $this->config->get('config_url')) !== false || strpos($this->request->post['redirect'], $this->config->get('config_ssl')) !== false)) {
 				$this->redirect(str_replace('&amp;', '&', $this->request->post['redirect']));
 			} else {
-				$this->redirect($this->url->link('account/account', '', 'SSL')); 
+				$this->redirect($this->url->link('account/account', '', 'SSL'));
 			}
-    	}  
+    	}
 		
       	$this->data['breadcrumbs'] = array();
 
@@ -105,7 +105,7 @@ class ControllerAccountLogin extends Controller {
 		} elseif (isset($this->session->data['redirect'])) {
       		$this->data['redirect'] = $this->session->data['redirect'];
 	  		
-			unset($this->session->data['redirect']);		  	
+			unset($this->session->data['redirect']);
     	} else {
 			$this->data['redirect'] = '';
 		}
@@ -142,7 +142,7 @@ class ControllerAccountLogin extends Controller {
 			'common/content_top',
 			'common/content_bottom',
 			'common/footer',
-			'common/header'	
+			'common/header'
 		);
 						
 		$this->response->setOutput($this->render());
@@ -157,13 +157,13 @@ class ControllerAccountLogin extends Controller {
 		
     	if ($customer_info && !$customer_info['approved']) {
       		$this->error['warning'] = $this->language->get('error_approved');
-    	}		
+    	}
 		
     	if (!$this->error) {
       		return true;
     	} else {
       		return false;
-    	}  	
+    	}
   	}
 }
 ?>

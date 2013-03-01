@@ -19,7 +19,7 @@ if (ini_get('register_globals')) {
 
 	foreach ($globals as $global) {
 		foreach(array_keys($global) as $key) {
-			unset(${$key}); 
+			unset(${$key});
 		}
 	}
 }
@@ -36,7 +36,7 @@ if (ini_get('magic_quotes_gpc')) {
 		}
 	
 		return $data;
-	}			
+	}
 	
 	$_GET = clean($_GET);
 	$_POST = clean($_POST);
@@ -48,8 +48,8 @@ if (!ini_get('date.timezone')) {
 	date_default_timezone_set('UTC');
 }
 
-// Windows IIS Compatibility  
-if (!isset($_SERVER['DOCUMENT_ROOT'])) { 
+// Windows IIS Compatibility
+if (!isset($_SERVER['DOCUMENT_ROOT'])) {
 	if (isset($_SERVER['SCRIPT_FILENAME'])) {
 		$_SERVER['DOCUMENT_ROOT'] = str_replace('\\', '/', substr($_SERVER['SCRIPT_FILENAME'], 0, 0 - strlen($_SERVER['PHP_SELF'])));
 	}
@@ -61,12 +61,12 @@ if (!isset($_SERVER['DOCUMENT_ROOT'])) {
 	}
 }
 
-if (!isset($_SERVER['REQUEST_URI'])) { 
-	$_SERVER['REQUEST_URI'] = substr($_SERVER['PHP_SELF'], 1); 
+if (!isset($_SERVER['REQUEST_URI'])) {
+	$_SERVER['REQUEST_URI'] = substr($_SERVER['PHP_SELF'], 1);
 	
-	if (isset($_SERVER['QUERY_STRING'])) { 
-		$_SERVER['REQUEST_URI'] .= '?' . $_SERVER['QUERY_STRING']; 
-	} 
+	if (isset($_SERVER['QUERY_STRING'])) {
+		$_SERVER['REQUEST_URI'] .= '?' . $_SERVER['QUERY_STRING'];
+	}
 }
 
 if (!isset($_SERVER['HTTP_HOST'])) {
@@ -74,14 +74,14 @@ if (!isset($_SERVER['HTTP_HOST'])) {
 }
 
 // Helper
-require_once(DIR_SYSTEM . 'helper/json.php'); 
-require_once(DIR_SYSTEM . 'helper/utf8.php'); 
+require_once(DIR_SYSTEM . 'helper/json.php');
+require_once(DIR_SYSTEM . 'helper/utf8.php');
 
 // Engine
-require_once(DIR_SYSTEM . 'engine/action.php'); 
+require_once(DIR_SYSTEM . 'engine/action.php');
 require_once(DIR_SYSTEM . 'engine/controller.php');
 require_once(DIR_SYSTEM . 'engine/front.php');
-require_once(DIR_SYSTEM . 'engine/loader.php'); 
+require_once(DIR_SYSTEM . 'engine/loader.php');
 require_once(DIR_SYSTEM . 'engine/model.php');
 require_once(DIR_SYSTEM . 'engine/registry.php');
 

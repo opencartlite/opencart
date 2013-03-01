@@ -1,11 +1,11 @@
-<?php 
-class ControllerAffiliateTracking extends Controller { 
+<?php
+class ControllerAffiliateTracking extends Controller {
 	public function index() {
 		if (!$this->affiliate->isLogged()) {
 	  		$this->session->data['redirect'] = $this->url->link('affiliate/tracking', '', 'SSL');
 	  
 	  		$this->redirect($this->url->link('affiliate/login', '', 'SSL'));
-    	} 
+    	}
 	
 		$this->data += $this->language->load('affiliate/tracking');
 
@@ -16,14 +16,14 @@ class ControllerAffiliateTracking extends Controller {
       	$this->data['breadcrumbs'][] = array(
         	'text' => $this->language->get('text_home'),
 			'href' => $this->url->link('common/home')
-      	); 
+      	);
 
-      	$this->data['breadcrumbs'][] = array(       	
+      	$this->data['breadcrumbs'][] = array(
         	'text' => $this->language->get('text_account'),
 			'href' => $this->url->link('affiliate/account', '', 'SSL')
       	);
 
-      	$this->data['breadcrumbs'][] = array(       	
+      	$this->data['breadcrumbs'][] = array(
         	'text' => $this->language->get('heading_title'),
 			'href' => $this->url->link('affiliate/tracking', '', 'SSL')
       	);
@@ -46,10 +46,10 @@ class ControllerAffiliateTracking extends Controller {
 			'common/content_top',
 			'common/content_bottom',
 			'common/footer',
-			'common/header'	
+			'common/header'
 		);
 				
-		$this->response->setOutput($this->render());		
+		$this->response->setOutput($this->render());
   	}
 	
 	public function autocomplete() {
@@ -69,8 +69,8 @@ class ControllerAffiliateTracking extends Controller {
 			foreach ($results as $result) {
 				$json[] = array(
 					'name' => strip_tags(html_entity_decode($result['name'], ENT_QUOTES, 'UTF-8')),
-					'link' => str_replace('&amp;', '&', $this->url->link('product/product', 'product_id=' . $result['product_id'] . '&tracking=' . $this->affiliate->getCode()))			
-				);	
+					'link' => str_replace('&amp;', '&', $this->url->link('product/product', 'product_id=' . $result['product_id'] . '&tracking=' . $this->affiliate->getCode()))
+				);
 			}
 		}
 

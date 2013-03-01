@@ -38,7 +38,7 @@ final class Postgre {
 
 				unset($data);
 
-				return $query;	
+				return $query;
 			} else {
 				return true;
 			}
@@ -60,7 +60,7 @@ final class Postgre {
 		$query = $this->query("SELECT LASTVAL() AS `id`");
 
 		return $query->row['id'];
-	}	
+	}
 
 	public function __destruct() {
 		pg_close($this->link);

@@ -12,9 +12,9 @@ class ControllerPaymentCheque extends Controller {
 			$this->template = $this->config->get('config_template') . '/template/payment/cheque.tpl';
 		} else {
 			$this->template = 'default/template/payment/cheque.tpl';
-		}	
+		}
 		
-		$this->render(); 
+		$this->render();
 	}
 	
 	public function confirm() {

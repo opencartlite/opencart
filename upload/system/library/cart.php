@@ -29,7 +29,7 @@ class Cart {
 					$options = unserialize(base64_decode($product[1]));
 				} else {
 					$options = array();
-				} 
+				}
 
 				$product_query = $this->db->query("SELECT * FROM {product} p LEFT JOIN {product_description} pd ON (p.product_id = pd.product_id) WHERE p.product_id = '" . (int)$product_id . "' AND pd.language_id = '" . (int)$this->config->get('config_language_id') . "' AND p.date_available <= NOW() AND p.status = '1'");
 
@@ -83,7 +83,7 @@ class Cart {
 										'price'                   => $option_value_query->row['price'],
 										'price_prefix'            => $option_value_query->row['price_prefix'],
 										'points'                  => $option_value_query->row['points'],
-										'points_prefix'           => $option_value_query->row['points_prefix'],									
+										'points_prefix'           => $option_value_query->row['points_prefix'],
 										'weight'                  => $option_value_query->row['weight'],
 										'weight_prefix'           => $option_value_query->row['weight_prefix']
 									);
@@ -154,7 +154,7 @@ class Cart {
 								);
 							}
 						}
-					} 
+					}
 
 					if ($this->customer->isLogged()) {
 						$customer_group_id = $this->customer->getCustomerGroupId();
@@ -191,13 +191,13 @@ class Cart {
 					// Reward Points
 					$product_reward_query = $this->db->query("SELECT points FROM {product_reward} WHERE product_id = '" . (int)$product_id . "' AND customer_group_id = '" . (int)$customer_group_id . "'");
 
-					if ($product_reward_query->num_rows) {	
+					if ($product_reward_query->num_rows) {
 						$reward = $product_reward_query->row['points'];
 					} else {
 						$reward = 0;
 					}
 
-					// Downloads		
+					// Downloads
 					$download_data = array();
 
 					$download_query = $this->db->query("SELECT * FROM {product_to_download} p2d LEFT JOIN {download} d ON (p2d.download_id = d.download_id) LEFT JOIN {download_description} dd ON (d.download_id = dd.download_id) WHERE p2d.product_id = '" . (int)$product_id . "' AND dd.language_id = '" . (int)$this->config->get('config_language_id') . "'");

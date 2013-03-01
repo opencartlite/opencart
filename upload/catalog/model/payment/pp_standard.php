@@ -1,4 +1,4 @@
-<?php 
+<?php
 class ModelPaymentPPStandard extends Model {
   	public function getMethod($address, $total) {
 		$this->language->load('payment/pp_standard');
@@ -13,7 +13,7 @@ class ModelPaymentPPStandard extends Model {
 			$status = true;
 		} else {
 			$status = false;
-		}	
+		}
 
 		$currencies = array(
 			'AUD',
@@ -44,12 +44,12 @@ class ModelPaymentPPStandard extends Model {
 		
 		if (!in_array(strtoupper($this->currency->getCode()), $currencies)) {
 			$status = false;
-		}			
+		}
 					
 		$method_data = array();
 	
-		if ($status) {  
-      		$method_data = array( 
+		if ($status) {
+      		$method_data = array(
         		'code'       => 'pp_standard',
         		'title'      => $this->language->get('text_title'),
 				'sort_order' => $this->config->get('pp_standard_sort_order')

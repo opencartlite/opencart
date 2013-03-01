@@ -3,7 +3,7 @@ class ModelCatalogManufacturer extends Model {
 	public function getManufacturer($manufacturer_id) {
 		$query = $this->db->query("SELECT * FROM {manufacturer} m LEFT JOIN {manufacturer_to_store} m2s ON (m.manufacturer_id = m2s.manufacturer_id) WHERE m.manufacturer_id = '" . (int)$manufacturer_id . "' AND m2s.store_id = '" . (int)$this->config->get('config_store_id') . "'");
 	
-		return $query->row;	
+		return $query->row;
 	}
 	
 	public function getManufacturers($data = array()) {
@@ -13,12 +13,12 @@ class ModelCatalogManufacturer extends Model {
 			$sort_data = array(
 				'name',
 				'sort_order'
-			);	
+			);
 			
 			if (isset($data['sort']) && in_array($data['sort'], $sort_data)) {
-				$sql .= " ORDER BY " . $data['sort'];	
+				$sql .= " ORDER BY " . $data['sort'];
 			} else {
-				$sql .= " ORDER BY name";	
+				$sql .= " ORDER BY name";
 			}
 			
 			if (isset($data['order']) && ($data['order'] == 'DESC')) {
@@ -34,10 +34,10 @@ class ModelCatalogManufacturer extends Model {
 
 				if ($data['limit'] < 1) {
 					$data['limit'] = 20;
-				}	
+				}
 			
 				$sql .= " LIMIT " . (int)$data['start'] . "," . (int)$data['limit'];
-			}				
+			}
 					
 			$query = $this->db->query($sql);
 			
@@ -54,7 +54,7 @@ class ModelCatalogManufacturer extends Model {
 			}
 		 
 			return $manufacturer_data;
-		}	
-	} 
+		}
+	}
 }
 ?>

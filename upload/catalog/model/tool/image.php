@@ -3,7 +3,7 @@ class ModelToolImage extends Model {
 	public function resize($filename, $width, $height) {
 		if (!is_file(DIR_IMAGE . $filename)) {
 			return;
-		} 
+		}
 		
 		$extension = pathinfo($filename, PATHINFO_EXTENSION);
 		
@@ -20,7 +20,7 @@ class ModelToolImage extends Model {
 				
 				if (!file_exists(DIR_IMAGE . $path)) {
 					@mkdir(DIR_IMAGE . $path, 0777);
-				}		
+				}
 			}
 
 			list($width_orig, $height_orig) = getimagesize(DIR_IMAGE . $old_image);
@@ -38,7 +38,7 @@ class ModelToolImage extends Model {
 			return $this->config->get('config_ssl') . 'image/' . $new_image;
 		} else {
 			return $this->config->get('config_url') . 'image/' . $new_image;
-		}	
+		}
 	}
 }
 ?>

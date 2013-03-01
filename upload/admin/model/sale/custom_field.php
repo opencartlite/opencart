@@ -71,7 +71,7 @@ class ModelSaleCustomField extends Model {
 	
 	public function deleteCustomField($custom_field_id) {
 		$this->db->query("DELETE FROM {custom_field} WHERE custom_field_id = '" . (int)$custom_field_id . "'");
-		$this->db->query("DELETE FROM {custom_field_description} WHERE custom_field_id = '" . (int)$custom_field_id . "'");	
+		$this->db->query("DELETE FROM {custom_field_description} WHERE custom_field_id = '" . (int)$custom_field_id . "'");
 		$this->db->query("DELETE FROM {custom_field_customer_group} WHERE custom_field_id = '" . (int)$custom_field_id . "'");
 		$this->db->query("DELETE FROM {custom_field_value} WHERE custom_field_id = '" . (int)$custom_field_id . "'");
 		$this->db->query("DELETE FROM {custom_field_value_description} WHERE custom_field_id = '" . (int)$custom_field_id . "'");
@@ -96,12 +96,12 @@ class ModelSaleCustomField extends Model {
 			'cf.location',
 			'cf.status',
 			'cf.sort_order'
-		);	
+		);
 		
 		if (isset($data['sort']) && in_array($data['sort'], $sort_data)) {
-			$sql .= " ORDER BY " . $data['sort'];	
+			$sql .= " ORDER BY " . $data['sort'];
 		} else {
-			$sql .= " ORDER BY cfd.name";	
+			$sql .= " ORDER BY cfd.name";
 		}
 		
 		if (isset($data['order']) && ($data['order'] == 'DESC')) {
@@ -113,14 +113,14 @@ class ModelSaleCustomField extends Model {
 		if (isset($data['start']) || isset($data['limit'])) {
 			if ($data['start'] < 0) {
 				$data['start'] = 0;
-			}					
+			}
 
 			if ($data['limit'] < 1) {
 				$data['limit'] = 20;
-			}	
+			}
 		
 			$sql .= " LIMIT " . (int)$data['start'] . "," . (int)$data['limit'];
-		}	
+		}
 		
 		$query = $this->db->query($sql);
 
@@ -144,7 +144,7 @@ class ModelSaleCustomField extends Model {
 		
 		return $query->rows;
 	}
-	/*	
+	/*
 	public function getCustomFieldValue($custom_field_value_id) {
 		$query = $this->db->query("SELECT * FROM {custom_field_value} cfv LEFT JOIN {custom_field_value_description} cfvd ON (cfv.custom_field_value_id = cfvd.custom_field_value_id) WHERE cfv.custom_field_value_id = '" . (int)$custom_field_value_id . "' AND cfvd.language_id = '" . (int)$this->config->get('config_language_id') . "'");
 		
@@ -175,7 +175,7 @@ class ModelSaleCustomField extends Model {
 		foreach ($custom_field_value_query->rows as $custom_field_value) {
 			$custom_field_value_description_data = array();
 			
-			$custom_field_value_description_query = $this->db->query("SELECT * FROM {custom_field_value_description} WHERE custom_field_value_id = '" . (int)$custom_field_value['custom_field_value_id'] . "'");			
+			$custom_field_value_description_query = $this->db->query("SELECT * FROM {custom_field_value_description} WHERE custom_field_value_id = '" . (int)$custom_field_value['custom_field_value_id'] . "'");
 			
 			foreach ($custom_field_value_description_query->rows as $custom_field_value_description) {
 				$custom_field_value_description_data[$custom_field_value_description['language_id']] = array('name' => $custom_field_value_description['name']);
@@ -192,9 +192,9 @@ class ModelSaleCustomField extends Model {
 	}
 
 	public function getTotalCustomFields() {
-      	$query = $this->db->query("SELECT COUNT(*) AS total FROM {custom_field}"); 
+      	$query = $this->db->query("SELECT COUNT(*) AS total FROM {custom_field}");
 		
 		return $query->row['total'];
-	}		
+	}
 }
 ?>

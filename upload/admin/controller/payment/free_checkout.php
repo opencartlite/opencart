@@ -1,8 +1,8 @@
-<?php 
+<?php
 class ControllerPaymentFreeCheckout extends Controller {
-	private $error = array(); 
+	private $error = array();
 	 
-	public function index() { 
+	public function index() {
 		$this->data += $this->language->load('payment/free_checkout');
 
 		$this->document->setTitle($this->language->get('heading_title'));
@@ -15,7 +15,7 @@ class ControllerPaymentFreeCheckout extends Controller {
 			$this->session->data['success'] = $this->language->get('text_success');
 			
 			$this->redirect($this->url->link('extension/payment', 'token=' . $this->session->data['token'], 'SSL'));
-		}		
+		}
 		
 		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
@@ -42,13 +42,13 @@ class ControllerPaymentFreeCheckout extends Controller {
 		
 		$this->data['action'] = $this->url->link('payment/free_checkout', 'token=' . $this->session->data['token'], 'SSL');
 
-		$this->data['cancel'] = $this->url->link('extension/payment', 'token=' . $this->session->data['token'], 'SSL');	
+		$this->data['cancel'] = $this->url->link('extension/payment', 'token=' . $this->session->data['token'], 'SSL');
 				
 		if (isset($this->request->post['free_checkout_order_status_id'])) {
 			$this->data['free_checkout_order_status_id'] = $this->request->post['free_checkout_order_status_id'];
 		} else {
-			$this->data['free_checkout_order_status_id'] = $this->config->get('free_checkout_order_status_id'); 
-		} 
+			$this->data['free_checkout_order_status_id'] = $this->config->get('free_checkout_order_status_id');
+		}
 		
 		$this->load->model('localisation/order_status');
 		
@@ -84,7 +84,7 @@ class ControllerPaymentFreeCheckout extends Controller {
 			return true;
 		} else {
 			return false;
-		}	
+		}
 	}
 }
 ?>

@@ -1,8 +1,8 @@
 <?php
 class ControllerShippingRoyalMail extends Controller {
-	private $error = array(); 
+	private $error = array();
 	
-	public function index() {   
+	public function index() {
 		$this->data += $this->language->load('shipping/royal_mail');
 
 		$this->document->setTitle($this->language->get('heading_title'));
@@ -10,12 +10,12 @@ class ControllerShippingRoyalMail extends Controller {
 		$this->load->model('setting/setting');
 				
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
-			$this->model_setting_setting->editSetting('royal_mail', $this->request->post);		
+			$this->model_setting_setting->editSetting('royal_mail', $this->request->post);
 					
 			$this->session->data['success'] = $this->language->get('text_success');
 						
 			$this->redirect($this->url->link('extension/shipping', 'token=' . $this->session->data['token'], 'SSL'));
-		}						
+		}
 		
 		if (isset($this->error['warning']))  {
 			$this->data['error_warning'] = $this->error['warning'];
@@ -67,7 +67,7 @@ class ControllerShippingRoyalMail extends Controller {
 			$this->data['royal_mail_1st_class_standard_status'] = $this->config->get('royal_mail_1st_class_standard_status');
 		}
 				
-		// 1st Class Recorded		
+		// 1st Class Recorded
 		if (isset($this->request->post['royal_mail_1st_class_recorded_rate'])) {
 			$this->data['royal_mail_1st_class_recorded_rate'] = $this->request->post['royal_mail_1st_class_recorded_rate'];
 		} elseif ($this->config->has('royal_mail_1st_class_recorded_rate')) {
@@ -90,7 +90,7 @@ class ControllerShippingRoyalMail extends Controller {
 			$this->data['royal_mail_1st_class_recorded_status'] = $this->config->get('royal_mail_1st_class_recorded_status');
 		}
 						
-		// 2nd Class Standard	
+		// 2nd Class Standard
 		if (isset($this->request->post['royal_mail_2nd_class_standard_rate'])) {
 			$this->data['royal_mail_2nd_class_standard_rate'] = $this->request->post['royal_mail_2nd_class_standard_rate'];
 		} elseif ($this->config->has('royal_mail_2nd_class_standard_rate')) {
@@ -143,7 +143,7 @@ class ControllerShippingRoyalMail extends Controller {
 			$this->data['royal_mail_special_delivery_500_insurance'] = $this->config->get('royal_mail_special_delivery_500_insurance');
 		} else {
 			$this->data['royal_mail_special_delivery_500_insurance'] = '39:500,100:500,250:500,500:500';
-		}	
+		}
 		
 		if (isset($this->request->post['royal_mail_special_delivery_500_status'])) {
 			$this->data['royal_mail_special_delivery_500_status'] = $this->request->post['royal_mail_special_delivery_500_status'];
@@ -166,7 +166,7 @@ class ControllerShippingRoyalMail extends Controller {
 			$this->data['royal_mail_special_delivery_1000_insurance'] = $this->config->get('royal_mail_special_delivery_1000_insurance');
 		} else {
 			$this->data['royal_mail_special_delivery_1000_insurance'] = '39:1000,100:1000,250:1000,500:1000';
-		}	
+		}
 		
 		if (isset($this->request->post['royal_mail_special_delivery_1000_status'])) {
 			$this->data['royal_mail_special_delivery_1000_status'] = $this->request->post['royal_mail_special_delivery_1000_status'];
@@ -209,7 +209,7 @@ class ControllerShippingRoyalMail extends Controller {
 		if (isset($this->request->post['royal_mail_standard_parcels_insurance'])) {
 			$this->data['royal_mail_standard_parcels_insurance'] = $this->request->post['royal_mail_standard_parcels_insurance'];
 		} elseif ($this->config->has('royal_mail_standard_parcels_insurance')) {
-			$this->data['royal_mail_standard_parcels_insurance'] = $this->config->get('royal_mail_standard_parcels_insurance');		
+			$this->data['royal_mail_standard_parcels_insurance'] = $this->config->get('royal_mail_standard_parcels_insurance');
 		} else {
 			$this->data['royal_mail_standard_parcels_insurance'] = '39:0,100:1,250:2.25,500:3.5';
 		}
@@ -388,7 +388,7 @@ class ControllerShippingRoyalMail extends Controller {
 			$this->data['royal_mail_sort_order'] = $this->request->post['royal_mail_sort_order'];
 		} else {
 			$this->data['royal_mail_sort_order'] = $this->config->get('royal_mail_sort_order');
-		}				
+		}
 
 		$this->template = 'shipping/royal_mail.tpl';
 		$this->children = array(
@@ -408,7 +408,7 @@ class ControllerShippingRoyalMail extends Controller {
 			return true;
 		} else {
 			return false;
-		}	
+		}
 	}
 }
 ?>

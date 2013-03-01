@@ -92,7 +92,7 @@ class ControllerTotalKlarnaFee extends Controller {
             $this->data['klarna_fee'] = $this->config->get('klarna_fee');
         }
              
-        $this->load->model('localisation/tax_class');   
+        $this->load->model('localisation/tax_class');
 		
         $this->data['tax_classes'] = $this->model_localisation_tax_class->getTaxClasses();
 

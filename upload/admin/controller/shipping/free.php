@@ -1,8 +1,8 @@
 <?php
 class ControllerShippingFree extends Controller {
-	private $error = array(); 
+	private $error = array();
 	
-	public function index() {   
+	public function index() {
 		$this->data += $this->language->load('shipping/free');
 
 		$this->document->setTitle($this->language->get('heading_title'));
@@ -10,7 +10,7 @@ class ControllerShippingFree extends Controller {
 		$this->load->model('setting/setting');
 				
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
-			$this->model_setting_setting->editSetting('free', $this->request->post);		
+			$this->model_setting_setting->editSetting('free', $this->request->post);
 					
 			$this->session->data['success'] = $this->language->get('text_success');
 						
@@ -70,7 +70,7 @@ class ControllerShippingFree extends Controller {
 			$this->data['free_sort_order'] = $this->request->post['free_sort_order'];
 		} else {
 			$this->data['free_sort_order'] = $this->config->get('free_sort_order');
-		}				
+		}
 								
 		$this->template = 'shipping/free.tpl';
 		$this->children = array(
@@ -90,7 +90,7 @@ class ControllerShippingFree extends Controller {
 			return true;
 		} else {
 			return false;
-		}	
+		}
 	}
 }
 ?>

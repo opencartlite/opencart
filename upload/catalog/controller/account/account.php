@@ -1,11 +1,11 @@
-<?php 
-class ControllerAccountAccount extends Controller { 
+<?php
+class ControllerAccountAccount extends Controller {
 	public function index() {
 		if (!$this->customer->isLogged()) {
 	  		$this->session->data['redirect'] = $this->url->link('account/account', '', 'SSL');
 	  
 	  		$this->redirect($this->url->link('account/login', '', 'SSL'));
-    	} 
+    	}
 	
 		$this->data += $this->language->load('account/account');
 
@@ -16,9 +16,9 @@ class ControllerAccountAccount extends Controller {
       	$this->data['breadcrumbs'][] = array(
         	'text' => $this->language->get('text_home'),
 			'href' => $this->url->link('common/home')
-      	); 
+      	);
 
-      	$this->data['breadcrumbs'][] = array(       	
+      	$this->data['breadcrumbs'][] = array(
         	'text' => $this->language->get('text_account'),
 			'href' => $this->url->link('account/account', '', 'SSL')
       	);
@@ -59,7 +59,7 @@ class ControllerAccountAccount extends Controller {
 			'common/content_top',
 			'common/content_bottom',
 			'common/footer',
-			'common/header'		
+			'common/header'
 		);
 				
 		$this->response->setOutput($this->render());

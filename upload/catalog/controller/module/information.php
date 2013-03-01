@@ -1,4 +1,4 @@
-<?php  
+<?php
 class ControllerModuleInformation extends Controller {
 	protected function index() {
 		$this->data += $this->language->load('module/information');

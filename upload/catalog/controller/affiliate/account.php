@@ -1,11 +1,11 @@
-<?php 
-class ControllerAffiliateAccount extends Controller { 
+<?php
+class ControllerAffiliateAccount extends Controller {
 	public function index() {
 		if (!$this->affiliate->isLogged()) {
 	  		$this->session->data['redirect'] = $this->url->link('affiliate/account', '', 'SSL');
 	  
 	  		$this->redirect($this->url->link('affiliate/login', '', 'SSL'));
-    	} 
+    	}
 	
 		$this->data += $this->language->load('affiliate/account');
 
@@ -14,9 +14,9 @@ class ControllerAffiliateAccount extends Controller {
       	$this->data['breadcrumbs'][] = array(
         	'text' => $this->language->get('text_home'),
 			'href' => $this->url->link('common/home')
-      	); 
+      	);
 
-      	$this->data['breadcrumbs'][] = array(       	
+      	$this->data['breadcrumbs'][] = array(
         	'text' => $this->language->get('text_account'),
 			'href' => $this->url->link('affiliate/account', '', 'SSL')
       	);
@@ -49,10 +49,10 @@ class ControllerAffiliateAccount extends Controller {
 			'common/content_top',
 			'common/content_bottom',
 			'common/footer',
-			'common/header'	
+			'common/header'
 		);
 				
-		$this->response->setOutput($this->render());		
+		$this->response->setOutput($this->render());
   	}
 }
 ?>

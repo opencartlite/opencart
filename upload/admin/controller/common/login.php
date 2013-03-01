@@ -1,8 +1,8 @@
-<?php  
-class ControllerCommonLogin extends Controller { 
+<?php
+class ControllerCommonLogin extends Controller {
 	private $error = array();
 	          
-	public function index() { 
+	public function index() {
     	$this->data += $this->language->load('common/login');
 
 		$this->document->setTitle($this->language->get('heading_title'));
@@ -11,7 +11,7 @@ class ControllerCommonLogin extends Controller {
 			$this->redirect($this->url->link('common/home', 'token=' . $this->session->data['token'], 'SSL'));
 		}
 
-		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) { 
+		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
 			$this->session->data['token'] = md5(mt_rand());
 		
 			if (isset($this->request->post['redirect'])) {
@@ -70,7 +70,7 @@ class ControllerCommonLogin extends Controller {
 			
 			$this->data['redirect'] = $this->url->link($route, $url, 'SSL');
 		} else {
-			$this->data['redirect'] = '';	
+			$this->data['redirect'] = '';
 		}
 		
 		if ($this->config->get('config_password')) {
@@ -99,5 +99,5 @@ class ControllerCommonLogin extends Controller {
 			return false;
 		}
 	}
-}  
+}
 ?>

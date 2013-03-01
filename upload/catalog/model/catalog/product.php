@@ -9,7 +9,7 @@ class ModelCatalogProduct extends Model {
 			$customer_group_id = $this->customer->getCustomerGroupId();
 		} else {
 			$customer_group_id = $this->config->get('config_customer_group_id');
-		}	
+		}
 				
 		$query = $this->db->query("SELECT DISTINCT *, pd.name AS name, p.image, m.name AS manufacturer, (SELECT price FROM {product_discount} pd2 WHERE pd2.product_id = p.product_id AND pd2.customer_group_id = '" . (int)$customer_group_id . "' AND pd2.quantity = '1' AND ((pd2.date_start = '0000-00-00' OR pd2.date_start < NOW()) AND (pd2.date_end = '0000-00-00' OR pd2.date_end > NOW())) ORDER BY pd2.priority ASC, pd2.price ASC LIMIT 1) AS discount, (SELECT price FROM {product_special} ps WHERE ps.product_id = p.product_id AND ps.customer_group_id = '" . (int)$customer_group_id . "' AND ((ps.date_start = '0000-00-00' OR ps.date_start < NOW()) AND (ps.date_end = '0000-00-00' OR ps.date_end > NOW())) ORDER BY ps.priority ASC, ps.price ASC LIMIT 1) AS special, (SELECT points FROM {product_reward} pr WHERE pr.product_id = p.product_id AND customer_group_id = '" . (int)$customer_group_id . "') AS reward, (SELECT ss.name FROM {stock_status} ss WHERE ss.stock_status_id = p.stock_status_id AND ss.language_id = '" . (int)$this->config->get('config_language_id') . "') AS stock_status, (SELECT wcd.unit FROM {weight_class_description} wcd WHERE p.weight_class_id = wcd.weight_class_id AND wcd.language_id = '" . (int)$this->config->get('config_language_id') . "') AS weight_class, (SELECT lcd.unit FROM {length_class_description} lcd WHERE p.length_class_id = lcd.length_class_id AND lcd.language_id = '" . (int)$this->config->get('config_language_id') . "') AS length_class, (SELECT AVG(rating) AS total FROM {review} r1 WHERE r1.product_id = p.product_id AND r1.status = '1' GROUP BY r1.product_id) AS rating, (SELECT COUNT(*) AS total FROM {review} r2 WHERE r2.product_id = p.product_id AND r2.status = '1' GROUP BY r2.product_id) AS reviews, p.sort_order FROM {product} p LEFT JOIN {product_description} pd ON (p.product_id = pd.product_id) LEFT JOIN {product_to_store} p2s ON (p.product_id = p2s.product_id) LEFT JOIN {manufacturer} m ON (p.manufacturer_id = m.manufacturer_id) WHERE p.product_id = '" . (int)$product_id . "' AND pd.language_id = '" . (int)$this->config->get('config_language_id') . "' AND p.status = '1' AND p.date_available <= NOW() AND p2s.store_id = '" . (int)$this->config->get('config_store_id') . "'");
 		
@@ -66,13 +66,13 @@ class ModelCatalogProduct extends Model {
 			$customer_group_id = $this->customer->getCustomerGroupId();
 		} else {
 			$customer_group_id = $this->config->get('config_customer_group_id');
-		}	
+		}
 		
-		$sql = "SELECT p.product_id, (SELECT AVG(rating) AS total FROM {review} r1 WHERE r1.product_id = p.product_id AND r1.status = '1' GROUP BY r1.product_id) AS rating, (SELECT price FROM {product_discount} pd2 WHERE pd2.product_id = p.product_id AND pd2.customer_group_id = '" . (int)$customer_group_id . "' AND pd2.quantity = '1' AND ((pd2.date_start = '0000-00-00' OR pd2.date_start < NOW()) AND (pd2.date_end = '0000-00-00' OR pd2.date_end > NOW())) ORDER BY pd2.priority ASC, pd2.price ASC LIMIT 1) AS discount, (SELECT price FROM {product_special} ps WHERE ps.product_id = p.product_id AND ps.customer_group_id = '" . (int)$customer_group_id . "' AND ((ps.date_start = '0000-00-00' OR ps.date_start < NOW()) AND (ps.date_end = '0000-00-00' OR ps.date_end > NOW())) ORDER BY ps.priority ASC, ps.price ASC LIMIT 1) AS special"; 
+		$sql = "SELECT p.product_id, (SELECT AVG(rating) AS total FROM {review} r1 WHERE r1.product_id = p.product_id AND r1.status = '1' GROUP BY r1.product_id) AS rating, (SELECT price FROM {product_discount} pd2 WHERE pd2.product_id = p.product_id AND pd2.customer_group_id = '" . (int)$customer_group_id . "' AND pd2.quantity = '1' AND ((pd2.date_start = '0000-00-00' OR pd2.date_start < NOW()) AND (pd2.date_end = '0000-00-00' OR pd2.date_end > NOW())) ORDER BY pd2.priority ASC, pd2.price ASC LIMIT 1) AS discount, (SELECT price FROM {product_special} ps WHERE ps.product_id = p.product_id AND ps.customer_group_id = '" . (int)$customer_group_id . "' AND ((ps.date_start = '0000-00-00' OR ps.date_start < NOW()) AND (ps.date_end = '0000-00-00' OR ps.date_end > NOW())) ORDER BY ps.priority ASC, ps.price ASC LIMIT 1) AS special";
 		
 		if (!empty($data['filter_category_id'])) {
 			if (!empty($data['filter_sub_category'])) {
-				$sql .= " FROM {category_path} cp LEFT JOIN {product_to_category} p2c ON (cp.category_id = p2c.category_id)";			
+				$sql .= " FROM {category_path} cp LEFT JOIN {product_to_category} p2c ON (cp.category_id = p2c.category_id)";
 			} else {
 				$sql .= " FROM {product_to_category} p2c";
 			}
@@ -90,10 +90,10 @@ class ModelCatalogProduct extends Model {
 		
 		if (!empty($data['filter_category_id'])) {
 			if (!empty($data['filter_sub_category'])) {
-				$sql .= " AND cp.path_id = '" . (int)$data['filter_category_id'] . "'";	
+				$sql .= " AND cp.path_id = '" . (int)$data['filter_category_id'] . "'";
 			} else {
-				$sql .= " AND p2c.category_id = '" . (int)$data['filter_category_id'] . "'";			
-			}	
+				$sql .= " AND p2c.category_id = '" . (int)$data['filter_category_id'] . "'";
+			}
 		
 			if (!empty($data['filter_filter'])) {
 				$implode = array();
@@ -104,9 +104,9 @@ class ModelCatalogProduct extends Model {
 					$implode[] = (int)$filter_id;
 				}
 				
-				$sql .= " AND pf.filter_id IN (" . implode(',', $implode) . ")";				
+				$sql .= " AND pf.filter_id IN (" . implode(',', $implode) . ")";
 			}
-		}	
+		}
 
 		if (!empty($data['filter_name']) || !empty($data['filter_tag'])) {
 			$sql .= " AND (";
@@ -143,11 +143,11 @@ class ModelCatalogProduct extends Model {
 			
 			if (!empty($data['filter_name'])) {
 				$sql .= " OR LCASE(p.sku) = '" . $this->db->escape(utf8_strtolower($data['filter_name'])) . "'";
-			}	
+			}
 			
 			if (!empty($data['filter_name'])) {
 				$sql .= " OR LCASE(p.upc) = '" . $this->db->escape(utf8_strtolower($data['filter_name'])) . "'";
-			}		
+			}
 
 			if (!empty($data['filter_name'])) {
 				$sql .= " OR LCASE(p.ean) = '" . $this->db->escape(utf8_strtolower($data['filter_name'])) . "'";
@@ -159,7 +159,7 @@ class ModelCatalogProduct extends Model {
 			
 			if (!empty($data['filter_name'])) {
 				$sql .= " OR LCASE(p.isbn) = '" . $this->db->escape(utf8_strtolower($data['filter_name'])) . "'";
-			}		
+			}
 			
 			if (!empty($data['filter_name'])) {
 				$sql .= " OR LCASE(p.mpn) = '" . $this->db->escape(utf8_strtolower($data['filter_name'])) . "'";
@@ -182,7 +182,7 @@ class ModelCatalogProduct extends Model {
 			'rating',
 			'p.sort_order',
 			'p.date_added'
-		);	
+		);
 		
 		if (isset($data['sort']) && in_array($data['sort'], $sort_data)) {
 			if ($data['sort'] == 'pd.name' || $data['sort'] == 'p.model') {
@@ -193,7 +193,7 @@ class ModelCatalogProduct extends Model {
 				$sql .= " ORDER BY " . $data['sort'];
 			}
 		} else {
-			$sql .= " ORDER BY p.sort_order";	
+			$sql .= " ORDER BY p.sort_order";
 		}
 		
 		if (isset($data['order']) && ($data['order'] == 'DESC')) {
@@ -205,11 +205,11 @@ class ModelCatalogProduct extends Model {
 		if (isset($data['start']) || isset($data['limit'])) {
 			if ($data['start'] < 0) {
 				$data['start'] = 0;
-			}				
+			}
 
 			if ($data['limit'] < 1) {
 				$data['limit'] = 20;
-			}	
+			}
 		
 			$sql .= " LIMIT " . (int)$data['start'] . "," . (int)$data['limit'];
 		}
@@ -230,7 +230,7 @@ class ModelCatalogProduct extends Model {
 			$customer_group_id = $this->customer->getCustomerGroupId();
 		} else {
 			$customer_group_id = $this->config->get('config_customer_group_id');
-		}	
+		}
 				
 		$sql = "SELECT DISTINCT ps.product_id, (SELECT AVG(rating) FROM {review} r1 WHERE r1.product_id = ps.product_id AND r1.status = '1' GROUP BY r1.product_id) AS rating FROM {product_special} ps LEFT JOIN {product} p ON (ps.product_id = p.product_id) LEFT JOIN {product_description} pd ON (p.product_id = pd.product_id) LEFT JOIN {product_to_store} p2s ON (p.product_id = p2s.product_id) WHERE p.status = '1' AND p.date_available <= NOW() AND p2s.store_id = '" . (int)$this->config->get('config_store_id') . "' AND ps.customer_group_id = '" . (int)$customer_group_id . "' AND ((ps.date_start = '0000-00-00' OR ps.date_start < NOW()) AND (ps.date_end = '0000-00-00' OR ps.date_end > NOW())) GROUP BY ps.product_id";
 
@@ -249,7 +249,7 @@ class ModelCatalogProduct extends Model {
 				$sql .= " ORDER BY " . $data['sort'];
 			}
 		} else {
-			$sql .= " ORDER BY p.sort_order";	
+			$sql .= " ORDER BY p.sort_order";
 		}
 		
 		if (isset($data['order']) && ($data['order'] == 'DESC')) {
@@ -261,11 +261,11 @@ class ModelCatalogProduct extends Model {
 		if (isset($data['start']) || isset($data['limit'])) {
 			if ($data['start'] < 0) {
 				$data['start'] = 0;
-			}				
+			}
 
 			if ($data['limit'] < 1) {
 				$data['limit'] = 20;
-			}	
+			}
 		
 			$sql .= " LIMIT " . (int)$data['start'] . "," . (int)$data['limit'];
 		}
@@ -274,7 +274,7 @@ class ModelCatalogProduct extends Model {
 		
 		$query = $this->db->query($sql);
 		
-		foreach ($query->rows as $result) { 		
+		foreach ($query->rows as $result) {
 			$product_data[$result['product_id']] = $this->getProduct($result['product_id']);
 		}
 		
@@ -286,11 +286,11 @@ class ModelCatalogProduct extends Model {
 			$customer_group_id = $this->customer->getCustomerGroupId();
 		} else {
 			$customer_group_id = $this->config->get('config_customer_group_id');
-		}	
+		}
 				
 		$product_data = $this->cache->get('product.latest.' . (int)$this->config->get('config_language_id') . '.' . (int)$this->config->get('config_store_id') . '.' . $customer_group_id . '.' . (int)$limit);
 
-		if (!$product_data) { 
+		if (!$product_data) {
 			$query = $this->db->query("SELECT p.product_id FROM {product} p LEFT JOIN {product_to_store} p2s ON (p.product_id = p2s.product_id) WHERE p.status = '1' AND p.date_available <= NOW() AND p2s.store_id = '" . (int)$this->config->get('config_store_id') . "' ORDER BY p.date_added DESC LIMIT " . (int)$limit);
 		 	 
 			foreach ($query->rows as $result) {
@@ -308,7 +308,7 @@ class ModelCatalogProduct extends Model {
 		
 		$query = $this->db->query("SELECT p.product_id FROM {product} p LEFT JOIN {product_to_store} p2s ON (p.product_id = p2s.product_id) WHERE p.status = '1' AND p.date_available <= NOW() AND p2s.store_id = '" . (int)$this->config->get('config_store_id') . "' ORDER BY p.viewed DESC, p.date_added DESC LIMIT " . (int)$limit);
 		
-		foreach ($query->rows as $result) { 		
+		foreach ($query->rows as $result) {
 			$product_data[$result['product_id']] = $this->getProduct($result['product_id']);
 		}
 					 	 		
@@ -320,16 +320,16 @@ class ModelCatalogProduct extends Model {
 			$customer_group_id = $this->customer->getCustomerGroupId();
 		} else {
 			$customer_group_id = $this->config->get('config_customer_group_id');
-		}	
+		}
 				
 		$product_data = $this->cache->get('product.bestseller.' . (int)$this->config->get('config_language_id') . '.' . (int)$this->config->get('config_store_id'). '.' . $customer_group_id . '.' . (int)$limit);
 
-		if (!$product_data) { 
+		if (!$product_data) {
 			$product_data = array();
 			
 			$query = $this->db->query("SELECT op.product_id, COUNT(*) AS total FROM {order_product} op LEFT JOIN {order} o ON (op.order_id = o.order_id) LEFT JOIN {product} p ON (op.product_id = p.product_id) LEFT JOIN {product_to_store} p2s ON (p.product_id = p2s.product_id) WHERE o.order_status_id > '0' AND p.status = '1' AND p.date_available <= NOW() AND p2s.store_id = '" . (int)$this->config->get('config_store_id') . "' GROUP BY op.product_id ORDER BY total DESC LIMIT " . (int)$limit);
 			
-			foreach ($query->rows as $result) { 		
+			foreach ($query->rows as $result) {
 				$product_data[$result['product_id']] = $this->getProduct($result['product_id']);
 			}
 			
@@ -353,7 +353,7 @@ class ModelCatalogProduct extends Model {
 				$product_attribute_data[] = array(
 					'attribute_id' => $product_attribute['attribute_id'],
 					'name'         => $product_attribute['name'],
-					'text'         => $product_attribute['text']		 	
+					'text'         => $product_attribute['text']
 				);
 			}
 			
@@ -361,7 +361,7 @@ class ModelCatalogProduct extends Model {
 				'attribute_group_id' => $product_attribute_group['attribute_group_id'],
 				'name'               => $product_attribute_group['name'],
 				'attribute'          => $product_attribute_data
-			);			
+			);
 		}
 		
 		return $product_attribute_group_data;
@@ -400,7 +400,7 @@ class ModelCatalogProduct extends Model {
 				'type'                 => $product_option['type'],
 				'value'                => $product_option['value'],
 				'required'             => $product_option['required']
-			);				
+			);
       	}
 		
 		return $product_option_data;
@@ -411,11 +411,11 @@ class ModelCatalogProduct extends Model {
 			$customer_group_id = $this->customer->getCustomerGroupId();
 		} else {
 			$customer_group_id = $this->config->get('config_customer_group_id');
-		}	
+		}
 		
 		$query = $this->db->query("SELECT * FROM {product_discount} WHERE product_id = '" . (int)$product_id . "' AND customer_group_id = '" . (int)$customer_group_id . "' AND quantity > 1 AND ((date_start = '0000-00-00' OR date_start < NOW()) AND (date_end = '0000-00-00' OR date_end > NOW())) ORDER BY quantity ASC, priority ASC, price ASC");
 
-		return $query->rows;		
+		return $query->rows;
 	}
 		
 	public function getProductImages($product_id) {
@@ -429,7 +429,7 @@ class ModelCatalogProduct extends Model {
 
 		$query = $this->db->query("SELECT * FROM {product_related} pr LEFT JOIN {product} p ON (pr.related_id = p.product_id) LEFT JOIN {product_to_store} p2s ON (p.product_id = p2s.product_id) WHERE pr.product_id = '" . (int)$product_id . "' AND p.status = '1' AND p.date_available <= NOW() AND p2s.store_id = '" . (int)$this->config->get('config_store_id') . "'");
 		
-		foreach ($query->rows as $result) { 
+		foreach ($query->rows as $result) {
 			$product_data[$result['related_id']] = $this->getProduct($result['related_id']);
 		}
 		
@@ -450,20 +450,20 @@ class ModelCatalogProduct extends Model {
 		$query = $this->db->query("SELECT * FROM {product_to_category} WHERE product_id = '" . (int)$product_id . "'");
 		
 		return $query->rows;
-	}	
+	}
 		
 	public function getTotalProducts($data = array()) {
 		if ($this->customer->isLogged()) {
 			$customer_group_id = $this->customer->getCustomerGroupId();
 		} else {
 			$customer_group_id = $this->config->get('config_customer_group_id');
-		}	
+		}
 
-		$sql = "SELECT COUNT(DISTINCT p.product_id) AS total"; 
+		$sql = "SELECT COUNT(DISTINCT p.product_id) AS total";
 		
 		if (!empty($data['filter_category_id'])) {
 			if (!empty($data['filter_sub_category'])) {
-				$sql .= " FROM {category_path} cp LEFT JOIN {product_to_category} p2c ON (cp.category_id = p2c.category_id)";			
+				$sql .= " FROM {category_path} cp LEFT JOIN {product_to_category} p2c ON (cp.category_id = p2c.category_id)";
 			} else {
 				$sql .= " FROM {product_to_category} p2c";
 			}
@@ -481,10 +481,10 @@ class ModelCatalogProduct extends Model {
 		
 		if (!empty($data['filter_category_id'])) {
 			if (!empty($data['filter_sub_category'])) {
-				$sql .= " AND cp.path_id = '" . (int)$data['filter_category_id'] . "'";	
+				$sql .= " AND cp.path_id = '" . (int)$data['filter_category_id'] . "'";
 			} else {
-				$sql .= " AND p2c.category_id = '" . (int)$data['filter_category_id'] . "'";			
-			}	
+				$sql .= " AND p2c.category_id = '" . (int)$data['filter_category_id'] . "'";
+			}
 		
 			if (!empty($data['filter_filter'])) {
 				$implode = array();
@@ -495,7 +495,7 @@ class ModelCatalogProduct extends Model {
 					$implode[] = (int)$filter_id;
 				}
 				
-				$sql .= " AND pf.filter_id IN (" . implode(',', $implode) . ")";				
+				$sql .= " AND pf.filter_id IN (" . implode(',', $implode) . ")";
 			}
 		}
 		
@@ -534,11 +534,11 @@ class ModelCatalogProduct extends Model {
 			
 			if (!empty($data['filter_name'])) {
 				$sql .= " OR LCASE(p.sku) = '" . $this->db->escape(utf8_strtolower($data['filter_name'])) . "'";
-			}	
+			}
 			
 			if (!empty($data['filter_name'])) {
 				$sql .= " OR LCASE(p.upc) = '" . $this->db->escape(utf8_strtolower($data['filter_name'])) . "'";
-			}		
+			}
 
 			if (!empty($data['filter_name'])) {
 				$sql .= " OR LCASE(p.ean) = '" . $this->db->escape(utf8_strtolower($data['filter_name'])) . "'";
@@ -550,13 +550,13 @@ class ModelCatalogProduct extends Model {
 			
 			if (!empty($data['filter_name'])) {
 				$sql .= " OR LCASE(p.isbn) = '" . $this->db->escape(utf8_strtolower($data['filter_name'])) . "'";
-			}		
+			}
 			
 			if (!empty($data['filter_name'])) {
 				$sql .= " OR LCASE(p.mpn) = '" . $this->db->escape(utf8_strtolower($data['filter_name'])) . "'";
 			}
 			
-			$sql .= ")";				
+			$sql .= ")";
 		}
 		
 		if (!empty($data['filter_manufacturer_id'])) {
@@ -573,14 +573,14 @@ class ModelCatalogProduct extends Model {
 			$customer_group_id = $this->customer->getCustomerGroupId();
 		} else {
 			$customer_group_id = $this->config->get('config_customer_group_id');
-		}		
+		}
 		
 		$query = $this->db->query("SELECT COUNT(DISTINCT ps.product_id) AS total FROM {product_special} ps LEFT JOIN {product} p ON (ps.product_id = p.product_id) LEFT JOIN {product_to_store} p2s ON (p.product_id = p2s.product_id) WHERE p.status = '1' AND p.date_available <= NOW() AND p2s.store_id = '" . (int)$this->config->get('config_store_id') . "' AND ps.customer_group_id = '" . (int)$customer_group_id . "' AND ((ps.date_start = '0000-00-00' OR ps.date_start < NOW()) AND (ps.date_end = '0000-00-00' OR ps.date_end > NOW()))");
 		
 		if (isset($query->row['total'])) {
 			return $query->row['total'];
 		} else {
-			return 0;	
+			return 0;
 		}
 	}
 }

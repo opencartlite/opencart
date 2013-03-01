@@ -8,7 +8,7 @@ class ControllerPaymentCod extends Controller {
 			$this->template = $this->config->get('config_template') . '/template/payment/cod.tpl';
 		} else {
 			$this->template = 'default/template/payment/cod.tpl';
-		}	
+		}
 		
 		$this->render();
 	}

@@ -1,6 +1,6 @@
 <?php
 class ControllerPaymentMoneyBookers extends Controller {
-	private $error = array(); 
+	private $error = array();
 	
 	public function index() {
 		$this->data += $this->language->load('payment/moneybookers');
@@ -10,12 +10,12 @@ class ControllerPaymentMoneyBookers extends Controller {
 		$this->load->model('setting/setting');
 			
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
-			$this->model_setting_setting->editSetting('moneybookers', $this->request->post);				
+			$this->model_setting_setting->editSetting('moneybookers', $this->request->post);
 			
 			$this->session->data['success'] = $this->language->get('text_success');
 		
 			$this->redirect($this->url->link('extension/payment', 'token=' . $this->session->data['token'], 'SSL'));
-		}						
+		}
 		
  		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
@@ -65,14 +65,14 @@ class ControllerPaymentMoneyBookers extends Controller {
 		if (isset($this->request->post['moneybookers_total'])) {
 			$this->data['moneybookers_total'] = $this->request->post['moneybookers_total'];
 		} else {
-			$this->data['moneybookers_total'] = $this->config->get('moneybookers_total'); 
-		} 
+			$this->data['moneybookers_total'] = $this->config->get('moneybookers_total');
+		}
 				
 		if (isset($this->request->post['moneybookers_order_status_id'])) {
 			$this->data['moneybookers_order_status_id'] = $this->request->post['moneybookers_order_status_id'];
 		} else {
-			$this->data['moneybookers_order_status_id'] = $this->config->get('moneybookers_order_status_id'); 
-		} 
+			$this->data['moneybookers_order_status_id'] = $this->config->get('moneybookers_order_status_id');
+		}
 
 		if (isset($this->request->post['moneybookers_pending_status_id'])) {
 			$this->data['moneybookers_pending_status_id'] = $this->request->post['moneybookers_pending_status_id'];
@@ -105,8 +105,8 @@ class ControllerPaymentMoneyBookers extends Controller {
 		if (isset($this->request->post['moneybookers_geo_zone_id'])) {
 			$this->data['moneybookers_geo_zone_id'] = $this->request->post['moneybookers_geo_zone_id'];
 		} else {
-			$this->data['moneybookers_geo_zone_id'] = $this->config->get('moneybookers_geo_zone_id'); 
-		} 	
+			$this->data['moneybookers_geo_zone_id'] = $this->config->get('moneybookers_geo_zone_id');
+		}
 		
 		$this->load->model('localisation/geo_zone');
 										
@@ -158,7 +158,7 @@ class ControllerPaymentMoneyBookers extends Controller {
 			return true;
 		} else {
 			return false;
-		}	
+		}
 	}
 }
 ?>

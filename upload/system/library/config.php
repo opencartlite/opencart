@@ -17,7 +17,7 @@ class Config {
 	public function load($filename) {
 		$file = DIR_CONFIG . $filename . '.php';
 		
-		if (file_exists($file)) { 
+		if (file_exists($file)) {
 			$_ = array();
 
 			require($file);

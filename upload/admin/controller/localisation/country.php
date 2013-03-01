@@ -1,4 +1,4 @@
-<?php 
+<?php
 class ControllerLocalisationCountry extends Controller {
 	private $error = array();
  
@@ -184,10 +184,10 @@ class ControllerLocalisationCountry extends Controller {
 				'name'       => $result['name'] . (($result['country_id'] == $this->config->get('config_country_id')) ? $this->language->get('text_default') : null),
 				'iso_code_2' => $result['iso_code_2'],
 				'iso_code_3' => $result['iso_code_3'],
-				'selected'   => isset($this->request->post['selected']) && in_array($result['country_id'], $this->request->post['selected']),				
+				'selected'   => isset($this->request->post['selected']) && in_array($result['country_id'], $this->request->post['selected']),
 				'action'     => $action
 			);
-		}	
+		}
  
  		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
@@ -290,7 +290,7 @@ class ControllerLocalisationCountry extends Controller {
 			'href' => $this->url->link('localisation/country', 'token=' . $this->session->data['token'] . $url, 'SSL')
    		);
 							
-		if (!isset($this->request->get['country_id'])) { 
+		if (!isset($this->request->get['country_id'])) {
 			$this->data['action'] = $this->url->link('localisation/country/insert', 'token=' . $this->session->data['token'] . $url, 'SSL');
 		} else {
 			$this->data['action'] = $this->url->link('localisation/country/update', 'token=' . $this->session->data['token'] . '&country_id=' . $this->request->get['country_id'] . $url, 'SSL');

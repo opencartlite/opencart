@@ -1,4 +1,4 @@
-<?php 
+<?php
 class ControllerAccountLogout extends Controller {
 	public function index() {
     	if ($this->customer->isLogged()) {
@@ -15,7 +15,7 @@ class ControllerAccountLogout extends Controller {
 			unset($this->session->data['comment']);
 			unset($this->session->data['order_id']);
 			unset($this->session->data['coupon']);
-			unset($this->session->data['reward']);			
+			unset($this->session->data['reward']);
 			unset($this->session->data['voucher']);
 			unset($this->session->data['vouchers']);
 			
@@ -41,7 +41,7 @@ class ControllerAccountLogout extends Controller {
       	$this->data['breadcrumbs'][] = array(
         	'text' => $this->language->get('text_logout'),
 			'href' => $this->url->link('account/logout', '', 'SSL')
-      	);	
+      	);
 
     	$this->data['continue'] = $this->url->link('common/home');
 		
@@ -57,10 +57,10 @@ class ControllerAccountLogout extends Controller {
 			'common/content_top',
 			'common/content_bottom',
 			'common/footer',
-			'common/header'	
+			'common/header'
 		);
 						
-		$this->response->setOutput($this->render());	
+		$this->response->setOutput($this->render());
   	}
 }
 ?>

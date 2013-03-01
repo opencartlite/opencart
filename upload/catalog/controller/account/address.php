@@ -1,4 +1,4 @@
-<?php 
+<?php
 class ControllerAccountAddress extends Controller {
 	private $error = array();
 	  
@@ -6,7 +6,7 @@ class ControllerAccountAddress extends Controller {
     	if (!$this->customer->isLogged()) {
 	  		$this->session->data['redirect'] = $this->url->link('account/address', '', 'SSL');
 
-	  		$this->redirect($this->url->link('account/login', '', 'SSL')); 
+	  		$this->redirect($this->url->link('account/login', '', 'SSL'));
     	}
 	
     	$this->data += $this->language->load('account/address');
@@ -22,8 +22,8 @@ class ControllerAccountAddress extends Controller {
     	if (!$this->customer->isLogged()) {
 	  		$this->session->data['redirect'] = $this->url->link('account/address', '', 'SSL');
 
-	  		$this->redirect($this->url->link('account/login', '', 'SSL')); 
-    	} 
+	  		$this->redirect($this->url->link('account/login', '', 'SSL'));
+    	}
 
     	$this->data += $this->language->load('account/address');
 
@@ -37,7 +37,7 @@ class ControllerAccountAddress extends Controller {
       		$this->session->data['success'] = $this->language->get('text_insert');
 
 	  		$this->redirect($this->url->link('account/address', '', 'SSL'));
-    	} 
+    	}
 	  	
 		$this->getForm();
   	}
@@ -46,8 +46,8 @@ class ControllerAccountAddress extends Controller {
     	if (!$this->customer->isLogged()) {
 	  		$this->session->data['redirect'] = $this->url->link('account/address', '', 'SSL');
 
-	  		$this->redirect($this->url->link('account/login', '', 'SSL')); 
-    	} 
+	  		$this->redirect($this->url->link('account/login', '', 'SSL'));
+    	}
 		
     	$this->data += $this->language->load('account/address');
 
@@ -62,7 +62,7 @@ class ControllerAccountAddress extends Controller {
 			if (isset($this->session->data['shipping_address']['address_id']) && ($this->request->get['address_id'] == $this->session->data['shipping_address']['address_id'])) {
 				$this->session->data['shipping_address'] = $this->model_account_address->getAddress($this->request->get['address_id']);
 				
-				unset($this->session->data['shipping_method']);	
+				unset($this->session->data['shipping_method']);
 				unset($this->session->data['shipping_methods']);
 			}
 			
@@ -77,7 +77,7 @@ class ControllerAccountAddress extends Controller {
 			$this->session->data['success'] = $this->language->get('text_update');
 	  
 	  		$this->redirect($this->url->link('account/address', '', 'SSL'));
-    	} 
+    	}
 	  	
 		$this->getForm();
   	}
@@ -86,8 +86,8 @@ class ControllerAccountAddress extends Controller {
     	if (!$this->customer->isLogged()) {
 	  		$this->session->data['redirect'] = $this->url->link('account/address', '', 'SSL');
 
-	  		$this->redirect($this->url->link('account/login', '', 'SSL')); 
-    	} 
+	  		$this->redirect($this->url->link('account/login', '', 'SSL'));
+    	}
 			
     	$this->data += $this->language->load('account/address');
 
@@ -96,18 +96,18 @@ class ControllerAccountAddress extends Controller {
 		$this->load->model('account/address');
 		
     	if (isset($this->request->get['address_id']) && $this->validateDelete()) {
-			$this->model_account_address->deleteAddress($this->request->get['address_id']);	
+			$this->model_account_address->deleteAddress($this->request->get['address_id']);
 			
 			// Default Shipping Address
 			if (isset($this->session->data['shipping_address']['address_id']) && ($this->request->get['address_id'] == $this->session->data['shipping_address']['address_id'])) {
-				unset($this->session->data['shipping_address']);			
+				unset($this->session->data['shipping_address']);
 				unset($this->session->data['shipping_method']);
 				unset($this->session->data['shipping_methods']);
 			}
 			
 			// Default Payment Address
 			if (isset($this->session->data['payment_address']['address_id']) && ($this->request->get['address_id'] == $this->session->data['payment_address']['address_id'])) {
-				unset($this->session->data['payment_address']);			
+				unset($this->session->data['payment_address']);
 				unset($this->session->data['payment_method']);
 				unset($this->session->data['payment_methods']);
 			}
@@ -117,14 +117,14 @@ class ControllerAccountAddress extends Controller {
 	  		$this->redirect($this->url->link('account/address', '', 'SSL'));
     	}
 	
-		$this->getList();	
+		$this->getList();
   	}
 
   	protected function getList() {
       	$this->data['breadcrumbs'][] = array(
         	'text' => $this->language->get('text_home'),
 			'href' => $this->url->link('common/home')
-      	); 
+      	);
 
       	$this->data['breadcrumbs'][] = array(
         	'text' => $this->language->get('text_account'),
@@ -184,7 +184,7 @@ class ControllerAccountAddress extends Controller {
       			'postcode'  => $result['postcode'],
       			'zone'      => $result['zone'],
 				'zone_code' => $result['zone_code'],
-      			'country'   => $result['country']  
+      			'country'   => $result['country']
 			);
 
       		$this->data['addresses'][] = array(
@@ -210,10 +210,10 @@ class ControllerAccountAddress extends Controller {
 			'common/content_top',
 			'common/content_bottom',
 			'common/footer',
-			'common/header'		
+			'common/header'
 		);
 						
-		$this->response->setOutput($this->render());		
+		$this->response->setOutput($this->render());
   	}
 
   	protected function getForm() {
@@ -222,7 +222,7 @@ class ControllerAccountAddress extends Controller {
       	$this->data['breadcrumbs'][] = array(
         	'text' => $this->language->get('text_home'),
 			'href' => $this->url->link('common/home')
-      	); 
+      	);
 
       	$this->data['breadcrumbs'][] = array(
         	'text' => $this->language->get('text_account'),
@@ -336,12 +336,12 @@ class ControllerAccountAddress extends Controller {
 			$this->data['address_2'] = $address_info['address_2'];
 		} else {
       		$this->data['address_2'] = '';
-    	}	
+    	}
 
     	if (isset($this->request->post['postcode'])) {
       		$this->data['postcode'] = $this->request->post['postcode'];
     	} elseif (!empty($address_info)) {
-			$this->data['postcode'] = $address_info['postcode'];			
+			$this->data['postcode'] = $address_info['postcode'];
 		} else {
       		$this->data['postcode'] = '';
     	}
@@ -357,7 +357,7 @@ class ControllerAccountAddress extends Controller {
     	if (isset($this->request->post['country_id'])) {
       		$this->data['country_id'] = $this->request->post['country_id'];
     	}  elseif (!empty($address_info)) {
-      		$this->data['country_id'] = $address_info['country_id'];			
+      		$this->data['country_id'] = $address_info['country_id'];
     	} else {
       		$this->data['country_id'] = $this->config->get('config_country_id');
     	}
@@ -396,10 +396,10 @@ class ControllerAccountAddress extends Controller {
 			'common/content_top',
 			'common/content_bottom',
 			'common/footer',
-			'common/header'		
+			'common/header'
 		);
 						
-		$this->response->setOutput($this->render());	
+		$this->response->setOutput($this->render());
   	}
 	
   	protected function validateForm() {
@@ -476,7 +476,7 @@ class ControllerAccountAddress extends Controller {
 				'address_format'    => $country_info['address_format'],
 				'postcode_required' => $country_info['postcode_required'],
 				'zone'              => $this->model_localisation_zone->getZonesByCountryId($this->request->get['country_id']),
-				'status'            => $country_info['status']		
+				'status'            => $country_info['status']
 			);
 		}
 		

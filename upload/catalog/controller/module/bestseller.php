@@ -28,7 +28,7 @@ class ControllerModuleBestSeller extends Controller {
 				$special = $this->currency->format($this->tax->calculate($result['special'], $result['tax_class_id'], $this->config->get('config_tax')));
 			} else {
 				$special = false;
-			}	
+			}
 			
 			if ($this->config->get('config_review_status')) {
 				$rating = $result['rating'];

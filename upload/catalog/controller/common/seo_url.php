@@ -28,7 +28,7 @@ class ControllerCommonSeoUrl extends Controller {
 						} else {
 							$this->request->get['path'] .= '_' . $url[1];
 						}
-					}	
+					}
 					
 					if ($url[0] == 'manufacturer_id') {
 						$this->request->get['manufacturer_id'] = $url[1];
@@ -36,9 +36,9 @@ class ControllerCommonSeoUrl extends Controller {
 					
 					if ($url[0] == 'information_id') {
 						$this->request->get['information_id'] = $url[1];
-					}	
+					}
 				} else {
-					$this->request->get['route'] = 'error/not_found';	
+					$this->request->get['route'] = 'error/not_found';
 				}
 			}
 			
@@ -63,7 +63,7 @@ class ControllerCommonSeoUrl extends Controller {
 	public function rewrite($link) {
 		$url_info = parse_url(str_replace('&amp;', '&', $link));
 	
-		$url = ''; 
+		$url = '';
 		
 		$data = array();
 		
@@ -78,7 +78,7 @@ class ControllerCommonSeoUrl extends Controller {
 						$url .= '/' . $query->row['keyword'];
 						
 						unset($data[$key]);
-					}					
+					}
 				} elseif ($key == 'path') {
 					$categories = explode('_', $value);
 					
@@ -87,7 +87,7 @@ class ControllerCommonSeoUrl extends Controller {
 				
 						if ($query->num_rows) {
 							$url .= '/' . $query->row['keyword'];
-						}							
+						}
 					}
 					
 					unset($data[$key]);
@@ -114,6 +114,6 @@ class ControllerCommonSeoUrl extends Controller {
 		} else {
 			return $link;
 		}
-	}	
+	}
 }
 ?>

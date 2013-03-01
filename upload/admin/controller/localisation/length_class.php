@@ -1,6 +1,6 @@
 <?php
 class ControllerLocalisationLengthClass extends Controller {
-	private $error = array();  
+	private $error = array();
  
 	public function index() {
 		$this->data += $this->language->load('localisation/length_class');
@@ -187,7 +187,7 @@ class ControllerLocalisationLengthClass extends Controller {
 				'selected'        => isset($this->request->post['selected']) && in_array($result['length_class_id'], $this->request->post['selected']),
 				'action'          => $action
 			);
-		}	
+		}
  
  		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
@@ -318,7 +318,7 @@ class ControllerLocalisationLengthClass extends Controller {
 			$this->data['length_class_description'] = $this->model_localisation_length_class->getLengthClassDescriptions($this->request->get['length_class_id']);
 		} else {
 			$this->data['length_class_description'] = array();
-		}	
+		}
 		
 		if (isset($this->request->post['value'])) {
 			$this->data['value'] = $this->request->post['value'];
@@ -326,7 +326,7 @@ class ControllerLocalisationLengthClass extends Controller {
 			$this->data['value'] = $length_class_info['value'];
 		} else {
 			$this->data['value'] = '';
-		}			
+		}
 
 		$this->template = 'localisation/length_class_form.tpl';
 		$this->children = array(
@@ -383,6 +383,6 @@ class ControllerLocalisationLengthClass extends Controller {
 		} else {
 			return false;
 		}
-	}	
+	}
 }
 ?>

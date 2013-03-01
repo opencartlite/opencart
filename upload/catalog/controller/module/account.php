@@ -1,4 +1,4 @@
-<?php  
+<?php
 class ControllerModuleAccount extends Controller {
 	protected function index() {
 		$this->data += $this->language->load('module/account');

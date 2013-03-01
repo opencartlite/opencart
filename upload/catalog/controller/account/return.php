@@ -1,5 +1,5 @@
-<?php 
-class ControllerAccountReturn extends Controller { 
+<?php
+class ControllerAccountReturn extends Controller {
 	private $error = array();
 	
 	public function index() {
@@ -18,7 +18,7 @@ class ControllerAccountReturn extends Controller {
       	$this->data['breadcrumbs'][] = array(
         	'text' => $this->language->get('text_home'),
 			'href' => $this->url->link('common/home')
-      	); 
+      	);
 
       	$this->data['breadcrumbs'][] = array(
         	'text' => $this->language->get('text_account'),
@@ -87,7 +87,7 @@ class ControllerAccountReturn extends Controller {
 			'common/header'
 		);
 						
-		$this->response->setOutput($this->render());				
+		$this->response->setOutput($this->render());
 	}
 	
 	public function info() {
@@ -128,7 +128,7 @@ class ControllerAccountReturn extends Controller {
 			
 			if (isset($this->request->get['page'])) {
 				$url .= '&page=' . $this->request->get['page'];
-			}	
+			}
 					
 			$this->data['breadcrumbs'][] = array(
 				'text' => $this->language->get('heading_title'),
@@ -138,9 +138,9 @@ class ControllerAccountReturn extends Controller {
 			$this->data['breadcrumbs'][] = array(
 				'text' => $this->language->get('text_return'),
 				'href' => $this->url->link('account/return/info', 'return_id=' . $this->request->get['return_id'] . $url, 'SSL')
-			);			
+			);
 			
-			$this->data['heading_title'] = $this->language->get('text_return');			
+			$this->data['heading_title'] = $this->language->get('text_return');
 			
 			$this->data['return_id'] = $return_info['return_id'];
 			$this->data['order_id'] = $return_info['order_id'];
@@ -149,7 +149,7 @@ class ControllerAccountReturn extends Controller {
 			$this->data['firstname'] = $return_info['firstname'];
 			$this->data['lastname'] = $return_info['lastname'];
 			$this->data['email'] = $return_info['email'];
-			$this->data['telephone'] = $return_info['telephone'];						
+			$this->data['telephone'] = $return_info['telephone'];
 			$this->data['product'] = $return_info['product'];
 			$this->data['model'] = $return_info['model'];
 			$this->data['quantity'] = $return_info['quantity'];
@@ -184,10 +184,10 @@ class ControllerAccountReturn extends Controller {
 				'common/content_top',
 				'common/content_bottom',
 				'common/footer',
-				'common/header'	
+				'common/header'
 			);
 									
-			$this->response->setOutput($this->render());		
+			$this->response->setOutput($this->render());
 		} else {
 			$this->document->setTitle($this->language->get('text_return'));
 						
@@ -235,10 +235,10 @@ class ControllerAccountReturn extends Controller {
 				'common/content_top',
 				'common/content_bottom',
 				'common/footer',
-				'common/header'	
+				'common/header'
 			);
 						
-			$this->response->setOutput($this->render());			
+			$this->response->setOutput($this->render());
 		}
 	}
 		
@@ -251,7 +251,7 @@ class ControllerAccountReturn extends Controller {
 			$this->model_account_return->addReturn($this->request->post);
 	  		
 			$this->redirect($this->url->link('account/return/success', '', 'SSL'));
-    	} 
+    	}
 							
 		$this->document->setTitle($this->language->get('heading_title'));
 		
@@ -263,17 +263,17 @@ class ControllerAccountReturn extends Controller {
       	$this->data['breadcrumbs'][] = array(
         	'text' => $this->language->get('text_home'),
 			'href' => $this->url->link('common/home')
-      	); 
+      	);
 		
-      	$this->data['breadcrumbs'][] = array(       	
+      	$this->data['breadcrumbs'][] = array(
         	'text' => $this->language->get('text_account'),
 			'href' => $this->url->link('account/account', '', 'SSL')
       	);
 		
-      	$this->data['breadcrumbs'][] = array(       	
+      	$this->data['breadcrumbs'][] = array(
         	'text' => $this->language->get('heading_title'),
 			'href' => $this->url->link('account/return/insert', '', 'SSL')
-      	);		    												
+      	);
 		    
 		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
@@ -291,13 +291,13 @@ class ControllerAccountReturn extends Controller {
 			$this->data['error_firstname'] = $this->error['firstname'];
 		} else {
 			$this->data['error_firstname'] = '';
-		}	
+		}
 		
 		if (isset($this->error['lastname'])) {
 			$this->data['error_lastname'] = $this->error['lastname'];
 		} else {
 			$this->data['error_lastname'] = '';
-		}		
+		}
 	
 		if (isset($this->error['email'])) {
 			$this->data['error_email'] = $this->error['email'];
@@ -333,7 +333,7 @@ class ControllerAccountReturn extends Controller {
 			$this->data['error_captcha'] = $this->error['captcha'];
 		} else {
 			$this->data['error_captcha'] = '';
-		}	
+		}
 
 		$this->data['action'] = $this->url->link('account/return/insert', '', 'SSL');
 	
@@ -350,15 +350,15 @@ class ControllerAccountReturn extends Controller {
 		}
 		
     	if (isset($this->request->post['order_id'])) {
-      		$this->data['order_id'] = $this->request->post['order_id']; 	
+      		$this->data['order_id'] = $this->request->post['order_id'];
 		} elseif (!empty($order_info)) {
 			$this->data['order_id'] = $order_info['order_id'];
 		} else {
-      		$this->data['order_id'] = ''; 
+      		$this->data['order_id'] = '';
     	}
 				
     	if (isset($this->request->post['date_ordered'])) {
-      		$this->data['date_ordered'] = $this->request->post['date_ordered']; 	
+      		$this->data['date_ordered'] = $this->request->post['date_ordered'];
 		} elseif (!empty($order_info)) {
 			$this->data['date_ordered'] = date('Y-m-d', strtotime($order_info['date_added']));
 		} else {
@@ -368,7 +368,7 @@ class ControllerAccountReturn extends Controller {
 		if (isset($this->request->post['firstname'])) {
     		$this->data['firstname'] = $this->request->post['firstname'];
 		} elseif (!empty($order_info)) {
-			$this->data['firstname'] = $order_info['firstname'];	
+			$this->data['firstname'] = $order_info['firstname'];
 		} else {
 			$this->data['firstname'] = $this->customer->getFirstName();
 		}
@@ -376,7 +376,7 @@ class ControllerAccountReturn extends Controller {
 		if (isset($this->request->post['lastname'])) {
     		$this->data['lastname'] = $this->request->post['lastname'];
 		} elseif (!empty($order_info)) {
-			$this->data['lastname'] = $order_info['lastname'];			
+			$this->data['lastname'] = $order_info['lastname'];
 		} else {
 			$this->data['lastname'] = $this->customer->getLastName();
 		}
@@ -384,7 +384,7 @@ class ControllerAccountReturn extends Controller {
 		if (isset($this->request->post['email'])) {
     		$this->data['email'] = $this->request->post['email'];
 		} elseif (!empty($order_info)) {
-			$this->data['email'] = $order_info['email'];				
+			$this->data['email'] = $order_info['email'];
 		} else {
 			$this->data['email'] = $this->customer->getEmail();
 		}
@@ -392,7 +392,7 @@ class ControllerAccountReturn extends Controller {
 		if (isset($this->request->post['telephone'])) {
     		$this->data['telephone'] = $this->request->post['telephone'];
 		} elseif (!empty($order_info)) {
-			$this->data['telephone'] = $order_info['telephone'];				
+			$this->data['telephone'] = $order_info['telephone'];
 		} else {
 			$this->data['telephone'] = $this->customer->getTelephone();
 		}
@@ -400,7 +400,7 @@ class ControllerAccountReturn extends Controller {
 		if (isset($this->request->post['product'])) {
     		$this->data['product'] = $this->request->post['product'];
 		} elseif (!empty($product_info)) {
-			$this->data['product'] = $product_info['name'];				
+			$this->data['product'] = $product_info['name'];
 		} else {
 			$this->data['product'] = '';
 		}
@@ -408,7 +408,7 @@ class ControllerAccountReturn extends Controller {
 		if (isset($this->request->post['model'])) {
     		$this->data['model'] = $this->request->post['model'];
 		} elseif (!empty($product_info)) {
-			$this->data['model'] = $product_info['model'];				
+			$this->data['model'] = $product_info['model'];
 		} else {
 			$this->data['model'] = '';
 		}
@@ -417,19 +417,19 @@ class ControllerAccountReturn extends Controller {
     		$this->data['quantity'] = $this->request->post['quantity'];
 		} else {
 			$this->data['quantity'] = 1;
-		}	
+		}
 				
 		if (isset($this->request->post['opened'])) {
     		$this->data['opened'] = $this->request->post['opened'];
 		} else {
 			$this->data['opened'] = false;
-		}	
+		}
 		
 		if (isset($this->request->post['return_reason_id'])) {
     		$this->data['return_reason_id'] = $this->request->post['return_reason_id'];
 		} else {
 			$this->data['return_reason_id'] = '';
-		}	
+		}
 														
 		$this->load->model('localisation/return_reason');
 		
@@ -439,7 +439,7 @@ class ControllerAccountReturn extends Controller {
     		$this->data['comment'] = $this->request->post['comment'];
 		} else {
 			$this->data['comment'] = '';
-		}	
+		}
 		
 		if (isset($this->request->post['captcha'])) {
 			$this->data['captcha'] = $this->request->post['captcha'];
@@ -481,16 +481,16 @@ class ControllerAccountReturn extends Controller {
 			'common/content_top',
 			'common/content_bottom',
 			'common/footer',
-			'common/header'	
+			'common/header'
 		);
 				
-		$this->response->setOutput($this->render());		
+		$this->response->setOutput($this->render());
   	}
 	
   	public function success() {
 		$this->data += $this->language->load('account/return');
 
-		$this->document->setTitle($this->language->get('heading_title')); 
+		$this->document->setTitle($this->language->get('heading_title'));
       
 	  	$this->data['breadcrumbs'] = array();
 
@@ -502,7 +502,7 @@ class ControllerAccountReturn extends Controller {
       	$this->data['breadcrumbs'][] = array(
         	'text' => $this->language->get('heading_title'),
 			'href' => $this->url->link('account/return', '', 'SSL')
-      	);	
+      	);
 	
     	$this->data['continue'] = $this->url->link('common/home');
 
@@ -518,10 +518,10 @@ class ControllerAccountReturn extends Controller {
 			'common/content_top',
 			'common/content_bottom',
 			'common/footer',
-			'common/header'	
+			'common/header'
 		);
 				
- 		$this->response->setOutput($this->render()); 
+ 		$this->response->setOutput($this->render());
 	}
 		
   	protected function validate() {
@@ -543,19 +543,19 @@ class ControllerAccountReturn extends Controller {
 		
     	if ((utf8_strlen($this->request->post['telephone']) < 3) || (utf8_strlen($this->request->post['telephone']) > 32)) {
       		$this->error['telephone'] = $this->language->get('error_telephone');
-    	}		
+    	}
 		
 		if ((utf8_strlen($this->request->post['product']) < 1) || (utf8_strlen($this->request->post['product']) > 255)) {
 			$this->error['product'] = $this->language->get('error_product');
-		}	
+		}
 		
 		if ((utf8_strlen($this->request->post['model']) < 1) || (utf8_strlen($this->request->post['model']) > 64)) {
 			$this->error['model'] = $this->language->get('error_model');
-		}							
+		}
 
 		if (empty($this->request->post['return_reason_id'])) {
 			$this->error['reason'] = $this->language->get('error_reason');
-		}	
+		}
 				
     	if (empty($this->session->data['captcha']) || ($this->session->data['captcha'] != $this->request->post['captcha'])) {
       		$this->error['captcha'] = $this->language->get('error_captcha');
@@ -583,25 +583,25 @@ class ControllerAccountReturn extends Controller {
 		
 		$image = imagecreatetruecolor(150, 35);
 
-		$width = imagesx($image); 
+		$width = imagesx($image);
 		$height = imagesy($image);
 
-		$black = imagecolorallocate($image, 0, 0, 0); 
-		$white = imagecolorallocate($image, 255, 255, 255); 
-		$red = imagecolorallocatealpha($image, 255, 0, 0, 75); 
-		$green = imagecolorallocatealpha($image, 0, 255, 0, 75); 
-		$blue = imagecolorallocatealpha($image, 0, 0, 255, 75); 
+		$black = imagecolorallocate($image, 0, 0, 0);
+		$white = imagecolorallocate($image, 255, 255, 255);
+		$red = imagecolorallocatealpha($image, 255, 0, 0, 75);
+		$green = imagecolorallocatealpha($image, 0, 255, 0, 75);
+		$blue = imagecolorallocatealpha($image, 0, 0, 255, 75);
 
-		imagefilledrectangle($image, 0, 0, $width, $height, $white); 
+		imagefilledrectangle($image, 0, 0, $width, $height, $white);
 
-		imagefilledellipse($image, ceil(rand(5, 145)), ceil(rand(0, 35)), 30, 30, $red); 
-		imagefilledellipse($image, ceil(rand(5, 145)), ceil(rand(0, 35)), 30, 30, $green); 
-		imagefilledellipse($image, ceil(rand(5, 145)), ceil(rand(0, 35)), 30, 30, $blue); 
+		imagefilledellipse($image, ceil(rand(5, 145)), ceil(rand(0, 35)), 30, 30, $red);
+		imagefilledellipse($image, ceil(rand(5, 145)), ceil(rand(0, 35)), 30, 30, $green);
+		imagefilledellipse($image, ceil(rand(5, 145)), ceil(rand(0, 35)), 30, 30, $blue);
 
-		imagefilledrectangle($image, 0, 0, $width, 0, $black); 
-		imagefilledrectangle($image, $width - 1, 0, $width - 1, $height - 1, $black); 
-		imagefilledrectangle($image, 0, 0, 0, $height - 1, $black); 
-		imagefilledrectangle($image, 0, $height - 1, $width, $height - 1, $black); 
+		imagefilledrectangle($image, 0, 0, $width, 0, $black);
+		imagefilledrectangle($image, $width - 1, 0, $width - 1, $height - 1, $black);
+		imagefilledrectangle($image, 0, 0, 0, $height - 1, $black);
+		imagefilledrectangle($image, 0, $height - 1, $width, $height - 1, $black);
 
 		imagestring($image, 10, intval(($width - (strlen($this->session->data['captcha']) * 9)) / 2),  intval(($height - 15) / 2), $this->session->data['captcha'], $black);
 
@@ -610,6 +610,6 @@ class ControllerAccountReturn extends Controller {
 		imagejpeg($image);
 
 		imagedestroy($image);
-	}	
+	}
 }
 ?>

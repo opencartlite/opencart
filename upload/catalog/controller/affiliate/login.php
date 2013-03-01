@@ -1,15 +1,15 @@
-<?php 
+<?php
 class ControllerAffiliateLogin extends Controller {
 	private $error = array();
 	
 	public function index() {
-		if ($this->affiliate->isLogged()) {  
+		if ($this->affiliate->isLogged()) {
       		$this->redirect($this->url->link('affiliate/account', '', 'SSL'));
     	}
 	
     	$this->data += $this->language->load('affiliate/login');
 
-    	$this->document->setTitle($this->language->get('heading_title')); 
+    	$this->document->setTitle($this->language->get('heading_title'));
 		
 		$this->load->model('affiliate/affiliate');
 						
@@ -19,7 +19,7 @@ class ControllerAffiliateLogin extends Controller {
 				$this->redirect(str_replace('&amp;', '&', $this->request->post['redirect']));
 			} else {
 				$this->redirect($this->url->link('affiliate/account', '', 'SSL'));
-			} 
+			}
 		}
 		
       	$this->data['breadcrumbs'] = array();
@@ -39,7 +39,7 @@ class ControllerAffiliateLogin extends Controller {
 			'href' => $this->url->link('affiliate/login', '', 'SSL')
       	);
 		
-		$this->data['text_description'] = sprintf($this->language->get('text_description'), $this->config->get('config_name'), $this->config->get('config_name'), $this->config->get('config_commission') . '%'); 	
+		$this->data['text_description'] = sprintf($this->language->get('text_description'), $this->config->get('config_name'), $this->config->get('config_name'), $this->config->get('config_commission') . '%');
 
 		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
@@ -56,7 +56,7 @@ class ControllerAffiliateLogin extends Controller {
 		} elseif (isset($this->session->data['redirect'])) {
       		$this->data['redirect'] = $this->session->data['redirect'];
 	  		
-			unset($this->session->data['redirect']);		  	
+			unset($this->session->data['redirect']);
     	} else {
 			$this->data['redirect'] = '';
 		}
@@ -93,7 +93,7 @@ class ControllerAffiliateLogin extends Controller {
 			'common/content_top',
 			'common/content_bottom',
 			'common/footer',
-			'common/header'	
+			'common/header'
 		);
 						
 		$this->response->setOutput($this->render());
@@ -108,13 +108,13 @@ class ControllerAffiliateLogin extends Controller {
 		
     	if ($affiliate_info && !$affiliate_info['approved']) {
       		$this->error['warning'] = $this->language->get('error_approved');
-    	}	
+    	}
 			
     	if (!$this->error) {
       		return true;
     	} else {
       		return false;
-    	}  	
+    	}
   	}
 }
 ?>

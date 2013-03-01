@@ -1,6 +1,6 @@
-<?php 
+<?php
 class ControllerLocalisationStockStatus extends Controller {
-	private $error = array(); 
+	private $error = array();
    
   	public function index() {
 		$this->data += $this->language->load('localisation/stock_status');
@@ -156,7 +156,7 @@ class ControllerLocalisationStockStatus extends Controller {
    		);
 							
 		$this->data['insert'] = $this->url->link('localisation/stock_status/insert', 'token=' . $this->session->data['token'] . $url, 'SSL');
-		$this->data['delete'] = $this->url->link('localisation/stock_status/delete', 'token=' . $this->session->data['token'] . $url, 'SSL');	
+		$this->data['delete'] = $this->url->link('localisation/stock_status/delete', 'token=' . $this->session->data['token'] . $url, 'SSL');
 
 		$this->data['stock_statuses'] = array();
 
@@ -185,7 +185,7 @@ class ControllerLocalisationStockStatus extends Controller {
 				'selected'        => isset($this->request->post['selected']) && in_array($result['stock_status_id'], $this->request->post['selected']),
 				'action'          => $action
 			);
-		}			
+		}
  
  		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
@@ -312,7 +312,7 @@ class ControllerLocalisationStockStatus extends Controller {
 			'common/footer'
 		);
 				
-		$this->response->setOutput($this->render());	
+		$this->response->setOutput($this->render());
   	}
   	
 	protected function validateForm() {
@@ -349,15 +349,15 @@ class ControllerLocalisationStockStatus extends Controller {
 			$product_total = $this->model_catalog_product->getTotalProductsByStockStatusId($stock_status_id);
 		
 			if ($product_total) {
-	  			$this->error['warning'] = sprintf($this->language->get('error_product'), $product_total);	
-			}  
+	  			$this->error['warning'] = sprintf($this->language->get('error_product'), $product_total);
+			}
 	  	}
 		
-		if (!$this->error) { 
+		if (!$this->error) {
 	  		return true;
 		} else {
 	  		return false;
 		}
-  	}	  
+  	}
 }
 ?>

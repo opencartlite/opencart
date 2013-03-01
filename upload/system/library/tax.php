@@ -7,7 +7,7 @@ final class Tax {
 	public function __construct($registry) {
 		$this->config = $registry->get('config');
 		$this->customer = $registry->get('customer');
-		$this->db = $registry->get('db');	
+		$this->db = $registry->get('db');
 		$this->session = $registry->get('session');
 
 		if (isset($this->session->data['shipping_address'])) {
@@ -56,7 +56,7 @@ final class Tax {
 				if ($calculate != 'P' && $calculate != 'F') {
 					$amount += $tax_rate['amount'];
 				} elseif ($tax_rate['type'] == $calculate) {
-					$amount += $tax_rate['amount'];	
+					$amount += $tax_rate['amount'];
 				}
 			}
 

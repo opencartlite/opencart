@@ -1,6 +1,6 @@
 <?php
 class ModelPaymentKlarnaInvoice extends Model {
-    public function getMethod($address, $total) {        
+    public function getMethod($address, $total) {
         $this->language->load('payment/klarna_invoice');
 		
 		$status = true;
@@ -13,7 +13,7 @@ class ModelPaymentKlarnaInvoice extends Model {
 			$status = false;
 		}
         
-		if ($status) {  
+		if ($status) {
 			$query = $this->db->query("SELECT * FROM {zone_to_geo_zone} WHERE geo_zone_id = '" . (int)$klarna_invoice[$address['iso_code_3']]['geo_zone_id'] . "' AND country_id = '" . (int)$address['country_id'] . "' AND (zone_id = '" . (int)$address['zone_id'] . "' OR zone_id = '0')");
 			
 			if ($klarna_invoice[$address['iso_code_3']]['total'] > 0 && $klarna_invoice[$address['iso_code_3']]['total'] > $total) {
@@ -34,7 +34,7 @@ class ModelPaymentKlarnaInvoice extends Model {
 				'DNK' => 'DKK',
 				'DEU' => 'EUR',
 				'NLD' => 'EUR',
-			);				
+			);
 				
 			if (!isset($country_to_currency[$address['iso_code_3']]) || !$this->currency->has($country_to_currency[$address['iso_code_3']])) {
 				$status = false;

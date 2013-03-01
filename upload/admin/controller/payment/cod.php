@@ -1,8 +1,8 @@
-<?php 
+<?php
 class ControllerPaymentCod extends Controller {
-	private $error = array(); 
+	private $error = array();
 	 
-	public function index() { 
+	public function index() {
 		$this->data += $this->language->load('payment/cod');
 
 		$this->document->setTitle($this->language->get('heading_title'));
@@ -15,7 +15,7 @@ class ControllerPaymentCod extends Controller {
 			$this->session->data['success'] = $this->language->get('text_success');
 			
 			$this->redirect($this->url->link('extension/payment', 'token=' . $this->session->data['token'], 'SSL'));
-		}			
+		}
 
  		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
@@ -42,19 +42,19 @@ class ControllerPaymentCod extends Controller {
 		
 		$this->data['action'] = $this->url->link('payment/cod', 'token=' . $this->session->data['token'], 'SSL');
 
-		$this->data['cancel'] = $this->url->link('extension/payment', 'token=' . $this->session->data['token'], 'SSL');	
+		$this->data['cancel'] = $this->url->link('extension/payment', 'token=' . $this->session->data['token'], 'SSL');
 		
 		if (isset($this->request->post['cod_total'])) {
 			$this->data['cod_total'] = $this->request->post['cod_total'];
 		} else {
-			$this->data['cod_total'] = $this->config->get('cod_total'); 
+			$this->data['cod_total'] = $this->config->get('cod_total');
 		}
 				
 		if (isset($this->request->post['cod_order_status_id'])) {
 			$this->data['cod_order_status_id'] = $this->request->post['cod_order_status_id'];
 		} else {
-			$this->data['cod_order_status_id'] = $this->config->get('cod_order_status_id'); 
-		} 
+			$this->data['cod_order_status_id'] = $this->config->get('cod_order_status_id');
+		}
 		
 		$this->load->model('localisation/order_status');
 		
@@ -63,10 +63,10 @@ class ControllerPaymentCod extends Controller {
 		if (isset($this->request->post['cod_geo_zone_id'])) {
 			$this->data['cod_geo_zone_id'] = $this->request->post['cod_geo_zone_id'];
 		} else {
-			$this->data['cod_geo_zone_id'] = $this->config->get('cod_geo_zone_id'); 
-		} 
+			$this->data['cod_geo_zone_id'] = $this->config->get('cod_geo_zone_id');
+		}
 		
-		$this->load->model('localisation/geo_zone');						
+		$this->load->model('localisation/geo_zone');
 		
 		$this->data['geo_zones'] = $this->model_localisation_geo_zone->getGeoZones();
 		
@@ -100,7 +100,7 @@ class ControllerPaymentCod extends Controller {
 			return true;
 		} else {
 			return false;
-		}	
+		}
 	}
 }
 ?>

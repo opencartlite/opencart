@@ -9,7 +9,7 @@ class ControllerLocalisationTaxClass extends Controller {
 		
 		$this->load->model('localisation/tax_class');
 		
-		$this->getList(); 
+		$this->getList();
 	}
 
 	public function insert() {
@@ -153,10 +153,10 @@ class ControllerLocalisationTaxClass extends Controller {
    		$this->data['breadcrumbs'][] = array(
        		'text' => $this->language->get('heading_title'),
 			'href' => $this->url->link('localisation/tax_class', 'token=' . $this->session->data['token'] . $url, 'SSL')
-   		);		
+   		);
 		
 		$this->data['insert'] = $this->url->link('localisation/tax_class/insert', 'token=' . $this->session->data['token'] . $url, 'SSL');
-		$this->data['delete'] = $this->url->link('localisation/tax_class/delete', 'token=' . $this->session->data['token'] . $url, 'SSL');		
+		$this->data['delete'] = $this->url->link('localisation/tax_class/delete', 'token=' . $this->session->data['token'] . $url, 'SSL');
 		
 		$this->data['tax_classes'] = array();
 		
@@ -183,9 +183,9 @@ class ControllerLocalisationTaxClass extends Controller {
 				'tax_class_id' => $result['tax_class_id'],
 				'title'        => $result['title'],
 				'selected'     => isset($this->request->post['selected']) && in_array($result['tax_class_id'], $this->request->post['selected']),
-				'action'       => $action				
+				'action'       => $action
 			);
-		}	
+		}
  
  		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
@@ -246,7 +246,7 @@ class ControllerLocalisationTaxClass extends Controller {
 		$this->response->setOutput($this->render());
 	}
 
-	protected function getForm() {			
+	protected function getForm() {
 
  		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
@@ -381,6 +381,6 @@ class ControllerLocalisationTaxClass extends Controller {
 		} else {
 			return false;
 		}
-	}	
+	}
 }
 ?>

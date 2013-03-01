@@ -18,7 +18,7 @@ class ControllerAccountEdit extends Controller {
       	$this->data['breadcrumbs'][] = array(
         	'text' => $this->language->get('text_home'),
 			'href' => $this->url->link('common/home')
-      	); 
+      	);
 
       	$this->data['breadcrumbs'][] = array(
         	'text' => $this->language->get('text_account'),
@@ -52,10 +52,10 @@ class ControllerAccountEdit extends Controller {
 			'common/content_top',
 			'common/content_bottom',
 			'common/footer',
-			'common/header'	
+			'common/header'
 		);
 						
-		$this->response->setOutput($this->render());	
+		$this->response->setOutput($this->render());
 	}
 
 	public function save() {
@@ -65,7 +65,7 @@ class ControllerAccountEdit extends Controller {
 		
 		if (!$this->customer->isLogged()) {
 			$json['redirect'] = $this->url->link('account/login', '', 'SSL');
-		}		
+		}
 		
 		if (!$json) {
 			$this->load->model('account/customer');
@@ -99,7 +99,7 @@ class ControllerAccountEdit extends Controller {
 				if ($custom_field['required'] && empty($this->request->post['custom_field'][$custom_field['custom_field_id']])) {
 					$json['error']['custom_field'][$custom_field['custom_field_id']] = sprintf($this->language->get('error_required'), $custom_field['name']);
 				}
-			}		
+			}
 		}
 			
 		if (!$json) {

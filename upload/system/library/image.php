@@ -54,14 +54,14 @@ class Image {
 	}
 
 	/**
-	*	
-	*	@param width 
+	*
+	*	@param width
 	*	@param height
 	*	@param default char [default, w, h]
-	*				   default = scale with white space, 
-	*				   w = fill according to width, 
+	*				   default = scale with white space,
+	*				   w = fill according to width,
 	*				   h = fill according to height
-	*	
+	*
 	*/
 	public function resize($width = 0, $height = 0, $default = '') {
 		if (!$this->info['width'] || !$this->info['height']) {

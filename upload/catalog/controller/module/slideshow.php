@@ -1,4 +1,4 @@
-<?php  
+<?php
 class ControllerModuleSlideshow extends Controller {
 	protected function index($setting) {
 		static $module = 0;

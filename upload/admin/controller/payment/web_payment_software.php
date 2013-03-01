@@ -1,6 +1,6 @@
-<?php 
+<?php
 class ControllerPaymentWebPaymentSoftware extends Controller {
-	private $error = array(); 
+	private $error = array();
 
 	public function index() {
 		$this->data += $this->language->load('payment/web_payment_software');
@@ -10,12 +10,12 @@ class ControllerPaymentWebPaymentSoftware extends Controller {
 		$this->load->model('setting/setting');
 			
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
-			$this->model_setting_setting->editSetting('web_payment_software', $this->request->post);				
+			$this->model_setting_setting->editSetting('web_payment_software', $this->request->post);
 			
 			$this->session->data['success'] = $this->language->get('text_success');
 
 			$this->redirect($this->url->link('extension/payment', 'token=' . $this->session->data['token'], 'SSL'));
-		}				
+		}
 
  		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
@@ -83,8 +83,8 @@ class ControllerPaymentWebPaymentSoftware extends Controller {
 		if (isset($this->request->post['web_payment_software_order_status_id'])) {
 			$this->data['web_payment_software_order_status_id'] = $this->request->post['web_payment_software_order_status_id'];
 		} else {
-			$this->data['web_payment_software_order_status_id'] = $this->config->get('web_payment_software_order_status_id'); 
-		} 
+			$this->data['web_payment_software_order_status_id'] = $this->config->get('web_payment_software_order_status_id');
+		}
 
 		$this->load->model('localisation/order_status');
 		
@@ -93,8 +93,8 @@ class ControllerPaymentWebPaymentSoftware extends Controller {
 		if (isset($this->request->post['web_payment_software_geo_zone_id'])) {
 			$this->data['web_payment_software_geo_zone_id'] = $this->request->post['web_payment_software_geo_zone_id'];
 		} else {
-			$this->data['web_payment_software_geo_zone_id'] = $this->config->get('web_payment_software_geo_zone_id'); 
-		} 
+			$this->data['web_payment_software_geo_zone_id'] = $this->config->get('web_payment_software_geo_zone_id');
+		}
 		
 		$this->load->model('localisation/geo_zone');
 										
@@ -120,8 +120,8 @@ class ControllerPaymentWebPaymentSoftware extends Controller {
 
 		$this->template = 'payment/web_payment_software.tpl';
 		$this->children = array(
-			'common/header',	
-			'common/footer'	
+			'common/header',
+			'common/footer'
 		);
 		
 		$this->response->setOutput($this->render());
@@ -144,6 +144,6 @@ class ControllerPaymentWebPaymentSoftware extends Controller {
 			return true;
 		} else {
 			return false;
-		}	
+		}
 	}
 }

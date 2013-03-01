@@ -1,5 +1,5 @@
-<?php 
-class ControllerSaleVoucherTheme extends Controller { 
+<?php
+class ControllerSaleVoucherTheme extends Controller {
 	private $error = array();
    
   	public function index() {
@@ -156,7 +156,7 @@ class ControllerSaleVoucherTheme extends Controller {
    		);
 							
 		$this->data['insert'] = $this->url->link('sale/voucher_theme/insert', 'token=' . $this->session->data['token'] . $url, 'SSL');
-		$this->data['delete'] = $this->url->link('sale/voucher_theme/delete', 'token=' . $this->session->data['token'] . $url, 'SSL');	
+		$this->data['delete'] = $this->url->link('sale/voucher_theme/delete', 'token=' . $this->session->data['token'] . $url, 'SSL');
 
 		$this->data['voucher_themes'] = array();
 
@@ -185,7 +185,7 @@ class ControllerSaleVoucherTheme extends Controller {
 				'selected'         => isset($this->request->post['selected']) && in_array($result['voucher_theme_id'], $this->request->post['selected']),
 				'action'           => $action
 			);
-		}			
+		}
  
  		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
@@ -246,7 +246,7 @@ class ControllerSaleVoucherTheme extends Controller {
 		$this->response->setOutput($this->render());
   	}
   
-  	protected function getForm() {			
+  	protected function getForm() {
     
  		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
@@ -342,7 +342,7 @@ class ControllerSaleVoucherTheme extends Controller {
 			'common/footer'
 		);
 				
-		$this->response->setOutput($this->render());	
+		$this->response->setOutput($this->render());
   	}
   	
 	protected function validateForm() {
@@ -378,15 +378,15 @@ class ControllerSaleVoucherTheme extends Controller {
 			$voucher_total = $this->model_sale_voucher->getTotalVouchersByVoucherThemeId($voucher_theme_id);
 		
 			if ($voucher_total) {
-	  			$this->error['warning'] = sprintf($this->language->get('error_voucher'), $voucher_total);	
-			}  
+	  			$this->error['warning'] = sprintf($this->language->get('error_voucher'), $voucher_total);
+			}
 	  	}
 		
-		if (!$this->error) { 
+		if (!$this->error) {
 	  		return true;
 		} else {
 	  		return false;
 		}
-  	}	  
+  	}
 }
 ?>

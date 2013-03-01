@@ -10,7 +10,7 @@ class ControllerCatalogReview extends Controller {
 		$this->load->model('catalog/review');
 		
 		$this->getList();
-	} 
+	}
 
 	public function insert() {
 		$this->data += $this->language->load('catalog/review');
@@ -76,7 +76,7 @@ class ControllerCatalogReview extends Controller {
 		$this->getForm();
 	}
 
-	public function delete() { 
+	public function delete() {
 		$this->data += $this->language->load('catalog/review');
 
 		$this->document->setTitle($this->language->get('heading_title'));
@@ -156,7 +156,7 @@ class ControllerCatalogReview extends Controller {
    		);
 							
 		$this->data['insert'] = $this->url->link('catalog/review/insert', 'token=' . $this->session->data['token'] . $url, 'SSL');
-		$this->data['delete'] = $this->url->link('catalog/review/delete', 'token=' . $this->session->data['token'] . $url, 'SSL');	
+		$this->data['delete'] = $this->url->link('catalog/review/delete', 'token=' . $this->session->data['token'] . $url, 'SSL');
 
 		$this->data['reviews'] = array();
 
@@ -189,7 +189,7 @@ class ControllerCatalogReview extends Controller {
 				'selected'   => isset($this->request->post['selected']) && in_array($result['review_id'], $this->request->post['selected']),
 				'action'     => $action
 			);
-		}			
+		}
  
  		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
@@ -312,7 +312,7 @@ class ControllerCatalogReview extends Controller {
 			'href' => $this->url->link('catalog/review', 'token=' . $this->session->data['token'] . $url, 'SSL')
    		);
 										
-		if (!isset($this->request->get['review_id'])) { 
+		if (!isset($this->request->get['review_id'])) {
 			$this->data['action'] = $this->url->link('catalog/review/insert', 'token=' . $this->session->data['token'] . $url, 'SSL');
 		} else {
 			$this->data['action'] = $this->url->link('catalog/review/update', 'token=' . $this->session->data['token'] . '&review_id=' . $this->request->get['review_id'] . $url, 'SSL');
@@ -423,6 +423,6 @@ class ControllerCatalogReview extends Controller {
 		} else {
 			return false;
 		}
-	}	
+	}
 }
 ?>

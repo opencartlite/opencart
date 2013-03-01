@@ -5,8 +5,8 @@ class ModelInstall extends Model {
 				
 		$file = DIR_APPLICATION . 'opencart.sql';
 		
-		if (!file_exists($file)) { 
-			exit('Could not load sql file: ' . $file); 
+		if (!file_exists($file)) {
+			exit('Could not load sql file: ' . $file);
 		}
 		
 		$lines = file($file);
@@ -48,7 +48,7 @@ class ModelInstall extends Model {
 			$db->query("INSERT INTO `" . $data['db_prefix'] . "setting` SET `group` = 'config', `key` = 'config_encryption', value = '" . $db->escape(md5(mt_rand())) . "'");
 			
 			$db->query("UPDATE `" . $data['db_prefix'] . "product` SET `viewed` = '0'");
-		}		
-	}	
+		}
+	}
 }
 ?>

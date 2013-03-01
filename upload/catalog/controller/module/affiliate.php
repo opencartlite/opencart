@@ -1,7 +1,7 @@
-<?php  
+<?php
 class ControllerModuleAffiliate extends Controller {
 	protected function index() {
-		$this->data += $this->language->load('module/affiliate');	
+		$this->data += $this->language->load('module/affiliate');
 		
 		$this->data['logged'] = $this->affiliate->isLogged();
 		$this->data['register'] = $this->url->link('affiliate/register', '', 'SSL');

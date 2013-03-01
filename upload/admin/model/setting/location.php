@@ -26,12 +26,12 @@ class ModelSettingLocation extends Model {
 			'l.address_1',
 			'z.name',
 			'c.name'
-		);	
+		);
 		
 		if (isset($data['sort']) && in_array($data['sort'], $sort_data)) {
-			$sql .= " ORDER BY " . $data['sort'];	
+			$sql .= " ORDER BY " . $data['sort'];
 		} else {
-			$sql .= " ORDER BY l.name";	
+			$sql .= " ORDER BY l.name";
 		}
 		
 		if (isset($data['order']) && ($data['order'] == 'DESC')) {
@@ -43,11 +43,11 @@ class ModelSettingLocation extends Model {
 		if (isset($data['start']) || isset($data['limit'])) {
 			if ($data['start'] < 0) {
 				$data['start'] = 0;
-			}					
+			}
 
 			if ($data['limit'] < 1) {
 				$data['limit'] = 20;
-			}	
+			}
 		
 			$sql .= " LIMIT " . (int)$data['start'] . "," . (int)$data['limit'];
 		}

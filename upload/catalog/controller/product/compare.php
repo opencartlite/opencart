@@ -1,6 +1,6 @@
-<?php  
+<?php
 class ControllerProductCompare extends Controller {
-	public function index() { 
+	public function index() {
 		$this->data += $this->language->load('product/compare');
 		
 		$this->load->model('catalog/product');
@@ -9,7 +9,7 @@ class ControllerProductCompare extends Controller {
 		
 		if (!isset($this->session->data['compare'])) {
 			$this->session->data['compare'] = array();
-		}	
+		}
 				
 		if (isset($this->request->get['remove'])) {
 			$key = array_search($this->request->get['remove'], $this->session->data['compare']);
@@ -35,7 +35,7 @@ class ControllerProductCompare extends Controller {
 		$this->data['breadcrumbs'][] = array(
 			'text' => $this->language->get('heading_title'),
 			'href' => $this->url->link('product/compare')
-		);	
+		);
 		
 		if (isset($this->session->data['success'])) {
 			$this->data['success'] = $this->session->data['success'];
@@ -79,7 +79,7 @@ class ControllerProductCompare extends Controller {
 					$availability = $product_info['quantity'];
 				} else {
 					$availability = $this->language->get('text_instock');
-				}				
+				}
 				
 				$attribute_data = array();
 				
@@ -164,7 +164,7 @@ class ControllerProductCompare extends Controller {
 		$product_info = $this->model_catalog_product->getProduct($product_id);
 		
 		if ($product_info) {
-			if (!in_array($this->request->post['product_id'], $this->session->data['compare'])) {	
+			if (!in_array($this->request->post['product_id'], $this->session->data['compare'])) {
 				if (count($this->session->data['compare']) >= 4) {
 					array_shift($this->session->data['compare']);
 				}
@@ -172,10 +172,10 @@ class ControllerProductCompare extends Controller {
 				$this->session->data['compare'][] = $this->request->post['product_id'];
 			}
 			 
-			$json['success'] = sprintf($this->language->get('text_success'), $this->url->link('product/product', 'product_id=' . $this->request->post['product_id']), $product_info['name'], $this->url->link('product/compare'));				
+			$json['success'] = sprintf($this->language->get('text_success'), $this->url->link('product/product', 'product_id=' . $this->request->post['product_id']), $product_info['name'], $this->url->link('product/compare'));
 		
 			$json['total'] = sprintf($this->language->get('text_compare'), (isset($this->session->data['compare']) ? count($this->session->data['compare']) : 0));
-		}	
+		}
 
 		$this->response->setOutput(json_encode($json));
 	}
